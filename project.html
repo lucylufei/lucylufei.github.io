@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+<title>LuFei Liu - Projects</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, sans-serif}
+
+* {box-sizing:border-box}
+.mySlides {
+	display:none;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+</style>
+
+
+
+<head>
+<link rel='shortcut icon' type='image/x-icon' href='D:\Lucy Liu\summer-project\favicon.ico' />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"> </script>
+
+<script>
+$(document).ready(function(){
+    $("#software").click(function(){
+        $(".hard").hide();
+		$(".other").hide();
+		$(".soft").show();
+		$("#software").addClass("w3-black");
+		$("#others").removeClass("w3-black");
+		$("#all").removeClass("w3-black");
+		$("#hardware").removeClass("w3-black");	
+	});
+
+	$("#hardware").click(function(){
+        $(".soft").hide();
+        $(".other").hide();
+		$(".hard").show();
+		$("#software").removeClass("w3-black");
+		$("#others").removeClass("w3-black");
+		$("#all").removeClass("w3-black");
+		$("#hardware").addClass("w3-black");
+    });
+	
+    $("#others").click(function(){
+        $(".soft").hide();
+        $(".hard").hide();
+		$(".other").show();
+		$("#software").removeClass("w3-black");
+		$("#others").addClass("w3-black");
+		$("#all").removeClass("w3-black");
+		$("#hardware").removeClass("w3-black");    
+	});
+	
+	$("#all").click(function(){
+        $(".soft").show();
+        $(".hard").show();
+		$(".other").show();
+		$("#software").removeClass("w3-black");
+		$("#others").removeClass("w3-black");
+		$("#all").addClass("w3-black");
+		$("#hardware").removeClass("w3-black");
+	});
+});
+</script>
+
+
+
+<script>
+var slideIndex = 2;
+showSlides(slideIndex);
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  if (n > slides.length) {slideIndex = 1}    
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";  
+  }
+  slides[slideIndex-1].style.display = "block";  
+}
+</script>
+
+</head>
+
+<header class="w3-panel w3-center w3-text-grey " style="padding:64px 16px; background-color:white">
+  <h1>Projects</h1>
+  
+  <div class="w3-padding-16">
+    <div class="w3-bar w3-border">
+      <a href="D:\Lucy Liu\summer-project\homepagev2.html" class="w3-bar-item w3-button">Home</a>
+      <a href="D:\Lucy Liu\summer-project\resume.html" class="w3-bar-item w3-button">Resume</a>
+      <a href="http://instagram.com/lululetter" target = "_blank" class="w3-bar-item w3-button w3-hide-small">lululetter</a>
+    </div>
+  </div>
+</header>
+
+
+<body class="w3-light-grey w3-content" style="max-width:1600px" onload="showSlides(1);">
+
+
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" >
+
+  <!-- Header -->
+  <header id="portfolio">
+    <div class="w3-container">
+    <div class="w3-section w3-bottombar w3-padding-16">
+      <span class="w3-margin-right">Filter:</span> 
+      <button class="w3-button w3-black" id="all">All</button>
+      <button class="w3-button w3-white" id="software" onClick="myFunction()" ><i class="fa fa-code w3-margin-right"></i>Software</button>
+      <button class="w3-button w3-white" id="hardware"><i class="fa fa-wrench w3-margin-right"></i>Hardware</button>
+      <button class="w3-button w3-white" id="others"><i class="fa fa-cog w3-margin-right"></i>Others</button>
+   
+    
+  </header>
+  
+  <!-- Photo Grid-->
+	<div class="hard">
+    <div class="w3-third w3-container ">
+      <img src="D:\Lucy Liu\summer-project\IMG_1248.jpg" style="width:100%" class="w3-hover-opacity">
+      <div style="height: 250px;" class="w3-container w3-white" >
+        <p><b>Magnetic Tracking Rover</b></p>
+        <p>
+		A rover is built from a blank breadboard, wheels, and sheet metal to track a preprogrammed wire 
+		generating a magnetic field detected by inductors. The wire can be user-controlled for real time signals, 
+		tracked by the rover to complete commands such as 180 turns.
+		</p>
+      </div>
+    </div>
+	</div>
+	
+	<div class="other">
+    <div class="w3-third w3-container"  onclick="plusSlides(1)">
+      <img src="D:\Lucy Liu\summer-project\solidworks.jpg" style="width:100%" class="mySlides w3-hover-opacity fade" style="display:block;">
+	  <img src="D:\Lucy Liu\summer-project\IMG_4776.jpg" style="width:100%" class="mySlides w3-hover-opacity fade">
+      <div  style="height: 250px;" class="w3-container w3-white">
+        <p><b>SolidWorks Exploration</b></p>
+        <p>
+		Teams generate ideas for devices aiding the life of a person with limited motor abilities. 
+		Prototypes were created using common stationery, drafted on SolidWorks, and finally 3-D printed.
+		</p>
+		<br>
+		<br>
+      </div>
+    </div>
+	</div>
+
+	<div class="soft hard">
+    <div class="w3-third w3-container">
+      <img src="D:\Lucy Liu\summer-project\IMG_1234.jpg" style="width:100%" class="fade w3-hover-opacity">
+      <div  style="height: 250px;" class="w3-container w3-white">
+        <p><b>Simple RISC Machine</b></p>
+		<p>
+		A turing complete RISC machine created through Verilog code and synthesized in Quartus, 
+		capable of reading binary instructions. Implemented on a FPGA, successfully executing Fibonacci sequence code written in C 
+		with top 10 execution time of 100+ groups.
+		</p>
+	  </div>
+    </div>
+	</div>
+ 
+ 	<div class="other" >
+    <div class="w3-third w3-container ">
+      <img src="D:\Lucy Liu\summer-project\IMG_6936.jpg" style="width:100%" class="w3-hover-opacity">
+      <div  style="height: 250px;" class="w3-container w3-white">
+        <p><b>Cardboard Chair</b></p>
+        <p>
+		Schools in rural Africa struggle with seats for students due to the mobility in location. 
+		Teams of 6 design chairs made using only cardboard as a solution for cheap and simple seats. 
+		Chairs are weight tested then scored by design and comfort.
+		</p>
+      </div>
+    </div>
+	</div>
+	
+	<div class="soft" >
+    <div class="w3-third w3-container ">
+      <img src="D:\Lucy Liu\summer-project\IMG_1235.jpg" style="width:100%" class="w3-hover-opacity">
+      <div  style="height: 250px;" class="w3-container w3-white">
+        <p><b>Rain Harvesting Analysis</b></p>
+		<p>
+		A small town on Texada Island, BC wishes to rely on rain water throughout the year. Excel calculations
+		are used to determine the best choices in piping, tank, pipes, etc, to harvest water to maintain
+		the water consumption lifestyle of Texada citizens without BC Hydro. 
+		</p>
+	</div>
+    </div>
+	</div>
+	
+	<div class="soft">
+    <div class="w3-third w3-container">
+      <img src="D:\Lucy Liu\summer-project\IMG_1237.jpg" style="width:100%" class="w3-hover-opacity">
+      <div  style="height: 250px;" class="w3-container w3-white">
+        <p><b>Tic Tac Toe Game</b></p>
+        <p>
+		My first project using the Verilog involved the creation of a tic-tac-toe game in which the computer never loses. 
+		The code was tested on ModelSim and synthesized on Quartus. It was then implemented on a SoC and displayed through 
+		VGA to be user interactive. 
+		</p>
+      </div>
+    </div>
+	</div>
+	
+	<div class="hard">
+    <div class="w3-third w3-container">
+      <img src="D:\Lucy Liu\summer-project\IMG_1236.JPG" style="width:100%" class="w3-hover-opacity">
+      <div  style="height: 250px;" class="w3-container w3-white">
+        <p><b>Alarm Clock</b></p>
+        <p>
+		The alarm clock was created on a breadboard using a microprocessor coded with 8051 assembly. Users
+		can set the clock displayed through LED and program alarm times through a simple finite state machine. The speaker sounds
+		each hour and at alarm times with an option for snooze. 
+		</p>
+      </div>
+    </div>
+	</div>  
+	
+	<div class="hard">
+    <div class="w3-third w3-container">
+      <img src="D:\Lucy Liu\summer-project\IMG_1236.JPG" style="width:100%" class="w3-hover-opacity">
+      <div  style="height: 250px;" class="w3-container w3-white">
+        <p><b>ATMEL Microprocessor Projects</b></p>
+        <p>
+		Various projects were completed using 8051 assembly on a breadboard with an ATMEL microprocessor. This includes a thermometer, 
+		a RMS/peak voltage calculator, a motor controller, and more. 
+		</br>
+		</br>
+		</p>
+      </div>
+    </div>
+	</div>  
+	
+	<div class="hard">
+    <div class="w3-third w3-container">
+      <img src="D:\Lucy Liu\summer-project\IMG_1238.JPG" style="width:100%" class="w3-hover-opacity">
+      <div  style="height: 250px;" class="w3-container w3-white">
+        <p><b>Solder Oven Controller</b></p>
+        <p>
+
+		</p>
+      </div>
+    </div>
+	</div>
+	
+	<div class="hard">
+    <div class="w3-third w3-container">
+      <img src="D:\Lucy Liu\summer-project\2.JPG" style="width:100%" class="w3-hover-opacity">
+      <div  style="height: 250px;" class="w3-container w3-white">
+        <p><b>Mechanical Claw</b></p>
+        <p>
+		</p>
+      </div>
+    </div>
+	</div>
+	
+</div>
+</div>
+  
+</div>
+<!-- Footer -->
+<footer class="w3-container w3-padding-64 w3-center w3-large" style="background-color:grey"> <! change this >
+<div style="background-color:Gainsboro; padding:32px">
+  <br>
+  <a href="https://www.facebook.com/lululufei"  target = "_blank"> <i class="fa fa-facebook-official w3-hover-opacity" style="font-size:24px;"></i></a>&nbsp;&nbsp;&nbsp;
+  <a href="http://instagram.com/lululetter"  target = "_blank"> <i class="fa fa-instagram w3-hover-opacity" style="font-size:24px;"></a></i>&nbsp;&nbsp;&nbsp;
+  <a href="http://www.linkedin.com/in/lufei-liu-b8913b106"  target = "_blank"> <i class="fa fa-linkedin w3-hover-opacity" style="font-size:24px;"></a></i> 
+  <br>
+</div>
+</footer>
+
+
+</body>
+
+
+
+</html>
+
+
