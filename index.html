@@ -48,11 +48,27 @@ h2 {letter-spacing: 3px}
   background-color: THISTLE;
 }
 
+.overlay3 {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 1;
+  transition: .5s ease;
+
+}
+
 .container:hover .overlay {
   opacity: 1;
 }
 .container:hover .overlay2 {
   opacity: 1;
+}
+.container:hover .overlay3 {
+  opacity: 0;
 }
 
 .text {
@@ -128,8 +144,12 @@ h2 {letter-spacing: 3px}
   <div class="w3-half"> 
 	<div class="container">
 		<img src="/images/IMG_5900.jpg" style="width:100%" class="image">
-		<h2 style="color:white" align="center"><span style="background-color:THISTLE;">Education</span></h2>
 		
+		<div class="overlay3">
+			<h2 style="color:white; position:relative; top:45%; text-align:center;">
+				<span style="background-color:#9BC7D3;">&nbsp; Education &nbsp;</span>
+			</h2>
+		</div>
 		<div class="overlay2">
 			<div class="texttitle">
 				<h2>Education</h2>
@@ -145,6 +165,13 @@ h2 {letter-spacing: 3px}
 	
 	<div class="container">
 		<img src="/images/IMG_0805.JPG" style="width:100%" class="image">
+		
+		<div class="overlay3">
+			<h2 style="color:white; position:relative; top:45%; text-align:center;">
+				<span style="background-color:THISTLE;">&nbsp; Hobbies &nbsp;</span>
+			</h2>
+		</div>
+		
 		<div class="overlay">
 			<div class="texttitle">
 				<h2> Hobbies </h2> 
@@ -161,6 +188,13 @@ h2 {letter-spacing: 3px}
   <div class="w3-half">
 	<div class="container">
 		<img src="/images/IMG_9913.JPG" style="width:100%" class="image">
+		
+		<div class="overlay3">
+			<h2 style="color:white; position:relative; top:45%; text-align:center;">
+				<span style="background-color:THISTLE;">&nbsp; Experiences &nbsp;</span>
+			</h2>
+		</div>		
+		
 		<div class="overlay">
 			<div class="texttitle">
 				<h2> Experiences </h2>
@@ -175,6 +209,13 @@ h2 {letter-spacing: 3px}
 	
 	<div class="container">
 		<img src="/images/IMG_1844.JPG" style="width:100%" class="image">
+		
+		<div class="overlay3">
+			<h2 style="color:white; position:relative; top:45%; text-align:center;">
+				<span style="background-color:#9BC7D3;">&nbsp; Contact Me &nbsp;</span>
+			</h2>
+		</div>		
+		
 		<div class="overlay2">
 			<div class="texttitle">
 				<h2>Contact Me</h2>
