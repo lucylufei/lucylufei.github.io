@@ -8,9 +8,21 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
 body,h1,h2 {font-family: "Raleway", Arial, sans-serif}
-h1 {letter-spacing: 6px}
-h2 {letter-spacing: 3px}
-.w3-row-padding img {margin-bottom: 12px}
+h1 {
+	letter-spacing: 6px;
+	font-size: 10.0vh;
+}
+h2 {
+	letter-spacing: 3px;
+	font-size: 5.0vh;
+}
+p {
+	font-size: 3.0vh;
+}
+
+.w3-row-padding img {
+  margin-bottom: 12px
+}
 
 .container {
   position: relative;
@@ -124,13 +136,14 @@ $(document).ready(function(){
     });
     $("#experience").click(function(){
         $("#experienceoverlay").fadeToggle();
-    });});
+    });
     $("#hobbies").click(function(){
         $("#hobbiesoverlay").fadeToggle();
     });
     $("#contact").click(function(){
         $("#contactoverlay").fadeToggle();
     });	
+});
 </script>
 
 </head>
@@ -160,6 +173,7 @@ $(document).ready(function(){
  
   <div class="w3-half"> 
 	<div class="container" id="education">
+		<!-- D:\Lucy Liu\lucylufei.github.io\images\IMG_5900.jpg   /images/IMG_5900.jpg -->
 		<img src="/images/IMG_5900.jpg" style="width:100%" class="image" onclick="fadeToggle()">
 		
 		<div class="overlay3">
