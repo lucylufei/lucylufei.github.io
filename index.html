@@ -116,6 +116,23 @@ h2 {letter-spacing: 3px}
 
 </script>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("#education").click(function(){
+        $("#educationoverlay").fadeToggle();
+    });
+    $("#experience").click(function(){
+        $("#experienceoverlay").fadeToggle();
+    });});
+    $("#hobbies").click(function(){
+        $("#hobbiesoverlay").fadeToggle();
+    });
+    $("#contact").click(function(){
+        $("#contactoverlay").fadeToggle();
+    });	
+</script>
+
 </head>
 
 
@@ -142,15 +159,15 @@ h2 {letter-spacing: 3px}
 <div class="w3-row-padding w3-grayscale" style="margin-bottom:1px">
  
   <div class="w3-half"> 
-	<div class="container">
-		<img src="/images/IMG_5900.jpg" style="width:100%" class="image">
+	<div class="container" id="education">
+		<img src="/images/IMG_5900.jpg" style="width:100%" class="image" onclick="fadeToggle()">
 		
 		<div class="overlay3">
-			<h2 style="color:white; position:relative; top:20%; text-align:center;"><b>
+			<h2 style="color:white; position:relative; top:20%; text-align:center;">
 				<span style="background: rgba(216,191,216,0.75);">&nbsp; Education &nbsp;</span>
-			</b></h2>
+			</h2>
 		</div>
-		<div class="overlay2">
+		<div class="overlay2" id="educationoverlay" onclick="fadeToggle()">
 			<div class="texttitle">
 				<h2>Education</h2>
 			</div>
@@ -163,7 +180,7 @@ h2 {letter-spacing: 3px}
  
 	</div>
 	
-	<div class="container">
+	<div class="container" id="hobbies">
 		<img src="/images/IMG_0805.JPG" style="width:100%" class="image">
 		
 		<div class="overlay3">
@@ -172,7 +189,7 @@ h2 {letter-spacing: 3px}
 			</h2>
 		</div>
 		
-		<div class="overlay">
+		<div class="overlay" id="hobbiesoverlay">
 			<div class="texttitle">
 				<h2> Hobbies </h2> 
 			</div>
@@ -186,7 +203,7 @@ h2 {letter-spacing: 3px}
   </div>
 
   <div class="w3-half">
-	<div class="container">
+	<div class="container" id="experience">
 		<img src="/images/IMG_9913.JPG" style="width:100%" class="image">
 		
 		<div class="overlay3">
@@ -195,7 +212,7 @@ h2 {letter-spacing: 3px}
 			</h2>
 		</div>		
 		
-		<div class="overlay">
+		<div class="overlay" id="experienceoverlay">
 			<div class="texttitle">
 				<h2> Experiences </h2>
 			</div>
@@ -207,7 +224,7 @@ h2 {letter-spacing: 3px}
 		</div>
 	</div>
 	
-	<div class="container">
+	<div class="container" id="contact">
 		<img src="/images/IMG_1844.JPG" style="width:100%" class="image">
 		
 		<div class="overlay3">
@@ -216,7 +233,7 @@ h2 {letter-spacing: 3px}
 			</h2>
 		</div>		
 		
-		<div class="overlay2">
+		<div class="overlay2" id="contactoverlay">
 			<div class="texttitle">
 				<h2>Contact Me</h2>
 			</div>
