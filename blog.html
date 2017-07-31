@@ -1,0 +1,193 @@
+ <!DOCTYPE html>
+<html>
+<title>LuFei Liu - Blog</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, sans-serif}
+
+.container {
+  position: relative;
+  width: 100%;
+}
+
+@media only screen and (min-width: 1050px) {
+
+.textcontainer {
+	position: relative;
+	width: 50%;
+	background: rgb(216,191,216);
+}
+
+.picture {
+  width: 50%;
+  height: auto;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 25%;
+  height: 100%;
+  width: 50%;
+  opacity: 0;
+  transition: .5s ease;
+}
+
+}
+
+@media only screen and (max-width: 1050px) {
+
+.textcontainer {
+	position: relative;
+	width: 100%;
+	background: rgb(216,191,216);
+}
+
+.picture {
+  width: 100%;
+  height: auto;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 1;
+  transition: .5s ease;
+}
+
+}
+.container:hover .overlay {
+  opacity: 1;
+}
+
+
+.text {
+  color: white;
+  font-size: 18px;
+  position: absolute;
+  top: 35%;
+  left: 10%;
+  right: 8%;
+}
+
+.texttitle {
+	color: white;
+	font-size: 20px;
+	position: relative;
+	text-align: center;
+	top: 20%
+	
+}
+
+.rotateimg90 {
+  -webkit-transform:rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+
+.highlighted {
+    background-color: rgba(0,0,0,.5);
+}
+
+</style>
+
+<head>
+<link rel='shortcut icon' type='image/x-icon' href='favicon.ico' />
+</head>
+
+
+
+
+<!-- Header -->
+<header class="w3-panel w3-center w3-text-grey " style="padding:64px 16px; background-color:white">
+  <h1>Blog</h1>
+  
+  <div class="w3-padding-16">
+    <div class="w3-bar w3-border">
+      <a href="index.html" class="w3-bar-item w3-button">Home</a>
+      <a href="resume.html" class="w3-bar-item w3-button">Resume</a>
+      <a href="project.html" class="w3-bar-item w3-button">Projects</a>
+      <a href="http://instagram.com/lululetter" target = "_blank" class="w3-bar-item w3-button w3-hide-small">lululetter</a>
+    </div>
+  </div>
+</header>
+
+<body>
+
+<div class="w3-content" style="max-width:1500px">
+<div class="w3-row-padding " style="margin-bottom:1px">
+  <div align="center"> 
+
+	<div class="container" id="vancouver">
+		<a href="vancouver.html">
+		<img src="images/blog/StanleyPark.JPG" class="picture">
+				
+		<div class="overlay">
+			<h2 style="color:white; position:relative; top:20%; text-align:center;">
+				<span style="background: rgba(216,191,216,0.75);">&nbsp; Vancouver Things &nbsp;</span>
+			</h2>
+		</div>
+		</a>
+	</div>
+	
+	</br>
+	</br>
+
+	<div class="container" id="icecream">
+		<a href="icecream.html">
+		<img src="images/blog/food/mister.JPG" class="picture">
+				
+		<div class="overlay">
+			<h2 style="color:white; position:relative; top:20%; text-align:center;">
+				<span style="background: rgba(216,191,216,0.75);">&nbsp; Scream for Icecream &nbsp;</span>
+			</h2>
+		</div>
+		</a>
+	</div>	
+	
+	</br>
+	</br>
+
+<!--
+
+	
+	<div class="container" id="calgary">
+		<a href="calgary.html">
+		<img src="images/blog/calgary.JPG" class="picture">
+				
+		<div class="overlay">
+			<h2 style="color:white; position:relative; top:20%; text-align:center;">
+				<span style="background: rgba(216,191,216,0.75);">&nbsp; Calgary Things &nbsp;</span>
+			</h2>
+		</div>
+		</a>
+	</div>	
+	
+-->
+
+	</div>
+</div>
+</div>
+	
+</br>
+</br>
+</br>
+
+<!-- Footer -->
+<footer class="w3-container w3-padding-64 w3-light-grey w3-center w3-large"> 
+  <a href="https://www.facebook.com/lululufei"  target = "_blank"> <i class="fa fa-facebook-official w3-hover-opacity" style="font-size:24px;"></a></i>&nbsp;&nbsp;&nbsp;
+  <a href="http://instagram.com/lululetter"  target = "_blank"> <i class="fa fa-instagram w3-hover-opacity" style="font-size:24px;"></a></i>&nbsp;&nbsp;&nbsp;
+  <a href="http://www.linkedin.com/in/lufei-liu-b8913b106"  target = "_blank"> <i class="fa fa-linkedin w3-hover-opacity" style="font-size:24px;"></i> </a>
+</footer>
+
+</body>
+</html>

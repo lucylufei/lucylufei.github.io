@@ -1,0 +1,125 @@
+body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, sans-serif}
+
+.container {
+  position: relative;
+  width: 100%;
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-bottom: 5%;
+
+}
+
+#topbtn {
+  border: 1px solid gray;
+  background-color: white;
+  color: gray;
+  cursor: pointer;
+  padding: 10px;
+
+}
+
+
+@media only screen and (min-width: 1050px) {
+
+#topbtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  border: 1px solid gray;
+  background-color: white;
+  color: gray;
+  cursor: pointer;
+  padding: 10px;
+
+}
+
+.textcontainer {
+	position: relative;
+	left: 25%;
+	width: 50%;
+	padding-bottom: 5%;
+	<!--background: rgb(216,191,216);-->
+}
+
+.image {
+  display: block;
+  width: 50%;
+  height: auto;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 25%;
+  height: 100%;
+  width: 50%;
+  opacity: 0;
+  transition: .5s ease;
+}
+
+}
+
+@media only screen and (max-width: 1050px) {
+
+.textcontainer {
+	position: relative;
+	width: 100%;
+	<!--background: rgb(216,191,216);-->
+	padding-bottom: 5%;
+	padding-left: 5%;
+	padding-right: 5%;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+}
+
+}
+.container:hover .overlay {
+  opacity: 1;
+}
+
+
+.text {
+  color: white;
+  font-size: 18px;
+  position: absolute;
+  top: 35%;
+  left: 10%;
+  right: 8%;
+}
+
+.texttitle {
+	color: white;
+	font-size: 20px;
+	position: relative;
+	text-align: center;
+	top: 20%
+	
+}
+
+.rotateimg90 {
+  -webkit-transform:rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+
+.highlighted {
+    background-color: rgba(0,0,0,.5);
+}
+
