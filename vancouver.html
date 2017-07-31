@@ -16,24 +16,7 @@
 <head>
 <link rel='shortcut icon' type='image/x-icon' href='favicon.ico' />
 
-<script>
-function goBack() {
-    window.history.back();
-}
-
-window.onscroll = function() {scrollFunction()};
-
-function scrollFunction() {
-    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-        document.getElementById("topbtn").style.display = "block";
-    } else {
-        document.getElementById("topbtn").style.display = "none";
-    }
-}
-function topFunction() {
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
-}
+<script src="default.js">
 </script>
 </head>
 
@@ -69,8 +52,8 @@ function topFunction() {
 	
 </div>
 
-<div class="container" align="center">
-<iframe src="https://www.google.com/maps/d/embed?mid=1QXC7F8bFWwrEiP69nR5XEWD1qkM&hl=en" width="640" height="480"></iframe>
+<div class="map-container" align="center">
+<iframe src="https://www.google.com/maps/d/embed?mid=1QXC7F8bFWwrEiP69nR5XEWD1qkM&hl=en"></iframe>
 </div>
 
 </br>
