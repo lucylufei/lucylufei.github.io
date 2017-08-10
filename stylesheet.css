@@ -135,7 +135,7 @@ iframe {
 
 .map-container iframe{
 	display: block;
-	pointer-events: none;
+	pointer-events: auto;
 	position: relative; /* IE needs a position other than static */
 }
 .map-container iframe.clicked{
