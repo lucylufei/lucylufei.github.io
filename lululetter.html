@@ -15,53 +15,10 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"> </script>
 
-<script>
-$(document).ready(function() {
- /*   $("#searchIcon").click(function(){
-        $("#search_field").toggle();
-		document.getElementById("search_field").value = "";
-		clear_search();
-	}); */
-	$("#search_field").keyup(function() {
-		var search = $.trim(this.value);
-		hide_divs(search);
-	});
-	
-});
-$(document).click(function(e) {   
-    if(e.target.id == "searchIcon") {
-        $("#search_field").toggle();
-		document.getElementById("search_field").value = "";
-		clear_search();
-	}
-	else if (e.target.id == "search_div" || e.target.id == "search_field") {
-	}
-	else {
-        hide_search();
-		clear_search();
-		document.getElementById("search_field").value = "";
-    } 
-});
+<script src="jQ_default.js">
 </script>
 
-<script>
-function hide_divs(search) {
-	if (search != "") {
-		$("#container > div").hide(); // hide all divs
-		$('#container > div[id*="'+search+'"]').show(); // show the ones that match
-	}
-	else
-		$("#container > div").show(); // show all divs
-	
-}
-
-function clear_search() {
-    $("#container > div").show(); // show all divs
-}
-
-function hide_search(){
-	$("#search_field").hide();
-}
+<script src="default.js">
 </script>
 
 
