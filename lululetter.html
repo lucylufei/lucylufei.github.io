@@ -1,44 +1,134 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js">
-	<head>
-	<title>lululetter &#9829;</title>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
-		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-		<link rel="stylesheet" type="text/css" href="stylesheet.css" />
-		<script src="js/modernizr.custom.js"></script>
-	</head>
-	<body>
-		<div class="container">
-			<!-- Top Navigation -->
-			<div class="codrops-top clearfix">
-				<a class="codrops-icon codrops-icon-prev" href="http://tympanus.net/Development/ModalWindowEffects/"><span>Previous Demo</span></a>
-				<span class="right"><a class="codrops-icon codrops-icon-drop" href="http://tympanus.net/codrops/?p=15599"><span>Back to the Codrops Article</span></a></span>
-			</div>
-			<header>
-				<h1>Expanding Search Bar Deconstructed <span>A click-to-expand search input</span></h1>
-			</header>
-			<div class="main clearfix">
-				<!-- Optional columns for small components -->
-				<div class="column">
-					<p>The search bar can be opened on click, it has a fluid width and it's mobile-friendly.</p>
-					<p><a href="http://tympanus.net/codrops/?p=15599">Read the tutorial</a></p>
-				</div>
-				<div class="column">
-					<div id="sb-search" class="sb-search">
-						<form>
-							<input class="sb-search-input" placeholder="Enter your search term..." type="text" value="" name="search" id="search">
-							<input class="sb-search-submit" type="submit" value="">
-							<span class="sb-icon-search"></span>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div><!-- /container -->
-		<script src="js/classie.js"></script>
-		<script src="js/uisearch.js"></script>
-		<script>
-			new UISearch( document.getElementById( 'sb-search' ) );
-		</script>
-	</body>
+<html>
+<title>lululetter &#9829;</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<link rel = "stylesheet" href = "stylesheet.css">
+
+
+<head>
+<link rel='shortcut icon' type='image/x-icon' href='favicon.ico' />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"> </script>
+
+<script>
+$(document).ready(function() {
+ /*   $("#searchIcon").click(function(){
+        $("#search_field").toggle();
+		document.getElementById("search_field").value = "";
+		clear_search();
+	}); */
+	$("#search_field").keyup(function() {
+		var search = $.trim(this.value);
+		hide_divs(search);
+	});
+	
+});
+$(document).click(function(e) {   
+    if(e.target.id == "searchIcon") {
+        $("#search_field").toggle();
+		document.getElementById("search_field").value = "";
+		clear_search();
+	}
+	else if (e.target.id == "search_div" || e.target.id == "search_field") {
+	}
+	else {
+        hide_search();
+		clear_search();
+		document.getElementById("search_field").value = "";
+    } 
+});
+</script>
+
+<script>
+function hide_divs(search) {
+	if (search != "") {
+		$("#container > div").hide(); // hide all divs
+		$('#container > div[id*="'+search+'"]').show(); // show the ones that match
+	}
+	else
+		$("#container > div").show(); // show all divs
+	
+}
+
+function clear_search() {
+    $("#container > div").show(); // show all divs
+}
+
+function hide_search(){
+	$("#search_field").hide();
+}
+</script>
+
+
+</head>
+
+
+
+
+<!-- Header -->
+<header class="w3-panel w3-center w3-text-grey " style="padding:64px 16px; background-color:white">
+  <h1>&#9829; lululetter &#9829;</h1>
+  
+  <div class="w3-padding-16">
+    <div class="w3-bar w3-border">
+      <a href="index.html" class="w3-bar-item w3-button">About Me</a>
+      <a href="contact.html" class="w3-bar-item w3-button">Products</a>
+    </div>
+	<br>
+	<br>
+	<div class="w3-bar w3-border searchButton" id="search_div">
+		<i class="fa fa-search" aria-hidden="true" id="searchIcon"></i>
+		<input id="search_field" type="text" placeholder="Search">
+	</div>
+	<button  onclick="topFunction()" id="topbtn" style=" margin:0 auto;">Search</button>
+
+  </div>
+</header>
+
+<body onload="hide_search();" >
+
+<div class="w3-content" style="max-width:1500px">
+<div class="w3-row-padding " style="margin-bottom:1px">
+
+<div id="container">
+	<div class="textcontainer" id="abc">
+		abc
+		<br>
+	</div>
+	<div class="textcontainer" id="cde">
+		cde
+		<br>
+	</div>
+	<div class="textcontainer" id="def">
+		efg
+		<br>
+	</div>
+	<div class="textcontainer" id="fgh">
+		ghi
+		<br>
+	</div>
+	<div class="textcontainer" id="hij">
+		hij
+		<br>
+	</div>	
+	
+</div>
+
+
+</div>
+</div>
+
+<!-- Footer -->
+<footer class="w3-container w3-padding-64 w3-light-grey w3-center w3-large"> 
+  <a href="https://www.facebook.com/lululufei"  target = "_blank"> <i class="fa fa-facebook-official w3-hover-opacity" style="font-size:24px;"></a></i>&nbsp;&nbsp;&nbsp;
+  <a href="http://instagram.com/lululetter"  target = "_blank"> <i class="fa fa-instagram w3-hover-opacity" style="font-size:24px;"></a></i>&nbsp;&nbsp;&nbsp;
+  <a href="http://www.linkedin.com/in/lufei-liu-b8913b106"  target = "_blank"> <i class="fa fa-linkedin w3-hover-opacity" style="font-size:24px;"></i> </a>
+</footer>
+
+</body>
 </html>

@@ -9,6 +9,14 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, sans-serif}
 
 }
 
+.searchButton {
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 4px;
+	padding-bottom: 4px;
+	font-size: 25px;
+}
+
 #topbtn {
   border: 1px solid gray;
   background-color: white;
@@ -93,7 +101,7 @@ iframe {
   left: 0;
   height: 100%;
   width: 100%;
-  opacity: 0;
+  opacity: 1;
   transition: .5s ease;
 }
 
