@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<title>lululetter &#9829;</title>
+<title>LuFei Liu &#9829;</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -238,10 +238,11 @@ $(document).ready(function(){
     $("#contact").click(function(){
         $("#contactoverlay").show();
     });	
-	/*
+	
 	$( "#animated_loader" ).show();
 	$( "#page_content").hide();
-	*/
+	$("footer").hide();
+	
 });
 
 $(document).click(function(e) {   
@@ -254,12 +255,15 @@ $(document).click(function(e) {
         $("#contactoverlay").show();
     } 
 });
-/*
-$(window).load(function() {
+
+$(window).on('load',function() {
 	$( "#animated_loader" ).hide();
 	$( "#page_content").show();
+	$("footer").show();
+	console.log("test");
+
 });
-*/
+
 
 </script>
 
@@ -267,11 +271,11 @@ $(window).load(function() {
 
 
 <body>
-<!--
+
 <div class="container" id="animated_loader">
     <div class="row">
         <div class="col-md-12">
-            <div class="loader">
+            <div class="loader" style="padding-top: 12.0em;">
                 <p>Loading...</p>
                 <div class="loader-inner"></div>
                 <div class="loader-inner"></div>
@@ -280,7 +284,7 @@ $(window).load(function() {
         </div>
     </div>
 </div>
--->
+
 <!-- !PAGE CONTENT! -->
 <div class="w3-content" style="max-width:1500px" id="page_content">
 
