@@ -6,6 +6,9 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<link rel = "stylesheet" href = "stylesheet.css">
+
 <style>
 body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, sans-serif}
 
@@ -82,7 +85,22 @@ $(document).ready(function(){
 		$("#all").addClass("w3-black");
 		$("#hardware").removeClass("w3-black");
 	});
+	
+	$( "#animated_loader" ).show();
+	$( "#page_content").hide();
+	$("footer").hide();
+	$("header").hide();
 });
+
+$(window).on('load',function() {
+	$( "#animated_loader" ).hide();
+	$( "#page_content").show();
+	$("footer").show();
+	$("header").show();	
+	console.log("test");
+
+});
+
 </script>
 
 
@@ -127,10 +145,21 @@ function showSlides(n) {
 
 <body class="w3-light-grey w3-content" style="max-width:1600px" onload="showSlides(1);">
 
-
+<div class="container" id="animated_loader">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="loader" style="padding-top: 12.0em;">
+                <p>Loading...</p>
+                <div class="loader-inner"></div>
+                <div class="loader-inner"></div>
+                <div class="loader-inner"></div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- !PAGE CONTENT! -->
-<div class="w3-main" >
+<div class="w3-main" id="page_content">
 
   <!-- Header -->
   <header id="portfolio">

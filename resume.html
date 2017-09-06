@@ -9,6 +9,8 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
+<link rel = "stylesheet" href = "stylesheet.css">
+
 <style>
 html,body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, sans-serif}
 
@@ -46,6 +48,29 @@ a {
 
 </style>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"> </script>
+
+<script>
+$(document).ready(function(){
+	$( "#animated_loader" ).show();
+	$( "#page_content").hide();
+	$("footer").hide();
+	$("header").hide();
+});
+
+$(window).on('load',function() {
+	$( "#animated_loader" ).hide();
+	$( "#page_content").show();
+	$("footer").show();
+	$("header").show();	
+	console.log("test");
+
+});
+
+</script>
+
+
 <head>
 <link rel='shortcut icon' type='image/x-icon' href='favicon.ico' />
 </head>
@@ -67,8 +92,20 @@ a {
 
 <body class="w3-light-grey">
 
+<div class="container" id="animated_loader">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="loader" style="padding-top: 12.0em;">
+                <p>Loading...</p>
+                <div class="loader-inner"></div>
+                <div class="loader-inner"></div>
+                <div class="loader-inner"></div>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- Page Container -->
-<div class="w3-content w3-margin-top" style="max-width:1400px;">
+<div class="w3-content w3-margin-top" style="max-width:1400px;" id="page_content">
 
   <!-- The Grid -->
   <div class="w3-row-padding">

@@ -6,6 +6,9 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<link rel = "stylesheet" href = "stylesheet.css">
+
 <style>
 body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, sans-serif}
 
@@ -100,6 +103,29 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, sans-serif}
 
 </style>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"> </script>
+
+<script>
+$(document).ready(function(){
+	$( "#animated_loader" ).show();
+	$( "#page_content").hide();
+	$("footer").hide();
+	$("header").hide();
+});
+
+$(window).on('load',function() {
+	$( "#animated_loader" ).hide();
+	$( "#page_content").show();
+	$("footer").show();
+	$("header").show();	
+	console.log("test");
+
+});
+
+</script>
+
+
 <head>
 <link rel='shortcut icon' type='image/x-icon' href='favicon.ico' />
 </head>
@@ -122,8 +148,20 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, sans-serif}
 </header>
 
 <body>
+<div class="container" id="animated_loader">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="loader" style="padding-top: 12.0em;">
+                <p>Loading...</p>
+                <div class="loader-inner"></div>
+                <div class="loader-inner"></div>
+                <div class="loader-inner"></div>
+            </div>
+        </div>
+    </div>
+</div>
 
-<div class="w3-content" style="max-width:1500px">
+<div class="w3-content" style="max-width:1500px" id="page_content">
 <div class="w3-row-padding " style="margin-bottom:1px">
   <div align="center"> 
 
@@ -143,6 +181,8 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, sans-serif}
 		</a>
 	</div>	
 	
+	<br>
+	<br>
 
 	<div class="container" id="icecream">
 		<a href="icecream.html">
