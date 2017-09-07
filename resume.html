@@ -44,12 +44,14 @@ a {
   width: 100%;
 }
 
-
+button:focus {
+	outline:0;
+}
 
 </style>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"> </script>
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.4.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <script>
 $(document).ready(function(){
@@ -67,6 +69,10 @@ $(window).on('load',function() {
 	console.log("test");
 
 });
+
+$('#myModal').on('shown.bs.modal', function () {
+  $('#myInput').focus()
+})
 
 </script>
 
@@ -134,13 +140,77 @@ $(window).on('load',function() {
 		  <br>
 		  <p>Academic Terms</p>
           <div class="w3-light-grey w3-round-xlarge w3-small">
-            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:50%">4/8</div>
+            <button class="w3-center w3-round-xlarge w3-teal" style="width:50%" data-toggle="modal" data-target="#courseModal">4/8</button>
           </div>
-
+		  
+				<!-- Modal -->
+				<div class="modal fade" id="courseModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+				  <div class="modal-dialog" role="document">
+					<div class="modal-content">
+					  <div class="modal-header">
+						<h4 class="modal-title" id="myModalLabel">Courses Taken</h4>
+					  </div>
+					  <div class="modal-body">
+						<p><b>Current Courses</b></p>
+						<ul>
+						<li>ELEC 321 - Stochastic Signals and Systems</li>
+						<li>ELEC 301 - Electronic Circuits</li>
+						<li>ELEC 341 - Systems and Control</li>
+						<li>ELEC 342 - Electro-Mechanical Energy Conversion and Transmission</li>
+						<li>COMM 465 - Marketing Management</li>
+						</ul>
+						
+						<p><b>Completed Courses (Year 2)</b></p>
+						<ul>
+						<li>ELEC 201 - Circuit Analysis Part 1</li>
+						<li>ELEC 202 - Circuit Analysis Part 2</li>
+						<li>ELEC 221 - Signals and Systems</li>
+						<li>ELEC 291 - Electrical Engineering Design Studio</li>
+						<li>ELEC 211 - Engineering Electromagnetics</li>
+						<li>CPEN 211 - Introduction to Microcomputers</li>
+						<li>CPSC 259 - Data Structures and Algorithms</li>
+						<li>MATH 253 - Multivariable Calculas</li>
+						<li>MATH 256 - Differential Equations</li>
+						<li>MATH 264 - Vector Calculus</li>
+						<li>ECON 311 - Introduction to Macroeconomics</li>
+						<li>ELEC 281 - Technical Communications</li>
+						</ul>
+						
+					  </div>
+					  <div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					  </div>
+					</div>
+				  </div>
+				</div>
+		<br>
           <p>Co-op Work Terms</p>
           <div class="w3-light-grey w3-round-xlarge w3-small">
-            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:20%">1/5</div>
+            <button class="w3-center w3-round-xlarge w3-teal" style="width:20%" data-toggle="modal" data-target="#coopModal">1/5</button>
           </div>
+<!-- Modal -->
+				<div class="modal fade" id="coopModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+				  <div class="modal-dialog" role="document">
+					<div class="modal-content">
+					  <div class="modal-header">
+						<h4 class="modal-title" id="myModalLabel">Work Terms Completed</h4>
+					  </div>
+					  <div class="modal-body">
+						<p><b>Shaw Communications</b>
+						<br>
+						Business Analyst
+						</p>
+			
+						
+					  </div>
+					  <div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					  </div>
+					</div>
+				  </div>
+				</div>		  
+		  
+		  
  		 <div class="hidden-xs">	
           <br>
 		  <hr>
@@ -166,6 +236,7 @@ $(window).on('load',function() {
 				<li>Verilog</li>
 				<li>SolidWorks</li>
 				<li>ModelSim</li>
+				<li>ServiceNow</li>
 			</ul> 
 			
 		  <p><b>Electrical Equipment</b></p>
@@ -253,12 +324,12 @@ $(window).on('load',function() {
       <div class="w3-container w3-card-2 w3-white w3-margin-bottom">
         <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-trophy fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Awards</h2>
         <div class="w3-container">
-			<p><b>Hugh M. Brock National Entrance Award</b></p>
-			<p><b>Trek Excellence Scholarship</b>
-			<br>Given to the top 5% of students in each undergraduate year</p>
-			<p><b>Rogers Communications Inc. Scholarship</b>
+			<p><b>Hugh M. Brock National Entrance Award </b><i><span style="color: silver;"> - 2015</span></i></p>
+			<p><b>Trek Excellence Scholarship </b><i><span style="color: silver;"> - 2016, 2017</span></i>
+			<br>Awarded to the top 5% of students in each undergraduate year</p>
+			<p><b>Rogers Communications Inc. Scholarship </b><i><span style="color: silver;"> - 2016</span></i>
 			<br>Chosen by faculty</p>
-			<p><b>Royal Canadian Legion Cadet Medal of Excellence</b></p>
+			<p><b>Royal Canadian Legion Cadet Medal of Excellence </b><i><span style="color: silver;"> - 2013</span></i></p>
 			
 			
 			
