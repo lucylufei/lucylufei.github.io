@@ -125,6 +125,13 @@ $(window).on('load',function() {
 
 </script>
 
+<script src="jQ_default.js">
+</script>
+
+<script src="default.js">
+</script>
+
+
 
 <head>
 <link rel='shortcut icon' type='image/x-icon' href='favicon.ico' />
@@ -144,10 +151,16 @@ $(window).on('load',function() {
       <a href="project.html" class="w3-bar-item w3-button">Projects</a>
       <a href="http://instagram.com/lululetter" target = "_blank" class="w3-bar-item w3-button w3-hide-small">lululetter</a>
     </div>
+    <br>
+	<br>
+	<div class="w3-bar w3-border searchButton" id="search_div" style="font-size: 15px">
+		<i class="fa fa-search" aria-hidden="true" id="searchIcon"></i>
+		<input id="search_field" type="text" placeholder="Search" >
+	</div>
   </div>
 </header>
 
-<body>
+<body onload="hide_search();" >
 <div class="container" id="animated_loader">
     <div class="row">
         <div class="col-md-12">
@@ -166,8 +179,8 @@ $(window).on('load',function() {
   <div align="center"> 
 
   
-	
-	<div class="container" id="fall">
+<div id="container">	
+	<div class="container" id="fall2017SeptemberOctoberUBCautumnthings">
 		<a href="fall2017.html">
 		<img src="images/blog/EnglishBay.JPG" class="picture">
 				
@@ -235,13 +248,16 @@ $(window).on('load',function() {
 
 	</div>
 	
-
+</div>
 	
 </div>
 </div>
 	
 </br>
 </br>
+</br>
+</br>
+<button  onclick="topFunction()" id="topbtn" style=" margin:0 auto;">Back to Top</button>
 </br>
 
 <!-- Footer -->

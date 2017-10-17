@@ -11,7 +11,7 @@ $(document).ready(function() {
 	
 });
 $(document).click(function(e) {   
-    if(e.target.id == "searchIcon") {
+    if(e.target.id == "searchIcon" || e.target.id == "search_div") {
         $("#search_field").toggle();
 		document.getElementById("search_field").value = "";
 		clear_search();
