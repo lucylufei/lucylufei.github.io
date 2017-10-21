@@ -1,0 +1,66 @@
+/*Sets page to A4*/
+@page {
+  size: A4;
+}
+
+/*Set up margins*/
+@page :left {
+  margin-left: 2cm;
+}
+
+@page :right {
+  margin-right: 2cm;
+}
+
+
+div .heading-container {
+	padding-top: 50px;
+	padding-left: 25px;
+	padding-right: 0px;
+}
+
+h1 {
+	font-family: 'Poiret One', monospace;
+	letter-spacing: 10px;
+	font-size: 40pt;
+	text-shadow: 1px 1px 0px #9E9E9E;
+	color: #009688;
+	margin-bottom: 0px;
+}
+
+h3{
+	font-family: 'Comfortaa', monospace;
+	letter-spacing: 0px;
+	color: #009688;
+	margin-bottom: 15px;
+	font-size: 12pt;
+}
+
+h4{
+	font-family: 'Comfortaa', monospace;
+	letter-spacing: 0px;
+	margin-bottom: 0px;
+	font-size: 12pt;
+}
+
+h5{
+	font-family: 'Comfortaa', monospace;
+	letter-spacing: 0px;
+	margin-bottom: 3px;
+	font-size: 10pt;
+}
+
+p{
+	font-family: 'Comfortaa', monospace;
+	margin: 0px;
+	font-size: 10pt;
+	padding-bottom: 2px;
+}
+
+ul {
+	font-family: 'Comfortaa', monospace;
+	margin-bottom: 3px;
+	padding-left: 30px;
+	font-size: 9pt;
+}
+
