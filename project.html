@@ -54,6 +54,11 @@ a:hover {
   background-color: whitesmoke;
 }
 
+.boxshadow {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+
 .overlay {
   position: absolute;
   top: 80%;
@@ -66,6 +71,22 @@ a:hover {
   transition: .5s ease;
 }
 
+@media only screen and (max-width: 481px){
+  .overlay {
+    opacity: 1;
+  }
+  .w3-margin-right {
+    margin-right: 4px!important;
+  }
+  .filterbtn{
+    padding: 6px 8px;
+    font-size: 0.8em;
+  }
+  .w3-third {
+    padding-bottom: 20px;
+  }
+}
+
 .container {
   padding: 0;
 }
@@ -75,6 +96,15 @@ a:hover {
 .container:hover .behindoverlay{
   opacity: 0.9;
 }
+
+@media only screen and (min-width: 481px){
+
+  .w3-third {
+    height: 550px;
+  }
+
+}
+
 
 
 </style>
@@ -216,19 +246,20 @@ function showSlides(n) {
     <div class="w3-container">
     <div class="w3-section w3-bottombar w3-padding-16">
       <span class="w3-margin-right">Filter:</span> 
-      <button class="w3-button w3-black" id="all">All</button>
-      <button class="w3-button w3-white" id="software" onClick="myFunction()" ><i class="fa fa-code w3-margin-right"></i>Software</button>
-      <button class="w3-button w3-white" id="hardware"><i class="fa fa-wrench w3-margin-right"></i>Hardware</button>
-      <button class="w3-button w3-white" id="others"><i class="fa fa-cog w3-margin-right"></i>Others</button>
+      <button class="filterbtn w3-button w3-black" id="all">All</button>
+      <button class="filterbtn w3-button w3-white" id="software" onClick="myFunction()" ><i class="fa fa-code w3-margin-right"></i>Software</button>
+      <button class="filterbtn w3-button w3-white" id="hardware"><i class="fa fa-wrench w3-margin-right"></i>Hardware</button>
+      <button class="filterbtn w3-button w3-white" id="others"><i class="fa fa-cog w3-margin-right"></i>Others</button>
    
     
   </header>
   
   <!-- Photo Grid-->
 	<div class="hard">
-    <div class="w3-third w3-container " style="height: 550px">
+    <div class="w3-third w3-container">
+      <div class="boxshadow">
       <div class="container">
-        <img src="images/rover.JPG" style="width:100%" >
+        <img src="images/rover.JPG" style="width:100%">
         <div class="overlay">
           <span><a target = "_blank" href="files/project/291B.pdf">
             See Report
@@ -244,10 +275,12 @@ function showSlides(n) {
     		</p>
       </div>
     </div>
+    </div>
 	</div>
 	
 	<div class="soft hard">
-    <div class="w3-third w3-container" style="height: 550px">
+    <div class="w3-third w3-container">
+      <div class="boxshadow">
       <img src="images/risc.JPG" style="width:100%" > <!-- IMG_1234 -->
       <div  class="w3-container w3-white">
         <p><b>Simple RISC Machine</b></p>
@@ -256,10 +289,12 @@ function showSlides(n) {
     		</p>
 	  </div>
     </div>
+  </div>
 	</div>
  
   <div class="other soft" >
-    <div class="w3-third w3-container " style="height: 550px">
+    <div class="w3-third w3-container ">
+      <div class="boxshadow">
       <div class="container">
       <img src="images/printer.JPG" style="width:100%" >
         <div class="overlay">
@@ -276,9 +311,11 @@ function showSlides(n) {
       </div>
     </div>
   </div>
+  </div>
 
   <div class="hard">
-    <div class="w3-third w3-container" style="height: 550px">
+    <div class="w3-third w3-container">
+      <div class="boxshadow">
       <img src="images/2.JPG" style="width:100%" >
       <div  class="w3-container w3-white">
         <p><b>Mechanical Claw</b></p>
@@ -288,9 +325,11 @@ function showSlides(n) {
       </div>
     </div>
   </div>
+  </div>
   
   <div class="hard">
-    <div class="w3-third w3-container" style="height: 550px">
+    <div class="w3-third w3-container">
+      <div class="boxshadow">
       <img src="images/IMG_1239.JPG" style="width:100%" >
       <div  class="w3-container w3-white">
         <p><b>ATMEL Microprocessor Projects</b></p>
@@ -301,10 +340,12 @@ function showSlides(n) {
         </p>
       </div>
     </div>
+  </div>
   </div> 
   
 	<div class="soft">
-    <div class="w3-third w3-container" style="height: 550px">
+    <div class="w3-third w3-container">
+      <div class="boxshadow">
       <img src="images/IMG_1237.JPG" style="width:100%" >
       <div  class="w3-container w3-white">
         <p><b>Tic Tac Toe Game</b></p>
@@ -314,10 +355,12 @@ function showSlides(n) {
     		</p>
       </div>
     </div>
+  </div>
 	</div>
   
   <div class="hard">
-    <div class="w3-third w3-container" style="height: 550px">
+    <div class="w3-third w3-container">
+      <div class="boxshadow">
       <div class="container">
       <img src="images/IMG_1238.JPG" style="width:100%" >
         <div class="overlay">
@@ -334,9 +377,11 @@ function showSlides(n) {
       </div>
     </div>
   </div>
+  </div>
 
 	<div class="hard">
-    <div class="w3-third w3-container" style="height: 550px">
+    <div class="w3-third w3-container">
+      <div class="boxshadow">
       <img src="images/IMG_1236.JPG" style="width:100%" >
       <div  class="w3-container w3-white">
         <p><b>Alarm Clock</b></p>
@@ -345,10 +390,12 @@ function showSlides(n) {
     		</p>
       </div>
     </div>
+  </div>
 	</div>  
 
   <div class="soft" >
-    <div class="w3-third w3-container " style="height: 550px">
+    <div class="w3-third w3-container ">
+      <div class="boxshadow">
       <img src="images/IMG_1235.JPG" style="width:100%" >
       <div  class="w3-container w3-white">
         <p><b>Rain Harvesting Analysis</b></p>
@@ -359,10 +406,12 @@ function showSlides(n) {
         </p>
       </div>
     </div>
+  </div>
   </div>  
   	
 	<div class="other">
-    <div class="w3-third w3-container"  onclick="plusSlides(1)" style="height: 550px">
+    <div class="w3-third w3-container"  onclick="plusSlides(1)">
+      <div class="boxshadow">
       <img src="images/solidworks.JPG" style="width:100%" class="mySlides w3-hover-opacity fade" style="display:block;">
 	  <img src="images/IMG_4776.JPG" style="width:100%" class="mySlides w3-hover-opacity fade">
       <div  class="w3-container w3-white">
@@ -374,10 +423,12 @@ function showSlides(n) {
     		<br>
       </div>
     </div>
+  </div>
 	</div>
 
   <div class="other" >
-    <div class="w3-third w3-container " style="height: 550px">
+    <div class="w3-third w3-container ">
+      <div class="boxshadow">
       <img src="images/IMG_6936.JPG" style="width:100%" >
       <div  class="w3-container w3-white">
         <p><b>Cardboard Chair</b></p>
@@ -389,9 +440,11 @@ function showSlides(n) {
       </div>
     </div>
   </div>
+  </div>
 
   <div class="other">
-    <div class="w3-third w3-container" style="height: 550px">
+    <div class="w3-third w3-container">
+      <div class="boxshadow">
       <div class="container">
       <img src="images/rtr.JPG" style="width:100%" >
         <div class="overlay">
@@ -408,14 +461,15 @@ function showSlides(n) {
       </div>
     </div>
   </div>
+  </div>
 	
 </div>
 </div>
   
 </div>
 <!-- Footer -->
-<footer class="w3-container w3-padding-64 w3-center w3-large" style="background-color:whitesmoke"> <!-- change this -->
-<div style="background-color:white; padding:32px">
+<footer class="w3-container w3-padding-64 w3-center w3-large" style="background-color:white"> <!-- change this -->
+<div style="padding:32px">
   <br>
   <a href="https://www.facebook.com/lululufei"  target = "_blank"> <i class="fa fa-facebook-official w3-hover-opacity" style="font-size:24px;"></i></a>&nbsp;&nbsp;&nbsp;
   <a href="http://instagram.com/lululetter"  target = "_blank"> <i class="fa fa-instagram w3-hover-opacity" style="font-size:24px;"></a></i>&nbsp;&nbsp;&nbsp;
