@@ -48,6 +48,8 @@ url: http://www.lufei.ca
 # and NOT your User repository (http://yourusername.github.io)
 # then add in the baseurl here, like this: "/repository-name"
 baseurl: "/blog"
+production_url : http://lucylufei.github.io.com/blog
+BASE_PATH : http://www.lufei.com/blog
 
 #
 # !! You don't need to change any of the configuration flags below !!
