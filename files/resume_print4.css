@@ -14,13 +14,17 @@
 
 
 div .heading-container {
-	padding-top: 25px;
+	padding-top: 20px;
 	padding-left: 25px;
 	padding-right: 0px;
 }
 
 div .merge {
 	display: inline;
+}
+
+.progress-bar {
+	justify-content: left;
 }
 
 
@@ -60,21 +64,21 @@ h5{
 	font-family: 'Quicksand', sans-serif;
 	letter-spacing: 0px;
 	margin-bottom: 3px;
-	font-size: 10pt;
+	font-size: 8pt;
 }
 
 p{
 	font-family: 'Quicksand', sans-serif;
 	margin: 0px;
-	font-size: 10pt;
+	font-size: 8pt;
 	padding-bottom: 2px;
 }
 
 ul {
 	font-family: 'Quicksand', sans-serif;
-	margin-bottom: 3px;
+	margin-bottom: 2px;
 	padding-left: 15px;
-	font-size: 9pt;
+	font-size: 8pt;
 }
 
 hr {

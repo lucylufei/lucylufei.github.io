@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"> </script>
+<script>
+
+$.getJSON("projects.json", function(data){
+
+    $.each(data.projects, function(id, project){
+        var card_title = "<h1>" + project.title + "</h1>";
+        card_title.appendTo("#wrapper");
+    });
+
+});
+
+</script>
+</head>
+
+
+
+<body>
+    <div id="wrapper">
+    </div>
+</body>
+
+</html>

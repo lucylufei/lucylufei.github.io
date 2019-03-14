@@ -1,0 +1,15 @@
+{
+    "job_id" : 1,
+    "company": "Shaw Communications",
+    "position": "Business Analyst",
+    "details": {
+        "location": {
+            "city": "Calgary",
+            "province": "AB"
+        },
+        "start_time": {
+            "month": "May",
+            "year": "2017"
+        }
+    }
+}
