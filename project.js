@@ -3,24 +3,33 @@ var skills = [];
 // Populate all fields
 $.getJSON("http://www.lufei.ca/projects.json", function(data){
     $.each(data.projects, function(id, project){
-    	var tile = "<div class=\"tile col-sm-6 col-lg-4 col-xl-3";
-    	for (i = 0; i < project.tags.length; i++){
-    		tile += " " + project.tags[i];
-    	}
-    	tile += "\" id=\"";
-    	tile += project.id;
-    	tile += "\">"
+        tile = "<div class=\"tile col col-sm-6 col-lg-4 col-xl-3";
+        for (i = 0; i < project.tags.length; i++){
+                        tile += " " + project.tags[i];
+        }
+        tile += "\" id=\"";
+        tile += project.id;
+        tile += "\">";
+        tile += "<div class=\"card\">";
+        tile += "<div class=\"card-body\">";
+        tile += "<img src=\"" + project.image + "\" class=\"card-img-top\">";
+        tile += "<h2 class=\"card-title\">" + project.title + "</h1>";
+        tile += "<p class=\"card-text\">" + project.description + "</p>";
+        tile += "</div>"; // end card body
+        tile += "<div class=\"card-footer\">";
+        
+        var i;
+       	project.skills.sort();
+        for (i = 0; i < project.skills.length; i++){
+            tile += "<span class=\"badge badge-light\">" + project.skills[i] + "</span>&nbsp";
+        }
 
-    	tile += "<div class=\"card\">"
 
-
-        tile += "<h1 class=\"card-title\">" + project.title + "</h1>";
-
-
-        tile += "</div></div>";
+        tile += "</div></div></div>";
         $("#content_wrapper").append(tile);
     });
 });
+
 
 // Generate tag array
 $.getJSON("http://www.lufei.ca/projects.json", function(data){

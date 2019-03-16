@@ -1,0 +1,89 @@
+
+/*FILTER BAR CONTENT*/
+#filters{
+    padding: 2em;
+    background-color: #eee;
+}
+
+button.btn{
+    background-color: white;
+    border-radius: 0;
+}
+
+button.clicked_btn{
+    background-color: black;
+    color: white;
+    border-radius: 0;
+    transform: translate(0px, -5px);
+    box-shadow: 5px 5px 2px lightgray;
+}
+
+button:hover{
+    background-color: lightgray;
+}
+
+/*END FILTER BAR CONTENT*/
+
+/*CARD CONTENT*/
+#content_wrapper{
+    padding: 1em;
+}
+
+h2.card-title{
+    font-size: 1.5em;
+}
+
+.card{
+    /* padding: 1em 1em; */
+    color: #fff;
+    background-color: #4CAF50;
+    border-radius: 15px;
+    box-shadow: 6px 6px 3px #ccc;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-bottom: 15px;
+}
+
+.row{
+    padding-left: 2em;
+    padding-right: 2em;
+    max-width: 1500px;
+    margin: 0 auto;
+}
+
+.tile{
+    padding: 0;
+}
+/*END CARD CONTENT*/
+
+
+/*HEADER CONTENT*/
+.header-container{
+    text-align: center;
+    padding: 4em;
+}
+
+.nav-bar{
+    border: 1px solid #ccc;
+    display: inline-block;
+    width: auto;
+    line-height: 1.5;
+}
+
+a.nav-btns{
+    color: gray;
+    background: white;
+    border: 0;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    line-height: 2;
+}
+
+a.nav-btns:hover{
+    background-color: lightgray;
+    color: black;
+    text-decoration: none;
+}
+/*END HEADER CONTENT*/
