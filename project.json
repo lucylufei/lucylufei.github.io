@@ -15,14 +15,14 @@
 {
 "id":2,
 "title":"Pong",
-"description":"The classic Pong game, written in SystemVerilog to be displayed through VGA and controlled by player on FPGA. The game features intelligent demo mode as well as bot player mode with an extra challenging "Kraken" mode where a monster can be invoked.",
+"description":"The classic Pong game, written in SystemVerilog to be displayed through VGA and controlled by player on FPGA. The game features intelligent demo mode as well as bot player mode with an extra challenging \"Kraken\" mode where a monster can be invoked.",
 "image":"/images/pong.JPG",
 "tags":["Hardware"],
 "skills":["Verilog","FPGA"]}
 {
 "id":3,
 "title":"ARC4 Decryption Circuit",
-"description":"Simplified ARC4 decryption circuit in Verilog, implemented on an FPGA. Utilizes multiple modules to simultaneously search for a 6 digit hexidecimal "key" and decipher ASCII messages. Operates following a ready-enable protocol.",
+"description":"Simplified ARC4 decryption circuit in Verilog, implemented on an FPGA. Utilizes multiple modules to simultaneously search for a 6 digit hexidecimal \"key\" and decipher ASCII messages. Operates following a ready-enable protocol.",
 "image":"/images/arc4.JPG",
 "tags":["Hardware"],
 "skills":["Verilog","FPGA"]}

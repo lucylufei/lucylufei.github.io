@@ -32,7 +32,8 @@ for project in range(1, len(project_array)):
 		elif "id" in key:
 			jsonfile.write("{data}".format(data=project_array[project][i]))
 		else:
-			jsonfile.write("\"{data}\"".format(data=project_array[project][i]))
+			data = project_array[project][i].replace("\"", "\\\"")
+			jsonfile.write("\"{data}\"".format(data=data))
 		if i is not len(keys)-1:
 			jsonfile.write(",\n")
 	jsonfile.write("}\n")
