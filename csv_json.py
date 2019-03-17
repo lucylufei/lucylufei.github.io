@@ -36,7 +36,9 @@ for project in range(1, len(project_array)):
 			jsonfile.write("\"{data}\"".format(data=data))
 		if i is not len(keys)-1:
 			jsonfile.write(",\n")
-	jsonfile.write("}\n")
+	jsonfile.write("}")
+	if project is not len(project_array)-1:
+		jsonfile.write(",\n")
 
 jsonfile.write("]}")
 jsonfile.close()
