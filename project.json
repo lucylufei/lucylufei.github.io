@@ -1,40 +1,40 @@
 {"projects":[{
-"id":"0",
+"id":0,
 "title":"Magnetic Tracking Rover",
 "description":"A rover is built from a blank breadboard, wheels, and sheet metal to track a preprogrammed wire generating a magnetic field detected by inductors. The wire can be user-controlled for real time signals, tracked by the rover to complete commands such as 180 turns.",
 "image":"/images/rover.JPG",
 "tags":["Hardware"],
 "skills":["Electromagnetics","Circuits"]}
 {
-"id":"1",
+"id":1,
 "title":"Laser Light Show",
 "description":"A system featuring two self designed DC brush motors, controlled with PID controller in Arduino interface to generate shapes and designs using laser light. The laser has two degrees of freedom to draw any shape inputted by an user through a self-designed GUI",
 "image":"/images/laser.JPG",
 "tags":["Hardware","Software","Simulation"],
 "skills":["Circuits","Arduino","MATLAB","Altium"]}
 {
-"id":"2",
+"id":2,
 "title":"Pong",
 "description":"The classic Pong game, written in SystemVerilog to be displayed through VGA and controlled by player on FPGA. The game features intelligent demo mode as well as bot player mode with an extra challenging "Kraken" mode where a monster can be invoked.",
 "image":"/images/pong.JPG",
 "tags":["Hardware"],
 "skills":["Verilog","FPGA"]}
 {
-"id":"3",
+"id":3,
 "title":"ARC4 Decryption Circuit",
 "description":"Simplified ARC4 decryption circuit in Verilog, implemented on an FPGA. Utilizes multiple modules to simultaneously search for a 6 digit hexidecimal "key" and decipher ASCII messages. Operates following a ready-enable protocol.",
 "image":"/images/arc4.JPG",
 "tags":["Hardware"],
 "skills":["Verilog","FPGA"]}
 {
-"id":"4",
+"id":4,
 "title":"Simple RISC Machine",
 "description":"A turing complete RISC machine created through Verilog code and synthesized in Quartus, capable of reading binary instructions. Implemented on a FPGA, successfully executing Fibonacci sequence code written in C with top 10 execution time of 100+ groups.",
 "image":"/images/risc.JPG",
 "tags":["Hardware"],
 "skills":["Verilog","FPGA"]}
 {
-"id":"5",
+"id":5,
 "title":"3D Printer Simulation",
 "description":"Simulation of a 3D laser sintering printer first modeled in Simulink as a block diagram. Then, a PID controller is designed in accordance to root locus and Nyquist criteria to achieve minimal accumulated position error while printing.",
 "image":"/images/laser.JPG",

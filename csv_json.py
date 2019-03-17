@@ -29,6 +29,8 @@ for project in range(1, len(project_array)):
 		jsonfile.write("\"{key}\":".format(key=key))
 		if "tags" in key or "skills" in key:
 			jsonfile.write("[\"{data}\"]".format(data=project_array[project][i].replace(",", "\",\"")))
+		elif "id" in key:
+			jsonfile.write("{data}".format(data=project_array[project][i]))
 		else:
 			jsonfile.write("\"{data}\"".format(data=project_array[project][i]))
 		if i is not len(keys)-1:
