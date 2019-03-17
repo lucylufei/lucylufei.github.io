@@ -3,7 +3,7 @@ var skills = [];
 // Populate all fields
 $.getJSON("http://www.lufei.ca/projects.json", function(data){
     $.each(data.projects, function(id, project){
-        tile = "<div class=\"tile col col-sm-6 col-lg-4 col-xl-3";
+        tile = "<div class=\"tile col col-sm-12 col-lg-4 col-xl-3";
         for (i = 0; i < project.tags.length; i++){
                         tile += " " + project.tags[i];
         }
@@ -47,7 +47,7 @@ $.getJSON("http://www.lufei.ca/projects.json", function(data){
 	
 	// generate buttons for each tag
 	$.each(tags, function(i, tag){
-		var tag_btn = "<button class=\"filterbtn btn\" id=\"" + tag + "\">" + tag + "</button>";
+		var tag_btn = "<div class=\"col-2 col-md-auto\" style=\"padding: 0;\"><button class=\"filterbtn btn\" id=\"" + tag + "\">" + tag + "</button></div>";
 		$("#filters").append(tag_btn);
 	});
 

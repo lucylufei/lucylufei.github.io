@@ -7,7 +7,12 @@
 
 button.btn{
     background-color: white;
+    border: 1px solid #ccc;
     border-radius: 0;
+    margin-left: -1px;
+    font-size: inherit;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
 }
 
 button.clicked_btn{
@@ -18,10 +23,17 @@ button.clicked_btn{
     box-shadow: 5px 5px 2px lightgray;
 }
 
-button:hover{
-    background-color: lightgray;
+@media (hover: none){
+    .btn:hover{
+        color: white;
+    }
 }
 
+@media (hover: hover){
+    .btn:hover{
+        background-color: lightgray;
+    }
+}
 /*END FILTER BAR CONTENT*/
 
 /*CARD CONTENT*/
@@ -33,6 +45,13 @@ h2.card-title{
     font-size: 1.5em;
 }
 
+p.card-text{
+    font-size: 1em;
+}
+
+.badge{
+    font-size: 0.75em;
+}
 .card{
     /* padding: 1em 1em; */
     color: #fff;
@@ -60,7 +79,7 @@ h2.card-title{
 /*HEADER CONTENT*/
 .header-container{
     text-align: center;
-    padding: 4em;
+    padding: 5vh;
 }
 
 .nav-bar{
@@ -74,8 +93,8 @@ a.nav-btns{
     color: gray;
     background: white;
     border: 0;
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 1em;
+    padding-right: 1em;
     padding-top: 5px;
     padding-bottom: 5px;
     line-height: 2;
@@ -85,5 +104,29 @@ a.nav-btns:hover{
     background-color: lightgray;
     color: black;
     text-decoration: none;
+}
+
+h1{
+  font-size: 36px;
+  line-height: 2;
+}
+
+@media only screen and (max-width: 1000px) {
+  h1{
+    font-size: calc(36px + 6vw);
+  }
+  h2.card-title{
+    font-size: calc(1.5em + 3vw);
+  }
+  p.card-text{
+    font-size: calc(12px + 2vw);
+  }
+  .badge{
+    font-size: calc(12px + 1.5vw);
+  }
+  a.nav-btns, button.btn{
+    font-size: calc(12px + 3vw);
+  }
+
 }
 /*END HEADER CONTENT*/
