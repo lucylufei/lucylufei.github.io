@@ -1,7 +1,7 @@
 var tags = [];
 var skills = [];
 // Populate all fields
-$.getJSON("http://www.lufei.ca/projects.json", function(data){
+$.getJSON("http://www.lufei.ca/project.json", function(data){
     $.each(data.projects, function(id, project){
         tile = "<div class=\"tile col col-sm-12 col-lg-4 col-xl-3";
         for (i = 0; i < project.tags.length; i++){
