@@ -11,8 +11,8 @@ $.getJSON("http://www.lufei.ca/project.json", function(data){
         tile += project.id;
         tile += "\">";
         tile += "<div class=\"card\">";
-        tile += "<div class=\"card-body\">";
         tile += "<img src=\"" + project.image + "\" class=\"card-img-top\">";
+        tile += "<div class=\"card-body\">";
         tile += "<h2 class=\"card-title\">" + project.title + "</h1>";
         tile += "<p class=\"card-text\">" + project.description + "</p>";
         tile += "</div>"; // end card body
