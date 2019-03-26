@@ -1,3 +1,4 @@
+body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, sans-serif}
 
 /*FILTER BAR CONTENT*/
 #filters{
@@ -42,11 +43,11 @@ button.clicked_btn{
 }
 
 h2.card-title{
-    font-size: 1.5em;
+    font-size: 1em;
 }
 
 p.card-text{
-    font-size: 1em;
+    font-size: 0.75em;
 }
 
 .badge{
@@ -55,7 +56,7 @@ p.card-text{
 .card{
     /* padding: 1em 1em; */
     color: #fff;
-    background-color: #4CAF50;
+    background-color: teal;
     border-radius: 15px;
     box-shadow: 6px 6px 3px #ccc;
     margin-left: 15px;
