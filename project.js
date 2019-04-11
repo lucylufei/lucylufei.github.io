@@ -32,7 +32,7 @@ $.getJSON("http://www.lufei.ca/project.json", function(data){
 
 
 // Generate tag array
-$.getJSON("http://www.lufei.ca/projects.json", function(data){
+$.getJSON("http://www.lufei.ca/project.json", function(data){
 	// iterate through all projects
 	$.each(data.projects, function(id, project){
 		var i;
@@ -65,7 +65,7 @@ $.getJSON("http://www.lufei.ca/projects.json", function(data){
 
 
 // Generate skills array
-$.getJSON("http://www.lufei.ca/projects.json", function(data){
+$.getJSON("http://www.lufei.ca/project.json", function(data){
 	$.each(data.projects, function(id, project){
 		var i;
 		for (i = 0; i < project.skills.length; i++){
