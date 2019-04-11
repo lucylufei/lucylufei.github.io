@@ -38,7 +38,7 @@ $.getJSON("http://www.lufei.ca/project.json", function(data){
 		var i;
 		// iterate through all tags
 		for (i = 0; i < project.tags.length; i++){
-			if (tags.includes(project.tags[i]) == false){
+			if (tags.includes(project.tags[i]) == false && project.tags[i] != ""){
 				// add to list if not found
 				tags.push(project.tags[i]);
 			}
