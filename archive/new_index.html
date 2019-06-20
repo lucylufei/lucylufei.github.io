@@ -1,0 +1,218 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"> </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+    <script src="index.js"></script>
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body,
+        h1,
+        h2,
+        a {
+            font-family: 'Montserrat', sans-serif;
+            color: darkslategray;
+        }
+
+        .header {
+            padding-top: 30vh;
+            height: 100vh;
+        }
+
+        .title {
+            vertical-align: middle;
+        }
+
+        .navbar {
+            background-color: white;
+            box-shadow: 1em;
+        }
+
+        .navbar-nav {
+            background-color: fff9fc;
+        }
+
+        .jumbotron {
+            background-color: fff9fc;
+        }
+
+        .words {
+            max-width: 1000px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        #arrow {
+            padding-top: 10vh;
+            -webkit-animation: pulse 2s infinite;
+            animation: pulse 2s infinite;
+        }
+        
+        .nav-item {
+            outline: 1px solid;
+            border: 1px solid;
+            background-color: white;
+        }
+
+        .nav-item:hover {
+            outline: 1px solid;
+            border: 1px solid;
+            background-color: rgb(255, 243, 202);
+        }
+
+        .padding-btm-10 {
+            padding-bottom: 10vh;
+        }
+
+        @-webkit-keyframes pulse {
+            0% {
+                -webkit-transform: scale(0.9);
+                -webkit-transform: translate(0px, 0px);
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            90% {
+                -webkit-transform: scale(1);
+                -webkit-transform: translate(0px, 10px);
+                opacity: 0;
+            }
+
+            100% {
+                -webkit-transform: scale(1);
+                -webkit-transform: translate(0px, 10px);
+                opacity: 0;
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(0.9);
+                transform: translate(0px, 0px);
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            90% {
+                transform: scale(1);
+                transform: translate(0px, 10px);
+                opacity: 0;
+            }
+
+            100% {
+                transform: scale(1);
+                transform: translate(0px, 10px);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+
+
+<div class="content">
+    <!-- Nav Bar -->
+    <nav class="navbar navbar-expand-md navbar-light shadow-sm sticky-top hidden">
+        <a class="navbar-brand" href="#">Logo</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#NavContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span><i class="fa fa-bars"></i></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="NavContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link text-center" href="resume.html">Resume</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-center" href="experience.html">Experiences</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-center" href="project.html">Projects</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <div class="jumbotron jumbotron-fluid">
+        <div class="header text-center">
+            <p class="leadr">ELECTRICAL ENGINEERING STUDENT</p>
+            <h1 class="display-4 padding-btm-10">LuFei Liu</h1>
+
+            <ul class="nav justify-content-center">
+                <li class="nav-item">
+                    <a class="nav-link active" href="resume.html">Resume</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="experience.html">Experiences</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="project.html">Projects</a>
+                </li>
+            </ul>
+            <h1 id="arrow"><a href="#content"><i class="fa fa-angle-double-down"></i></h1></a>
+        </div>
+    </div>
+
+    <!-- Content -->
+    <div class="container words">
+        <a name="content"></a>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras luctus ut diam non egestas. Maecenas aliquam
+            congue tortor, vitae pretium enim tempor eu. Fusce pulvinar augue velit, at semper nisi feugiat sed. Cras at
+            nisl diam. Curabitur eu malesuada urna. Donec sit amet erat porta, vulputate leo ut, dignissim nulla. Fusce
+            pretium nisl sit amet scelerisque placerat. Suspendisse sollicitudin mollis purus, non placerat lacus
+            consequat eget. Etiam tempus fermentum ipsum, sit amet sodales ipsum mattis ac. Nullam tempus orci et nisi
+            malesuada, quis mattis urna lacinia.
+
+            Proin dignissim velit magna. Aenean turpis magna, elementum eu tincidunt bibendum, bibendum eget tortor.
+            Donec sed elit et neque molestie finibus. Maecenas urna lacus, ultrices lobortis sodales ut, bibendum at
+            dui. In eget consectetur diam, sed tristique metus. Aliquam eget pretium dui. Cras volutpat aliquam dictum.
+            Donec in condimentum augue. Sed nec augue fringilla, vehicula turpis vitae, commodo mauris.
+
+            Aliquam ut quam sed sem luctus dictum. Morbi in ultrices mi, id placerat neque. Morbi ut nulla eu nisl
+            sodales tempor. Vestibulum congue venenatis imperdiet. Quisque rhoncus volutpat tellus sit amet interdum.
+            Etiam ut augue placerat, congue neque at, ultrices dui. Ut et leo urna. Duis ac mauris nulla. Integer
+            condimentum ex felis, non faucibus neque lacinia at.
+
+            Pellentesque eget consequat mauris, et molestie justo. Maecenas feugiat eros eu eros rhoncus convallis.
+            Suspendisse ut facilisis lacus. Aenean vulputate auctor nulla vitae cursus. Sed justo libero, ullamcorper ac
+            finibus id, maximus ut sem. In et augue eleifend, viverra ante sit amet, semper enim. Quisque pharetra,
+            ligula sit amet aliquet bibendum, orci ex euismod ex, ac semper ligula metus hendrerit nulla. Pellentesque
+            maximus vehicula enim, vitae laoreet velit ultricies mollis. Nullam a odio arcu.
+
+            Praesent tincidunt ac tortor sit amet elementum. Sed eget facilisis dui, sed tincidunt eros. Sed aliquet
+            rhoncus augue nec volutpat. Integer quis auctor neque, eu molestie magna. Sed ut rhoncus lacus. Ut posuere
+            rutrum lectus eu mollis. Vestibulum eu elit lacus. Nam id mauris diam. Nam vestibulum vulputate risus in
+            finibus. Pellentesque quis porta sem. Aenean vitae venenatis metus, ac fermentum diam. Morbi gravida metus
+            fringilla blandit aliquam. Nam imperdiet a orci ac mollis. Nam quis augue commodo, tincidunt metus id,
+            consectetur tellus. Mauris ac varius erat.
+        </p>
+    </div>
+</div>
+
+
+</html>
