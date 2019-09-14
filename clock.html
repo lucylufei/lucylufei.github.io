@@ -82,12 +82,12 @@
                 hour = hour + 1;
             }
             turnOnText("to")
-            minute = minutes[Math.floor((60 - minute) / 5)]
+            minute = minutes[Math.round((60 - minute) / 5)]
         }
         // Time before half hour mark
-        else if (Math.floor(minute / 5) != 0) {
+        else if (Math.round(minute / 5) != 0) {
             turnOnText("past")
-            minute = minutes[Math.floor(minute / 5)]
+            minute = minutes[Math.round(minute / 5)]
         }
         // Special 0 case
         else {
