@@ -1,4 +1,5 @@
 <html>
+
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
@@ -11,12 +12,13 @@
 
     h1 {
         font-size: 3em;
-        font-family: 'Courier New', Courier, monospace
+        font-family: 'Courier New', Courier, monospace;
     }
 
     .on {
         color: red;
         font-weight: 1000;
+        text-shadow: 2px 2px 5px red;
     }
 
     .off {
@@ -30,8 +32,8 @@
 </style>
 
 <script>
+    // Turn on regular text
     function turnOnText(item) {
-
         $("span").each(function () {
             if ($(this).text() == item) {
                 if ($(this).hasClass("hour") == false) {
@@ -43,8 +45,8 @@
         });
     }
 
+    // Turn on hour specific text
     function turnOnHour(item) {
-
         $(".hour").each(function () {
             if ($(this).text() == item) {
                 $(this).removeClass("off")
@@ -54,30 +56,29 @@
         });
     }
 
+    // Turn on all relevant elements
     function printTime() {
         // Time variables
         var today = new Date();
-        // var hour = 12;
-        // var minute = 0;
         var hour = today.getHours();
         var minute = today.getMinutes();
 
         // Collection of text elements
-        var hours = new Array("zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve");
+        var hours = new Array("zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten",
+            "eleven", "twelve");
         var minutes = new Array("oclock", "five", "ten", "quarter", "twenty", "twentyfive", "half")
 
         // Reset all elements
-        $(".on").each(function(){
+        $(".on").each(function () {
             $(this).removeClass("on")
             $(this).addClass("off")
         });
 
         // Time after half hour mark
         if (minute > 30) {
-            if (hour == 12){
+            if (hour == 12) {
                 hour = 1
-            }
-            else {
+            } else {
                 hour = hour + 1;
             }
             turnOnText("to")
@@ -139,9 +140,6 @@
     <span class="hour">seven</span><span class="hour">twelve</span>
     </br>
     <span class="hour">ten</span>se<span>oclock</span>
-
-
-
 </div>
 
 </html>
