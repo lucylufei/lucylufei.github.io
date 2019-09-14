@@ -85,7 +85,7 @@
             minute = minutes[Math.floor((60 - minute) / 5)]
         }
         // Time before half hour mark
-        else if (minute != 0) {
+        else if (Math.floor(minute / 5) != 0) {
             turnOnText("past")
             minute = minutes[Math.floor(minute / 5)]
         }
