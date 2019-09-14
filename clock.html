@@ -1,0 +1,147 @@
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<style>
+    .words {
+        letter-spacing: 1em;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 2em;
+    }
+
+    h1 {
+        font-size: 3em;
+        font-family: 'Courier New', Courier, monospace
+    }
+
+    .on {
+        color: red;
+        font-weight: 1000;
+    }
+
+    .off {
+        color: black;
+        font-weight: 200;
+    }
+
+    span {
+        margin: none;
+    }
+</style>
+
+<script>
+    function turnOnText(item) {
+
+        $("span").each(function () {
+            if ($(this).text() == item) {
+                if ($(this).hasClass("hour") == false) {
+                    $(this).removeClass("off")
+                    $(this).addClass("on")
+                    console.log("found")
+                }
+            }
+        });
+    }
+
+    function turnOnHour(item) {
+
+        $(".hour").each(function () {
+            if ($(this).text() == item) {
+                $(this).removeClass("off")
+                $(this).addClass("on")
+                console.log("found")
+            }
+        });
+    }
+
+    function printTime() {
+        // Time variables
+        var today = new Date();
+        // var hour = 12;
+        // var minute = 0;
+        var hour = today.getHours();
+        var minute = today.getMinutes();
+
+        // Collection of text elements
+        var hours = new Array("zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve");
+        var minutes = new Array("oclock", "five", "ten", "quarter", "twenty", "twentyfive", "half")
+
+        // Reset all elements
+        $(".on").each(function(){
+            $(this).removeClass("on")
+            $(this).addClass("off")
+        });
+
+        // Time after half hour mark
+        if (minute > 30) {
+            if (hour == 12){
+                hour = 1
+            }
+            else {
+                hour = hour + 1;
+            }
+            turnOnText("to")
+            minute = minutes[Math.floor((60 - minute) / 5)]
+        }
+        // Time before half hour mark
+        else if (minute != 0) {
+            turnOnText("past")
+            minute = minutes[Math.floor(minute / 5)]
+        }
+        // Special 0 case
+        else {
+            minute = minutes[0]
+        }
+
+        // Turn on hour
+        hour = hours[hour]
+        turnOnHour(hour)
+
+        // Special case for 25
+        if (minute == "twentyfive") {
+            turnOnText("twenty");
+            turnOnText("five");
+        }
+        // Turn on Minute
+        else {
+            turnOnText(minute)
+        }
+
+        if (minute != "quarter" && minute != "half" && minute != "oclock") {
+            turnOnText("minutes")
+        }
+    }
+
+    // set time every second
+    setInterval(printTime, 1000);
+</script>
+
+<h1>
+    It is...
+</h1>
+<div class="words">
+    <span>a</span>c<span>quarter</span>dc
+    </br>
+    <span>twenty</span>x<span>five</span>
+    </br>
+    <span>half</span>se<span>ten</span>fw
+    </br>
+    <span>minutes</span>er<span>to</span>
+    </br>
+    <span>past</span>eru<span>nine</span>
+    </br>
+    <span class="hour">one</span><span class="hour">six</span><span class="hour">three</span>
+    </br>
+    <span class="hour">four</span><span class="hour">five</span><span class="hour">two</span>
+    </br>
+    <span class="hour">eight</span><span class="hour">eleven</span>
+    </br>
+    <span class="hour">seven</span><span class="hour">twelve</span>
+    </br>
+    <span class="hour">ten</span>se<span>oclock</span>
+
+
+
+</div>
+
+</html>
