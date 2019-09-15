@@ -60,8 +60,11 @@
     function printTime() {
         // Time variables
         var today = new Date();
-        var hour = today.getHours();
         var minute = today.getMinutes();
+        var hour = today.getHours();
+        if (hour > 12) {
+            hour = hour - 12;
+        }
 
         // Collection of text elements
         var hours = new Array("zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten",
