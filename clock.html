@@ -2,32 +2,59 @@
 
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://use.typekit.net/gxs5fcb.css">
 </head>
+
 <style>
+    body {
+        font-family: input-mono, monospace;
+        margin: 0;
+    }
+
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: radial-gradient(#acadfc, #7a78c5);
+        height: 100%;
+    }
+
+    .clock {
+        margin: 0 auto;
+        background: linear-gradient(#222222, #161616);
+        padding: 32px 16px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25), 0 32px 64px rgba(0, 0, 0, 0.6);
+        box-sizing: border-box;
+    }
+
     .words {
-        letter-spacing: 1em;
-        font-family: 'Courier New', Courier, monospace;
-        font-size: 2em;
-    }
-
-    h1 {
-        font-size: 3em;
-        font-family: 'Courier New', Courier, monospace;
-    }
-
-    .on {
-        color: red;
-        font-weight: 1000;
-        text-shadow: 2px 2px 5px red;
-    }
-
-    .off {
-        color: black;
-        font-weight: 200;
+        color: #ffffff;
+        font-size: 1.5em;
+        font-weight: 300;
+        margin-left: 1.2em;
+        letter-spacing: 1.2em;
+        text-transform: uppercase;
+        line-height: 1.7em;
     }
 
     span {
-        margin: none;
+        opacity: 0.2;
+        text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+        transition: opacity 800ms ease;
+    }
+
+    .on {
+        opacity: 1;
+        text-shadow: 0 0 12px rgb(0, 4, 255), 0 1px 16px rgb(255, 255, 255), 0 0 24px rgb(86, 89, 255);
+    }
+
+    .alwayson {
+        opacity: 1;
+        text-shadow: 0 0 12px rgb(0, 4, 255), 0 1px 16px rgb(255, 255, 255), 0 0 24px rgb(86, 89, 255);
+    }
+
+    .off {
+        opacity: 0.2;
     }
 </style>
 
@@ -37,48 +64,50 @@
         $("span").each(function () {
             if ($(this).text() == item) {
                 if ($(this).hasClass("hour") == false) {
-                    $(this).removeClass("off")
+                    $(this).removeClass("off");
                     $(this).addClass("on")
-                    console.log("found")
                 }
             }
         });
     }
-
     // Turn on hour specific text
     function turnOnHour(item) {
         $(".hour").each(function () {
             if ($(this).text() == item) {
                 $(this).removeClass("off")
                 $(this).addClass("on")
-                console.log("found")
             }
         });
     }
-
     // Turn on all relevant elements
     function printTime() {
         // Time variables
         var today = new Date();
-        var minute = today.getMinutes();
         var hour = today.getHours();
+        var minute = today.getMinutes();
+
+        // Turn 24 hour time into 12 hour time
         if (hour > 12) {
             hour = hour - 12;
+        }
+
+        if (hour == 0) {
+            hour = 12;
         }
 
         // Collection of text elements
         var hours = new Array("zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten",
             "eleven", "twelve");
         var minutes = new Array("oclock", "five", "ten", "quarter", "twenty", "twentyfive", "half")
-
         // Reset all elements
         $(".on").each(function () {
             $(this).removeClass("on")
             $(this).addClass("off")
         });
-
         // Time after half hour mark
-        if (minute > 30) {
+        if (Math.round(minute / 5) == 0) {
+            minute = minutes[0]
+        } else if (minute > 30) {
             if (hour == 12) {
                 hour = 1
             } else {
@@ -86,21 +115,17 @@
             }
             turnOnText("to")
             minute = minutes[Math.round((60 - minute) / 5)]
+            console.log(minute);
         }
         // Time before half hour mark
         else if (Math.round(minute / 5) != 0) {
             turnOnText("past")
             minute = minutes[Math.round(minute / 5)]
         }
-        // Special 0 case
-        else {
-            minute = minutes[0]
-        }
 
         // Turn on hour
         hour = hours[hour]
         turnOnHour(hour)
-
         // Special case for 25
         if (minute == "twentyfive") {
             turnOnText("twenty");
@@ -110,39 +135,53 @@
         else {
             turnOnText(minute)
         }
-
         if (minute != "quarter" && minute != "half" && minute != "oclock") {
             turnOnText("minutes")
+        }
+
+        // Turn on the "A" in "A Quarter"
+        if (minute == "quarter") {
+            turnOnText("a");
         }
     }
 
     // set time every second
-    setInterval(printTime, 1000);
+    setInterval(printTime, 30000);
+
+    $(document).ready(function () {
+        printTime();
+    });
 </script>
 
-<h1>
-    It is...
-</h1>
-<div class="words">
-    <span>a</span>c<span>quarter</span>dc
-    </br>
-    <span>twenty</span>x<span>five</span>
-    </br>
-    <span>half</span>se<span>ten</span>fw
-    </br>
-    <span>minutes</span>er<span>to</span>
-    </br>
-    <span>past</span>eru<span>nine</span>
-    </br>
-    <span class="hour">one</span><span class="hour">six</span><span class="hour">three</span>
-    </br>
-    <span class="hour">four</span><span class="hour">five</span><span class="hour">two</span>
-    </br>
-    <span class="hour">eight</span><span class="hour">eleven</span>
-    </br>
-    <span class="hour">seven</span><span class="hour">twelve</span>
-    </br>
-    <span class="hour">ten</span>se<span>oclock</span>
-</div>
+<body>
+    <div class="container">
+        <div class="clock">
+            <div class="words">
+                <span class="alwayson">it is...</span>
+                <br>
+                <span>a</span><span>c</span><span>quarter</span><span>dc</span>
+                </br>
+                <span>twenty</span><span>x</span><span>five</span>
+                </br>
+                <span>half</span><span>se</span><span>ten</span><span>fw</span>
+                </br>
+                <span>minutes</span><span>er</span><span>to</span>
+                </br>
+                <span>past</span><span>eru</span><span class="hour">nine</span>
+                </br>
+                <span class="hour">one</span><span class="hour">six</span><span class="hour">three</span>
+                </br>
+                <span class="hour">four</span><span class="hour">five</span><span class="hour">two</span>
+                </br>
+                <span class="hour">eight</span><span class="hour">eleven</span>
+                </br>
+                <span class="hour">seven</span><span class="hour">twelve</span>
+                </br>
+                <span class="hour">ten</span><span>se</span><span>oclock</span>
+            </div>
+        </div>
+    </div>
+
+</body>
 
 </html>
