@@ -14,6 +14,8 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
 </script>
+<script src="parameters.js"></script>
+<script src="utilities.js"></script>
 <script src="form.js"></script>
 
 <style>
@@ -111,20 +113,78 @@
 
         <!-- HELP TEXT MODAL -->
         <div class="modal fade" id="helpModal" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
+            <div class="modal-dialog modal-dialog-scrollable" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Help Manual</h5>
+                        <h5 class="modal-title">Info</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <p>Placeholder help text...</p>
+                        <p>
+                            Krypton is a risk assessment tool based upon industry standards, IEEE-80 [1] and IEC-479
+                            [2], similar to the currently used Argonium [3] application developed by Energy Networks
+                            Australia.
+                        </p>
+                        <h4>
+                            Probability of Coincidence
+                        </h4>
+                        <p>
+                            For the <i>individual</i> case, We define coincidence as the following two events:
+                            <ul>
+                                <li>Contact is established during the presence of a fault </li>
+                                <li>A fault occurs during contact </li>
+                            </ul>
+                        </p>
+                        <p>
+                            We calculate the probability of coincidence separately for the case of step voltage versus
+                            touch voltage. In a step voltage scenario, we assume the individual is present at the target
+                            location for a “gathering” and consider only the fault parameters and the gathering
+                            parameters. In a touch voltage scenario, we assume the individual is in contact with the
+                            faulted element and consider on the fault parameters and the contact parameters.
+                        </p>
+                        <h4>
+                            Probability of Fibrillation
+                        </h4>
+                        <p>
+                            Ventricular fibrillation occurs probabilistically relative to the body current (or the
+                            fibrillation current). We derive an equivalent circuit modelling the step/touch voltage and
+                            the resistances of the path through the body and ground. The probability is based on an
+                            approximation through the logarithmic normal distribution and empirical mean/standard
+                            deviation values.
+                        </p>
+                        <h4>
+                            Results
+                        </h4>
+                        <p>
+                            The probability of fatality can be calculated as the product of the probability of
+                            coincidence and the probability of fibrillation. The results section features:
+                            <ul>
+                                <li>Probability of fibrillation value</li>
+                                <li>Risk classification</li>
+                                <li>Group coincidence curve</li>
+                                <li>Fibrillation curve</li>
+                            </ul>
+                        </p>
+                        <p><i>Risk classification</i> is based upon the BC Hydro risk matrix and can be adjusted in the
+                            settings.</p>
+                        <p><i>Group coincidence curve</i> shows the probability of coincidence for a given group size
+                            and is overlayed with BC Hydro risk matrix thresholds calculated in conjunction with the
+                            probability of fibrillation.</p>
+                        <p><i>Fibrillation curve</i> shows the probabilistic variation of ventricular fibrillation
+                            relative to the body current for the specified fault duration (clearing time).</p>
+                        <hr>
+                        <small>[1] 80-2013 - IEEE Guide for Safety in AC Substation Grounding. IEEE., 2015.
+                            [2] Energy Networks Association Limited, EG-0 Power System Earthing Guide Part 1: Management
+                            Principles. Barton, ACT, 2010.
+                            [3] “Quantitative Risk Assessment for Earthing,” Argonium. [Online]. Available:
+                            https://argonium.com.au/. [Accessed: 18-Oct-2019].
+                        </small>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary" id="manual_button">Open Manual</button>
+                        <button type="button" class="btn btn-primary" id="manual_button">Open User Manual</button>
                     </div>
                 </div>
             </div>

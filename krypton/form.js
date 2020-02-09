@@ -1,76 +1,5 @@
 console.log("js added");
 
-/*----- GLOBAL PARAMETERS -----*/
-var debug = true;
-
-// Log Normal Standard Deviation
-var sd = 0.3;
-
-// Global chart variable
-var coincidence_chart;
-
-// Circuit Breaker Data
-var breaker_data = {
-    "bulk_oil": {
-        "69": 0.01,
-        "138": 0.01,
-        "230": 0.01,
-        "500": 0.01
-    },
-    "dead_tank": {
-        "69": 0.01,
-        "138": 0.01,
-        "230": 0.01,
-        "500": 0.01
-    },
-    "air_blast": {
-        "69": 0.01,
-        "138": 0.01,
-        "230": 0.01,
-        "500": 0.01
-    }
-}
-
-/* Normal CDF function from https://www.math.ucla.edu/~tom/distributions/normal.html? */
-function cdfNormal(value, mean = 0, standardDeviation = 1) {
-    var X = (value - mean) / standardDeviation;
-    var T = 1 / (1 + .2316419 * Math.abs(X));
-    var D = .3989423 * Math.exp(-X * X / 2);
-    var Prob = D * T * (.3193815 + T * (-.3565638 + T * (1.781478 + T * (-1.821256 + T * 1.330274))));
-    if (X > 0) {
-        Prob = 1 - Prob
-    }
-    return Prob;
-}
-
-function cdfLogNormal(value, mean, standardDeviation) {
-    return cdfNormal((Math.log(value) - mean) / standardDeviation);
-}
-
-function factorial(n) {
-    var fact = 1;
-
-    for (var i = 2; i <= n; i++) {
-        fact = fact * i;
-    }
-
-    return fact;
-}
-
-function n_choose_k(n, k) {
-    return factorial(n) / (factorial(k) * factorial(n - k));
-}
-
-function download(content, fileName, contentType) {
-    var a = document.createElement("a");
-    var file = new Blob([content], {
-        type: contentType
-    });
-    a.href = URL.createObjectURL(file);
-    a.download = fileName;
-    a.click();
-}
-
 function check_inputs_coincidence() {
 
     if ($("#analysis_type").val() === "") {
@@ -488,7 +417,7 @@ function calculate_fatality(p_c, p_f) {
         if (debug) console.log("P_fatality original: " + p_dead);
         var p_dead1 = p_dead * (1 - breaker_failure);
 
-        var new_fault_time = $("#fault_time").val(parseFloat($("#fault_time").val()) + 0.1);
+        var new_fault_time = $("#fault_time").val(parseFloat($("#fault_time").val()) + breaker_delay);
         if (debug) console.log("Calculating P_fatality for " + new_fault_time);
 
         p_c = calculate_coincidence();
@@ -500,7 +429,7 @@ function calculate_fatality(p_c, p_f) {
         p_dead2 = p_dead2 * breaker_failure;
         p_dead = p_dead1 + p_dead2;
 
-        if (!debug) $("#fault_time").val(parseFloat($("#fault_time").val()) - 0.1);
+        if (!debug) $("#fault_time").val(parseFloat($("#fault_time").val()) - breaker_delay);
     }
 
     console.log("Calculating probability of fatality...");
