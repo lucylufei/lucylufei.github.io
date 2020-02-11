@@ -1,87 +1,95 @@
-<html>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="icon" href="logo.png">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-</script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-</script>
-<script src="parameters.js"></script>
-<script src="utilities.js"></script>
-<script src="form.js"></script>
+<!DOCTYPE html>
+<html lang="en">
 
-<style>
-    footer {
-        padding: 3em;
-        background-color: #004F6C;
-        text-align: center;
-        color: #FFFFFF;
-        font-size: 1em;
-        font-weight: 700;
-    }
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>
+        Krypton - Shock Analysis
+    </title>
 
-    .header {
-        text-align: center;
-        color: #004F6C;
-    }
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" href="logo.png">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+    <script src="parameters.js"></script>
+    <script src="utilities.js"></script>
+    <script src="form.js"></script>
 
-    a img {
-        height: 2em;
-        width: auto;
-        color: #004F6C;
-    }
+    <style>
+        footer {
+            padding: 3em;
+            background-color: #004F6C;
+            text-align: center;
+            color: #FFFFFF;
+            font-size: 1em;
+            font-weight: 700;
+        }
 
-    .help {
-        text-align: right;
-    }
+        .header {
+            text-align: center;
+            color: #004F6C;
+        }
 
-    i.fa {
-        color: #50B848;
-    }
+        a img {
+            height: 2em;
+            width: auto;
+            color: #004F6C;
+        }
 
-    i.fa:hover {
-        color: #BCD19B;
-    }
+        .help {
+            text-align: right;
+        }
 
-    .bg-success {
-        background-color: #50B848 !important;
-        height: 50px;
-        font-size: 14;
-        color: black;
-        font-weight: 800;
-    }
+        i.fa {
+            color: #50B848;
+        }
 
-    .bg-danger {
-        background-color: #FA4616 !important;
-        height: 50px;
-        font-size: 14;
-        color: black;
-        font-weight: 800;
-    }
+        i.fa:hover {
+            color: #BCD19B;
+        }
 
-    .bg-warning {
-        height: 50px;
-        font-size: 14;
-        color: black;
-        font-weight: 800;
-    }
+        .bg-success {
+            background-color: #50B848 !important;
+            height: 50px;
+            font-size: 14;
+            color: black;
+            font-weight: 800;
+        }
 
-    .badge-dark {
-        background-color: #004F6C;
-    }
-</style>
+        .bg-danger {
+            background-color: #FA4616 !important;
+            height: 50px;
+            font-size: 14;
+            color: black;
+            font-weight: 800;
+        }
 
-<title>
-    Krypton - Shock Analysis
-</title>
+        .bg-warning {
+            height: 50px;
+            font-size: 14;
+            color: black;
+            font-weight: 800;
+        }
+
+        .badge-dark {
+            background-color: #004F6C;
+        }
+    </style>
+
+
 
 <body>
     <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
@@ -98,7 +106,10 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#" id="calculate">Calculate/View Results</a>
+                    <a class="nav-link" id="calculate">Calculate/View Results</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" id="exportCSV">Export as CSV</a>
                 </li>
             </ul>
             <span class="navbar-text">
@@ -206,17 +217,26 @@
                                 <div class="col form-group">
                                     <label for="low_threshold">Low Risk Threshold</label>
                                     <div class="input-group">
-                                        <input type="number" class="form-control scientific" id="low_threshold"
+                                        <input type="number" min="0" oninput="this.value = Math.abs(this.value)" class="form-control scientific" id="low_threshold"
                                             value="1e-10">
                                     </div>
                                 </div>
                                 <div class="col form-group">
                                     <label for="high_threshold">High Risk Threshold</label>
                                     <div class="input-group">
-                                        <input type="number" class="form-control scientific" id="high_threshold"
+                                        <input type="number" min="0" oninput="this.value = Math.abs(this.value)" class="form-control scientific" id="high_threshold"
                                             value="1e-6">
                                     </div>
                                 </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="percentile">Population Percentile Rank</label>
+                                <select class="form-control" id="percentile">
+                                    <option value="50" selected>50%</option>
+                                    <option value="5">5%</option>
+                                    <option value="95">95%</option>
+                                </select>
                             </div>
 
                             <div class="form-group form-check">
@@ -253,7 +273,7 @@
             </div>
         </div>
 
-        <!-- TEMPLACE MODAL -->
+        <!-- TEMPLATE MODAL -->
         <div class="modal fade" id="templateModal" tabindex="-1" role="dialog" aria-labelledby="templateModal"
             aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -329,7 +349,7 @@
                         <div class="col form-group individual societal">
                             <label for="fault_rate">Fault Frequency</label>
                             <div class="input-group">
-                                <input type="number" class="form-control" id="fault_rate">
+                                <input type="number" min="0" step="10" oninput="this.value = Math.abs(this.value)" class="form-control" id="fault_rate">
                                 <div class="input-group-append">
                                     <span class="input-group-text">faults/year</span>
                                 </div>
@@ -338,7 +358,7 @@
                         <div class="col form-group individual societal">
                             <label for="fault_time">Clearing Time</label>
                             <div class="input-group">
-                                <input type="number" class="form-control" id="fault_time">
+                                <input type="number" min="0" step="0.1" oninput="this.value = Math.abs(this.value)" max="1" class="form-control" id="fault_time">
                                 <div class="input-group-append">
                                     <span class="input-group-text">s</span>
                                 </div>
@@ -350,7 +370,7 @@
                         <div class="col form-group individual">
                             <label for="contact_rate">Contact Rate</label>
                             <div class="input-group">
-                                <input type="number" class="form-control" id="contact_rate">
+                                <input type="number" min="0" step="10" oninput="this.value = Math.abs(this.value)" class="form-control" id="contact_rate">
                                 <div class="input-group-append">
                                     <span class="input-group-text">touch/year</span>
                                 </div>
@@ -359,7 +379,7 @@
                         <div class="col form-group individual">
                             <label for="contact_time">Contact Time</label>
                             <div class="input-group">
-                                <input type="number" class="form-control" id="contact_time">
+                                <input type="number" min="0" step="0.1" oninput="this.value = Math.abs(this.value)" class="form-control" id="contact_time">
                                 <div class="input-group-append">
                                     <span class="input-group-text">s</span>
                                 </div>
@@ -372,7 +392,7 @@
                         <div class="col form-group societal">
                             <label for="gathering_rate">Number of Gatherings</label>
                             <div class="input-group">
-                                <input type="number" class="form-control" id="gathering_rate">
+                                <input type="number" min="0" step="10" oninput="this.value = Math.abs(this.value)" class="form-control" id="gathering_rate">
                                 <div class="input-group-append">
                                     <span class="input-group-text">#/year</span>
                                 </div>
@@ -381,9 +401,9 @@
                         <div class="col form-group societal">
                             <label for="gathering_time">Gathering Duration</label>
                             <div class="input-group">
-                                <input type="number" class="form-control" id="gathering_time">
+                                <input type="number" min="0" step="1" oninput="this.value = Math.abs(this.value)" class="form-control" id="gathering_time">
                                 <div class="input-group-append">
-                                    <span class="input-group-text">hr</span>
+                                    <span class="input-group-text">s</span>
                                 </div>
                             </div>
                         </div>
@@ -393,7 +413,7 @@
                     <div class="form-group societal">
                         <label for="population">Exposed Population</label>
                         <div class="input-group">
-                            <input type="number" class="form-control" id="population">
+                            <input type="number" min="0" step="10" oninput="this.value = Math.abs(this.value)" class="form-control" id="population">
                             <div class="input-group-append">
                                 <span class="input-group-text">people</span>
                             </div>
@@ -415,7 +435,7 @@
                     <div class="form-group">
                         <label for="voltage">Applied Voltage</label>
                         <div class="input-group">
-                            <input type="number" class="form-control" id="voltage">
+                            <input type="number" min="0" oninput="this.value = Math.abs(this.value)" class="form-control" id="voltage">
                             <div class="input-group-append">
                                 <span class="input-group-text">V</span>
                             </div>
@@ -424,7 +444,7 @@
                     <div class="form-group">
                         <label for="soil_resistivity">Soil Resistivity</label>
                         <div class="input-group">
-                            <input type="number" class="form-control" id="soil_resistivity">
+                            <input type="number" min="0" oninput="this.value = Math.abs(this.value)" class="form-control" id="soil_resistivity" value="50">
                             <div class="input-group-append">
                                 <span class="input-group-text">&#8486;&middot;m</span>
                             </div>
@@ -435,7 +455,7 @@
                         <div class="col form-group">
                             <label for="surface_depth">Surface Depth</label>
                             <div class="input-group">
-                                <input type="number" class="form-control" id="surface_depth" value="0">
+                                <input type="number" min="0" oninput="this.value = Math.abs(this.value)" class="form-control" id="surface_depth" value="0">
                                 <div class="input-group-append">
                                     <span class="input-group-text">m</span>
                                 </div>
@@ -444,7 +464,7 @@
                         <div class="col form-group">
                             <label for="surface_resistivity">Surface Resistivity</label>
                             <div class="input-group">
-                                <input type="number" class="form-control" id="surface_resistivity" disabled>
+                                <input type="number" min="0" oninput="this.value = Math.abs(this.value)" class="form-control" id="surface_resistivity" disabled>
                                 <div class="input-group-append">
                                     <span class="input-group-text">&#8486;&middot;m</span>
                                 </div>
@@ -497,25 +517,22 @@
             <div style="padding: 2em;">
                 <div class="progress" style="height: 50px;">
                     <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar"
-                        style="width: 45%;" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100">Manager Level</div>
+                        style="width: 45%;" aria-valuenow="15" aria-valuemin="0" oninput="this.value = Math.abs(this.value)" aria-valuemax="100">Manager Level</div>
                     <div class="progress-bar bg-warning progress-bar-striped progress-bar-animated" role="progressbar"
-                        style="width: 30%;" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">Senior Manager
+                        style="width: 30%;" aria-valuenow="30" aria-valuemin="0" oninput="this.value = Math.abs(this.value)" aria-valuemax="100">Senior Manager
                         Level</div>
                     <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" role="progressbar"
-                        style="width: 20%;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">Executive Level
+                        style="width: 20%;" aria-valuenow="20" aria-valuemin="0" oninput="this.value = Math.abs(this.value)" aria-valuemax="100">Executive Level
                     </div>
                 </div>
             </div>
 
         </form>
-        <div class="row">
-            <div class="col">
-                <canvas id="coincidenceChart"></canvas>
-            </div>
+        <div class="row" id="chart_container">
             <div class="col">
                 <canvas id="resultChart"></canvas>
             </div>
-        </div>
+    </div>
 
     </div>
 

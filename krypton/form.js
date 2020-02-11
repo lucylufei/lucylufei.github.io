@@ -48,7 +48,7 @@ function calculate_coincidence() {
         } else {
             var population = parseFloat($("#population").val());
             var gathering_rate = parseFloat($("#gathering_rate").val());
-            var gathering_time = parseFloat($("#gathering_time").val()) * 60 * 60;
+            var gathering_time = parseFloat($("#gathering_time").val());
 
             var prob;
             prob = (fault_time + gathering_time - (Math.pow(fault_time, 2) + Math.pow(gathering_time, 2) / (2 * (365 * 24 * 60 * 60)))) / (365 * 24 * 60 * 60);
@@ -74,7 +74,7 @@ function generate_coincidence_data(max) {
     var fault_time = parseFloat($("#fault_time").val());
     var population = parseFloat($("#population").val());
     var gathering_rate = parseFloat($("#gathering_rate").val());
-    var gathering_time = parseFloat($("#gathering_time").val()) * 60 * 60;
+    var gathering_time = parseFloat($("#gathering_time").val());
 
     var prob;
     prob = (fault_time + gathering_time - (Math.pow(fault_time, 2) + Math.pow(gathering_time, 2) / (2 * (365 * 24 * 60 * 60)))) / (365 * 24 * 60 * 60);
@@ -84,6 +84,8 @@ function generate_coincidence_data(max) {
     n = 1;
     while (p_c > 1e-10 && n < max) {
         p_c = calculate_group_coincidence(n, prob, population, fault_rate);
+
+        if (debug) console.log("Group P_Coincidnce (" + n + "): " + p_c);
         data.push({
             x: n,
             y: p_c
@@ -109,28 +111,89 @@ function check_inputs_fibrillation() {
 }
 
 function define_mean(fault_time) {
-    return fault_time;
+    return fault_time * (-2.8351) + 6.8595;
+}
+
+function define_sd(fault_time) {
+    var sigma; 
+    sigma = -58 * Math.pow(fault_time, 6);
+    sigma += 184.91 * Math.pow(fault_time, 5);
+    sigma += -221.4 * Math.pow(fault_time, 4);
+    sigma += 122.03 * Math.pow(fault_time, 3);
+    sigma += -30.604 * Math.pow(fault_time, 2);
+    sigma += 3.1584 * fault_time;
+    sigma += 0.1867
+
+    return sigma;
+    // return sd;
+}
+
+function calculate_cutoff(fault_time) {
+    var cutoff = {"min": null, "max": null};
+    
+    // mA
+    cutoff.min = -124.32 * Math.pow(fault_time, 3) + 267.25 * Math.pow(fault_time, 2) - 194.46 * fault_time + 65.867;
+    cutoff.max = 4233 * Math.pow(fault_time, 4) - 10729 * Math.pow(fault_time, 3) + 11171 * Math.pow(fault_time, 2) - 6545.9 * fault_time + 2012;
+
+    return cutoff;
 }
 
 function calculate_body_resistance(conditions, voltage, shock_path) {
-    // 0.5,MAX(SWITCH(D13,
-    //     "Dry",MIN(11885*D6^(-0.416),3250),
-    //     "Wet",MIN(-433.2*LN(D6)+3616.6,2175),
-    //     "Salt Wet",MIN(0.0007*D6^2-1.3068*D6+1350.3),1300),775)
+    var percentile = parseFloat($("#percentile").val());
+
     var min_r, max_r;
     var resistance;
 
-    min_r = 775;
-    if (conditions == "dry") {
-        max_r = 3250;
-        resistance = 11885 * Math.pow(voltage, -0.416);
-    } else if (conditions == "wet") {
-        max_r = 2175;
-        resistance = -433.2 * Math.log(voltage) + 3616.6;
-    } else if (conditions == "salt") {
-        max_r = 1300;
-        resistance = 0.0007 * Math.pow(voltage, 2) - 1.3068 * voltage + 1350.3;
+    if (percentile == 50) {
+        // 0.5,MAX(SWITCH(D13,
+        //     "Dry",MIN(11885*D6^(-0.416),3250),
+        //     "Wet",MIN(-433.2*LN(D6)+3616.6,2175),
+        //     "Salt Wet",MIN(0.0007*D6^2-1.3068*D6+1350.3),1300),775)
+        min_r = 775;
+        if (conditions == "dry") {
+            max_r = 3250;
+            resistance = 11885 * Math.pow(voltage, -0.416);
+        } else if (conditions == "wet") {
+            max_r = 2175;
+            resistance = -433.2 * Math.log(voltage) + 3616.6;
+        } else if (conditions == "salt") {
+            max_r = 1300;
+            resistance = 0.0007 * Math.pow(voltage, 2) - 1.3068 * voltage + 1350.3;
+        }
+    } else if (percentile == 5) {
+        //     0.05,MAX(SWITCH(D14,
+        //     "Dry",MIN(4246*D7^(-0.307),1750),
+        //     "Wet",MIN(-181.6*LN(D7)+1780.6,1175),
+        //     "Salt Wet",MIN(0.0006*D7^2-0.9988*D7+976.73),960),575) 
+        min_r = 575;
+        if (conditions == "dry") {
+            max_r = 1750;
+            resistance = 4246 * Math.pow(voltage, -0.307);
+        } else if (conditions == "wet") {
+            max_r = 1175;
+            resistance = -181.6 * Math.log(voltage) + 1780.6, 1175;
+        } else if (conditions == "salt") {
+            max_r = 960;
+            resistance = 0.0006 * Math.pow(voltage, 2) - 0.9988 * voltage + 976.73;
+        }
+    } else if (percentile == 95) {
+        //     0.95,MAX(SWITCH(D14,
+        //     "Dry",MIN(34527*D7^(-0.531),6100),
+        //     "Wet",MIN(-947.6*LN(D7)+7198.1,4100),
+        //     "Salt Wet",MIN(0.001*D7^2-1.7694*D7+1822.3),1755),1050))
+        min_r = 1050;
+        if (conditions == "dry") {
+            max_r = 6100;
+            resistance = 34527 * Math.pow(voltage, -0.531);
+        } else if (conditions == "wet") {
+            max_r = 4100;
+            resistance = -947.6 * Math.log(voltage) + 7198.1, 4100;
+        } else if (conditions == "salt") {
+            max_r = 1755;
+            resistance = 0.001 * Math.pow(voltage, 2) - 1.7694 * voltage + 1822.3;
+        }
     }
+
 
     if (resistance > max_r) resistance = max_r;
     else if (resistance < min_r) resistance = min_r;
@@ -185,24 +248,45 @@ function calculate_fibrillation() {
         if (debug) console.log("Body resistance (processed): " + body_resistance);
         if (debug) console.log("Ground resistance: " + ground_resistance);
 
-        var total_resistace;
-        if (shock_path == "touch") total_resistace = body_resistance + (ground_resistance + shoe_resistance) / 2;
-        else if (shock_path == "step") total_resistace = body_resistance + (ground_resistance + shoe_resistance) * 2;
+        var total_resistance;
+        if (shock_path == "touch") total_resistance = body_resistance + (ground_resistance + shoe_resistance) / 2;
+        else if (shock_path == "step") total_resistance = body_resistance + (ground_resistance + shoe_resistance) * 2;
 
-        if (debug) console.log("Total resistance: " + total_resistace);
+        if (debug) console.log("Total resistance: " + total_resistance);
 
-        var current = voltage / total_resistace;
-        if (debug) console.log("Body current (raw): " + current);
+        // A
+        var current = voltage / total_resistance;
+        if (debug) console.log("Body current (raw): " + current + " A");
 
-        var mean = define_mean(fault_time);
-        if (debug) console.log("Lognormal mean: " + mean);
+        if (shock_path == "step") {
+            current = current / 25;
+            if (debug) console.log("Body current (adjusted for step): " + current + " A");
+        }
+        
+        // Check for cutoff points
+        var cutoff = calculate_cutoff(fault_time);
+        var current_ma = current * 1000;
 
-        p_f = cdfLogNormal(current, mean, sd);
+        if (debug) console.log("Current Cutoff: " + cutoff.min + " to " + cutoff.max);
+
+        if (current_ma > cutoff.max) p_f = 1;
+        else if (current_ma < cutoff.min) p_f = 0;
+        else {
+            var mean = define_mean(fault_time);
+            if (debug) console.log("Lognormal mean: " + mean);
+    
+            var sigma = define_sd(fault_time);
+            if (debug) console.log("Lognormal SD: " + sigma);
+    
+            p_f = cdfLogNormal(current * 1000, mean, sigma);
+        }        
 
         $("#PF").html(p_f.toExponential(3));
-        display_chart(mean);
+        display_chart(mean, sigma);
 
-        add_threshold_data(coincidence_chart, p_f);
+        if ($("#analysis_type").val() == "societal") {
+            add_threshold_data(coincidence_chart, p_f);
+        }
     }
     return p_f;
 }
@@ -240,23 +324,27 @@ function define_risk(p_dead) {
     }
 }
 
-function generate_data(mean) {
+function generate_data(mean, sigma) {
     var data = [];
     var current;
     for (var i = 0; i < 10; i++) {
-        current = i * 1 / 10;
+        current = Math.pow(10, i / 5 + 1);
         data.push({
             x: current,
-            y: cdfLogNormal(current, mean, sd)
+            y: cdfLogNormal(current, mean, sigma)
         });
     }
 
     if (debug) console.log("Generating data...");
     if (debug) console.log(data);
+
     return data;
 }
 
 function display_coincidence() {
+    var current_charts = $("#chart_container").html();
+    if (!current_charts.includes("coincidenceChart")) $("#chart_container").html('<div class="col"><canvas id="coincidenceChart"></canvas></div><div class="col"><canvas id="resultChart"></canvas></div>');
+
     var ctx = $("#coincidenceChart");
 
     data = generate_coincidence_data(100);
@@ -276,7 +364,7 @@ function display_coincidence() {
             title: {
                 display: true,
                 fontSize: 20,
-                text: 'Coincidence Curve'
+                text: 'Societal Coincidence Curve'
             },
             legend: {
                 display: false,
@@ -298,7 +386,7 @@ function display_coincidence() {
                     type: "linear",
                     scaleLabel: {
                         display: true,
-                        labelString: "Affected People",
+                        labelString: "Affected People (N)",
                         fontSize: 18
                     }
                 }]
@@ -347,11 +435,10 @@ function add_threshold_data(chart, p_f) {
     chart.update();
 }
 
-function display_chart(mean) {
-
+function display_chart(mean, sigma) {
     var ctx = $("#resultChart");
 
-    data = generate_data(mean);
+    data = generate_data(mean, sigma);
 
     new Chart(ctx, {
         type: 'scatter',
@@ -383,14 +470,16 @@ function display_chart(mean) {
                         fontSize: 18
                     },
                     ticks: {
-                        max: 0.7
+                        max: 0.7,
+                        maxTicksLimit: 5,
+                        mirror: true
                     }
                 }],
                 xAxes: [{
-                    type: "linear",
+                    type: "logarithmic",
                     scaleLabel: {
                         display: true,
-                        labelString: "Current (A)",
+                        labelString: "Current (mA)",
                         fontSize: 18
                     }
                 }]
@@ -414,22 +503,24 @@ function calculate_fatality(p_c, p_f) {
         var breaker_failure = breaker_data[breaker_type][transmission_v];
         if (debug) console.log("Breaker failure rate: " + breaker_failure);
 
-        if (debug) console.log("P_fatality original: " + p_dead);
-        var p_dead1 = p_dead * (1 - breaker_failure);
+        if (breaker_failure !== null) {
+            if (debug) console.log("P_fatality original: " + p_dead);
+            var p_dead1 = p_dead * (1 - breaker_failure);
 
-        var new_fault_time = $("#fault_time").val(parseFloat($("#fault_time").val()) + breaker_delay);
-        if (debug) console.log("Calculating P_fatality for " + new_fault_time);
+            var new_fault_time = $("#fault_time").val(parseFloat($("#fault_time").val()) + breaker_delay);
+            if (debug) console.log("Calculating P_fatality for " + new_fault_time);
 
-        p_c = calculate_coincidence();
-        p_f = calculate_fibrillation();
-        p_dead2 = p_c * p_f;
+            p_c = calculate_coincidence();
+            p_f = calculate_fibrillation();
+            p_dead2 = p_c * p_f;
 
-        if (debug) console.log("P_fatality new: " + p_dead2);
+            if (debug) console.log("P_fatality new: " + p_dead2);
 
-        p_dead2 = p_dead2 * breaker_failure;
-        p_dead = p_dead1 + p_dead2;
+            p_dead2 = p_dead2 * breaker_failure;
+            p_dead = p_dead1 + p_dead2;
 
-        if (!debug) $("#fault_time").val(parseFloat($("#fault_time").val()) - breaker_delay);
+            if (!debug) $("#fault_time").val(parseFloat($("#fault_time").val()) - breaker_delay);
+        }
     }
 
     console.log("Calculating probability of fatality...");
@@ -442,6 +533,72 @@ function calculate_fatality(p_c, p_f) {
         if (!debug) alert("Please ensure all necessary inputs are entered.");
         if (debug) console.log("Please ensure all necessary inputs are entered.");
     }
+}
+
+function inverse_voltage(current) {
+
+    var shock_path = $("#shock_path").val();
+    var voltage = parseFloat($("#voltage").val());
+    var soil_resistivity = parseFloat($("#soil_resistivity").val());
+    var surface_depth = parseFloat($("#surface_depth").val());
+    var surface_resistivity = parseFloat($("#surface_resistivity").val());
+    var surface_conditions = $("#surface_conditions").val();
+    var shoe_type = $("#shoe_type").val();
+    var fault_time = parseFloat($("#fault_time").val());
+
+    var shoe_resistance;
+    switch (shoe_type) {
+        case "foot":
+            shoe_resistance = 0;
+            break;
+    }
+
+    var body_resistance = calculate_body_resistance(surface_conditions, voltage, shock_path);
+    var ground_resistance = calculate_ground_resistance(soil_resistivity, surface_depth, surface_resistivity);
+
+    var total_resistance;
+    if (shock_path == "touch") total_resistance = body_resistance + (ground_resistance + shoe_resistance) / 2;
+    else if (shock_path == "step") total_resistance = body_resistance + (ground_resistance + shoe_resistance) * 2;
+
+    if (shock_path == "step") current = current * 25;
+
+    return current * total_resistance / 1000;
+}
+
+
+
+function generate_design_data(prob = 1e-6) {
+    var data = null;
+
+    if (check_inputs_coincidence() && check_inputs_fibrillation()) {
+        var data = [];
+
+        for (var i = 0; i < time_list.length; i++) {
+            var mean = define_mean(time_list[i]);
+            var sigma = define_sd(time_list[i]);
+
+            current = inverse_lognormal(prob, mean, sigma);
+            voltage = inverse_voltage(current);
+
+            data.push({
+                "time": time_list[i],
+                "mean": mean,
+                "sigma": sigma,
+                "current": current,
+                "voltage": voltage
+            });
+
+            if (debug) console.log({
+                "time": time_list[i],
+                "mean": mean,
+                "sigma": sigma,
+                "current": current,
+                "voltage": voltage
+            });
+        }
+    }
+
+    return data;
 }
 
 $(document).ready(function () {
@@ -487,6 +644,7 @@ $(document).ready(function () {
             calculate_fatality(p_c, p_f);
         }
     });
+
     // ----------------------------------//
 
     // ------------- MODALS --------------//
@@ -526,7 +684,10 @@ $(document).ready(function () {
     });
 
     $("#surface_depth").change(function () {
-        if (this.value == "0") $("#surface_resistivity").attr("disabled", "disabled");
+        if (this.value == "0") {
+            $("#surface_resistivity").attr("disabled", "disabled");
+            $("#surface_resistivity").val("");
+        }
         else $("#surface_resistivity").removeAttr("disabled");
     });
 
@@ -539,5 +700,17 @@ $(document).ready(function () {
         if (this.value === "") alert("Please set a threshold!");
         this.value = Number(this.value).toExponential(2);
     });
+
+    $("#exportCSV").click(function () {
+        data = generate_design_data()
+
+        if (data !== null) {
+            console.log("Generating CSV...");
+            exportToCsv("design_curve.csv", data);
+        } else {
+            console.log("No data available to generate CSV.");
+        }
+    });
+
     // ----------------------------------//
 });
