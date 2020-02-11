@@ -1,6 +1,6 @@
 
 /*----- GLOBAL PARAMETERS -----*/
-var debug = true;
+var debug = false;
 
 // Log Normal Standard Deviation
 var sd = 0.35;
