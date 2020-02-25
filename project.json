@@ -88,4 +88,11 @@
 "description":"A marketing plan developed for Rent the Runway through investigation of the company's core competencies, consumer preferences, competition and partners. Ideas were generated using SWOT analysis and with customer segmentation in mind.",
 "image":"/images/rtr.JPG",
 "tags":[""],
-"skills":["Marketing","SWOT Analysis"]}]}
+"skills":["Marketing","SWOT Analysis"]},
+{
+"id":13,
+"title":"Electric Shock Risk Assessment",
+"description":"A web-based tool based on existing Argon software and IEEE standards to assess probability of ventricular fibrillation near a high voltage transmission line if a ground fault occurs. ",
+"image":"/images/krypton.JPG",
+"tags":["Simulation"],
+"skills":["JavaScript","HTML","Circuits","MATLAB"]}]}
