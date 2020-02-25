@@ -150,3 +150,12 @@ function inverse_lognormal(prob, mean, sd) {
 //     }
 //     return count;
 // }
+
+function customRadius( context )
+  {
+    let index = context.dataIndex;
+    let value = context.dataset.data[ index ];
+    return (value.x == current_ma )?
+           15 :
+           2;
+  }

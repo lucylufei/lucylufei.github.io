@@ -1,4 +1,3 @@
-
 /*----- GLOBAL PARAMETERS -----*/
 var debug = false;
 
@@ -10,6 +9,8 @@ var breaker_delay = 0.1;
 
 // Global chart variable
 var coincidence_chart;
+var coincidence_chart_B;
+
 
 // Circuit Breaker Data
 var breaker_data = {
@@ -49,3 +50,9 @@ var time_list = [
     0.9,
     1
 ];
+
+// Societal probability of coincidence limit (below this is negligible, considered 0%)
+var p_c_threshold = 1e-10;
+
+var p_f = NaN;
+var current_ma = NaN;

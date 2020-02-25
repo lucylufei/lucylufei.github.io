@@ -1,17 +1,26 @@
 console.log("js added");
 
+// FUNCTION:
+// Checks that all inputs necessary to calculate probability of coincidence have been properly entered. 
+// Dependencies: None
 function check_inputs_coincidence() {
 
     if ($("#analysis_type").val() === "") {
         return false;
-    } else if ($("#analysis_type").val() == "individual") {
+    }
+
+    // Check "individual" fields
+    else if ($("#analysis_type").val() == "individual") {
         if ($("#fault_rate").val() === "") return false;
         if ($("#fault_time").val() === "") return false;
         if ($("#contact_rate").val() === "") return false;
         if ($("#contact_time").val() === "") return false;
 
         return true;
-    } else if ($("#analysis_type").val() == "societal") {
+    }
+
+    // Check "societal" fields
+    else if ($("#analysis_type").val() == "societal") {
         if ($("#fault_rate").val() === "") return false;
         if ($("#fault_time").val() === "") return false;
         if ($("#gathering_rate").val() === "") return false;
@@ -24,51 +33,87 @@ function check_inputs_coincidence() {
     return false;
 }
 
+
+// FUNCTION:
+// Calculates probability of coincidence for a societal scenario
+// Dependencies: 
+//      n_choose_k
 function calculate_group_coincidence(n, prob, population, fault_rate) {
     p_c = 0;
+
+    // Sum from at least n affected to total population
     for (var i = n; i <= population; i++) {
         p_c = p_c + 1 - Math.pow((1 - (n_choose_k(population, i) * Math.pow(prob, i) * Math.pow((1 - prob), (population - i)))), fault_rate);
     }
     return p_c;
 }
 
+
+// FUNCTION:
+// Calculates probability of coincidence
+// Dependencies:
+//      check_inputs_coincidence
+//      calculate_group_coincidence
+//      display_coincidence
 function calculate_coincidence() {
     var p_c = NaN;
     var fault_rate = parseFloat($("#fault_rate").val());
     var fault_time = parseFloat($("#fault_time").val());
 
+    // Calculate only if all inputs have been entered
     if (check_inputs_coincidence()) {
         console.log("Calculating probability of coincidence...");
 
+        // INDIVIDUAL
         if ($("#analysis_type").val() == "individual") {
             var contact_rate = parseFloat($("#contact_rate").val());
             var contact_time = parseFloat($("#contact_time").val());
 
             p_c = (fault_rate * contact_rate * (fault_time + contact_time)) / (365 * 24 * 60 * 60);
-        } else {
+
+            $("#PDeadLabel").html("Probability of Fatality");
+        }
+
+        // SOCIETAL
+        else {
             var population = parseFloat($("#population").val());
             var gathering_rate = parseFloat($("#gathering_rate").val());
             var gathering_time = parseFloat($("#gathering_time").val());
 
+            // Calculate P_C part one
             var prob;
             prob = (fault_time + gathering_time - (Math.pow(fault_time, 2) + Math.pow(gathering_time, 2) / (2 * (365 * 24 * 60 * 60)))) / (365 * 24 * 60 * 60);
             prob = 1 - Math.pow((1 - prob), gathering_rate);
             if (debug) console.log("P_C: " + prob)
 
+            // Calculate summation for EV
             p_c = calculate_group_coincidence(1, prob, population, fault_rate);
             if (debug) console.log("EV: " + p_c)
 
+            // Display coincidence graph
             display_coincidence();
+
+            $("#PDeadLabel").html("Probability of At Least 1 Fatality")
         }
 
+        // Cap probability to maximum 100%
         if (p_c > 1) p_c = 1;
+
+        // Update P_C field in form
         $("#PC").html(p_c.toExponential(3));
     }
     return p_c;
 }
 
+
+// FUNCTION:
+// Generate data required for probability of coincidence chart in the societal case
+// Dependencies:
+//      calculate_group_coincidence
+// Parameters:
+//      max -> the maximum iterations to run, stops even if it does not meet low threshold
 function generate_coincidence_data(max) {
-    var data = [];
+    data = [];
 
     var fault_rate = parseFloat($("#fault_rate").val());
     var fault_time = parseFloat($("#fault_time").val());
@@ -76,13 +121,15 @@ function generate_coincidence_data(max) {
     var gathering_rate = parseFloat($("#gathering_rate").val());
     var gathering_time = parseFloat($("#gathering_time").val());
 
+    // Calculate P_C part one
     var prob;
     prob = (fault_time + gathering_time - (Math.pow(fault_time, 2) + Math.pow(gathering_time, 2) / (2 * (365 * 24 * 60 * 60)))) / (365 * 24 * 60 * 60);
     prob = 1 - Math.pow((1 - prob), gathering_rate);
 
+    // Calculate summation for EV until threshold or max reached
     p_c = 1;
     n = 1;
-    while (p_c > 1e-10 && n < max) {
+    while (p_c > p_c_threshold && n < max) {
         p_c = calculate_group_coincidence(n, prob, population, fault_rate);
 
         if (debug) console.log("Group P_Coincidnce (" + n + "): " + p_c);
@@ -92,11 +139,13 @@ function generate_coincidence_data(max) {
         });
         n = n + 1;
     }
-
     return data;
 }
 
 
+// FUNCTION:
+// Check that all inputs for probability of fibrillation have been properly entered. 
+// Dependences: None
 function check_inputs_fibrillation() {
 
     if ($("#shock_path").val() === "") return false;
@@ -110,12 +159,20 @@ function check_inputs_fibrillation() {
 
 }
 
+
+// FUNCTION:
+// Defines the mean value applied to the probability of fibrillation log normal distribution
+// Dependences: None
 function define_mean(fault_time) {
     return fault_time * (-2.8351) + 6.8595;
 }
 
+
+// FUNCTION:
+// Defines the sigma value applied to the probability of fibrillation log normal distribution
+// Dependences: None
 function define_sd(fault_time) {
-    var sigma; 
+    var sigma;
     sigma = -58 * Math.pow(fault_time, 6);
     sigma += 184.91 * Math.pow(fault_time, 5);
     sigma += -221.4 * Math.pow(fault_time, 4);
@@ -128,9 +185,16 @@ function define_sd(fault_time) {
     // return sd;
 }
 
+
+// FUNCTION:
+// Defines the cutoff value applied to the probability of fibrillation log normal distribution
+// Dependences: None
 function calculate_cutoff(fault_time) {
-    var cutoff = {"min": null, "max": null};
-    
+    var cutoff = {
+        "min": null,
+        "max": null
+    };
+
     // mA
     cutoff.min = -124.32 * Math.pow(fault_time, 3) + 267.25 * Math.pow(fault_time, 2) - 194.46 * fault_time + 65.867;
     cutoff.max = 4233 * Math.pow(fault_time, 4) - 10729 * Math.pow(fault_time, 3) + 11171 * Math.pow(fault_time, 2) - 6545.9 * fault_time + 2012;
@@ -138,66 +202,74 @@ function calculate_cutoff(fault_time) {
     return cutoff;
 }
 
+
+// FUNCTION:
+// Calculates the body resistance using a specified percentile (No convolution)
+// Dependencies: None
 function calculate_body_resistance(conditions, voltage, shock_path) {
     var percentile = parseFloat($("#percentile").val());
 
     var min_r, max_r;
     var resistance;
 
-    if (percentile == 50) {
-        // 0.5,MAX(SWITCH(D13,
-        //     "Dry",MIN(11885*D6^(-0.416),3250),
-        //     "Wet",MIN(-433.2*LN(D6)+3616.6,2175),
-        //     "Salt Wet",MIN(0.0007*D6^2-1.3068*D6+1350.3),1300),775)
-        min_r = 775;
-        if (conditions == "dry") {
-            max_r = 3250;
-            resistance = 11885 * Math.pow(voltage, -0.416);
-        } else if (conditions == "wet") {
-            max_r = 2175;
-            resistance = -433.2 * Math.log(voltage) + 3616.6;
-        } else if (conditions == "salt") {
-            max_r = 1300;
-            resistance = 0.0007 * Math.pow(voltage, 2) - 1.3068 * voltage + 1350.3;
+    if ($("#resistance_toggle").prop("checked")) {
+        resistance = parseFloat($("#resistance_override").val());
+    } else {
+        if (percentile == 50) {
+            // 0.5,MAX(SWITCH(D13,
+            //     "Dry",MIN(11885*D6^(-0.416),3250),
+            //     "Wet",MIN(-433.2*LN(D6)+3616.6,2175),
+            //     "Salt Wet",MIN(0.0007*D6^2-1.3068*D6+1350.3),1300),775)
+            min_r = 775;
+            if (conditions == "dry") {
+                max_r = 3250;
+                resistance = 11885 * Math.pow(voltage, -0.416);
+            } else if (conditions == "wet") {
+                max_r = 2175;
+                resistance = -433.2 * Math.log(voltage) + 3616.6;
+            } else if (conditions == "salt") {
+                max_r = 1300;
+                resistance = 0.0007 * Math.pow(voltage, 2) - 1.3068 * voltage + 1350.3;
+            }
+        } else if (percentile == 5) {
+            //     0.05,MAX(SWITCH(D14,
+            //     "Dry",MIN(4246*D7^(-0.307),1750),
+            //     "Wet",MIN(-181.6*LN(D7)+1780.6,1175),
+            //     "Salt Wet",MIN(0.0006*D7^2-0.9988*D7+976.73),960),575) 
+            min_r = 575;
+            if (conditions == "dry") {
+                max_r = 1750;
+                resistance = 4246 * Math.pow(voltage, -0.307);
+            } else if (conditions == "wet") {
+                max_r = 1175;
+                resistance = -181.6 * Math.log(voltage) + 1780.6, 1175;
+            } else if (conditions == "salt") {
+                max_r = 960;
+                resistance = 0.0006 * Math.pow(voltage, 2) - 0.9988 * voltage + 976.73;
+            }
+        } else if (percentile == 95) {
+            //     0.95,MAX(SWITCH(D14,
+            //     "Dry",MIN(34527*D7^(-0.531),6100),
+            //     "Wet",MIN(-947.6*LN(D7)+7198.1,4100),
+            //     "Salt Wet",MIN(0.001*D7^2-1.7694*D7+1822.3),1755),1050))
+            min_r = 1050;
+            if (conditions == "dry") {
+                max_r = 6100;
+                resistance = 34527 * Math.pow(voltage, -0.531);
+            } else if (conditions == "wet") {
+                max_r = 4100;
+                resistance = -947.6 * Math.log(voltage) + 7198.1, 4100;
+            } else if (conditions == "salt") {
+                max_r = 1755;
+                resistance = 0.001 * Math.pow(voltage, 2) - 1.7694 * voltage + 1822.3;
+            }
         }
-    } else if (percentile == 5) {
-        //     0.05,MAX(SWITCH(D14,
-        //     "Dry",MIN(4246*D7^(-0.307),1750),
-        //     "Wet",MIN(-181.6*LN(D7)+1780.6,1175),
-        //     "Salt Wet",MIN(0.0006*D7^2-0.9988*D7+976.73),960),575) 
-        min_r = 575;
-        if (conditions == "dry") {
-            max_r = 1750;
-            resistance = 4246 * Math.pow(voltage, -0.307);
-        } else if (conditions == "wet") {
-            max_r = 1175;
-            resistance = -181.6 * Math.log(voltage) + 1780.6, 1175;
-        } else if (conditions == "salt") {
-            max_r = 960;
-            resistance = 0.0006 * Math.pow(voltage, 2) - 0.9988 * voltage + 976.73;
-        }
-    } else if (percentile == 95) {
-        //     0.95,MAX(SWITCH(D14,
-        //     "Dry",MIN(34527*D7^(-0.531),6100),
-        //     "Wet",MIN(-947.6*LN(D7)+7198.1,4100),
-        //     "Salt Wet",MIN(0.001*D7^2-1.7694*D7+1822.3),1755),1050))
-        min_r = 1050;
-        if (conditions == "dry") {
-            max_r = 6100;
-            resistance = 34527 * Math.pow(voltage, -0.531);
-        } else if (conditions == "wet") {
-            max_r = 4100;
-            resistance = -947.6 * Math.log(voltage) + 7198.1, 4100;
-        } else if (conditions == "salt") {
-            max_r = 1755;
-            resistance = 0.001 * Math.pow(voltage, 2) - 1.7694 * voltage + 1822.3;
-        }
+
+
+        if (resistance > max_r) resistance = max_r;
+        else if (resistance < min_r) resistance = min_r;
     }
-
-
-    if (resistance > max_r) resistance = max_r;
-    else if (resistance < min_r) resistance = min_r;
-
+    
     if (debug) console.log("Body resistance (raw): " + resistance);
 
     if (shock_path == "step") return resistance * 0.275;
@@ -220,7 +292,6 @@ function calculate_ground_resistance(soil_resistivity, surface_depth, surface_re
 }
 
 function calculate_fibrillation() {
-    var p_f = NaN;
 
     var shock_path = $("#shock_path").val();
     var voltage = parseFloat($("#voltage").val());
@@ -262,24 +333,25 @@ function calculate_fibrillation() {
             current = current / 25;
             if (debug) console.log("Body current (adjusted for step): " + current + " A");
         }
-        
+
         // Check for cutoff points
         var cutoff = calculate_cutoff(fault_time);
-        var current_ma = current * 1000;
+        current_ma = current * 1000;
 
         if (debug) console.log("Current Cutoff: " + cutoff.min + " to " + cutoff.max);
+
+        var mean = define_mean(fault_time);
+        if (debug) console.log("Lognormal mean: " + mean);
+
+        var sigma = define_sd(fault_time);
+        if (debug) console.log("Lognormal SD: " + sigma);
 
         if (current_ma > cutoff.max) p_f = 1;
         else if (current_ma < cutoff.min) p_f = 0;
         else {
-            var mean = define_mean(fault_time);
-            if (debug) console.log("Lognormal mean: " + mean);
-    
-            var sigma = define_sd(fault_time);
-            if (debug) console.log("Lognormal SD: " + sigma);
-    
+
             p_f = cdfLogNormal(current * 1000, mean, sigma);
-        }        
+        }
 
         $("#PF").html(p_f.toExponential(3));
         display_chart(mean, sigma);
@@ -327,6 +399,7 @@ function define_risk(p_dead) {
 function generate_data(mean, sigma) {
     var data = [];
     var current;
+
     for (var i = 0; i < 10; i++) {
         current = Math.pow(10, i / 5 + 1);
         data.push({
@@ -386,7 +459,7 @@ function display_coincidence() {
                     type: "linear",
                     scaleLabel: {
                         display: true,
-                        labelString: "Affected People (N)",
+                        labelString: "Expect at least N people affected",
                         fontSize: 18
                     }
                 }]
@@ -394,7 +467,66 @@ function display_coincidence() {
         }
     });
 
+
+
 }
+
+
+function display_societal_results(p_f) {
+    var ctxB = $("#fatalityChart");
+
+    var societal_coincidence_data = generate_coincidence_data(100);
+
+    for (var i = 0; i < societal_coincidence_data.length; i++) {
+        societal_coincidence_data[i].y = societal_coincidence_data[i].y * p_f;
+    }
+
+    coincidence_chart_B = new Chart(ctxB, {
+        type: "scatter",
+        data: {
+            datasets: [{
+                label: "P_Fatality",
+                borderColor: "#004F6C",
+                data: societal_coincidence_data,
+                showLine: true,
+                fill: false
+            }]
+        },
+        options: {
+            title: {
+                display: true,
+                fontSize: 20,
+                text: 'Societal Fatality Curve'
+            },
+            legend: {
+                display: false,
+                position: 'bottom'
+            },
+            scales: {
+                yAxes: [{
+                    type: "logarithmic",
+                    scaleLabel: {
+                        display: true,
+                        labelString: "Probability",
+                        fontSize: 18
+                    },
+                    ticks: {
+                        min: 1e-10
+                    }
+                }],
+                xAxes: [{
+                    type: "linear",
+                    scaleLabel: {
+                        display: true,
+                        labelString: "At least N fatalities",
+                        fontSize: 18
+                    }
+                }]
+            }
+        }
+    });
+}
+
 
 function add_threshold_data(chart, p_f) {
     var threshold;
@@ -438,7 +570,20 @@ function add_threshold_data(chart, p_f) {
 function display_chart(mean, sigma) {
     var ctx = $("#resultChart");
 
+    // Add point of interest 
+    highlight_point = [{
+        "x": current_ma,
+        "y": p_f
+    }];
+
+    // Generate fibrillation curve
     data = generate_data(mean, sigma);
+    data = highlight_point.concat(data);
+
+    // Sort data
+    data.sort(function (a, b) {
+        return a.x - b.x;
+    });
 
     new Chart(ctx, {
         type: 'scatter',
@@ -470,7 +615,7 @@ function display_chart(mean, sigma) {
                         fontSize: 18
                     },
                     ticks: {
-                        max: 0.7,
+                        max: 1,
                         maxTicksLimit: 5,
                         mirror: true
                     }
@@ -483,6 +628,12 @@ function display_chart(mean, sigma) {
                         fontSize: 18
                     }
                 }]
+            },
+            elements: {
+                point: {
+                    radius: customRadius,
+                    display: true
+                }
             }
         },
     });
@@ -532,6 +683,11 @@ function calculate_fatality(p_c, p_f) {
     } else {
         if (!debug) alert("Please ensure all necessary inputs are entered.");
         if (debug) console.log("Please ensure all necessary inputs are entered.");
+    }
+
+    if ($("#analysis_type").val() == "societal") {
+        display_societal_results(p_f);
+        add_threshold_data(coincidence_chart_B, 1);
     }
 }
 
@@ -626,6 +782,12 @@ $(document).ready(function () {
     });
 
 
+    $.getJSON('default.json', function (data) {
+        for (var i in data) {
+            $('input[name="' + i + '"]').val(data[i]);
+        }
+    });
+
     // ------------- CALCULATE --------------//
     $("#calculate").click(function () {
         console.log("Calculating...");
@@ -687,13 +849,17 @@ $(document).ready(function () {
         if (this.value == "0") {
             $("#surface_resistivity").attr("disabled", "disabled");
             $("#surface_resistivity").val("");
-        }
-        else $("#surface_resistivity").removeAttr("disabled");
+        } else $("#surface_resistivity").removeAttr("disabled");
     });
 
     $("#breaker_toggle").change(function () {
         if (this.checked === true) $(".breaker").show();
         else $(".breaker").hide();
+    });
+
+    $("#resistance_toggle").change(function () {
+        if (this.checked === true) $(".resistance").show();
+        else $(".resistance").hide();
     });
 
     $(".scientific").change(function () {
