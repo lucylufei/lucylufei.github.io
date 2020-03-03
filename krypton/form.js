@@ -132,7 +132,7 @@ function generate_coincidence_data(max) {
     while (p_c > p_c_threshold && n < max) {
         p_c = calculate_group_coincidence(n, prob, population, fault_rate);
 
-        if (debug) console.log("Group P_Coincidnce (" + n + "): " + p_c);
+        if (debug) console.log("Group P_Coincidence (" + n + "): " + p_c);
         data.push({
             x: n,
             y: p_c
@@ -213,6 +213,7 @@ function calculate_body_resistance(conditions, voltage, shock_path) {
     var resistance;
 
     if ($("#resistance_toggle").prop("checked")) {
+        if (debug) console.log("Overriding body resistance value...");
         resistance = parseFloat($("#resistance_override").val());
     } else {
         if (percentile == 50) {
@@ -302,12 +303,8 @@ function calculate_fibrillation() {
     var shoe_type = $("#shoe_type").val();
     var fault_time = parseFloat($("#fault_time").val());
 
-    var shoe_resistance;
-    switch (shoe_type) {
-        case "foot":
-            shoe_resistance = 0;
-            break;
-    }
+    var shoe_resistance = shoe_resistance_data[shoe_type];
+    if (voltage > shoe_breakdown_data[shoe_type]) shoe_resistance = 0;
 
 
     if (check_inputs_fibrillation()) {
@@ -318,6 +315,7 @@ function calculate_fibrillation() {
 
         if (debug) console.log("Body resistance (processed): " + body_resistance);
         if (debug) console.log("Ground resistance: " + ground_resistance);
+        if (debug) console.log("Shoe resistance: " + shoe_resistance);
 
         var total_resistance;
         if (shock_path == "touch") total_resistance = body_resistance + (ground_resistance + shoe_resistance) / 2;
@@ -338,7 +336,7 @@ function calculate_fibrillation() {
         var cutoff = calculate_cutoff(fault_time);
         current_ma = current * 1000;
 
-        if (debug) console.log("Current Cutoff: " + cutoff.min + " to " + cutoff.max);
+        if (debug) console.log("Current Cutoff: " + cutoff.min + "mA to " + cutoff.max + "mA");
 
         var mean = define_mean(fault_time);
         if (debug) console.log("Lognormal mean: " + mean);
@@ -645,21 +643,20 @@ function calculate_fatality(p_c, p_f) {
     if ($("#breaker_toggle").prop("checked")) {
         if (debug) console.log("Including breaker data in calculation...");
 
-        var breaker_type = $("#breaker_type").val();
-        var transmission_v = $("#voltage_type").val();
+        var breaker_failure = parseFloat($("#breaker_failure").html());
+        
+        if (!(isNaN(breaker_failure))) {
+            if (debug) console.log("Breaker failure rate: " + breaker_failure + "%");
 
-        if (debug) console.log("Breaker Type: " + breaker_type);
-        if (debug) console.log("Transmission Voltage: " + transmission_v);
+            breaker_failure = breaker_failure / 100;
 
-        var breaker_failure = breaker_data[breaker_type][transmission_v];
-        if (debug) console.log("Breaker failure rate: " + breaker_failure);
-
-        if (breaker_failure !== null) {
             if (debug) console.log("P_fatality original: " + p_dead);
             var p_dead1 = p_dead * (1 - breaker_failure);
 
-            var new_fault_time = $("#fault_time").val(parseFloat($("#fault_time").val()) + breaker_delay);
-            if (debug) console.log("Calculating P_fatality for " + new_fault_time);
+            var breaker_delay = define_breaker_failure();
+
+            $("#fault_time").val(parseFloat($("#fault_time").val()) + breaker_delay);
+            if (debug) console.log("Calculating P_fatality for " + $("#fault_time").val() + "s clearing time...");
 
             p_c = calculate_coincidence();
             p_f = calculate_fibrillation();
@@ -672,6 +669,8 @@ function calculate_fatality(p_c, p_f) {
 
             if (!debug) $("#fault_time").val(parseFloat($("#fault_time").val()) - breaker_delay);
         }
+
+        else alert("Warning: Breaker data is missing from database. Continuing without breaker failure rates...");
     }
 
     console.log("Calculating probability of fatality...");
@@ -757,10 +756,35 @@ function generate_design_data(prob = 1e-6) {
     return data;
 }
 
+function define_breaker_failure() {
+    var breaker_type = $("#breaker_type").val();
+    var transmission_v = $("#voltage_type").val();
+    var breaker_number = parseFloat($("#breaker_number").val());
+
+    if (debug) console.log("Breaker Type: " + breaker_type);
+    if (debug) console.log("Transmission Voltage: " + transmission_v);
+    if (debug) console.log("Number of Breakers: " + breaker_number);
+
+    var breaker_failure = breaker_data[breaker_type][transmission_v];
+    if (breaker_failure == null) $("#breaker_failure").html("missing from database.");
+    else $("#breaker_failure").html(breaker_failure * 100 * breaker_number + "%");
+
+    var breaker_delay = breaker_delay_data[breaker_type][transmission_v]; 
+    if (breaker_delay == null) {
+        breaker_delay = 0;
+        $("#breaker_time").html("missing from database.");
+    }
+    else $("#breaker_failure").html(breaker_delay + " cycle(s)");
+
+    breaker_delay = breaker_delay / 60;
+    if (debug) console.log("Breaker Delay: " + breaker_delay + " s");
+
+    return breaker_delay;
+}
+
 $(document).ready(function () {
 
     var template = document.getElementById('templateForm');
-    if (debug) console.log("Template: " + template);
     document.getElementById('templateForm').addEventListener('submit', function (e) {
         //prevent the normal submission of the form
         e.preventDefault();
@@ -781,12 +805,10 @@ $(document).ready(function () {
         $("form").trigger("reset");
     });
 
-
-    $.getJSON('default.json', function (data) {
-        for (var i in data) {
-            $('input[name="' + i + '"]').val(data[i]);
-        }
-    });
+    // Fill default templates list
+    for (var i in default_values) {
+        $("#default_list").append('<option value="' + i + '">' + i + '</option>'); 
+    }
 
     // ------------- CALCULATE --------------//
     $("#calculate").click(function () {
@@ -855,11 +877,25 @@ $(document).ready(function () {
     $("#breaker_toggle").change(function () {
         if (this.checked === true) $(".breaker").show();
         else $(".breaker").hide();
+        define_breaker_failure();
     });
 
     $("#resistance_toggle").change(function () {
         if (this.checked === true) $(".resistance").show();
         else $(".resistance").hide();
+    });
+
+    $("#shoe_type").change(function () {
+        $("#shoe_breakdown").html("Flashover Voltage: " + shoe_breakdown_data[$("#shoe_type").val()] + "V")
+    });
+
+    $("#fault_time").change(function () {
+        if (parseFloat($("#fault_time").val()) > 1.1) $("#fault_time_warning").html("Warning: Result may be inaccurate due to extrapolation beyond 1s.");
+        else $("#fault_time_warning").html("");
+    });
+
+    $(".breaker").change(function () {
+        define_breaker_failure();
     });
 
     $(".scientific").change(function () {
@@ -876,6 +912,10 @@ $(document).ready(function () {
         } else {
             console.log("No data available to generate CSV.");
         }
+    });
+
+    $("#load_button").click(function () {
+        load_defaults();
     });
 
     // ----------------------------------//

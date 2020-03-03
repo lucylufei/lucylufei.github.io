@@ -151,11 +151,32 @@ function inverse_lognormal(prob, mean, sd) {
 //     return count;
 // }
 
-function customRadius( context )
-  {
+function customRadius(context) {
     let index = context.dataIndex;
-    let value = context.dataset.data[ index ];
-    return (value.x == current_ma )?
-           15 :
-           2;
-  }
+    let value = context.dataset.data[index];
+    return (value.x == current_ma) ?
+        15 :
+        2;
+}
+
+
+// FUNCTION:
+// Interpolate between two points
+// p1: x, y
+// p2: x, y
+function interpolate(p1, p2, x) {
+    var slope = (p2.y - p1.y) / (p2.x - p1.x);
+    return p1.y + (x * slope);
+}
+
+
+function load_defaults() {
+    if (debug) console.log("Loading defaults... ");
+
+    var template = $("#default_list").val();
+
+    for (var i in default_values[template]) {
+        if (debug) console.log("Setting " + i);
+        $("#" + i).val(default_values[template][i]);
+    }
+}

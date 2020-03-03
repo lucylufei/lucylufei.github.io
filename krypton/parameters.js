@@ -1,16 +1,27 @@
 /*----- GLOBAL PARAMETERS -----*/
-var debug = false;
+var debug = true;
 
-// Log Normal Standard Deviation
-var sd = 0.35;
-
-// Temporary breaker delay value
-var breaker_delay = 0.1;
-
-// Global chart variable
-var coincidence_chart;
-var coincidence_chart_B;
-
+// Circuit Breaker Delay Data
+var breaker_delay_data = {
+    "bulk_oil": {
+        "69": null,
+        "138": 6,
+        "230": 6,
+        "500": 6
+    },
+    "dead_tank": {
+        "69": 6,
+        "138": 6,
+        "230": 6,
+        "500": 6
+    },
+    "air_blast": {
+        "69": 6,
+        "138": 6,
+        "230": 6,
+        "500": 6
+    }
+}
 
 // Circuit Breaker Data
 var breaker_data = {
@@ -54,5 +65,16 @@ var time_list = [
 // Societal probability of coincidence limit (below this is negligible, considered 0%)
 var p_c_threshold = 1e-10;
 
-var p_f = NaN;
-var current_ma = NaN;
+// Shoe breakdown
+var shoe_breakdown_data = {
+    "foot" : 0,
+    "shoe" : 1000,
+    "boot" : 2000
+};
+
+// Shoe resistance
+var shoe_resistance_data = {
+    "foot" : 0,
+    "shoe" : 100,
+    "boot" : 200
+};
