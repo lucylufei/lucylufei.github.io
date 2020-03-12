@@ -701,12 +701,7 @@ function inverse_voltage(current) {
     var shoe_type = $("#shoe_type").val();
     var fault_time = parseFloat($("#fault_time").val());
 
-    var shoe_resistance;
-    switch (shoe_type) {
-        case "foot":
-            shoe_resistance = 0;
-            break;
-    }
+    var shoe_resistance = shoe_resistance_data[shoe_type];
 
     var body_resistance = calculate_body_resistance(surface_conditions, voltage, shock_path);
     var ground_resistance = calculate_ground_resistance(soil_resistivity, surface_depth, surface_resistivity);
@@ -714,8 +709,15 @@ function inverse_voltage(current) {
     var total_resistance;
     if (shock_path == "touch") total_resistance = body_resistance + (ground_resistance + shoe_resistance) / 2;
     else if (shock_path == "step") total_resistance = body_resistance + (ground_resistance + shoe_resistance) * 2;
-
+    
     if (shock_path == "step") current = current * 25;
+    
+    var calculated_voltage = current * total_resistance / 1000;
+    // If voltage is beyond flashover voltage, recalculate without shoe resistance
+    if (calculated_voltage > shoe_breakdown_data[shoe_type]) {
+        if (shock_path == "touch") total_resistance = body_resistance + (ground_resistance) / 2;
+        else if (shock_path == "step") total_resistance = body_resistance + (ground_resistance) * 2;
+    }
 
     return current * total_resistance / 1000;
 }
@@ -774,7 +776,7 @@ function define_breaker_failure() {
         breaker_delay = 0;
         $("#breaker_time").html("missing from database.");
     }
-    else $("#breaker_failure").html(breaker_delay + " cycle(s)");
+    else $("#breaker_time").html(breaker_delay + " cycle(s)");
 
     breaker_delay = breaker_delay / 60;
     if (debug) console.log("Breaker Delay: " + breaker_delay + " s");
@@ -784,20 +786,27 @@ function define_breaker_failure() {
 
 $(document).ready(function () {
 
-    var template = document.getElementById('templateForm');
     document.getElementById('templateForm').addEventListener('submit', function (e) {
         //prevent the normal submission of the form
         e.preventDefault();
 
-        var content = $("#templateForm").serializeArray();
+        var content = $("#kryptonForm").serializeArray();
 
-        for (var i = 0; i < content.length; i = i + 1) {
-            if (content[i].value === "") {
-                if (!debug) alert("Please fill in all fields")
-                return;
-            }
+        var templateData = {};
+        for (var i=0; i < content.length; i=i+1) {
+            templateData[content[i].name] = content[i].value;
         }
-        var jsonData = JSON.stringify(content);
+
+        if ($("#templateName").val() === "") {
+            if (!debug) alert("Please choose a template name!")
+            return;
+        }
+
+        var template = {};
+        template[$("#templateName").val()] = templateData;
+
+        var jsonData = JSON.stringify(template);
+        jsonData = jsonData.slice(1, jsonData.length-1);
         var file_name = $("#templateName").val();
 
         download(jsonData, file_name + '_template.json', 'application/json');
@@ -911,6 +920,7 @@ $(document).ready(function () {
             exportToCsv("design_curve.csv", data);
         } else {
             console.log("No data available to generate CSV.");
+            if (!debug) alert("No data available to generate CSV. Please calculate first!");
         }
     });
 

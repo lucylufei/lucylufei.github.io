@@ -1,5 +1,5 @@
 /*----- GLOBAL PARAMETERS -----*/
-var debug = true;
+var debug = false;
 
 // Circuit Breaker Delay Data
 var breaker_delay_data = {

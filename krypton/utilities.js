@@ -178,5 +178,6 @@ function load_defaults() {
     for (var i in default_values[template]) {
         if (debug) console.log("Setting " + i);
         $("#" + i).val(default_values[template][i]);
+        $("#" + i).change();
     }
 }

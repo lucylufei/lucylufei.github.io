@@ -345,41 +345,16 @@
                         </button>
                     </div>
                     <div class="modal-body">
-
+                        <p>
+                            Save current inputs into Krypton template.
+                        </p>
                         <form id="templateForm">
                             <div class="form-group">
                                 <label>Name of Template</label>
                                 <input class="form-control" type="text" placeholder="ex. School_Playground" name="name"
                                     id="templateName">
                             </div>
-                            <div class="form-group">
-                                <label>Gathering Duration (s)</label>
-                                <input class="form-control" type="number" step="1" name="gathering_duration">
-                            </div>
-                            <div class="form-group">
-                                <label>Number of Gatherings</label>
-                                <input class="form-control" type="number" step="1" name="gathering_number">
-                            </div>
-                            <div class="form-group">
-                                <label>Contacts Duration (s)</label>
-                                <input class="form-control" type="number" step="1" name="contact_duration">
-                            </div>
-                            <div class="form-group">
-                                <label>Number of Contacts</label>
-                                <input class="form-control" type="number" step="1" name="contact_rate">
-                            </div>
-                            <div class="form-group">
-                                <label>Exposed Population Size</label>
-                                <select class="form-control custom-select" name="population">
-                                    <option selected>Choose a value</option>
-                                    <option>10</option>
-                                    <option>100</option>
-                                    <option>1,000</option>
-                                    <option>10,000</option>
-                                    <option>100,000</option>
-                                </select>
-                            </div>
-
+                            
                             <button id="submitButton" type="submit" class="btn btn-primary">Generate Template</button>
                         </form>
                     </div>
@@ -388,14 +363,14 @@
         </div>
 
         </br>
-        <form>
+        <form id="kryptonForm">
             <div class="row">
                 <div class="col" style="padding-right: 2em;">
                     <h2>Probability of Coincidence</h2>
                     <hr>
                     <div class="form-group">
                         <label for="analysis_type">Analysis Type</label>
-                        <select class="form-control" id="analysis_type">
+                        <select class="form-control" id="analysis_type" name="analysis_type">
                             <option selected value="">Select analysis type...</option>
                             <option value="individual">Individual</option>
                             <option value="societal">Societal</option>
@@ -406,7 +381,7 @@
                             <label for="fault_rate">Fault Frequency</label>
                             <div class="input-group">
                                 <input type="number" min="0" step="10" oninput="if(this.value<0) this.value = Math.abs(this.value)"
-                                    class="form-control" id="fault_rate">
+                                    class="form-control" id="fault_rate" name="fault_rate">
                                 <div class="input-group-append">
                                     <span class="input-group-text">faults/year</span>
                                 </div>
@@ -416,7 +391,7 @@
                             <label for="fault_time">Clearing Time</label>
                             <div class="input-group">
                                 <input type="number" min="0" step="0.1" oninput="if(this.value<0) this.value = Math.abs(this.value)"
-                                    max="1" class="form-control" id="fault_time">
+                                    max="1" class="form-control" id="fault_time" name="fault_time">
                                 <div class="input-group-append">
                                     <span class="input-group-text">s</span>
                                 </div>
@@ -430,7 +405,7 @@
                             <label for="contact_rate">Contact Rate</label>
                             <div class="input-group">
                                 <input type="number" min="0" step="10" oninput="if(this.value<0) this.value = Math.abs(this.value)"
-                                    class="form-control" id="contact_rate">
+                                    class="form-control" id="contact_rate" name="contact_rate">
                                 <div class="input-group-append">
                                     <span class="input-group-text">touch/year</span>
                                 </div>
@@ -440,7 +415,7 @@
                             <label for="contact_time">Contact Time</label>
                             <div class="input-group">
                                 <input type="number" min="0" step="0.1" oninput="if(this.value<0) this.value = Math.abs(this.value)"
-                                    class="form-control" id="contact_time">
+                                    class="form-control" id="contact_time" name="contact_time">
                                 <div class="input-group-append">
                                     <span class="input-group-text">s</span>
                                 </div>
@@ -454,7 +429,7 @@
                             <label for="gathering_rate">Number of Gatherings</label>
                             <div class="input-group">
                                 <input type="number" min="0" step="10" oninput="if(this.value<0) this.value = Math.abs(this.value)"
-                                    class="form-control" id="gathering_rate">
+                                    class="form-control" id="gathering_rate" name="gathering_rate">
                                 <div class="input-group-append">
                                     <span class="input-group-text">#/year</span>
                                 </div>
@@ -464,7 +439,7 @@
                             <label for="gathering_time">Gathering Duration</label>
                             <div class="input-group">
                                 <input type="number" min="0" step="1" oninput="if(this.value<0) this.value = Math.abs(this.value)"
-                                    class="form-control" id="gathering_time">
+                                    class="form-control" id="gathering_time" name="gathering_time">
                                 <div class="input-group-append">
                                     <span class="input-group-text">s</span>
                                 </div>
@@ -477,7 +452,7 @@
                         <label for="population">Exposed Population</label>
                         <div class="input-group">
                             <input type="number" min="0" step="10" oninput="this.value = Math.round(this.value)"
-                                class="form-control" id="population">
+                                class="form-control" id="population" name="population">
                             <div class="input-group-append">
                                 <span class="input-group-text">people</span>
                             </div>
@@ -490,7 +465,7 @@
 
                     <div class="form-group">
                         <label for="shock_path">Shock Path</label>
-                        <select class="form-control" id="shock_path">
+                        <select class="form-control" id="shock_path" name="shock_path">
                             <option value="" selected>Select shock path...</option>
                             <option value="touch">Touch</option>
                             <option value="step">Step</option>
@@ -500,7 +475,7 @@
                         <label for="voltage">Applied Voltage</label>
                         <div class="input-group">
                             <input type="number" min="0" step="10" oninput="if(this.value<0) this.value = Math.abs(this.value)"
-                                class="form-control" id="voltage">
+                                class="form-control" id="voltage" name="voltage">
                             <div class="input-group-append">
                                 <span class="input-group-text">V</span>
                             </div>
@@ -510,7 +485,7 @@
                         <label for="soil_resistivity">Soil Resistivity</label>
                         <div class="input-group">
                             <input type="number" min="0" step="10" oninput="if(this.value<0) this.value = Math.abs(this.value)"
-                                class="form-control" id="soil_resistivity" value="50">
+                                class="form-control" id="soil_resistivity" name="soil_resistivity" value="50">
                             <div class="input-group-append">
                                 <span class="input-group-text">&#8486;&middot;m</span>
                             </div>
@@ -522,7 +497,7 @@
                             <label for="surface_depth">Surface Depth</label>
                             <div class="input-group">
                                 <input type="number" min="0" oninput="if(this.value<0) this.value = Math.abs(this.value)"
-                                    class="form-control" id="surface_depth" value="0">
+                                    class="form-control" id="surface_depth" name="surface_depth" value="0">
                                 <div class="input-group-append">
                                     <span class="input-group-text">m</span>
                                 </div>
@@ -532,7 +507,7 @@
                             <label for="surface_resistivity">Surface Resistivity</label>
                             <div class="input-group">
                                 <input type="number" min="0" oninput="if(this.value<0) this.value = Math.abs(this.value)"
-                                    class="form-control" id="surface_resistivity" disabled>
+                                    class="form-control" id="surface_resistivity" name="surface_resistivity" disabled>
                                 <div class="input-group-append">
                                     <span class="input-group-text">&#8486;&middot;m</span>
                                 </div>
@@ -544,7 +519,7 @@
 
                         <div class="col form-group">
                             <label for="surface_conditions">Contact Surface Conditions</label>
-                            <select class="form-control" id="surface_conditions">
+                            <select class="form-control" id="surface_conditions" name="surface_conditions">
                                 <option value="dry" selected>Dry (Normal)</option>
                                 <option value="Wet">Wet</option>
                                 <option value="salt">Salt Wet</option>
@@ -554,7 +529,7 @@
                             <label for="contact_resistance">Additional Contact Resistance</label>
                             <div class="input-group">
                                 <input type="number" min="0" step="10" oninput="if(this.value<0) this.value = Math.abs(this.value)"
-                                    class="form-control" id="contact_resistance" value="0">
+                                    class="form-control" id="contact_resistance" name="contact_resistance" value="0">
                                 <div class="input-group-append">
                                     <span class="input-group-text">&#8486;</span>
                                 </div>
@@ -563,7 +538,7 @@
                     </div>
                     <div class="form-group">
                         <label for="shoe_type">Shoe Type</label>
-                        <select class="form-control" id="shoe_type">
+                        <select class="form-control" id="shoe_type" name="shoe_type">
                             <option value="foot" selected>Bare Feet</option>
                             <option value="shoe">Leather</option>
                             <option value="boot">Elastomer</option>
