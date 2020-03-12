@@ -856,7 +856,7 @@ $(document).ready(function () {
 
     $("#manual_button").click(function () {
         console.log("Opening manual...")
-        window.open("readme.html", "_blank");
+        window.open("Krypton User Guide.pdf", "_blank");
     });
     // ----------------------------------//
 
