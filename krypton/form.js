@@ -876,6 +876,13 @@ $(document).ready(function () {
         }
     });
 
+    $('#shock_path').change(function () {
+        var type = this.value;
+
+        if (type == "touch") $(".touch").show();
+        else $(".touch").hide();
+    });
+
     $("#surface_depth").change(function () {
         if (this.value == "0") {
             $("#surface_resistivity").attr("disabled", "disabled");
