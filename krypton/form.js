@@ -82,9 +82,10 @@ function calculate_coincidence() {
 
             // Calculate P_C part one
             var prob;
-            prob = (fault_time + gathering_time - (Math.pow(fault_time, 2) + Math.pow(gathering_time, 2) / (2 * (365 * 24 * 60 * 60)))) / (365 * 24 * 60 * 60);
+            prob = (fault_time + gathering_time - ((Math.pow(fault_time, 2) + Math.pow(gathering_time, 2)) / (2 * (365 * 24 * 60 * 60)))) / (365 * 24 * 60 * 60);
+            if (debug) console.log("P_C: " + prob.toExponential(3))
             prob = 1 - Math.pow((1 - prob), gathering_rate);
-            if (debug) console.log("P_C: " + prob)
+            if (debug) console.log("P_Cmulti: " + prob.toExponential(3))
 
             // Calculate summation for EV
             p_c = calculate_group_coincidence(1, prob, population, fault_rate);
@@ -505,7 +506,7 @@ function display_societal_results(p_f) {
                     type: "logarithmic",
                     scaleLabel: {
                         display: true,
-                        labelString: "Probability",
+                        labelString: "Probability of Fatality",
                         fontSize: 18
                     },
                     ticks: {
@@ -643,31 +644,36 @@ function calculate_fatality(p_c, p_f) {
     if ($("#breaker_toggle").prop("checked")) {
         if (debug) console.log("Including breaker data in calculation...");
 
-        var breaker_failure = parseFloat($("#breaker_failure").html());
+        var breaker_failure;
+        if ($("#breaker_type").val() == "custom") breaker_failure = parseFloat($("#breaker_failure_override").val())
+        else breaker_failure = parseFloat($("#breaker_failure").html());
         
         if (!(isNaN(breaker_failure))) {
-            if (debug) console.log("Breaker failure rate: " + breaker_failure + "%");
-
-            breaker_failure = breaker_failure / 100;
-
-            if (debug) console.log("P_fatality original: " + p_dead);
-            var p_dead1 = p_dead * (1 - breaker_failure);
-
             var breaker_delay = define_breaker_failure();
 
-            $("#fault_time").val(parseFloat($("#fault_time").val()) + breaker_delay);
-            if (debug) console.log("Calculating P_fatality for " + $("#fault_time").val() + "s clearing time...");
+            if (!(isNaN(breaker_delay))) {
+                if (debug) console.log("Breaker failure rate: " + breaker_failure + "%");
 
-            p_c = calculate_coincidence();
-            p_f = calculate_fibrillation();
-            p_dead2 = p_c * p_f;
+                breaker_failure = breaker_failure / 100;
 
-            if (debug) console.log("P_fatality new: " + p_dead2);
+                if (debug) console.log("P_fatality original: " + p_dead);
+                var p_dead1 = p_dead * (1 - breaker_failure);
 
-            p_dead2 = p_dead2 * breaker_failure;
-            p_dead = p_dead1 + p_dead2;
+                $("#fault_time").val(parseFloat($("#fault_time").val()) + breaker_delay);
+                if (debug) console.log("Calculating P_fatality for " + $("#fault_time").val() + "s clearing time...");
 
-            if (!debug) $("#fault_time").val(parseFloat($("#fault_time").val()) - breaker_delay);
+                p_c = calculate_coincidence();
+                p_f = calculate_fibrillation();
+                p_dead2 = p_c * p_f;
+
+                if (debug) console.log("P_fatality new: " + p_dead2);
+
+                p_dead2 = p_dead2 * breaker_failure;
+                p_dead = p_dead1 + p_dead2;
+
+                if (!debug) $("#fault_time").val(parseFloat($("#fault_time").val()) - breaker_delay);
+            }
+            else alert("Warning: Breaker data is missing from database. Continuing without breaker failure rates...");
         }
 
         else alert("Warning: Breaker data is missing from database. Continuing without breaker failure rates...");
@@ -760,6 +766,9 @@ function generate_design_data(prob = 1e-6) {
 
 function define_breaker_failure() {
     var breaker_type = $("#breaker_type").val();
+
+    if (breaker_type == "custom") return parseFloat($("#breaker_time_override").val())
+
     var transmission_v = $("#voltage_type").val();
     var breaker_number = parseFloat($("#breaker_number").val());
 
@@ -911,7 +920,15 @@ $(document).ready(function () {
     });
 
     $(".breaker").change(function () {
-        define_breaker_failure();
+        if ($("#breaker_type").val() == "custom") {
+            $(".other").show();
+            $(".regular").hide();
+        }
+        else {
+            $(".other").hide();
+            $(".regular").show();
+            define_breaker_failure();
+        }
     });
 
     $(".scientific").change(function () {
