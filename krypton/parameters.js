@@ -77,16 +77,37 @@ var time_list = [
 // Societal probability of coincidence limit (below this is negligible, considered 0%)
 var p_c_threshold = 1e-10;
 
-// Shoe breakdown
-var shoe_breakdown_data = {
-    "foot" : 0,
-    "shoe" : 1000,
-    "boot" : 2000
-};
 
-// Shoe resistance
-var shoe_resistance_data = {
-    "foot" : 0,
-    "shoe" : 100,
-    "boot" : 200
-};
+// Shoe data (resistance and flashover voltage)
+var shoe_data = {
+    "foot" : {
+        "name" : "Bare Feet",
+        "resistance" : 0,
+        "breakdown" : 0
+    },
+
+    "leather_shoe" : {
+        "name" : "Leather Shoes",
+        "resistance" : 1000000,
+        "breakdown" : 5000
+    },
+
+    "rubber_shoe" : {
+        "name" : "Rubber Shoes",
+        "resistance" : 1000,
+        "breakdown" : 2500
+    },
+
+    "wet_shoe" : {
+        "name" : "Wet Rubber Shoes", 
+        "resistance": 500,
+        "breakdown" : 750
+    },
+
+    "safety_shoes" : {
+        "name" : "Elastomer Safety Boots",
+        "resistance" : 6000000,
+        "breakdown" : 15000
+    }
+
+}

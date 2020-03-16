@@ -304,8 +304,8 @@ function calculate_fibrillation() {
     var shoe_type = $("#shoe_type").val();
     var fault_time = parseFloat($("#fault_time").val());
 
-    var shoe_resistance = shoe_resistance_data[shoe_type];
-    if (voltage > shoe_breakdown_data[shoe_type]) shoe_resistance = 0;
+    var shoe_resistance = shoe_data[shoe_type].resistance;
+    if (voltage > shoe_data[shoe_type].breakdown) shoe_resistance = 0;
 
 
     if (check_inputs_fibrillation()) {
@@ -707,7 +707,7 @@ function inverse_voltage(current) {
     var shoe_type = $("#shoe_type").val();
     var fault_time = parseFloat($("#fault_time").val());
 
-    var shoe_resistance = shoe_resistance_data[shoe_type];
+    var shoe_resistance = shoe_data[shoe_type].resistance;
 
     var body_resistance = calculate_body_resistance(surface_conditions, voltage, shock_path);
     var ground_resistance = calculate_ground_resistance(soil_resistivity, surface_depth, surface_resistivity);
@@ -720,7 +720,7 @@ function inverse_voltage(current) {
     
     var calculated_voltage = current * total_resistance / 1000;
     // If voltage is beyond flashover voltage, recalculate without shoe resistance
-    if (calculated_voltage > shoe_breakdown_data[shoe_type]) {
+    if (calculated_voltage > shoe_data[shoe_type].breakdown) {
         if (shock_path == "touch") total_resistance = body_resistance + (ground_resistance) / 2;
         else if (shock_path == "step") total_resistance = body_resistance + (ground_resistance) * 2;
     }
@@ -828,6 +828,11 @@ $(document).ready(function () {
         $("#default_list").append('<option value="' + i + '">' + i + '</option>'); 
     }
 
+    // Fill shoe list
+    for (var i in shoe_data) {
+        $("#shoe_type").append('<option value="' + i + '">' + shoe_data[i].name + '</option>'); 
+    }
+    
     // ------------- CALCULATE --------------//
     $("#calculate").click(function () {
         console.log("Calculating...");
@@ -911,7 +916,7 @@ $(document).ready(function () {
     });
 
     $("#shoe_type").change(function () {
-        $("#shoe_breakdown").html("Flashover Voltage: " + shoe_breakdown_data[$("#shoe_type").val()] + "V")
+        $("#shoe_breakdown").html("Flashover Voltage: " + shoe_data[$("#shoe_type").val()].breakdown + "V")
     });
 
     $("#fault_time").change(function () {
