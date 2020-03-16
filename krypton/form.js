@@ -778,7 +778,7 @@ function define_breaker_failure() {
 
     var breaker_failure = breaker_data[breaker_type][transmission_v];
     if (breaker_failure == null) $("#breaker_failure").html("missing from database.");
-    else $("#breaker_failure").html(breaker_failure * 100 * breaker_number + "%");
+    else $("#breaker_failure").html((breaker_failure * 100 * breaker_number).toFixed(4) + "%");
 
     var breaker_delay = breaker_delay_data[breaker_type][transmission_v]; 
     if (breaker_delay == null) {
@@ -905,7 +905,18 @@ $(document).ready(function () {
     });
 
     $("#breaker_toggle").change(function () {
-        if (this.checked === true) $(".breaker").show();
+        if (this.checked === true) {
+            $(".breaker").show();
+            if ($("#breaker_type").val() == "custom") {
+                $(".other").show();
+                $(".regular").hide();
+            }
+            else {
+                $(".other").hide();
+                $(".regular").show();
+                define_breaker_failure();
+            }
+        }
         else $(".breaker").hide();
         define_breaker_failure();
     });
