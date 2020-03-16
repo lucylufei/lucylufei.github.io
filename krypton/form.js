@@ -124,7 +124,7 @@ function generate_coincidence_data(max) {
 
     // Calculate P_C part one
     var prob;
-    prob = (fault_time + gathering_time - (Math.pow(fault_time, 2) + Math.pow(gathering_time, 2) / (2 * (365 * 24 * 60 * 60)))) / (365 * 24 * 60 * 60);
+    prob = (fault_time + gathering_time - ((Math.pow(fault_time, 2) + Math.pow(gathering_time, 2)) / (2 * (365 * 24 * 60 * 60)))) / (365 * 24 * 60 * 60);
     prob = 1 - Math.pow((1 - prob), gathering_rate);
 
     // Calculate summation for EV until threshold or max reached
