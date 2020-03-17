@@ -776,11 +776,11 @@ function define_breaker_failure() {
     if (debug) console.log("Transmission Voltage: " + transmission_v);
     if (debug) console.log("Number of Breakers: " + breaker_number);
 
-    var breaker_failure = breaker_data[breaker_type][transmission_v];
+    var breaker_failure = breaker_data[breaker_type].prob[transmission_v];
     if (breaker_failure == null) $("#breaker_failure").html("missing from database.");
     else $("#breaker_failure").html((breaker_failure * 100 * breaker_number).toFixed(4) + "%");
 
-    var breaker_delay = breaker_delay_data[breaker_type][transmission_v]; 
+    var breaker_delay = breaker_data[breaker_type].delay[transmission_v]; 
     if (breaker_delay == null) {
         breaker_delay = 0;
         $("#breaker_time").html("missing from database.");
@@ -831,6 +831,11 @@ $(document).ready(function () {
     // Fill shoe list
     for (var i in shoe_data) {
         $("#shoe_type").append('<option value="' + i + '">' + shoe_data[i].name + '</option>'); 
+    }
+
+    // Fill shoe list
+    for (var i in breaker_data) {
+        $("#breaker_type").append('<option value="' + i + '">' + breaker_data[i].name + '</option>'); 
     }
     
     // ------------- CALCULATE --------------//

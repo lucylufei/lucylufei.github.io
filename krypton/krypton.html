@@ -51,12 +51,17 @@
             color: #004F6C;
         }
 
+        a.nav-link {
+            cursor: pointer;
+        }
+
         .help {
             text-align: right;
         }
 
         i.fa {
             color: #50B848;
+            cursor: pointer;
         }
 
         i.fa:hover {
@@ -295,9 +300,6 @@
                                 <div class="col form-group hidden breaker">
                                     <label for="breaker_type">Circuit Breaker Type</label>
                                     <select class="form-control" id="breaker_type">
-                                        <option value="bulk_oil" selected>Bulk oil</option>
-                                        <option value="dead_tank">Dead tank</option>
-                                        <option value="air_blast">Air blast</option>
                                         <option value="custom">Custom</option>
                                     </select>
                                 </div>

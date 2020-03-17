@@ -90,67 +90,6 @@ function inverse_lognormal(prob, mean, sd) {
 }
 
 
-
-/* FUTURE CONVOLUTION IMPLEMENTATION TESTING */
-// function get_body_resistance(percentile) {
-//     return 728.89 * Math.exp(0.0118 * percentile);
-// }
-
-// function p_fib_v2() {
-//     var p_f = NaN;
-
-//     var shock_path = $("#shock_path").val();
-//     var voltage = parseFloat($("#voltage").val());
-//     var soil_resistivity = parseFloat($("#soil_resistivity").val());
-//     var surface_depth = parseFloat($("#surface_depth").val());
-//     var surface_resistivity = parseFloat($("#surface_resistivity").val());
-//     var surface_conditions = $("#surface_conditions").val();
-//     var shoe_type = $("#shoe_type").val();
-//     var fault_time = parseFloat($("#fault_time").val());
-
-//     var shoe_resistance;
-//     switch (shoe_type) {
-//         case "foot":
-//             shoe_resistance = 0;
-//             break;
-//     }
-
-//     var mean = define_mean(fault_time);
-//     var sigma = define_sd(fault_time);
-
-//     var count = 0;
-//     for (var i=1; i<=100; i++) {
-//         console.log("Calculating probability of fibrillation...");
-
-//         var body_resistance = get_body_resistance(i);
-//         var ground_resistance = calculate_ground_resistance(soil_resistivity, surface_depth, surface_resistivity);
-
-//         if (debug) console.log("Body resistance (processed): " + body_resistance);
-//         if (debug) console.log("Ground resistance: " + ground_resistance);
-
-//         var total_resistance;
-//         if (shock_path == "touch") total_resistance = body_resistance + (ground_resistance + shoe_resistance) / 2;
-//         else if (shock_path == "step") total_resistance = body_resistance + (ground_resistance + shoe_resistance) * 2;
-
-//         if (debug) console.log("Total resistance: " + total_resistance);
-
-//         var current = voltage / total_resistance;
-//         if (debug) console.log("Body current (raw): " + current + " A");
-
-//         if (shock_path == "step") {
-//             current = current / 25;
-//             if (debug) console.log("Body current (adjusted for step): " + current + " A");
-//         }
-
-//         for (var j=1; j<=100; j++) {
-//             var current2 = inverse_lognormal(j/100, mean, sigma);
-//             if (current * 1000 * i * j / 10000 > current2) count += 1 * i * j / 10000;
-//         }
-
-//     }
-//     return count;
-// }
-
 function customRadius(context) {
     let index = context.dataIndex;
     let value = context.dataset.data[index];
