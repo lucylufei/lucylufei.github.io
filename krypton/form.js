@@ -165,7 +165,7 @@ function check_inputs_fibrillation() {
 // Defines the mean value applied to the probability of fibrillation log normal distribution
 // Dependences: None
 function define_mean(fault_time) {
-    return fault_time * (-2.8351) + 6.8595;
+    return interpolate(mu_points, fault_time);
 }
 
 
@@ -173,17 +173,17 @@ function define_mean(fault_time) {
 // Defines the sigma value applied to the probability of fibrillation log normal distribution
 // Dependences: None
 function define_sd(fault_time) {
-    var sigma;
-    sigma = -58 * Math.pow(fault_time, 6);
-    sigma += 184.91 * Math.pow(fault_time, 5);
-    sigma += -221.4 * Math.pow(fault_time, 4);
-    sigma += 122.03 * Math.pow(fault_time, 3);
-    sigma += -30.604 * Math.pow(fault_time, 2);
-    sigma += 3.1584 * fault_time;
-    sigma += 0.1867
+    // var sigma;
+    // sigma = -58 * Math.pow(fault_time, 6);
+    // sigma += 184.91 * Math.pow(fault_time, 5);
+    // sigma += -221.4 * Math.pow(fault_time, 4);
+    // sigma += 122.03 * Math.pow(fault_time, 3);
+    // sigma += -30.604 * Math.pow(fault_time, 2);
+    // sigma += 3.1584 * fault_time;
+    // sigma += 0.1867
 
-    return sigma;
-    // return sd;
+    // return sigma;
+    return interpolate(sigma_points, fault_time);
 }
 
 
