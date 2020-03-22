@@ -795,9 +795,7 @@ function define_breaker_failure() {
 
 $(document).ready(function () {
 
-    document.getElementById('templateForm').addEventListener('submit', function (e) {
-        //prevent the normal submission of the form
-        e.preventDefault();
+    $("#submitButton").click(function () {
 
         var content = $("#kryptonForm").serializeArray();
 
@@ -971,6 +969,20 @@ $(document).ready(function () {
 
     $("#load_button").click(function () {
         load_defaults();
+    });
+
+    $("#load_toggle").change(function() {
+        // Save
+        if (this.checked === true) {
+            $(".save").show();
+            $(".load").hide();
+        }
+
+        // Load
+        else {
+            $(".save").hide();
+            $(".load").show();
+        }
     });
 
     // ----------------------------------//

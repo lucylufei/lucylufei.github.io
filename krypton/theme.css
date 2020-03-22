@@ -1,0 +1,64 @@
+
+footer {
+    padding: 3em;
+    background-color: #004F6C;
+    text-align: center;
+    color: #FFFFFF;
+    font-size: 1em;
+    font-weight: 700;
+}
+
+.header {
+    text-align: center;
+    color: #004F6C;
+}
+
+a img {
+    height: 2em;
+    width: auto;
+    color: #004F6C;
+}
+
+a.nav-link {
+    cursor: pointer;
+}
+
+.help {
+    text-align: right;
+}
+
+i.fa {
+    color: #50B848;
+    cursor: pointer;
+}
+
+i.fa:hover {
+    color: #BCD19B;
+}
+
+.bg-success {
+    background-color: #50B848 !important;
+    height: 50px;
+    font-size: 14;
+    color: black;
+    font-weight: 800;
+}
+
+.bg-danger {
+    background-color: #FA4616 !important;
+    height: 50px;
+    font-size: 14;
+    color: black;
+    font-weight: 800;
+}
+
+.bg-warning {
+    height: 50px;
+    font-size: 14;
+    color: black;
+    font-weight: 800;
+}
+
+.badge-dark {
+    background-color: #004F6C;
+}
