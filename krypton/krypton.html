@@ -30,6 +30,7 @@
     <script src="parameters.js"></script>
     <script src="utilities.js"></script>
     <script src="form.js"></script>
+    <script src="gpr.js"></script>
 
 <body>
     <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
@@ -45,7 +46,7 @@
                     <a class="nav-link" href="#" data-toggle="modal" data-target="#templateModal">Custom Template
                         <span class="sr-only">(current)</span></a>
                 </li>
-                <a class="nav-link" id="defaults" data-toggle="modal" data-target="#gprModal">GPR Settings</a>
+                <a class="nav-link" id="gpr" data-toggle="modal" data-target="#gprModal">GPR Settings</a>
                 </li>
 
                 <li class="nav-item">
@@ -155,11 +156,19 @@
                         </button>
                     </div>
                     <div class="modal-body">
-
+                        <div class="form-group">
+                            <label for="gpr_data">Paste GPR data here:</label>
+                            <textarea class="form-control" id="gpr_data" rows="3"></textarea>
+                        </div>
+                        <button type="button" class="btn btn-primary" id="gpr_process_button">Process</button>
+                        <hr>
+                        <div class="overflow-auto" id="processed_data">
+                            No processed data.
+                        </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" id="gpr_button"
-                        data-dismiss="modal">Done</button>
+                        <button type="button" class="btn btn-secondary" id="cancel_gpr" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-primary" id="gpr_button" data-dismiss="modal">Save</button>
                     </div>
                 </div>
             </div>

@@ -53,3 +53,7 @@ var time_list = [
     0.9,
     1
 ];
+
+
+var gpr_data = [];
+var gpr_data_valid = false;

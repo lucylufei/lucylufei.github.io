@@ -62,3 +62,11 @@ i.fa:hover {
 .badge-dark {
     background-color: #004F6C;
 }
+
+.btn.disabled {
+    pointer-events: none;
+}
+
+#processed_data {
+    max-height: 40vh;
+}
