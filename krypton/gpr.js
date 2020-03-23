@@ -40,12 +40,15 @@ $(document).ready(function () {
         for (var i = 0; i < lines.length; i++) {
             var dataset = lines[i].split("\t");
             if (dataset.length <= 2) {
-                if (dataset[0] != "" && dataset[1] != "")
+                if (dataset[0] != "" && dataset[1] != "" && !isNaN(dataset[0]) && !isNaN(dataset[1]))
                     gpr_data.push({
                         "voltage": dataset[0],
                         "distance": dataset[1]
                     });
-            } else alert("Invalid GPR format used. Please refer to user guide for more information.");
+            } else {
+                alert("Invalid GPR format used. Please refer to user guide for more information.");
+                return;
+            }
         }
 
         if (gpr_data.length == 0) alert("No GPR data was recorded. Please refer to user guide for more information.");
@@ -60,8 +63,13 @@ $(document).ready(function () {
             display_gpr_data();
         }
     });
+
     $("#cancel_gpr").click(function () {
         gpr_data = [];
         gpr_data_valid = false;
+    });
+
+    $("#gpr_clear_button").click(function () {
+        $("#gpr_data").val("");
     });
 });
