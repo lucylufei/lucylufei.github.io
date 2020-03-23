@@ -155,6 +155,7 @@ function check_inputs_fibrillation() {
     if ($("#surface_depth").val() === "") return false;
     if ($("#surface_depth").val() != "0" && $("#surface_resistivity").val() === "") return false;
     if ($("#fault_time").val() === "") return false;
+    if ($("#shock_path").val() == "touch" && $("#contact_resistance").val() === "") return false;
 
     return true;
 
@@ -249,6 +250,7 @@ function calculate_ground_resistance(soil_resistivity, surface_depth, surface_re
 }
 
 function calculate_fibrillation() {
+    p_f = NaN;
 
     var shock_path = $("#shock_path").val();
     var voltage = parseFloat($("#voltage").val());
@@ -258,6 +260,7 @@ function calculate_fibrillation() {
     var surface_conditions = $("#surface_conditions").val();
     var shoe_type = $("#shoe_type").val();
     var fault_time = parseFloat($("#fault_time").val());
+    var contact_resistance = parseFloat($("#contact_resistance").val());
 
     var shoe_resistance = shoe_data[shoe_type].resistance;
     if (voltage > shoe_data[shoe_type].breakdown) shoe_resistance = 0;
@@ -272,10 +275,11 @@ function calculate_fibrillation() {
         if (debug) console.log("Body resistance (processed): " + body_resistance);
         if (debug) console.log("Ground resistance: " + ground_resistance);
         if (debug) console.log("Shoe resistance: " + shoe_resistance);
+        if (debug) console.log("Additional contact resistance (touch only): " + contact_resistance);
 
         var total_resistance;
-        if (shock_path == "touch") total_resistance = body_resistance + (ground_resistance + shoe_resistance) / 2;
-        else if (shock_path == "step") total_resistance = body_resistance + (ground_resistance + shoe_resistance) * 2;
+        if (shock_path == "touch") total_resistance = contact_resistance + body_resistance + (ground_resistance + shoe_resistance) / 2;
+        else if (shock_path == "step") total_resistance =  body_resistance + (ground_resistance + shoe_resistance) * 2;
 
         if (debug) console.log("Total resistance: " + total_resistance);
 
