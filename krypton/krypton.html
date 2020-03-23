@@ -57,8 +57,8 @@
                 </li>
             </ul>
             <span class="navbar-text">
-                <h1><i class="fa fa-repeat" title="Reset"></i>&nbsp;<i class="fa fa-cog" title="Settings"></i>&nbsp;<i
-                        class="fa fa-question-circle" title="Help"></i></h1>
+                <h1><i class="fa fa-repeat" data-toggle="tooltip" title="Reset"></i>&nbsp;<i class="fa fa-cog" data-toggle="tooltip" title="Settings"></i>&nbsp;<i
+                        class="fa fa-question-circle" data-toggle="tooltip" title="Help"></i></h1>
 
             </span>
         </div>
@@ -157,8 +157,9 @@
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
-                            <label for="gpr_data">Paste GPR data here:</label>
+                            <label for="gpr_data">Paste GPR data here: <i class="fa fa-info-circle gpr_tooltip" data-toggle="tooltip" data-placement="right" data-html="true" id="gpr_help"></i></label>
                             <textarea class="form-control" id="gpr_data" rows="3"></textarea>
+                            <small class="form-text text-muted">See user guide for detailed instructions.</small>
                         </div>
                         <button type="button" class="btn btn-primary" id="gpr_process_button">Process</button>
                         <hr>

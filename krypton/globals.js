@@ -57,3 +57,5 @@ var time_list = [
 
 var gpr_data = [];
 var gpr_data_valid = false;
+
+var gpr_helptext = 'Copy two columns from Excel. The first column should contain the step voltage potential. The second column should contain the radial distance from the center of the structure. Click "Process" and confirm that the data is correct.'

@@ -70,3 +70,7 @@ i.fa:hover {
 #processed_data {
     max-height: 40vh;
 }
+
+.tooltip-inner {
+    text-align: left;
+}
