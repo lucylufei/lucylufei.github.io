@@ -39,11 +39,13 @@ function check_inputs_coincidence() {
 // Dependencies: 
 //      n_choose_k
 function calculate_group_coincidence(n, prob, population, fault_rate) {
-    p_c = 0;
+    p_c_prev = 0;
 
     // Sum from at least n affected to total population
     for (var i = n; i <= population; i++) {
-        p_c = p_c + 1 - Math.pow((1 - (n_choose_k(population, i) * Math.pow(prob, i) * Math.pow((1 - prob), (population - i)))), fault_rate);
+        p_c = p_c_prev + 1 - Math.pow((1 - (n_choose_k(population, i) * Math.pow(prob, i) * Math.pow((1 - prob), (population - i)))), fault_rate);
+        if (p_c == p_c_prev) break;
+        p_c_prev = p_c;
     }
     return p_c;
 }
@@ -618,6 +620,7 @@ function calculate_fatality(p_c, p_f) {
                 if (debug) console.log("P_fatality original: " + p_dead);
                 var p_dead1 = p_dead * (1 - breaker_failure);
 
+                var original_fault_time = $("#fault_time").val();
                 $("#fault_time").val(parseFloat($("#fault_time").val()) + breaker_delay);
                 if (debug) console.log("Calculating P_fatality for " + $("#fault_time").val() + "s clearing time...");
 
@@ -630,7 +633,7 @@ function calculate_fatality(p_c, p_f) {
                 p_dead2 = p_dead2 * breaker_failure;
                 p_dead = p_dead1 + p_dead2;
 
-                if (!debug) $("#fault_time").val(parseFloat($("#fault_time").val()) - breaker_delay);
+                if (!debug) $("#fault_time").val(original_fault_time);
             }
             else alert("Warning: Breaker data is missing from database. Continuing without breaker failure rates...");
         }

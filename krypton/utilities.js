@@ -25,7 +25,12 @@ function factorial(n) {
 }
 
 function n_choose_k(n, k) {
-    return factorial(n) / (factorial(k) * factorial(n - k));
+    // return factorial(n) / (factorial(k) * factorial(n - k));
+    var result = 1;
+    for(var i=1; i <= k; i++){
+        result *= (n+1-i)/i;
+    }
+    return result;
 }
 
 function download(content, fileName, contentType) {
