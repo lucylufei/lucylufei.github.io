@@ -806,7 +806,7 @@ $(document).ready(function () {
 
         calculate_fatality(p_c, p_f);
     });
-    $(".input-group").keyup(function (e) {
+    $(".krypton-input").keyup(function (e) {
         // Check for enter key
         if (e.which == 13) {
             console.log("Calculating...");
