@@ -217,56 +217,11 @@ function calculate_body_resistance(conditions, voltage, shock_path) {
         if (debug) console.log("Overriding body resistance value...");
         resistance = parseFloat($("#resistance_override").val());
     } else {
-        if (percentile == 50) {
-            // 0.5,MAX(SWITCH(D13,
-            //     "Dry",MIN(11885*D6^(-0.416),3250),
-            //     "Wet",MIN(-433.2*LN(D6)+3616.6,2175),
-            //     "Salt Wet",MIN(0.0007*D6^2-1.3068*D6+1350.3),1300),775)
-            min_r = 775;
-            if (conditions == "dry") {
-                max_r = 3250;
-                resistance = 11885 * Math.pow(voltage, -0.416);
-            } else if (conditions == "wet") {
-                max_r = 2175;
-                resistance = -433.2 * Math.log(voltage) + 3616.6;
-            } else if (conditions == "salt") {
-                max_r = 1300;
-                resistance = 0.0007 * Math.pow(voltage, 2) - 1.3068 * voltage + 1350.3;
-            }
-        } else if (percentile == 5) {
-            //     0.05,MAX(SWITCH(D14,
-            //     "Dry",MIN(4246*D7^(-0.307),1750),
-            //     "Wet",MIN(-181.6*LN(D7)+1780.6,1175),
-            //     "Salt Wet",MIN(0.0006*D7^2-0.9988*D7+976.73),960),575) 
-            min_r = 575;
-            if (conditions == "dry") {
-                max_r = 1750;
-                resistance = 4246 * Math.pow(voltage, -0.307);
-            } else if (conditions == "wet") {
-                max_r = 1175;
-                resistance = -181.6 * Math.log(voltage) + 1780.6, 1175;
-            } else if (conditions == "salt") {
-                max_r = 960;
-                resistance = 0.0006 * Math.pow(voltage, 2) - 0.9988 * voltage + 976.73;
-            }
-        } else if (percentile == 95) {
-            //     0.95,MAX(SWITCH(D14,
-            //     "Dry",MIN(34527*D7^(-0.531),6100),
-            //     "Wet",MIN(-947.6*LN(D7)+7198.1,4100),
-            //     "Salt Wet",MIN(0.001*D7^2-1.7694*D7+1822.3),1755),1050))
-            min_r = 1050;
-            if (conditions == "dry") {
-                max_r = 6100;
-                resistance = 34527 * Math.pow(voltage, -0.531);
-            } else if (conditions == "wet") {
-                max_r = 4100;
-                resistance = -947.6 * Math.log(voltage) + 7198.1, 4100;
-            } else if (conditions == "salt") {
-                max_r = 1755;
-                resistance = 0.001 * Math.pow(voltage, 2) - 1.7694 * voltage + 1822.3;
-            }
-        }
+        min_r = body_resistance_threshold["min"][percentile];
+        max_r = body_resistance_threshold["max"][conditions][percentile];
+        resistance = interpolate(body_resistance_points[conditions][percentile], voltage);
 
+        if (debug) console.log("Body resistance: " + min_r + " (min), " + max_r + " (max), " + resistance + " (interpolated)");
 
         if (resistance > max_r) resistance = max_r;
         else if (resistance < min_r) resistance = min_r;

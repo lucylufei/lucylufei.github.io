@@ -171,6 +171,31 @@ var body_resistance_points = {
     }
 }
 
+var body_resistance_threshold = {
+    "max" : {
+        "dry" : {
+            "5" : 1750,
+            "50" : 3250, 
+            "95" : 6100
+        }, 
+        "wet" : {
+            "5" : 1175,
+            "50" : 2175,
+            "95" : 4100
+        },
+        "salt" : {
+            "5" : 960,
+            "50" : 1300,
+            "95" : 1755
+        }
+    },
+    "min" : {
+        "5" : 575,
+        "50" : 775,
+        "95" : 1050
+    }
+}
+
 // List of time steps
 var time_list = [
     0.01,
