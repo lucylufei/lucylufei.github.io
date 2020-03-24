@@ -698,32 +698,49 @@ function generate_design_data(prob = 1e-6) {
     if (check_inputs_coincidence() && check_inputs_fibrillation()) {
         var data = [];
 
-        for (var i = 0; i < time_list.length; i++) {
-            var mean = define_mean(time_list[i]);
-            var sigma = define_sd(time_list[i]);
+        var full_time_list = time_list;
+        full_time_list.push(parseFloat($("#fault_time").val()));
+        full_time_list.sort((a, b) => a - b);
+
+        for (var i = 0; i < full_time_list.length; i++) {
+            var mean = define_mean(full_time_list[i]);
+            var sigma = define_sd(full_time_list[i]);
 
             current = inverse_lognormal(prob, mean, sigma);
             voltage = inverse_voltage(current);
+            resistance = voltage / current;
 
             data.push({
-                "time": time_list[i],
+                "shock time": full_time_list[i],
+                "low risk current": current,
+                "low risk voltage": voltage,
                 "mean": mean,
-                "sigma": sigma,
-                "current": current,
-                "voltage": voltage
+                "sigma": sigma
             });
 
             if (debug) console.log({
-                "time": time_list[i],
+                "shock time": full_time_list[i],
+                "low risk current": current,
+                "low risk voltage": voltage,
                 "mean": mean,
-                "sigma": sigma,
-                "current": current,
-                "voltage": voltage
+                "sigma": sigma
             });
         }
     }
 
     return data;
+}
+
+function list_input_parameters() {
+    var content = $("#kryptonForm").serializeArray();
+
+    var parameters = {};
+    for (var i=0; i < content.length; i=i+1) {
+        parameters[content[i].name] = content[i].value;
+    }
+
+    if (debug) console.log(parameters);
+    return parameters;
 }
 
 function define_breaker_failure() {
@@ -918,11 +935,18 @@ $(document).ready(function () {
     });
 
     $("#exportCSV").click(function () {
-        data = generate_design_data()
+        data = generate_design_data();
+        var secondary_data = [];
+        secondary_data.push(list_input_parameters());
+
+        if (debug) console.log(data);
+        if (debug) console.log(secondary_data);
 
         if (data !== null) {
             console.log("Generating CSV...");
-            exportToCsv("design_curve.csv", data);
+            date = new Date()
+            date_string = date.toLocaleDateString().replace(/\//g, "_");
+            exportToCsv("KryptonReport-" + date_string + ".csv", data, secondary_data);
         } else {
             console.log("No data available to generate CSV.");
             if (!debug) alert("No data available to generate CSV. Please calculate first!");

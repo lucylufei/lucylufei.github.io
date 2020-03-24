@@ -43,11 +43,32 @@ function download(content, fileName, contentType) {
     a.click();
 }
 
-function exportToCsv(filename, data) {
+function exportToCsv(filename, data, secondary_data=null) {
     var csvFile = '';
     var keys = '';
     var values;
 
+    if (secondary_data != null) {
+        for (key in secondary_data[0]) {
+            keys += key.toString().replace("_", " ") + ",";
+        }
+        keys = keys.substring(0, keys.length - 1);
+        csvFile += keys + "\n";
+
+        for (var i = 0; i < secondary_data.length; i++) {
+            values = '';
+            for (key in secondary_data[i]) {
+                values += secondary_data[i][key].toString() + ",";
+            }
+            values = values.substring(0, values.length - 1);
+            csvFile += values + "\n";
+        }
+        
+        csvFile += "\n";
+    }
+
+    keys = ""
+    
     for (key in data[0]) {
         keys += key.toString() + ",";
     }
