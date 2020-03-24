@@ -382,6 +382,7 @@ function display_coincidence() {
 
     data = generate_coincidence_data(100);
 
+    if (coincidence_chart) coincidence_chart.destroy();
     coincidence_chart = new Chart(ctx, {
         type: "scatter",
         data: {
@@ -441,6 +442,7 @@ function display_societal_results(p_f) {
         societal_coincidence_data[i].y = societal_coincidence_data[i].y * p_f;
     }
 
+    if (coincidence_chart_B) coincidence_chart_B.destroy();
     coincidence_chart_B = new Chart(ctxB, {
         type: "scatter",
         data: {
@@ -545,7 +547,8 @@ function display_chart(mean, sigma) {
         return a.x - b.x;
     });
 
-    new Chart(ctx, {
+    if (fib_chart) fib_chart.destroy();
+    fib_chart = new Chart(ctx, {
         type: 'scatter',
         data: {
             datasets: [{
