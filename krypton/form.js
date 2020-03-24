@@ -15,6 +15,10 @@ function check_inputs_coincidence() {
         if ($("#fault_time").val() === "") return false;
         if ($("#contact_rate").val() === "") return false;
         if ($("#contact_time").val() === "") return false;
+        if (parseFloat($("#fault_rate").val()) <= 0) return false;
+        if (parseFloat($("#fault_time").val()) <= 0) return false;
+        if (parseFloat($("#contact_rate").val()) <= 0) return false;
+        if (parseFloat($("#contact_time").val()) <= 0) return false;
 
         return true;
     }
@@ -26,6 +30,11 @@ function check_inputs_coincidence() {
         if ($("#gathering_rate").val() === "") return false;
         if ($("#gathering_time").val() === "") return false;
         if ($("#population").val() === "") return false;
+        if (parseFloat($("#fault_rate").val()) <= 0) return false;
+        if (parseFloat($("#fault_time").val()) <= 0) return false;
+        if (parseFloat($("#gathering_rate").val()) <= 0) return false;
+        if (parseFloat($("#gathering_time").val()) <= 0) return false;
+        if (parseFloat($("#population").val()) <= 0) return false;
 
         return true;
     }
@@ -158,6 +167,7 @@ function check_inputs_fibrillation() {
     if ($("#surface_depth").val() != "0" && $("#surface_resistivity").val() === "") return false;
     if ($("#fault_time").val() === "") return false;
     if ($("#shock_path").val() == "touch" && $("#contact_resistance").val() === "") return false;
+    if (parseFloat($("#fault_time").val()) <= 0) return false;
 
     return true;
 
@@ -651,7 +661,7 @@ function calculate_fatality(p_c, p_f) {
         define_risk(p_dead);
         location.href = "#results";
     } else {
-        if (!debug) alert("Please ensure all necessary inputs are entered.");
+        if (!debug) alert("Please ensure all necessary inputs are entered correctly.");
         if (debug) console.log("Please ensure all necessary inputs are entered.");
     }
 
