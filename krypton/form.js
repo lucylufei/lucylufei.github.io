@@ -623,7 +623,7 @@ function calculate_fatality(p_c, p_f) {
         else breaker_failure = parseFloat($("#breaker_failure").html());
         
         if (!(isNaN(breaker_failure))) {
-            var breaker_delay = define_breaker_failure();
+            var breaker_delay = parseFloat($("#breaker_time").val()) / 60;
 
             if (!(isNaN(breaker_delay))) {
                 if (debug) console.log("Breaker failure rate: " + breaker_failure + "%");
@@ -775,9 +775,9 @@ function define_breaker_failure() {
     var breaker_delay = breaker_data[breaker_type].delay[transmission_v]; 
     if (breaker_delay == null) {
         breaker_delay = 0;
-        $("#breaker_time").html("missing from database.");
+        $("#breaker_time").val("");
     }
-    else $("#breaker_time").html(breaker_delay + " cycle(s)");
+    else $("#breaker_time").val(breaker_delay);
 
     breaker_delay = breaker_delay / 60;
     if (debug) console.log("Breaker Delay: " + breaker_delay + " s");
@@ -912,7 +912,10 @@ $(document).ready(function () {
                 define_breaker_failure();
             }
         }
-        else $(".breaker").hide();
+        else {
+            $(".breaker").hide();
+            $("#breaker_time").hide();
+        }
         define_breaker_failure();
     });
 

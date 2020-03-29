@@ -137,8 +137,9 @@
                             Principles. Barton, ACT, 2010.</br>
                             [3] “Quantitative Risk Assessment for Earthing,” Argonium. [Online]. Available:
                             https://argonium.com.au/. [Accessed: 18-Oct-2019]. </br>
-                        </br>
-                            <i class="fa fa-bolt" style="color: #FCD299;"></i>&nbsp; Developed by Lucy, Jenny, Leo, Marko, and Berk. 
+                            </br>
+                            <i class="fa fa-bolt" style="color: #FCD299;"></i>&nbsp; Developed by Lucy, Jenny, Leo,
+                            Marko, and Berk.
                         </small>
                     </div>
                     <div class="modal-footer">
@@ -296,8 +297,13 @@
                             </div>
                             <p class="hidden breaker regular">Probability of circuit breaker failure is <span
                                     id="breaker_failure">1%</span></p>
-                            <p class="hidden breaker regular">Clearing time delay is <span id="breaker_time">1
-                                    cycle</span></p>
+                        </form>
+                        <form class="form-inline">
+                            <div class="form-group hidden regular" id="breaker_delay">
+                                <p style="margin-bottom: 0;">Clearing time delay is</p> &nbsp;
+                                <input type="number" min="0" class="form-control" id="breaker_time"
+                                    style="width: 5em;" value=1> &nbsp; <p style="margin-bottom: 0;">cycle(s)</p>
+                            </div>
                         </form>
                     </div>
                     <div class="modal-footer">
@@ -613,7 +619,7 @@
 
 <footer>
     UBC Capstone 2020 &nbsp; <i class="fa fa-bolt" style="color: #FCD299;"></i> </br>
-    &bull; Group 72 for BC Hydro &bull; 
+    &bull; Group 72 for BC Hydro &bull;
 </footer>
 
 </html>
