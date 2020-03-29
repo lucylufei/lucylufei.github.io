@@ -619,11 +619,15 @@ function calculate_fatality(p_c, p_f) {
         if (debug) console.log("Including breaker data in calculation...");
 
         var breaker_failure;
-        if ($("#breaker_type").val() == "custom") breaker_failure = parseFloat($("#breaker_failure_override").val())
+        if ($("#breaker_type").val() == "custom") breaker_failure = parseFloat($("#breaker_failure_override").val());
         else breaker_failure = parseFloat($("#breaker_failure").html());
         
         if (!(isNaN(breaker_failure))) {
-            var breaker_delay = parseFloat($("#breaker_time").val()) / 60;
+            var breaker_delay 
+            if ($("#breaker_type").val() == "custom") breaker_delay = parseFloat($("#breaker_time_override").val());
+            else breaker_delay = parseFloat($("#breaker_time").val());
+
+            breaker_delay = breaker_delay / 60;
 
             if (!(isNaN(breaker_delay))) {
                 if (debug) console.log("Breaker failure rate: " + breaker_failure + "%");
@@ -752,6 +756,14 @@ function list_input_parameters() {
         parameters[content[i].name] = content[i].value;
     }
 
+    content = $("#settingForm").serializeArray();
+    for (var i=0; i < content.length; i=i+1) {
+        parameters[content[i].name] = content[i].value;
+    }
+
+    parameters["breaker_delay"] = ($("#breaker_type").val() == "custom") ? $("#breaker_time_override").val() : $("#breaker_time").val();
+    parameters["breaker_failure"] = ($("#breaker_type").val() == "custom") ? $("#breaker_failure_override").val() : $("#breaker_failure").html();
+
     if (debug) console.log(parameters);
     return parameters;
 }
@@ -770,7 +782,7 @@ function define_breaker_failure() {
 
     var breaker_failure = breaker_data[breaker_type].prob[transmission_v];
     if (breaker_failure == null) $("#breaker_failure").html("missing from database.");
-    else $("#breaker_failure").html((breaker_failure * 100 * breaker_number).toFixed(4) + "%");
+    else $("#breaker_failure").html((breaker_failure * 100 * breaker_number).toFixed(2) + "%");
 
     var breaker_delay = breaker_data[breaker_type].delay[transmission_v]; 
     if (breaker_delay == null) {

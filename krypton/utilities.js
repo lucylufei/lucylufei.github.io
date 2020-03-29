@@ -50,7 +50,7 @@ function exportToCsv(filename, data, secondary_data=null) {
 
     if (secondary_data != null) {
         for (key in secondary_data[0]) {
-            keys += key.toString().replace("_", " ") + ",";
+            keys += key.toString().replace(/_/g, " ") + ",";
         }
         keys = keys.substring(0, keys.length - 1);
         csvFile += keys + "\n";
