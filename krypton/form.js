@@ -210,8 +210,11 @@ function calculate_cutoff(fault_time) {
     };
 
     // mA
-    cutoff.min = -124.32 * Math.pow(fault_time, 3) + 267.25 * Math.pow(fault_time, 2) - 194.46 * fault_time + 65.867;
-    cutoff.max = 4233 * Math.pow(fault_time, 4) - 10729 * Math.pow(fault_time, 3) + 11171 * Math.pow(fault_time, 2) - 6545.9 * fault_time + 2012;
+    // cutoff.min = -124.32 * Math.pow(fault_time, 3) + 267.25 * Math.pow(fault_time, 2) - 194.46 * fault_time + 65.867;
+    // cutoff.max = 4233 * Math.pow(fault_time, 4) - 10729 * Math.pow(fault_time, 3) + 11171 * Math.pow(fault_time, 2) - 6545.9 * fault_time + 2012;
+
+    cutoff.min = 0;
+    cutoff.max = 1000000;
 
     return cutoff;
 }
