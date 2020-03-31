@@ -129,27 +129,27 @@ function customRadius(context) {
 // Interpolate between two points
 // p1: x, y
 // p2: x, y
-function linear_approx(p1, p2, x) {
-    var slope = (p2.y - p1.y) / (p2.x - p1.x);
-    return p1.y + ((x - p1.x) * slope);
+function linear_approx(p1, p2, x, keyx, keyy) {
+    var slope = (p2[keyy] - p1[keyy]) / (p2[keyx] - p1[keyx]);
+    return p1[keyy] + ((x - p1[keyx]) * slope);
 }
 
-function interpolate(data, value) {
+function interpolate(data, value, keyx="x", keyy="y") {
     index = 0;
 
     // Otherwise linear approximate
     for (var i=0; i<data.length-1; i++) {
         index = i;
-        if (value < data[i].x) {
+        if (value < data[i][keyx]) {
             break;
         }
-        else if (value < data[i+1].x) {
+        else if (value < data[i+1][keyx]) {
             break;
         }
     }
 
     if (index > data.length-2) index = data.length - 2;
-    return linear_approx(data[index], data[index + 1], value);
+    return linear_approx(data[index], data[index + 1], value, keyx, keyy);
 }
 
 function load_defaults() {
