@@ -245,7 +245,8 @@ function calculate_body_resistance(conditions, voltage, shock_path) {
     
     if (debug) console.log("Body resistance (raw): " + resistance);
 
-    if (shock_path == "step") return resistance * 0.275;
+    // if (shock_path == "step") return resistance * 0.275;
+    if (shock_path == "step") return resistance;
     else if (shock_path == "touch") return resistance * 0.75;
 }
 
@@ -847,18 +848,28 @@ $(document).ready(function () {
     $("#calculate").click(function () {
         console.log("Calculating...");
         var p_c = calculate_coincidence();
+
+        // If GPR data exists, use the worst case voltage to calculate fibrillation
+        if (gpr_data_valid && $("#analysis_type").val() == "societal") $("#voltage").val(gpr_data[0].voltage);
         var p_f = calculate_fibrillation();
 
         calculate_fatality(p_c, p_f);
+
+        if (gpr_data_valid && $("#analysis_type").val() == "societal") calculate_gpr();
     });
     $(".krypton-input").keyup(function (e) {
         // Check for enter key
         if (e.which == 13) {
             console.log("Calculating...");
             var p_c = calculate_coincidence();
+
+            // If GPR data exists, use the worst case voltage to calculate fibrillation
+            if (gpr_data_valid && $("#analysis_type").val() == "societal") $("#voltage").val(gpr_data[0].voltage);
             var p_f = calculate_fibrillation();
 
             calculate_fatality(p_c, p_f);
+
+            if (gpr_data_valid && $("#analysis_type").val() == "societal") calculate_gpr();
         }
     });
 
