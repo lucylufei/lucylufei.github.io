@@ -50,9 +50,9 @@
                 <a class="nav-link" id="gpr" data-toggle="modal" data-target="#gprModal">GPR Settings</a>
                 </li>
 
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link" id="calculate">Calculate/View Results</a>
-                </li>
+                </li> -->
                 <li class="nav-item">
                     <a class="nav-link" href="#" id="exportCSV">Export to Excel</a>
                 </li>
@@ -67,6 +67,12 @@
     </nav>
 
     <div class="container" style="padding-top: 2em; padding-bottom: 2em;">
+
+        <div style="vertical-align: middle;">
+            <button type="button" class="btn-primary" id="calculate">
+                <h3><i class="fa fa-calculator" style="color: white;"></i><span> Calculate</span></h3>
+            </button>
+        </div>
 
         <!-- HELP TEXT MODAL -->
         <div class="modal fade" id="helpModal" tabindex="-1" role="dialog">
@@ -88,11 +94,13 @@
                             Probability of Coincidence
                         </h4>
                         <p>
-                            For the <i>individual</i> case, We define coincidence as the following two events:
+                            For the <i>individual</i> case, we define coincidence as the following two events:
                             <ul>
                                 <li>Contact is established during the presence of a fault </li>
                                 <li>A fault occurs during contact </li>
                             </ul>
+                            For the <i>societal</i> case, we define coincidence as at least one case of individual coincidence 
+                            occuring.
                         </p>
                         <p>
                             We calculate the probability of coincidence separately for the case of step voltage versus
