@@ -915,7 +915,10 @@ $(document).ready(function () {
         var type = this.value;
 
         if (type == "touch") $(".touch").show();
-        else $(".touch").hide();
+        else {
+            $(".touch").hide();
+            $("#surface_conditions").val("salt");
+        }
     });
 
     $("#surface_depth").change(function () {
