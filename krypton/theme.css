@@ -90,25 +90,32 @@ i.fa:hover {
     /* Remove outline */
     padding: 15px;
     /* Some padding */
-    border-radius: 4vh;
-    height: 7vh;
-    min-width: 7vh;
+    border-radius: 4rem;
+    height: 4rem;
+    min-width: 4rem;
     box-shadow: 5px 5px 12px rgba(0, 0, 0, 0.29);
     transition: transform .2s;
     background-color: #50B848;
 }
-
-#calculate:hover {
-    background-color: #50B848;
-    transform: translateY(-10px);
-    padding-left: 1.5em;
-    padding-right: 1.5em;
+@media (hover:hover) {
+    #calculate:hover {
+        background-color: #50B848;
+        transform: translateY(-10px);
+        padding-left: 1.5em;
+        padding-right: 1.5em;
+    }
 }
 
-#calculate span {
-    display: none;
+@media (hover:hover) {
+    #calculate span {
+        display: none;
+    }
+    #calculate:hover span{
+        display: inline;
+    }
 }
-
-#calculate:hover span{
-    display: inline;
+@media (hover:none), (hover:on-demand) {
+    #calculate span {
+        display: inline;
+    }
 }
