@@ -204,17 +204,9 @@ function define_sd(fault_time) {
 // Defines the cutoff value applied to the probability of fibrillation log normal distribution
 // Dependences: None
 function calculate_cutoff(fault_time) {
-    var cutoff = {
-        "min": null,
-        "max": null
-    };
-
     // mA
-    // cutoff.min = -124.32 * Math.pow(fault_time, 3) + 267.25 * Math.pow(fault_time, 2) - 194.46 * fault_time + 65.867;
-    // cutoff.max = 4233 * Math.pow(fault_time, 4) - 10729 * Math.pow(fault_time, 3) + 11171 * Math.pow(fault_time, 2) - 6545.9 * fault_time + 2012;
-
-    cutoff.min = 0;
-    cutoff.max = 1000000;
+    // = 692.69x-0.552
+    cutoff.min = 692.69 * Math.pow(fault_time * 1000, -0.552);
 
     return cutoff;
 }
@@ -312,7 +304,7 @@ function calculate_fibrillation() {
         var cutoff = calculate_cutoff(fault_time);
         current_ma = current * 1000;
 
-        if (debug) console.log("Current Cutoff: " + cutoff.min + "mA to " + cutoff.max + "mA");
+        if (debug) console.log("Current Cutoff: " + cutoff.min + "mA");
 
         var mean = define_mean(fault_time);
         if (debug) console.log("Lognormal mean: " + mean);
@@ -320,10 +312,9 @@ function calculate_fibrillation() {
         var sigma = define_sd(fault_time);
         if (debug) console.log("Lognormal SD: " + sigma);
 
-        if (current_ma > cutoff.max) p_f = 1;
+        if (p_f > 0.99) p_f = 1;
         else if (current_ma < cutoff.min) p_f = 0;
         else {
-
             p_f = cdfLogNormal(current * 1000, mean, sigma);
         }
 
@@ -378,9 +369,13 @@ function generate_data(mean, sigma, current_ma=100) {
 
     for (var i = center-5; i < center+5; i++) {
         current = Math.pow(10, i / 5 + 1);
+        
+        var p_f = (current_ma > cutoff.min) ? (cdfLogNormal(current, mean, sigma)).toExponential(3) : 0;
+        if (p_f > 0.99) p_f = 1;
+
         data.push({
             x: (current).toExponential(3),
-            y: (cdfLogNormal(current, mean, sigma)).toExponential(3)
+            y: p_f
         });
     }
 
