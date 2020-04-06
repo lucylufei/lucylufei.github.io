@@ -7,6 +7,9 @@ var current_ma = NaN;
 var coincidence_chart;
 var coincidence_chart_B;
 var fib_chart;
+var gpr_avg_chart;
+var gpr_best_chart;
+var gpr_worst_chart;
 
 // Log Normal Standard Deviation
 var sd = 0.35;
