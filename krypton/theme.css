@@ -96,26 +96,24 @@ i.fa:hover {
     box-shadow: 5px 5px 12px rgba(0, 0, 0, 0.29);
     transition: transform .2s;
     background-color: #50B848;
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+    display: inline;
 }
 @media (hover:hover) {
     #calculate:hover {
         background-color: #50B848;
-        transform: translateY(-10px);
-        padding-left: 1.5em;
-        padding-right: 1.5em;
+        transform: scale(1.1);
     }
 }
 
-@media (hover:hover) {
+@media only screen and (max-width: 768px) {
     #calculate span {
         display: none;
     }
-    #calculate:hover span{
-        display: inline;
-    }
-}
-@media (hover:none), (hover:on-demand) {
-    #calculate span {
-        display: inline;
+    
+    #calculate {
+        padding-left: 0;
+        padding-right: 0;
     }
 }
