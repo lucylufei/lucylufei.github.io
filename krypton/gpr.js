@@ -236,7 +236,7 @@ $(document).ready(function () {
     $("#gpr_help").prop("title", gpr_helptext);
 
     $("#gpr").click(function () {
-        if (!gpr_data_valid) {
+        if (!gpr_data_valid || $("#gpr_population").val() == "") {
             $("#gpr_button").addClass("disabled");
             $("#processed_data").html("No processed data.")
         } else $("#gpr_button").removeClass("disabled");
@@ -274,27 +274,20 @@ $(document).ready(function () {
             gpr_data.sort(function (a, b) {
                 return a.distance - b.distance;
             });
-            $("#gpr_button").removeClass("disabled");
+            if ($("#gpr_population").val()!="") $("#gpr_button").removeClass("disabled");
             gpr_data_valid = true;
             display_gpr_data();
         }
     });
 
+    $("#gpr_population").change(function() {
+        if (gpr_data_valid) $("#gpr_button").removeClass("disabled");
+    });
+
     $("#cancel_gpr").click(function () {
         gpr_data = [];
         gpr_data_valid = false;
-        
-        // $("#voltage").removeAttr("disabled");
     });
-    
-    // $("#gpr_button").click(function () {
-    //     if (gpr_data_valid && $("#analysis_type").val() == "societal") {
-    //         $("#voltage").attr("disabled", "disabled");
-    //         $("#voltage").prop("title", "Using GPR settings");
-    //         $("#voltage").prop("data-toggle", "tooltip");
-    //     }
-    //     else $("#voltage").removeAttr("disabled");
-    // })
 
     $("#gpr_clear_button").click(function () {
         $("#gpr_data").val("");
