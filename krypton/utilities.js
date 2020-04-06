@@ -119,7 +119,7 @@ function inverse_lognormal(prob, mean, sd) {
 function customRadius(context) {
     let index = context.dataIndex;
     let value = context.dataset.data[index];
-    return (value.x == current_ma) ?
+    return (value.x == (current_ma).toExponential(3)) ?
         15 :
         2;
 }
