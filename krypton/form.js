@@ -147,7 +147,7 @@ function generate_coincidence_data(max) {
         if (debug) console.log("Group P_Coincidence (" + n + "): " + p_c);
         data.push({
             x: n,
-            y: p_c
+            y: (p_c).toExponential(3)
         });
         n = n + 1;
     }
@@ -370,15 +370,17 @@ function define_risk(p_dead) {
     }
 }
 
-function generate_data(mean, sigma) {
+function generate_data(mean, sigma, current_ma=100) {
     var data = [];
     var current;
 
-    for (var i = 0; i < 10; i++) {
+    var center = (Math.round(Math.log10(current_ma)) - 1) * 5;
+
+    for (var i = center-5; i < center+5; i++) {
         current = Math.pow(10, i / 5 + 1);
         data.push({
-            x: current,
-            y: cdfLogNormal(current, mean, sigma)
+            x: (current).toExponential(3),
+            y: (cdfLogNormal(current, mean, sigma)).toExponential(3)
         });
     }
 
@@ -453,7 +455,7 @@ function display_societal_results(p_f) {
     var societal_coincidence_data = generate_coincidence_data(100);
 
     for (var i = 0; i < societal_coincidence_data.length; i++) {
-        societal_coincidence_data[i].y = societal_coincidence_data[i].y * p_f;
+        societal_coincidence_data[i].y = (societal_coincidence_data[i].y * p_f).toExponential(3);
     }
 
     if (coincidence_chart_B) coincidence_chart_B.destroy();
@@ -505,6 +507,9 @@ function display_societal_results(p_f) {
 
 
 function add_threshold_data(chart, p_f) {
+    // If threshold data is already present, skip
+    if (chart.data.datasets.length > 1) return;
+    
     var threshold;
 
     var safe_data = [];
@@ -512,7 +517,7 @@ function add_threshold_data(chart, p_f) {
         threshold = 1e-6 / p_f;
         safe_data.push({
             x: i,
-            y: threshold
+            y: (threshold).toExponential(3)
         });
     }
     var warning_data = [];
@@ -520,7 +525,7 @@ function add_threshold_data(chart, p_f) {
         threshold = 1e-5 / p_f;
         warning_data.push({
             x: i,
-            y: threshold
+            y: (threshold).toExponential(3)
         });
     }
     chart.data.datasets.push({
@@ -548,12 +553,13 @@ function display_chart(mean, sigma) {
 
     // Add point of interest 
     highlight_point = [{
-        "x": current_ma,
-        "y": p_f
+        "x": (current_ma).toExponential(3),
+        "y": (p_f).toExponential(3)
     }];
 
     // Generate fibrillation curve
-    data = generate_data(mean, sigma);
+    data = generate_data(mean, sigma, current_ma);
+    // data = generate_data(mean, sigma);
     data = highlight_point.concat(data);
 
     // Sort data
@@ -593,6 +599,7 @@ function display_chart(mean, sigma) {
                     },
                     ticks: {
                         max: 1,
+                        // min: 1e-15,
                         maxTicksLimit: 5,
                         mirror: true
                     }
@@ -849,8 +856,8 @@ $(document).ready(function () {
         console.log("Calculating...");
         var p_c = calculate_coincidence();
 
-        // If GPR data exists, use the worst case voltage to calculate fibrillation
-        if (gpr_data_valid && $("#analysis_type").val() == "societal") $("#voltage").val(gpr_data[0].voltage);
+        console.log("GPR data: " + gpr_data_valid);
+
         var p_f = calculate_fibrillation();
 
         calculate_fatality(p_c, p_f);
@@ -863,8 +870,8 @@ $(document).ready(function () {
             console.log("Calculating...");
             var p_c = calculate_coincidence();
 
-            // If GPR data exists, use the worst case voltage to calculate fibrillation
-            if (gpr_data_valid && $("#analysis_type").val() == "societal") $("#voltage").val(gpr_data[0].voltage);
+            console.log("GPR data: " + gpr_data_valid);
+            
             var p_f = calculate_fibrillation();
 
             calculate_fatality(p_c, p_f);
