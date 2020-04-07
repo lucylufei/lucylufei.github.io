@@ -306,10 +306,10 @@ function calculate_fibrillation() {
 
         if (debug) console.log("Current Cutoff: " + cutoff.min + "mA");
 
-        var mean = define_mean(fault_time);
+        mean = define_mean(fault_time);
         if (debug) console.log("Lognormal mean: " + mean);
 
-        var sigma = define_sd(fault_time);
+        sigma = define_sd(fault_time);
         if (debug) console.log("Lognormal SD: " + sigma);
 
         if (p_f > 0.99) p_f = 1;
@@ -319,7 +319,6 @@ function calculate_fibrillation() {
         }
 
         $("#PF").html(p_f.toExponential(3));
-        display_chart(mean, sigma);
 
         if ($("#analysis_type").val() == "societal") {
             add_threshold_data(coincidence_chart, p_f);
@@ -738,8 +737,8 @@ function generate_design_data(prob = 1e-6) {
         full_time_list.sort((a, b) => a - b);
 
         for (var i = 0; i < full_time_list.length; i++) {
-            var mean = define_mean(full_time_list[i]);
-            var sigma = define_sd(full_time_list[i]);
+            mean = define_mean(full_time_list[i]);
+            sigma = define_sd(full_time_list[i]);
 
             current = inverse_lognormal(prob, mean, sigma);
             voltage = inverse_voltage(current);
@@ -867,6 +866,7 @@ $(document).ready(function () {
 
         var p_f = calculate_fibrillation();
 
+        display_chart(mean, sigma);
         calculate_fatality(p_c, p_f);
 
         if (gpr_data_valid && $("#analysis_type").val() == "societal") calculate_gpr();
@@ -881,6 +881,7 @@ $(document).ready(function () {
             
             var p_f = calculate_fibrillation();
 
+            display_chart(mean, sigma);
             calculate_fatality(p_c, p_f);
 
             if (gpr_data_valid && $("#analysis_type").val() == "societal") calculate_gpr();

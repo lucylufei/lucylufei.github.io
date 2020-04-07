@@ -5,6 +5,8 @@ var fib_chart;
 var gpr_avg_chart;
 var gpr_best_chart;
 var gpr_worst_chart;
+var mean;
+var sigma;
 
 // Other global variables
 var p_f = NaN;
