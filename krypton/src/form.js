@@ -920,7 +920,10 @@ $(document).ready(function () {
     $('#shock_path').change(function () {
         var type = this.value;
 
-        if (type == "touch") $(".touch").show();
+        if (type == "touch") {
+            $(".touch").show();
+            $("#surface_conditions").val("dry");
+        }
         else {
             $(".touch").hide();
             $("#surface_conditions").val("salt");
