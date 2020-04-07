@@ -435,6 +435,12 @@ function display_coincidence() {
                         fontSize: 18
                     }
                 }]
+            },
+            elements: {
+                point: {
+                    radius: customRadius2,
+                    display: true
+                }
             }
         }
     });
@@ -495,6 +501,12 @@ function display_societal_results(p_f) {
                         fontSize: 18
                     }
                 }]
+            },
+            elements: {
+                point: {
+                    radius: customRadius2,
+                    display: true
+                }
             }
         }
     });
