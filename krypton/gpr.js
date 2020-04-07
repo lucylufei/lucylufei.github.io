@@ -9,6 +9,10 @@ function display_gpr_data() {
     gpr_table += "</tbody></table>";
 
     $("#processed_data").html(gpr_table);
+
+    $("#distance").show();
+    $("#min_distance").val(gpr_data[0].distance);
+    $("#max_distance").val(gpr_data[gpr_data.length-1].distance);
 }
 
 function calculate_gpr() {
@@ -17,31 +21,40 @@ function calculate_gpr() {
     var data_best = [];
     var data_avg = [];
 
+    var voltage;
+    var distance;
+
     var saved_voltage = $("#voltage").val();
 
     // Calculate worst case
-    $("#voltage").val(gpr_data[0].voltage);
+    var min_distance = parseFloat($("#min_distance").val());
+    voltage = interpolate(gpr_data, min_distance, keyx="distance", keyy="voltage");
+    $("#voltage").val(voltage);
     var p_f_worst = calculate_fibrillation();
-    if (debug) console.log("Worst case P_fib (" + gpr_data[0].voltage + "V): " + p_f_worst);
+    if (debug) console.log("Worst case P_fib (" + voltage + "V): " + p_f_worst);
     
     // Calculate best case
-    $("#voltage").val(gpr_data[gpr_data.length-1].voltage);
+    var max_distance = parseFloat($("#max_distance").val());
+    voltage = interpolate(gpr_data, max_distance, keyx="distance", keyy="voltage");
+    $("#voltage").val(voltage);
     var p_f_best = calculate_fibrillation();
-    if (debug) console.log("Best case P_fib (" + gpr_data[gpr_data.length-1].voltage + "V): " + p_f_best);
+    if (debug) console.log("Best case P_fib (" + voltage + "V): " + p_f_best);
 
     // Calculate average case
     var population = parseFloat($("#gpr_population").val());
-    var voltage;
-    var distance;
-    var p_f_avg = 0;
+    var p_f_total = 0;
+    var p_f_avg;
 
     if (debug) console.log("Average case P_fib for " + population + " people:");
+    var delta_distance = (max_distance - min_distance) / population;
     for (var i=0; i<population; i++) {
-        distance = gpr_data[gpr_data.length-1].distance / population * i;
+        distance = min_distance + delta_distance * i;
         voltage = interpolate(gpr_data, distance, keyx="distance", keyy="voltage");
         $("#voltage").val(voltage);
-        p_f_avg += calculate_fibrillation();
-        if (debug) console.log("Voltage " + i + ": " + voltage + " V");
+        p_f_avg = calculate_fibrillation();
+        if (debug) console.log("Voltage " + i + ": " + voltage + " V" + "\t" + "Distance: " + distance);
+        if (debug) console.log("P_fib: " + p_f_avg);
+        p_f_total += p_f_avg;
     }
     p_f_avg = p_f_avg / population;
     if (debug) console.log("Average case P_fib: " + p_f_avg);
@@ -240,6 +253,9 @@ $(document).ready(function () {
             $("#gpr_button").addClass("disabled");
             $("#processed_data").html("No processed data.")
         } else $("#gpr_button").removeClass("disabled");
+
+        if ($("#min_distance").val() == "") $("#min_distance").val(gpr_data[0].distance);
+        if ($("#max_distance").val() == "") $("#max_distance").val(gpr_data[gpr_data.length-1].distance);
     });
 
     $("#gpr_process_button").click(function () {

@@ -173,6 +173,24 @@
                                     class="form-control" id="gpr_population">
                             </div>
                         </div>
+                        <div class="row hidden" id="distance">
+                            <div class="form-group col">
+                                <label for="min_distance">Closest Distance</label>
+                                <div class="input-group">
+                                    <input type="number" min="0"
+                                        oninput="if(this.value<0) this.value = Math.abs(this.value)"
+                                        class="form-control" id="min_distance">
+                                </div>
+                            </div>
+                            <div class="form-group col">
+                                <label for="max_distance">Farthest Distance</label>
+                                <div class="input-group">
+                                    <input type="number" min="0"
+                                        oninput="if(this.value<0) this.value = Math.abs(this.value)"
+                                        class="form-control" id="max_distance">
+                                </div>
+                            </div>
+                        </div>
                         <div class="form-group">
                             <label for="gpr_data"><span style="color: red;">&#42;</span> Paste GPR data here: <i class="fa fa-info-circle gpr_tooltip"
                                     data-toggle="tooltip" data-placement="right" data-html="true"
