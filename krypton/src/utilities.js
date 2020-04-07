@@ -121,13 +121,13 @@ function customRadius(context) {
     let value = context.dataset.data[index];
     return (value.x == (current_ma).toExponential(3)) ?
         15 :
-        5;
+        2;
 }
 function customRadius2(context) {
     let label = context.dataset.label;
     return (label.includes("Threshold")) ?
         1 :
-        5;
+        10;
 }
 
 
