@@ -166,7 +166,7 @@
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
-                            <label for="gpr_population">Affected Population</label>
+                            <label for="gpr_population"><span style="color: red;">&#42;</span> Affected Population</label>
                             <div class="input-group">
                                 <input type="number" min="0"
                                     oninput="if(this.value<0) this.value = Math.abs(this.value)"
@@ -174,7 +174,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="gpr_data">Paste GPR data here: <i class="fa fa-info-circle gpr_tooltip"
+                            <label for="gpr_data"><span style="color: red;">&#42;</span> Paste GPR data here: <i class="fa fa-info-circle gpr_tooltip"
                                     data-toggle="tooltip" data-placement="right" data-html="true"
                                     id="gpr_help"></i></label>
                             <textarea class="form-control" id="gpr_data" rows="3"></textarea>
