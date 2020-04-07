@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel = "stylesheet">
     <link rel="icon" href="logo.png">
     <link rel="apple-touch-icon" sizes="128x128" href="logo.png">
     <link rel="stylesheet" href="theme.css">
@@ -23,6 +24,7 @@
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
@@ -173,22 +175,11 @@
                                     class="form-control" id="gpr_population">
                             </div>
                         </div>
-                        <div class="row hidden" id="distance">
-                            <div class="form-group col">
-                                <label for="min_distance">Closest Distance</label>
-                                <div class="input-group">
-                                    <input type="number" min="0"
-                                        oninput="if(this.value<0) this.value = Math.abs(this.value)"
-                                        class="form-control" id="min_distance">
-                                </div>
-                            </div>
-                            <div class="form-group col">
-                                <label for="max_distance">Farthest Distance</label>
-                                <div class="input-group">
-                                    <input type="number" min="0"
-                                        oninput="if(this.value<0) this.value = Math.abs(this.value)"
-                                        class="form-control" id="max_distance">
-                                </div>
+                        <div class="hidden" id="distance" style="padding-bottom: 1.5em;">
+                            <label for="distance_range">Distance Range:</label>
+                            <div id="distance_range">
+                                <div id="min-handle" class="ui-slider-handle"></div>
+                                <div id="max-handle" class="ui-slider-handle"></div>
                             </div>
                         </div>
                         <div class="form-group">

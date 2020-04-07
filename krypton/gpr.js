@@ -10,9 +10,27 @@ function display_gpr_data() {
 
     $("#processed_data").html(gpr_table);
 
+    // Show Slider
     $("#distance").show();
-    $("#min_distance").val(gpr_data[0].distance);
-    $("#max_distance").val(gpr_data[gpr_data.length-1].distance);
+    var min_handle = $("#min-handle");
+    var max_handle = $("#max-handle");
+    min_handle.text(gpr_data[0].distance);
+    max_handle.text(gpr_data[gpr_data.length-1].distance);
+
+    $("#distance_range").slider({
+        range: true,
+        min: (gpr_data[0].distance - 10 > 0) ? (gpr_data[0].distance - 10 > 0) : 0,
+        max: gpr_data[gpr_data.length-1].distance + 10,
+        values: [ gpr_data[0].distance, gpr_data[gpr_data.length-1].distance ],
+        slide: function( event, ui ) {
+            min_handle.text(ui.values[0]);
+            max_handle.text(ui.values[1]);
+        },
+        create: function() {
+            min_handle.text(gpr_data[0].distance);
+            max_handle.text(gpr_data[gpr_data.length-1].distance);
+        }
+      });
 }
 
 function calculate_gpr() {
@@ -27,14 +45,14 @@ function calculate_gpr() {
     var saved_voltage = $("#voltage").val();
 
     // Calculate worst case
-    var min_distance = parseFloat($("#min_distance").val());
+    var min_distance = parseFloat($("#min-handle").text());
     voltage = interpolate(gpr_data, min_distance, keyx="distance", keyy="voltage");
     $("#voltage").val(voltage);
     var p_f_worst = calculate_fibrillation();
     if (debug) console.log("Worst case P_fib (" + voltage + "V): " + p_f_worst);
     
     // Calculate best case
-    var max_distance = parseFloat($("#max_distance").val());
+    var max_distance = parseFloat($("#max-handle").text());
     voltage = interpolate(gpr_data, max_distance, keyx="distance", keyy="voltage");
     $("#voltage").val(voltage);
     var p_f_best = calculate_fibrillation();
@@ -56,7 +74,7 @@ function calculate_gpr() {
         if (debug) console.log("P_fib: " + p_f_avg);
         p_f_total += p_f_avg;
     }
-    p_f_avg = p_f_avg / population;
+    p_f_avg = p_f_total / population;
     if (debug) console.log("Average case P_fib: " + p_f_avg);
 
     $("#gpr_results").show();

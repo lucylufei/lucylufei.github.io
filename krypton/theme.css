@@ -117,3 +117,21 @@ i.fa:hover {
         padding-right: 0;
     }
 }
+
+#min-handle {
+    width: 2.2em;
+    height: 1.5em;
+    padding-left: 0.5em;
+    color: black;
+}
+#max-handle {
+    width: 2.2em;
+    height: 1.5em;
+    padding-left: 0.5em;
+    color: black;
+}
+
+.ui-widget-header {
+    background: #50B848;
+}
+
