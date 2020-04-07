@@ -60,21 +60,21 @@ function calculate_gpr() {
 
     // Calculate average case
     var population = parseFloat($("#gpr_population").val());
-    var p_f_total = 0;
+    var p_f_total = 1;
     var p_f_avg;
 
     if (debug) console.log("Average case P_fib for " + population + " people:");
     var delta_distance = (max_distance - min_distance) / population;
-    for (var i=0; i<population; i++) {
+    for (var i=0; i<=population; i++) {
         distance = min_distance + delta_distance * i;
         voltage = interpolate(gpr_data, distance, keyx="distance", keyy="voltage");
         $("#voltage").val(voltage);
         p_f_avg = calculate_fibrillation();
         if (debug) console.log("Voltage " + i + ": " + voltage + " V" + "\t" + "Distance: " + distance);
         if (debug) console.log("P_fib: " + p_f_avg);
-        p_f_total += p_f_avg;
+        p_f_total *= p_f_avg;
     }
-    p_f_avg = p_f_total / population;
+    p_f_avg = Math.pow(p_f_total, 1/(population+1));
     if (debug) console.log("Average case P_fib: " + p_f_avg);
 
     $("#gpr_results").show();
@@ -153,6 +153,12 @@ function plot_gpr(data_avg, data_best, data_worst) {
                         fontSize: 18
                     }
                 }]
+            },
+            elements: {
+                point: {
+                    radius: customRadius2,
+                    display: true
+                }
             }
         }
     });
@@ -201,6 +207,12 @@ function plot_gpr(data_avg, data_best, data_worst) {
                         fontSize: 18
                     }
                 }]
+            },
+            elements: {
+                point: {
+                    radius: customRadius2,
+                    display: true
+                }
             }
         }
     });
@@ -249,6 +261,12 @@ function plot_gpr(data_avg, data_best, data_worst) {
                         fontSize: 18
                     }
                 }]
+            },
+            elements: {
+                point: {
+                    radius: customRadius2,
+                    display: true
+                }
             }
         }
     });
