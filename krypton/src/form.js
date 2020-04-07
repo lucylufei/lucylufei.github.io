@@ -694,7 +694,7 @@ function inverse_voltage(current) {
 
     var shoe_resistance = shoe_data[shoe_type].resistance;
 
-    var body_resistance = calculate_body_resistance(surface_conditions, voltage, shock_path);
+    var body_resistance = parseFloat($("#resistance_override").val());
     var ground_resistance = calculate_ground_resistance(soil_resistivity, surface_depth, surface_resistivity);
 
     var total_resistance;
