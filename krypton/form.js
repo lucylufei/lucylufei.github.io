@@ -895,6 +895,10 @@ $(document).ready(function () {
         console.log("Opening manual...")
         window.open("Krypton User Guide.pdf", "_blank");
     });
+
+    $(".fa-bolt").click(function () {
+        $(".fa-bolt").effect( "pulsate", {"times":5},  100).dequeue().effect( "bounce", {"distance" : 50});
+    })
     // ----------------------------------//
 
     // ------------- FORM CONTROLS --------------//
