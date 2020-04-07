@@ -171,7 +171,7 @@
                             <label for="gpr_population"><span style="color: red;">&#42;</span> Affected Population</label>
                             <div class="input-group">
                                 <input type="number" min="2" step="1"
-                            oninput="this.value=Math.round(this.value); if(this.value<0) this.value = Math.abs(this.value); else { if(this.value<2) this.value = 2;}"
+                            oninput="if(this.value<0) this.value = Math.abs(this.value);"
                                     class="form-control" id="gpr_population">
                             </div>
                         </div>
@@ -489,7 +489,7 @@
                     <div class="form-group societal">
                         <label for="population">Exposed Population</label>
                         <div class="input-group krypton-input">
-                            <input type="number" min="0" step="10" oninput="this.value=Math.round(this.value); if(this.value<0) this.value = Math.abs(this.value); else { if(this.value<2) this.value = 2;}"
+                            <input type="number" min="0" step="10" oninput="if(this.value<0) this.value = Math.abs(this.value);"
                                 class="form-control" id="population" name="population">
                             <div class="input-group-append">
                                 <span class="input-group-text">people</span>

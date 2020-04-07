@@ -1037,5 +1037,19 @@ $(document).ready(function () {
         }
     });
 
+    $("#population").change(function() {
+        if (this.value < 2) {
+            this.value = 2;
+        }
+        this.value=Math.round(this.value); 
+    });
+    
+    $("#gpr_population").change(function() {
+        if (this.value < 2) {
+            this.value = 2;
+        }
+        this.value=Math.round(this.value); 
+    });
+
     // ----------------------------------//
 });
