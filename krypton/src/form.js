@@ -658,6 +658,8 @@ function calculate_fatality(p_c, p_f) {
                 $("#fault_time").val(parseFloat($("#fault_time").val()) + breaker_delay);
                 if (debug) console.log("Calculating P_fatality for " + $("#fault_time").val() + "s clearing time...");
 
+                var p_f1 = p_f;
+
                 p_c = calculate_coincidence();
                 p_f = calculate_fibrillation();
                 p_dead2 = p_c * p_f;
@@ -667,6 +669,9 @@ function calculate_fatality(p_c, p_f) {
                 p_dead2 = p_dead2 * breaker_failure;
                 p_dead = p_dead1 + p_dead2;
 
+                var p_f_combined = p_f1 * (1 - breaker_failure) + p_f * (breaker_failure);
+
+                $("#PF").html(p_f_combined.toExponential(3));
                 if (!debug) $("#fault_time").val(original_fault_time);
             }
             else alert("Warning: Breaker data is missing from database. Continuing without breaker failure rates...");
