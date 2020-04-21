@@ -867,14 +867,14 @@ $(document).ready(function () {
         console.log("Calculating...");
         var p_c = calculate_coincidence();
 
-        console.log("GPR data: " + gpr_data_valid);
-
-        var p_f = calculate_fibrillation();
-
-        display_chart(mean, sigma);
+        if (!NaN(p_c)) {
+            console.log("GPR data: " + gpr_data_valid);
+            var p_f = calculate_fibrillation();
+            display_chart(mean, sigma);
+            if (gpr_data_valid && $("#analysis_type").val() == "societal") calculate_gpr();
+        }
         calculate_fatality(p_c, p_f);
 
-        if (gpr_data_valid && $("#analysis_type").val() == "societal") calculate_gpr();
     });
     $(".krypton-input").keyup(function (e) {
         // Check for enter key
@@ -882,14 +882,17 @@ $(document).ready(function () {
             console.log("Calculating...");
             var p_c = calculate_coincidence();
 
-            console.log("GPR data: " + gpr_data_valid);
-            
-            var p_f = calculate_fibrillation();
+            if (!NaN(p_c)) {
+                console.log("GPR data: " + gpr_data_valid);
+                
+                var p_f = calculate_fibrillation();
+    
+                display_chart(mean, sigma);
+                if (gpr_data_valid && $("#analysis_type").val() == "societal") calculate_gpr();
 
-            display_chart(mean, sigma);
+            }
             calculate_fatality(p_c, p_f);
 
-            if (gpr_data_valid && $("#analysis_type").val() == "societal") calculate_gpr();
         }
     });
 
@@ -970,7 +973,7 @@ $(document).ready(function () {
         }
         else {
             $(".breaker").hide();
-            $("#breaker_time").hide();
+            $("#breaker_delay").hide();
         }
         define_breaker_failure();
     });
