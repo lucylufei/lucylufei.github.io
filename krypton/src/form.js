@@ -867,7 +867,7 @@ $(document).ready(function () {
         console.log("Calculating...");
         var p_c = calculate_coincidence();
 
-        if (!NaN(p_c)) {
+        if (!isNaN(p_c)) {
             console.log("GPR data: " + gpr_data_valid);
             var p_f = calculate_fibrillation();
             display_chart(mean, sigma);
@@ -882,7 +882,7 @@ $(document).ready(function () {
             console.log("Calculating...");
             var p_c = calculate_coincidence();
 
-            if (!NaN(p_c)) {
+            if (!isNaN(p_c)) {
                 console.log("GPR data: " + gpr_data_valid);
                 
                 var p_f = calculate_fibrillation();
