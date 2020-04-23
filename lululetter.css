@@ -84,8 +84,15 @@ footer {
 }
 
 
-.card-title, .card-header {
+.card-title {
     color: #c95d85;
+    font-size: 2em;
+    font-family: "luluregular";
+}
+
+.card-header {
+    background-color: #c95d85;
+    color: white;
     font-size: 2em;
     font-family: "luluregular";
 }
