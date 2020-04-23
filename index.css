@@ -192,3 +192,8 @@ footer {
         opacity: 0;
     }
 }
+
+.blurred {
+    filter: blur(1px);
+  -webkit-filter: blur(1px);
+}
