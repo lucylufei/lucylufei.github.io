@@ -83,6 +83,9 @@ footer {
 }
 }
 
+.modal-title {
+    color: #c95d85;
+}
 
 .card-title {
     color: #c95d85;
@@ -99,6 +102,12 @@ footer {
 
 .bg-pink {
     background-color: #c95d85;
+}
+
+.btn-pink {
+    background-color: #c95d85;
+    color: white;
+    font-weight: bold;
 }
 
 .blurred {
