@@ -1,0 +1,100 @@
+
+@font-face {
+    font-family: 'luluregular';
+    src: url('./fonts/lulu-regular-webfont.woff2') format('woff2'),
+         url('./fonts/lulu-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body,
+h1,
+h2,
+a {
+    font-family: 'Montserrat', sans-serif;
+    color: darkslategray;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+h5 {
+    font-family: "luluregular";
+    font-size: 3em;
+}
+.navbar {
+    background-color: white;
+    box-shadow: 1em;
+}
+.highlight {
+    color: #c95d85;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.special-link:hover {
+    color: #c95d85;
+    font-weight: bold;
+    text-decoration: none;
+}
+@media (hover:none) {
+    .special-link {
+        color: #c95d85;
+        font-weight: bold;
+        text-decoration: underline;
+    }
+}
+
+.card-link:hover {
+    color: inherit;
+    text-decoration: none;
+}
+
+footer {
+    display: flex;
+    padding-top: 5vh;
+    height: 20vh;
+    align-items: center;
+    justify-content: center;
+    background-image: linear-gradient(white, #fff5f9);
+}
+
+.container {
+    padding-top: 6em;
+}
+
+
+#logo {
+    max-width: 70vw;
+    padding-bottom: 2em;
+}
+@media only screen and (min-width: 768px) {
+#logo {
+    width: 30vw;
+}
+}
+
+
+.card-title, .card-header {
+    color: #c95d85;
+    font-size: 2em;
+    font-family: "luluregular";
+}
+
+.bg-pink {
+    background-color: #c95d85;
+}
+
+.blurred {
+    filter: blur(8px);
+  -webkit-filter: blur(8px);
+}
