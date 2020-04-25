@@ -60,6 +60,9 @@ p.card-text{
     border-radius: 10px;
 }
 
+.card-img-top {
+    border-radius: 0;
+}
 
 .card-header {
     font-size: 1em;
@@ -75,7 +78,7 @@ p.card-text{
 
 @media only screen and (min-width: 768px) {
 .header {
-    padding-top: 4em;
+    padding-top: 6em;
 }
 }
 
