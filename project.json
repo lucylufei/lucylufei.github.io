@@ -5,7 +5,7 @@
 "image":"./images/rover.JPG",
 "tags":["Hardware"],
 "skills":["Electromagnetics","Circuits"],
-"link":""},
+"link":"./files/project/291B.pdf"},
 {
 "id":1,
 "title":"Laser Light Show",
@@ -13,7 +13,7 @@
 "image":"./images/laser.JPG",
 "tags":["Hardware","Software","Simulation"],
 "skills":["Circuits","Arduino","MATLAB","Altium"],
-"link":""},
+"link":"./files/project/391.pdf"},
 {
 "id":2,
 "title":"Electric Shock Risk Assessment",
@@ -26,7 +26,7 @@
 "id":3,
 "title":"Clock",
 "description":"Simple JavaScript clock displaying time to the nearest 5 minutes using an array of words and phrases.",
-"image":"./images/jsclock.JPEG",
+"image":"./images/clock.JPEG",
 "tags":["Software"],
 "skills":["JavaScript"," CSS"," HTML"],
 "link":"./clock.html"},
@@ -61,7 +61,7 @@
 "image":"./images/printer.JPG",
 "tags":["Simulation"],
 "skills":["MATLAB","Simulink","PID Control"],
-"link":""},
+"link":"./files/project/341.pdf"},
 {
 "id":8,
 "title":"Mechanical Claw",
@@ -101,7 +101,7 @@
 "image":"./images/IMG_1238.JPG",
 "tags":["Hardware"],
 "skills":["Circuits","Arduino","Assembly"],
-"link":""},
+"link":"./files/project/291A.pdf"},
 {
 "id":13,
 "title":"Rain Harvesting Analysis",
@@ -117,4 +117,4 @@
 "image":"./images/rtr.JPG",
 "tags":[""],
 "skills":["Marketing","SWOT Analysis"],
-"link":""}]}
+"link":"./files/project/465.pdf"}]}

@@ -1,0 +1,58 @@
+html {
+    scroll-behavior: smooth;
+}
+
+
+body,
+h1,
+h2,
+a {
+    font-family: 'Montserrat', sans-serif;
+    color: darkslategray;
+}
+
+h5 {
+    font-size: medium;
+    font-weight: bold;
+}
+
+h6 {
+    font-size: small;
+}
+
+body {
+    background-image: linear-gradient(#fff9fc 0%, white 15%);
+}
+
+a:hover {
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+
+.header {
+    padding-top: 2em;
+    padding-bottom: 2em;
+    display: flex;
+    justify-content: center;
+}
+
+footer {
+    display: flex;
+    padding-top: 5vh;
+    height: 20vh;
+    align-items: center;
+    justify-content: center;
+    background-image: linear-gradient(white, #fff5f9);
+}
+
+.navbar {
+    background-color: white;
+    box-shadow: 1em;
+}
+
+.container {
+    padding-left: 15px;
+    padding-right: 15px;
+}
