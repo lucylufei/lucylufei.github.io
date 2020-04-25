@@ -66,6 +66,8 @@ footer {
 
 .jumbotron {
     background-image: linear-gradient(#fff9fc, white);
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
 .words {

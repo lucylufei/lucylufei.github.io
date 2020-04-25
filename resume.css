@@ -1,0 +1,160 @@
+html {
+    scroll-behavior: smooth;
+}
+
+
+body,
+h1,
+h2,
+a {
+    font-family: 'Montserrat', sans-serif;
+    color: darkslategray;
+}
+
+h5 {
+    font-size: medium;
+    font-weight: bold;
+}
+
+h6 {
+    font-size: small;
+}
+
+body {
+    background-image: linear-gradient(#fff9fc 0%, white 15%);
+}
+
+hr {
+    border-top: 1px solid #f0bdd0;
+}
+
+ul {
+    padding-left: 1em;
+}
+
+a:hover {
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+footer {
+    display: flex;
+    padding-top: 5vh;
+    height: 20vh;
+    align-items: center;
+    justify-content: center;
+    background-image: linear-gradient(white, #fff5f9);
+}
+
+
+.navbar {
+    background-color: white;
+    box-shadow: 1em;
+}
+
+
+.container {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.header {
+    padding-top: 2em;
+    padding-bottom: 2em;
+    display: flex;
+    justify-content: center;
+}
+
+table {
+    table-layout: fixed;
+}
+
+th,
+td {
+    width: 20em;
+    color: darkslategray;
+}
+
+.top-toggle {
+    padding-top: 1em;
+    display: flex;
+    justify-content: center;
+}
+
+.faded {
+    color: #6d8383;
+}
+
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #f0bdd0;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 17px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 13px;
+    width: 13px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 30px;
+    height: 17px;
+}
+
+
+input:checked+.slider:before {
+    -webkit-transform: translateX(13px);
+    -ms-transform: translateX(13px);
+    transform: translateX(13px);
+}
+
+.card {
+    border-radius: 0;
+    box-shadow: 0 2px 16px 0 lightgrey;
+}
+
+.card-header {
+    padding-top: 1em;
+    background-color: white;
+    font-size: x-large;
+}
+
+@media only screen and (min-width: 1050px) {
+    .mobile-only {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 1050px) {
+    .desktop-only{
+        display: none;
+    }
+}
+
+.badge-gray {
+    background-color: #E8E8E8;
+}
+
+.badge-skills {
+    background-color: #E8E8E8;
+    padding: 0.5em;
+}
