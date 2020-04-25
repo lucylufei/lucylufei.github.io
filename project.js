@@ -45,6 +45,8 @@ $.getJSON("http://www.lufei.ca/project.json", function (data) {
 		tile += "</div></div>";
 		$("#content_wrapper").append(tile);
 	});
+
+	$(".card-body").hide();
 });
 
 
@@ -115,8 +117,6 @@ $(document).ready(function () {
 			scrollTop: 0
 		}, 0);
 	});
-
-	$(".card-body").hide();
 
 	$(".card-toggle").click(function () {
 		var cardId = this.id;
