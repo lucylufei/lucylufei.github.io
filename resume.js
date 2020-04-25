@@ -48,7 +48,9 @@ $(document).ready(function () {
                 opacity: "toggle"
             }, "slow");
 
-            $(".cv").show();
+            $(".cv").animate({
+                height: "toggle"
+            });
             $(".resume").hide();
         } else {
             $("#title").hide();
@@ -59,7 +61,9 @@ $(document).ready(function () {
             }, "slow");
 
             $(".cv").hide();
-            $(".resume").show();
+            $(".resume").animate({
+                height: "toggle"
+            });
         }
 
         if ($(window).innerWidth() <= 1050) {
