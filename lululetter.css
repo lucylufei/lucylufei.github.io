@@ -5,7 +5,13 @@
          url('./fonts/lulu-regular-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
-
+}
+@font-face {
+    font-family: 'melodyregular';
+    src: url('./fonts/melody-regular-webfont.woff2') format('woff2'),
+         url('./fonts/melody-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
 
 
