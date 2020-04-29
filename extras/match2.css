@@ -1,0 +1,29 @@
+
+
+#game {
+    /* border: 1px solid black; */
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    padding-top: 3em;
+}
+
+#difficulty {
+    max-width: 10em;
+}
+
+.tile {
+    border: 5px solid white;
+    min-width: 35px;
+    width: 5vw;
+    background-color: darkcyan;
+}
+
+table {
+    table-layout: auto;
+}
+
+#reset {
+    display: flex;
+    justify-content: center;
+}

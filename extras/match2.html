@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>
+        Match &#9829;
+    </title>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-102991991-2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-102991991-2');
+    </script>
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-102991991-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="icon" href="../images/L.png">
+    <link rel="stylesheet" href="match2.css">
+    <link rel="stylesheet" href="../common.css">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+    <script src="match2.js"></script>
+
+
+</head>
+
+<body>
+    	<!-- Title -->
+	<div class="container">
+		<div class="header">
+			<h1 id="title">Match</h1>
+		</div>
+	</div>
+    <div class="container info">
+        <label for="difficulty">Colour Difficulty: <span id="diff">4</span></label> <br>
+        <input type="range" class="custom-range" id="difficulty" min="2" max="20">
+    </div>
+    <div class="container info">
+        <p>Moves: <span id="moves">0</span></p>
+        <p>Level: <span id="level">1</span></p>
+    </div>
+    <div id="reset">
+        <button onclick=reset()>Restart</button>
+    </div>
+    <div class='container'>
+        <div id='game'>
+        </div>
+    </div>
+
+</body>
+
+<!-- Footer -->
+<footer>
+    <div id="page_content">
+        <a href="https://www.facebook.com/lululufei" target="_blank"> <i
+                class="fa fa-facebook-official w3-hover-opacity" style="font-size:24px;"></a></i>&nbsp;&nbsp;&nbsp;
+        <a href="http://instagram.com/lululetter" target="_blank"> <i class="fa fa-instagram w3-hover-opacity"
+                style="font-size:24px;"></a></i>&nbsp;&nbsp;&nbsp;
+        <a href="http://www.linkedin.com/in/lufei-liu-b8913b106" target="_blank"> <i
+                class="fa fa-linkedin w3-hover-opacity" style="font-size:24px;"></i> </a>
+        </br>
+        <p>me@lufei.ca</p>
+    </div>
+</footer>
+
+</html>
