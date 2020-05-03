@@ -8,17 +8,26 @@ var colourBase;
 var matched;
 
 var allColours = [
-    "pink",
-    "lightblue",
-    "orange",
-    "green",
-    "red",
-    "yellow",
-    "black",
-    "white",
-    "lightpink",
-    "magenta",
-    "torquise"
+    ' #FFD9D9',
+    ' #F1B1B1',
+    ' #FFC369',
+    ' #FF8946',
+    ' #B3FDD1',
+    ' #74E1A0',
+    ' #8BFF9E',
+    ' #71E784',
+    ' #FFD0A5',
+    ' #F9B474',
+    ' #BEEC82',
+    ' #93BE5A',
+    ' #D7FFC4',
+    ' #ACFF83',
+    ' #FFA8A8',
+    ' #F96D6D',
+    ' #8ADFE4',
+    ' #DCEE7E',
+    ' #BBD338',
+    ' #A4F8FD',    
 ]
 
 
