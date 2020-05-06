@@ -100,36 +100,37 @@ $.getJSON("http://www.lufei.ca/project.json", function (data) {
 	$.each(data.projects, function (id, project) {
 
 		links.push(project.link);
+	});
 
+	$(document).ready(function () {
+		$("#All").click(function () {
+			$(".card").fadeIn();
+			$(this).addClass("clicked_btn");
+			$(".filterbtn").removeClass("clicked_btn");
+		});
+	
+		$("#topbtn").click(function () {
+			jQuery('html,body').animate({
+				scrollTop: 0
+			}, 0);
+		});
+	
+		$(".card-toggle").click(function () {
+			var cardId = this.id;
+			$("#" + cardId.replace("footer", "details")).animate(
+				{height: "toggle"}
+			);
+		});
+	
+		$(".card-img-top").click(function() {
+			var cardId = parseInt(this.id.replace("-img", ""));
+			if (links[cardId] != "") window.open(links[cardId], "_blank");
+		})
 	});
 });
 
 
-$(document).ready(function () {
-	$("#All").click(function () {
-		$(".card").fadeIn();
-		$(this).addClass("clicked_btn");
-		$(".filterbtn").removeClass("clicked_btn");
-	});
 
-	$("#topbtn").click(function () {
-		jQuery('html,body').animate({
-			scrollTop: 0
-		}, 0);
-	});
-
-	$(".card-toggle").click(function () {
-		var cardId = this.id;
-		$("#" + cardId.replace("footer", "details")).animate(
-			{height: "toggle"}
-		);
-	});
-
-	$(".card-img-top").click(function() {
-		var cardId = parseInt(this.id.replace("-img", ""));
-		if (links[cardId] != "") window.open(links[cardId], "_blank");
-	})
-});
 
 
 $(document).scroll(function () {
