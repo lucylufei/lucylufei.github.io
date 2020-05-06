@@ -18,13 +18,15 @@ $.getJSON("http://www.lufei.ca/project.json", function (data) {
 		// Header
 		tile += "<div class=\"card-header"
 		if (project.link != "") tile += " hover"
-		tile += "\">" + project.title + "</div>";
+		tile += "\">" + project.title;
+		if (project.link != "") tile += "<i class='fa fa-share' style='color:white; position: absolute; right: 0.5em; font-size: large;'></i>";
+		tile += "</div>";
 
 		// Image
 		tile += "<img src=\"" + project.image + "\" class=\"card-img-top"
 		if (project.link != "") tile += " hover"
 		tile += "\" id=\"" + project.id + "-img\">";
-		
+
 		// Body
 		tile += "<div class=\"card-body card-toggle hover\" id=\"" + project.id + "-details\">";
 		// tile += "<h2 class=\"card-title\">" + project.title + "</h2>"
