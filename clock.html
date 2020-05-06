@@ -113,7 +113,9 @@
             } else {
                 hour = hour + 1;
             }
-            turnOnText("to")
+            if (minute < 58) {
+                turnOnText("to")
+            }
             minute = minutes[Math.round((60 - minute) / 5)]
             console.log(minute);
         }
