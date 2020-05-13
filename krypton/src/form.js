@@ -1065,7 +1065,7 @@ $(document).ready(function () {
 
 
 $(window).on('load',function(){
-    if (document.cookie != "visited=true") {
+    if (document.cookie.includes("visited=true")) {
         $('#welcomeModal').modal('show');
         document.cookie = "visited=true";
     }
