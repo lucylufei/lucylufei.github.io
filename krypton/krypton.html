@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel = "stylesheet">
+    <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
     <link rel="icon" href="src/logo.png">
     <link rel="apple-touch-icon" sizes="128x128" href="src/logo.png">
     <link rel="stylesheet" href="src/theme.css">
@@ -70,6 +70,48 @@
             <button type="button" class="btn-primary" id="calculate">
                 <h3><i class="fa fa-calculator" style="color: white;"></i><span> Calculate</span></h3>
             </button>
+        </div>
+
+        <!-- WELCOME MODAL -->
+        <div class="modal fade" id="welcomeModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Info</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <h1>Welcome to Krypton!</h1>
+                        <br>
+                        <p>Krypton is a risk assessment tool developed as part of my Capstone project for my B.A.Sc.
+                            degree in Electrical Engineering at UBC. This project is based upon IEEE 80-2013 [1] and
+                            IEC-60479 [2] industry electrical standards in North America and designed to mimic Argonium
+                            [3]. </p>
+                        <p>Krypton calculates the probability of fibrillation for a given set of parameters to simulate
+                            a ground fault scenario at a high voltage transmission line. This tool is developed for BC
+                            Hydro and is designed for their specific needs. </p>
+                        <p>The tool is written in JavaScript (with JQuery) and styled with Bootstrap elements following
+                            the BC Hydro style guidelines. Dynamic graphs are generated using ChartJS. </p>
+                            <br>
+                        <hr>
+                        <small>[1] 80-2013 - IEEE Guide for Safety in AC Substation Grounding. IEEE., 2015. </br>
+                            [2] Energy Networks Association Limited, EG-0 Power System Earthing Guide Part 1: Management
+                            Principles. Barton, ACT, 2010.</br>
+                            [3] “Quantitative Risk Assessment for Earthing,” Argonium. [Online]. Available:
+                            https://argonium.com.au/. [Accessed: 18-Oct-2019]. </br>
+                            </br>
+                            <i class="fa fa-bolt" style="color: #FCD299;"></i>&nbsp; Special thanks to Prof. Hamed
+                            Ahmadi for his support throughout the project!
+                        </small>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Start</button>
+                        <button type="button" class="btn btn-secondary" id="manual_button">View Details</button>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- HELP TEXT MODAL -->
@@ -168,11 +210,12 @@
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
-                            <label for="gpr_population"><span style="color: red;">&#42;</span> Affected Population</label>
+                            <label for="gpr_population"><span style="color: red;">&#42;</span> Affected
+                                Population</label>
                             <div class="input-group">
                                 <input type="number" min="2" step="1"
-                            oninput="if(this.value<0) this.value = Math.abs(this.value);"
-                                    class="form-control" id="gpr_population">
+                                    oninput="if(this.value<0) this.value = Math.abs(this.value);" class="form-control"
+                                    id="gpr_population">
                             </div>
                         </div>
                         <div class="hidden" id="distance" style="padding-bottom: 1.5em;">
@@ -183,9 +226,9 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="gpr_data"><span style="color: red;">&#42;</span> Paste GPR data here: <i class="fa fa-info-circle gpr_tooltip"
-                                    data-toggle="tooltip" data-placement="right" data-html="true"
-                                    id="gpr_help"></i></label>
+                            <label for="gpr_data"><span style="color: red;">&#42;</span> Paste GPR data here: <i
+                                    class="fa fa-info-circle gpr_tooltip" data-toggle="tooltip" data-placement="right"
+                                    data-html="true" id="gpr_help"></i></label>
                             <textarea class="form-control" id="gpr_data" rows="3"></textarea>
                             <small class="form-text text-muted">See user guide for detailed instructions.</small>
                         </div>
@@ -489,8 +532,9 @@
                     <div class="form-group societal">
                         <label for="population">Exposed Population</label>
                         <div class="input-group krypton-input">
-                            <input type="number" min="0" step="10" oninput="if(this.value<0) this.value = Math.abs(this.value);"
-                                class="form-control" id="population" name="population">
+                            <input type="number" min="0" step="10"
+                                oninput="if(this.value<0) this.value = Math.abs(this.value);" class="form-control"
+                                id="population" name="population">
                             <div class="input-group-append">
                                 <span class="input-group-text">people</span>
                             </div>

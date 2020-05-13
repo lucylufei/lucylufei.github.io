@@ -1062,3 +1062,11 @@ $(document).ready(function () {
 
     // ----------------------------------//
 });
+
+
+$(window).on('load',function(){
+    if (document.cookie != "visited=true") {
+        $('#welcomeModal').modal('show');
+        document.cookie = "visited=true";
+    }
+});
