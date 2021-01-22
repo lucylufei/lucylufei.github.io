@@ -19,7 +19,7 @@ $.getJSON("https://www.lufei.ca/project.json", function (data) {
 		tile += "<div class=\"card-header"
 		if (project.link != "") tile += " hover"
 		tile += "\">" + project.title;
-		if (project.link != "") tile += "<i class='fa fa-share' style='color:white; position: absolute; right: 0.5em; font-size: large;'></i>";
+		if (project.link != "") tile += "<i id='" + project.id + "-share' class='fa fa-share' style='color:#f0bdd0; position: absolute; right: 0.5em; top: 1.9em; font-size: large;'></i>";
 		tile += "</div>";
 
 		// Image
@@ -53,7 +53,7 @@ $.getJSON("https://www.lufei.ca/project.json", function (data) {
 
 
 // Generate tag array
-$.getJSON("http://www.lufei.ca/project.json", function (data) {
+$.getJSON("https://www.lufei.ca/project.json", function (data) {
 	// iterate through all projects
 	$.each(data.projects, function (id, project) {
 		var i;
@@ -86,7 +86,7 @@ $.getJSON("http://www.lufei.ca/project.json", function (data) {
 
 
 // Generate skills array
-$.getJSON("http://www.lufei.ca/project.json", function (data) {
+$.getJSON("https://www.lufei.ca/project.json", function (data) {
 	$.each(data.projects, function (id, project) {
 		var i;
 		for (i = 0; i < project.skills.length; i++) {
@@ -98,7 +98,7 @@ $.getJSON("http://www.lufei.ca/project.json", function (data) {
 });
 
 // Generate links array
-$.getJSON("http://www.lufei.ca/project.json", function (data) {
+$.getJSON("https://www.lufei.ca/project.json", function (data) {
 	$.each(data.projects, function (id, project) {
 
 		links.push(project.link);
@@ -127,7 +127,12 @@ $.getJSON("http://www.lufei.ca/project.json", function (data) {
 		$(".card-img-top").click(function() {
 			var cardId = parseInt(this.id.replace("-img", ""));
 			if (links[cardId] != "") window.open(links[cardId], "_blank");
-		})
+		});
+		
+		$(".fa-share").click(function() {
+			var cardId = parseInt(this.id.replace("-share", ""));
+			if (links[cardId] != "") window.open(links[cardId], "_blank");
+		});
 	});
 });
 

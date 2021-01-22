@@ -1,3 +1,71 @@
+html {
+    scroll-behavior: smooth;
+}
+
+
+body,
+h1,
+h2,
+a {
+    font-family: 'Montserrat', sans-serif;
+    color: darkslategray;
+}
+
+h5 {
+    font-size: medium;
+    font-weight: bold;
+}
+
+h6 {
+    font-size: small;
+}
+
+body {
+    background-image: linear-gradient(#fff9fc 0%, white 15%);
+}
+
+hr {
+    border-top: 1px solid #f0bdd0;
+}
+
+ul {
+    padding-left: 1em;
+}
+
+a:hover {
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+footer {
+    display: flex;
+    padding-top: 5vh;
+    height: 20vh;
+    align-items: center;
+    justify-content: center;
+    background-image: linear-gradient(white, #fff5f9);
+}
+
+
+.navbar {
+    background-color: white;
+    box-shadow: 1em;
+}
+
+
+.container {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.header {
+    padding-top: 2em;
+    padding-bottom: 2em;
+    display: flex;
+    justify-content: center;
+}
+
 table {
     table-layout: auto;
 }
@@ -17,12 +85,8 @@ table {
 
 button.btn{
     background-color: white;
-    border: 1px solid ;
     border-radius: 0;
-    margin-left: -1px;
     font-size: inherit;
-    padding-left: 0.5em;
-    padding-right: 0.5em;
 }
 
 button.clicked_btn{
@@ -54,24 +118,20 @@ p.card-text{
 .badge{
     font-size: 0.75em;
 }
-.card{
-    /* color: #fff; */
-    background-color: white;
-    border-radius: 10px;
-}
-
-.card-img-top {
+.card {
     border-radius: 0;
+    /* box-shadow: 0px 25px 20px -10px lightgrey; */
 }
 
 .card-header {
-    font-size: 1em;
-    color: white;
-    background-color: #998E96;
+    padding-top: 1em;
+    background-color: white;
+    font-size: x-large;
 }
 
 .card-footer {
     background-color: #dad6d9;
+    border-radius: 0 !important; 
 }
 
 /*END CARD CONTENT*/
