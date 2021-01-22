@@ -3,7 +3,7 @@ var skills = [];
 var links = [];
 
 // Populate all fields
-$.getJSON("http://www.lufei.ca/project.json", function (data) {
+$.getJSON("https://www.lufei.ca/project.json", function (data) {
 	$.each(data.projects, function (id, project) {
 
 		// Card
