@@ -2,7 +2,7 @@ function load_skills() {
     var skills = [
         "Verilog",
         "MATLAB",
-        "C",
+        "C/C++",
         "Python",
         "HTML/CSS",
         "JavaScript",
