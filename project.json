@@ -53,4 +53,28 @@
 "image":"./images/rtr.JPG",
 "tags":[""],
 "skills":["Marketing","SWOT Analysis"],
-"link":"./files/project/465.pdf"}]}
+"link":"./files/project/465.pdf"},
+{
+"id":7,
+"title":"VLSI Router",
+"description":"A basic maze router implemented using the Lee-Moore and A* algorithms to perform detailed routing from source pins to multiple sink pins without overlap.",
+"image":"./images/assn1.JPG",
+"tags":["Hardware","Simulation"],
+"skills":["Python","CAD"],
+"link":"https://github.com/lucylufei/CPEN513-assn1"},
+{
+"id":8,
+"title":"VLSI Placement",
+"description":"Implementation of tuned Simulated Annealing to minimize cost function for VLSI chip placement.",
+"image":"./images/assn2.JPG",
+"tags":["Hardware","Simulation"],
+"skills":["Python","CAD"],
+"link":"https://github.com/lucylufei/CPEN513-assn2"},
+{
+"id":9,
+"title":"VLSI Partitioner",
+"description":"Implementation of Branch and Bound algorithm used to partition graph nodes for minimized cut size in VLSI chip placement. ",
+"image":"./images/assn3.JPG",
+"tags":["Hardware","Simulation"],
+"skills":["Python","CAD"],
+"link":"https://github.com/lucylufei/CPEN513-assn3"}]}
