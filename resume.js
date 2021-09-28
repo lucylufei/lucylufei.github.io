@@ -14,7 +14,9 @@ function load_skills() {
         "FPGA",
         "Microcontrollers",
         "Altera Quartus",
-        "ModelSim"
+        "ModelSim",
+        "Linux", 
+        "Git"
     ];
 
     skills.sort();
