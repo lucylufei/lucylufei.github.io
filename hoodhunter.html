@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap');
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Open Sans', sans-serif;
+    }
+
+    p {
+        font-size: 11px;
+    }
+
+    .welcomeText {
+        font-size: medium;
+    }
+
+    h2 {
+        font-size: 13px;
+        font-weight: 600;
+    }
+
+    h1 {
+        font-size: 17px;
+        font-weight: 600;
+    }
+
+    .welcomeTitle {
+        font-size: x-large;
+    }
+
+
+    .viewTitle {
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 16px;
+        text-transform: uppercase;
+        width: auto;
+        /* border-left: 4px solid black; */
+        /* padding-left:8px; */
+    }
+
+    .viewTitle:after {
+        content: ' ';
+        margin-top: 4px;
+        display: block;
+        border: 1px solid rgba(0, 0, 0, .08);
+    }
+
+    button {
+        align-items: center;
+        background-color: #fff;
+        border: 1px solid darkgrey;
+        border-radius: .375em;
+        box-shadow: none;
+        box-sizing: border-box;
+        color: #363636;
+        cursor: pointer;
+        display: inline-flex;
+        font-size: 12px;
+        height: 2.5em;
+        justify-content: center;
+        line-height: 1.5;
+        padding: calc(.5em - 1px) 1em;
+        position: relative;
+        text-align: center;
+        touch-action: manipulation;
+        vertical-align: top;
+        white-space: nowrap;
+    }
+
+    .primaryButton {
+        background-color: #292929;
+        border-color: transparent;
+        color: #fff;
+    }
+
+    .disabledButton {
+        border: 1px solid #dbdbdb;
+        color: #BABABA;
+        pointer-events: none;
+    }
+
+    .weight_label {
+        font-size: 12px;
+        width: 135px;
+        margin-right: 8px;
+        font-weight: 400;
+    }
+
+    /* the filter drop down */
+    .oi-ec050e-input {
+        font-size: 12px;
+        background-color: #fff;
+        border: 1px solid #dbdbdb;
+        padding: calc(.5em - 1px) 1em;
+        height: 2.5em;
+        line-height: 1.5;
+        border-radius: .375em;
+    }
+
+    /* The Modal (background) */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        padding-top: 100px;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgb(0, 0, 0);
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    #welcome-modal-content {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 32px;
+        border: 1px solid #888;
+        width: 50vw;
+        max-width: 900px;
+        border-radius: 20px;
+    }
+
+    /* Modal Content */
+    #weight-modal-content {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 32px;
+        border: 1px solid #888;
+        width: 350px;
+        border-radius: 20px;
+    }
+
+    /* The Close Button */
+    .close {
+        color: #aaaaaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+
+    label {
+        font-size: small;
+    }
+
+    form {
+        margin: 0px;
+    }
+
+    body {
+        margin: 0;
+    }
+
+    .detail-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 12px 0px;
+    }
+
+    .view-container {
+        padding: 15px 15px 15px 15px;
+        border-style: solid;
+        border-width: 0.5px;
+        border-color: #F2F2F2;
+        /* position:relative; */
+        background-color: white;
+        box-shadow: 0 2px 5px 0 rgba(32, 33, 36, .05), 0 19px 38px 0 rgba(32, 33, 36, .04);
+        border-radius: 5px;
+    }
+
+    .view-container>label {
+        top: -14px;
+        left: 12px;
+        position: absolute;
+        /* background-color:white; */
+        font-size: 20px;
+        font-weight: 600;
+    }
+
+    .detail-score {
+        padding: 2px 4px;
+        border-radius: 5px;
+        margin-left: 4px;
+        font-weight: 500;
+        font-size: small;
+    }
+
+    .svg-tooltip {
+        background: rgb(78, 121, 167, .9);
+        border-radius: 5px;
+        color: #fff;
+        display: block;
+        font-size: 11px;
+        max-width: 320px;
+        padding: 6px 8px;
+        position: absolute;
+        text-overflow: ellipsis;
+        white-space: pre;
+        z-index: 300;
+        visibility: hidden;
+    }
+
+    text {
+        font-size: 10.5px;
+    }
+
+    .leaflet-container {
+        height: 100% !important;
+        border-radius: 5px;
+    }
+
+    strong {
+        font-weight: 700;
+    }
+
+    @media only screen and (min-width: 30em) {
+        form.oi-ec050e>label {
+            width: 80px !important;
+        }
+    }
+
+    .main {
+        display: flex;
+        margin-top: 20px;
+    }
+
+    .main div {
+        margin: 10px;
+        width: 40px;
+        height: 40px;
+        background-color: #e42524;
+        border-radius: 50%;
+        animation-duration: 0.8s;
+        animation-iteration-count: infinite;
+    }
+
+    .one {
+        animation-name: load-one;
+    }
+
+    @keyframes load-one {
+        30% {
+            transform: translateY(-50%);
+        }
+    }
+
+    .two {
+        animation-name: load-two;
+    }
+
+    @keyframes load-two {
+        50% {
+            transform: translateY(-50%);
+        }
+    }
+
+    .three {
+        animation-name: load-three;
+    }
+
+    @keyframes load-three {
+        70% {
+            transform: translateY(-50%);
+        }
+    }
+
+    .loader-wrapper {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: white;
+        display: flex;
+        align-items: center;
+        z-index: 9000;
+    }
+</style>
+<script type="module">
+    import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js";
+    import define from "https://api.observablehq.com/d/7cacdf357c1a5b22.js?v=3";
+    new Runtime().module(define, name => {
+      if (name === "viewof final_details") return new Inspector(document.querySelector("#observablehq-viewof-final_details-e32e508c"));
+      if (name === "dynamic_styling") return true;
+      if (name === "leafletcss") return new Inspector(document.querySelector("#observablehq-leafletcss-e32e508c"));
+      if (name === "viewof homeType") return new Inspector(document.querySelector("#observablehq-viewof-homeType-e32e508c"));
+      if (name === "viewof selected") return new Inspector(document.querySelector("#observablehq-viewof-selected-e32e508c"));
+      if (name === "mapview") return new Inspector(document.querySelector("#observablehq-mapview-e32e508c"));
+      if (name === "selected_city_text") return new Inspector(document.querySelector("#observablehq-selected_city_text-e32e508c"));
+      if (name === "favourite_buttons") return new Inspector(document.querySelector("#observablehq-favourite_buttons-e32e508c"));
+      if (name === "viewof ordering") return new Inspector(document.querySelector("#observablehq-viewof-ordering-e32e508c"));
+      if (name === "viewof final_plot") return new Inspector(document.querySelector("#observablehq-viewof-final_plot-e32e508c"));
+      if (name === "viewof legend") return new Inspector(document.querySelector("#observablehq-viewof-legend-e32e508c"));
+      if (name === "viewof attr_weights") return new Inspector(document.querySelector("#observablehq-viewof-attr_weights-e32e508c"));
+      if (name === "city_selection") return true;
+      if (name === "selectedHouseBin") return true;
+      if (name === "homeTypes") return true;
+      if (name === "L") return true;
+      return ["houseTypeDataSelector","yourData","filteredData","priceTrend","selectedHouseType","dataset","unstacked","values","I","series","plot_data","xDomain","xScale","xAxis","bar","updated_svg","stars","cities","resorted_array","filter_favourites","plotFavouriteButtons","resorted_array_filtered","filtered_resorted_array","weighted_resorted_unstacked","resorted_cities","resorted_cities_set","yDomain","comparison_height","yRange","yScale","yAxis","svg","plotComparison","X","Y","Z","filtered_dataset","weighted_unstacked","sorter","name","pHealthChart","safetyChart","pTransitChart","pGroceryChart","pParksChart","pEmploymentChart","educationQChart","pEducationChart","scoreChart","cityObject"].includes(name);
+    });
+
+
+    // Get the modal
+    var weightModal = document.getElementById("weightModal");
+    var welcomeModal = document.getElementById("welcomeModal");
+
+    // Get the button that opens the modal
+    var weightbtn = document.getElementById("weightBtn");
+    
+    // Get the <span> element that closes the modal
+    var span1 = document.getElementsByClassName("close")[0];
+    var span2 = document.getElementsByClassName("close")[1];
+
+    // When the user clicks the button, open the modal
+    weightbtn.onclick = function () {
+        weightModal.style.display = "block";
+    };
+
+    // When the user clicks on <span> (x), close the modal
+    span1.onclick = function () {
+        weightModal.style.display = "none";
+    };
+
+    // When the user clicks on <span> (x), close the modal
+    span2.onclick = function () {
+        welcomeModal.style.display = "none";
+    };
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    };
+
+    window.onload = function (event) {
+    // if (!document.cookie.includes("visited=true")) {
+        welcomeModal.style.display = "block";
+        // document.cookie = "visited=true";
+    };
+
+    let spinnerWrapper = document.querySelector('.loader-wrapper')
+
+    var loadTime = window.performance.timing.unloadEventEnd-window.performance.timing.navigationStart;
+    
+    // console.log("loadtime: " + loadTime);
+    // console.log(window.performance);
+
+    if (loadTime > 1500) {
+        window.addEventListener('load', function() {
+            spinnerWrapper.style.display = 'none';
+        });
+    } else {
+        setTimeout(function() {spinnerWrapper.style.display = 'none'}, 1500)
+    };
+
+    
+    
+</script>
+
+<head>
+    <title>
+        Hood Hunter
+    </title>
+
+</head>
+
+<body style="background-color: #F6F7FA;">
+    <div class="loader-wrapper">
+        <div style="position: relative; margin: auto; display:flex; flex-direction: column; align-items:center;">
+            <!-- logo -->
+            <svg width="450" height="auto" viewBox="0 0 748 379" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_318_616)">
+                    <rect width="748" height="379" fill="white" />
+                    <g clip-path="url(#clip1_318_616)">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M223.658 91.9269C226.09 95.1412 227.187 100.469 227.726 106.947C228.44 116.613 228.727 128.213 229.001 140.199C228.646 152.409 228.502 164.722 227.726 173.452C227.114 180.152 225.814 184.639 223.643 187.361C220.881 190.078 215.582 192.372 208.027 192.916C198.838 193.7 187.501 193.691 174.994 194C161.09 193.762 151.661 193.864 141.769 192.92C134.053 192.385 129.004 190.118 125.898 187.382C123.597 184.293 122.924 181.008 122.286 173.309C121.49 164.418 121.313 152.37 121.012 140.265C121.464 128.224 121.492 116.086 122.293 107.015C122.83 99.8575 123.678 95.0456 125.852 91.9864C128.9 89.3881 134.101 88.0964 141.86 87.4591C152.483 86.2163 163.544 85.972 174.979 85.9996C186.747 86.0187 198.043 86.3544 208.123 87.3465C214.921 87.8904 220.547 89.0609 223.647 91.9269H223.658Z"
+                            fill="#008D8A" />
+                        <path
+                            d="M141.795 132.254V131.999C141.908 131.999 142.077 132.027 142.162 131.942C145.386 129.992 148.609 128.069 151.774 126.061C152.142 125.836 152.339 125.129 152.367 124.619C152.424 121.113 152.452 117.636 152.367 114.13C152.339 112.943 152.65 112.49 153.895 112.547C155.845 112.632 157.825 112.547 159.803 112.575C162.686 112.603 162.178 112.32 162.206 115.035C162.234 116.478 162.206 117.948 162.206 119.671C162.941 119.246 163.366 119.021 163.761 118.793C166.736 116.983 169.727 115.182 172.685 113.308C173.447 112.828 174.012 112.828 174.777 113.308C182.552 118.085 190.336 122.844 198.129 127.584C200.532 129.055 202.962 130.525 205.48 132.08C203.727 134.908 202.059 137.621 200.362 140.391C198.834 139.486 197.449 138.666 195.753 137.648V139.513C195.753 147.344 195.726 155.147 195.781 162.978C195.781 164.081 195.584 164.476 194.368 164.476C180.826 164.419 167.256 164.448 153.714 164.476C152.611 164.476 152.329 164.136 152.329 163.063C152.356 155.203 152.356 147.317 152.356 139.458V137.621C150.461 138.78 148.908 139.713 147.238 140.731C146.248 139.12 145.373 137.678 144.44 136.235C143.605 134.882 142.709 133.582 141.795 132.254Z"
+                            fill="white" />
+                    </g>
+                    <g clip-path="url(#clip2_318_616)">
+                        <path
+                            d="M258.919 62.1395L258.943 62.1658L258.932 62.1765C279.884 84.8569 289.658 113.896 288.519 142.5C287.379 171.059 275.344 199.223 252.684 220.194L252.695 220.206L252.641 220.256L252.575 220.317L252.564 220.305C243.419 228.743 233.24 235.374 222.492 240.198C220.689 241.008 218.92 241.747 217.199 242.418L217.187 242.429C208.972 245.616 200.444 247.804 191.813 248.98L193.001 312.414L193.002 312.468L193.001 312.947L192.999 312.982C192.923 318.056 190.839 322.706 187.518 326.12C184.232 329.493 179.708 331.685 174.694 331.944L174.651 331.95L174.051 331.971L173.94 331.967L173.455 331.97L173.397 331.976C168.319 331.9 163.68 329.823 160.267 326.5C156.899 323.223 154.704 318.701 154.45 313.682L154.446 313.641L154.424 313.04L154.419 312.955L153.203 247.528C150.847 247.024 148.514 246.444 146.219 245.796C143.105 244.917 139.996 243.899 136.95 242.745C121.28 236.817 106.691 227.235 94.5359 214.085L94.5244 214.095L94.5001 214.069L94.5116 214.059C73.5599 191.378 63.7828 162.336 64.9215 133.732C66.057 105.168 78.1001 77.0059 100.753 56.0403L100.742 56.0288L100.796 55.9787L100.823 55.9543L100.833 55.9658C123.53 34.9988 152.581 25.201 181.186 26.3187C209.745 27.4394 237.901 39.4534 258.857 62.096L258.869 62.0853L258.919 62.1395ZM240.51 79.2043L240.498 79.215L240.474 79.1887L240.424 79.1345L240.435 79.1238C224.194 61.5754 202.341 52.2606 180.165 51.3918C157.991 50.5247 135.445 58.1191 117.847 74.376L117.858 74.3875L117.831 74.4118L117.777 74.4619L117.766 74.4504C100.205 90.704 90.8775 112.55 89.9937 134.733C89.1087 156.908 96.6871 179.447 112.932 197.029L112.944 197.018L112.968 197.045L113.018 197.099L113.007 197.11C129.248 214.658 151.092 223.969 173.274 224.838C195.448 225.705 217.989 218.116 235.584 201.859L235.575 201.849L235.601 201.824L235.655 201.774L235.664 201.784C253.227 185.532 262.557 163.672 263.444 141.499C264.329 119.324 256.755 96.7893 240.51 79.2043Z"
+                            fill="black" />
+                    </g>
+                    <path
+                        d="M325.93 170V93H341.88V123.91H377.3V93H393.25V170H377.3V138.54H341.88V170H325.93ZM403.618 141.4C403.618 137.22 404.388 133.333 405.928 129.74C407.542 126.073 409.705 122.92 412.418 120.28C415.205 117.567 418.468 115.44 422.208 113.9C425.948 112.36 429.945 111.59 434.198 111.59C438.452 111.59 442.448 112.36 446.188 113.9C449.928 115.44 453.155 117.567 455.868 120.28C458.655 122.92 460.818 126.073 462.358 129.74C463.972 133.333 464.778 137.22 464.778 141.4C464.778 145.58 463.972 149.503 462.358 153.17C460.818 156.763 458.655 159.88 455.868 162.52C453.155 165.16 449.928 167.25 446.188 168.79C442.448 170.33 438.452 171.1 434.198 171.1C429.945 171.1 425.948 170.33 422.208 168.79C418.468 167.25 415.205 165.16 412.418 162.52C409.705 159.88 407.542 156.763 405.928 153.17C404.388 149.503 403.618 145.58 403.618 141.4ZM434.198 158.01C438.598 158.01 442.338 156.397 445.418 153.17C448.498 149.943 450.038 146.02 450.038 141.4C450.038 136.707 448.498 132.747 445.418 129.52C442.338 126.293 438.598 124.68 434.198 124.68C429.798 124.68 426.058 126.293 422.978 129.52C419.898 132.747 418.358 136.707 418.358 141.4C418.358 146.02 419.898 149.943 422.978 153.17C426.058 156.397 429.798 158.01 434.198 158.01ZM471.831 141.4C471.831 137.22 472.601 133.333 474.141 129.74C475.755 126.073 477.918 122.92 480.631 120.28C483.418 117.567 486.681 115.44 490.421 113.9C494.161 112.36 498.158 111.59 502.411 111.59C506.665 111.59 510.661 112.36 514.401 113.9C518.141 115.44 521.368 117.567 524.081 120.28C526.868 122.92 529.031 126.073 530.571 129.74C532.185 133.333 532.991 137.22 532.991 141.4C532.991 145.58 532.185 149.503 530.571 153.17C529.031 156.763 526.868 159.88 524.081 162.52C521.368 165.16 518.141 167.25 514.401 168.79C510.661 170.33 506.665 171.1 502.411 171.1C498.158 171.1 494.161 170.33 490.421 168.79C486.681 167.25 483.418 165.16 480.631 162.52C477.918 159.88 475.755 156.763 474.141 153.17C472.601 149.503 471.831 145.58 471.831 141.4ZM502.411 158.01C506.811 158.01 510.551 156.397 513.631 153.17C516.711 149.943 518.251 146.02 518.251 141.4C518.251 136.707 516.711 132.747 513.631 129.52C510.551 126.293 506.811 124.68 502.411 124.68C498.011 124.68 494.271 126.293 491.191 129.52C488.111 132.747 486.571 136.707 486.571 141.4C486.571 146.02 488.111 149.943 491.191 153.17C494.271 156.397 498.011 158.01 502.411 158.01ZM585.474 170V165.27C583.201 167.103 580.671 168.497 577.884 169.45C575.097 170.33 572.201 170.77 569.194 170.77C565.161 170.77 561.347 170 557.754 168.46C554.234 166.92 551.154 164.83 548.514 162.19C545.874 159.55 543.784 156.433 542.244 152.84C540.777 149.247 540.044 145.397 540.044 141.29C540.044 137.183 540.814 133.333 542.354 129.74C543.894 126.147 545.984 123.03 548.624 120.39C551.264 117.75 554.381 115.697 557.974 114.23C561.641 112.69 565.527 111.92 569.634 111.92C572.421 111.92 575.134 112.323 577.774 113.13C580.487 113.863 582.981 114.963 585.254 116.43V93L600.324 89.7V170H585.474ZM554.894 141.29C554.894 145.91 556.507 149.833 559.734 153.06C562.961 156.287 566.921 157.9 571.614 157.9C574.401 157.9 576.931 157.423 579.204 156.47C581.551 155.517 583.567 154.16 585.254 152.4V130.07C583.641 128.383 581.624 127.063 579.204 126.11C576.857 125.157 574.327 124.68 571.614 124.68C566.847 124.68 562.851 126.293 559.624 129.52C556.471 132.673 554.894 136.597 554.894 141.29Z"
+                        fill="black" />
+                    <path
+                        d="M325.93 288V211H341.88V241.91H377.3V211H393.25V288H377.3V256.54H341.88V288H325.93ZM420.888 230.69V264.02C420.888 267.687 421.952 270.62 424.078 272.82C426.278 275.02 429.175 276.12 432.768 276.12C435.335 276.12 437.608 275.643 439.588 274.69C441.642 273.663 443.328 272.233 444.648 270.4V230.69H459.718V288H444.648V283.38C442.448 285.213 439.992 286.643 437.278 287.67C434.565 288.623 431.632 289.1 428.478 289.1C421.878 289.1 416.452 286.973 412.198 282.72C407.945 278.393 405.818 272.893 405.818 266.22V230.69H420.888ZM471.463 288V230.69H486.533V235.2C488.733 233.367 491.153 231.973 493.793 231.02C496.507 230.067 499.44 229.59 502.593 229.59C509.193 229.59 514.62 231.717 518.873 235.97C523.127 240.223 525.253 245.687 525.253 252.36V288H510.183V254.56C510.183 250.967 509.083 248.07 506.883 245.87C504.757 243.67 501.897 242.57 498.303 242.57C495.81 242.57 493.537 243.083 491.483 244.11C489.503 245.063 487.853 246.457 486.533 248.29V288H471.463ZM542.33 271.83V243.34H530.56V230.69H542.33V216.06L557.4 212.65V230.69H573.68V243.34H557.4V268.75C557.4 271.463 557.987 273.37 559.16 274.47C560.333 275.57 562.387 276.12 565.32 276.12C566.713 276.12 568.033 276.047 569.28 275.9C570.527 275.68 571.883 275.313 573.35 274.8V287.12C571.737 287.633 569.793 288.037 567.52 288.33C565.247 288.697 563.303 288.88 561.69 288.88C555.31 288.88 550.47 287.45 547.17 284.59C543.943 281.657 542.33 277.403 542.33 271.83ZM631.974 280.85C628.454 283.71 624.824 285.8 621.084 287.12C617.417 288.44 613.311 289.1 608.764 289.1C604.437 289.1 600.367 288.33 596.554 286.79C592.814 285.25 589.551 283.16 586.764 280.52C584.051 277.88 581.887 274.763 580.274 271.17C578.734 267.503 577.964 263.58 577.964 259.4C577.964 255.293 578.697 251.443 580.164 247.85C581.704 244.183 583.794 241.03 586.434 238.39C589.074 235.677 592.191 233.55 595.784 232.01C599.451 230.47 603.337 229.7 607.444 229.7C611.477 229.7 615.217 230.507 618.664 232.12C622.184 233.66 625.191 235.787 627.684 238.5C630.251 241.213 632.231 244.477 633.624 248.29C635.091 252.03 635.824 256.1 635.824 260.5V264.46H593.144C594.171 268.053 596.151 270.95 599.084 273.15C602.017 275.35 605.464 276.45 609.424 276.45C611.917 276.45 614.264 276.047 616.464 275.24C618.664 274.433 620.534 273.297 622.074 271.83L631.974 280.85ZM607.114 242.13C603.667 242.13 600.697 243.193 598.204 245.32C595.711 247.373 593.987 250.16 593.034 253.68H621.084C620.131 250.307 618.371 247.557 615.804 245.43C613.311 243.23 610.414 242.13 607.114 242.13ZM645.057 288V230.69H660.127V236.96C661.961 234.467 664.161 232.597 666.727 231.35C669.367 230.03 672.264 229.37 675.417 229.37C676.884 229.443 678.094 229.59 679.047 229.81C680.074 229.957 680.954 230.25 681.687 230.69V243.89C680.587 243.377 679.377 243.01 678.057 242.79C676.737 242.497 675.381 242.35 673.987 242.35C671.054 242.35 668.341 243.083 665.847 244.55C663.427 246.017 661.521 248.143 660.127 250.93V288H645.057Z"
+                        fill="black" />
+                </g>
+                <defs>
+                    <clipPath id="clip0_318_616">
+                        <rect width="748" height="379" fill="white" />
+                    </clipPath>
+                    <clipPath id="clip1_318_616">
+                        <rect width="108" height="108" fill="white" transform="translate(121.002 86)" />
+                    </clipPath>
+                    <clipPath id="clip2_318_616">
+                        <rect width="274.955" height="268.26" fill="white"
+                            transform="translate(182.996 -20) rotate(47.2523)" />
+                    </clipPath>
+                </defs>
+            </svg>
+
+            <div class="main">
+                <div class="one"></div>
+                <div class="two"></div>
+                <div class="three"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main container -->
+    <div class="container" style="position:absolute; max-width: 1440px; top: 24px; bottom: 24px; left: 0; right:0; width:100%; padding-left: 20px; 
+    padding-right: 20px; margin-left: auto; margin-right: auto; display: flex;">
+
+        <!--  Selections  -->
+        <div style="padding-right: 18px; display:flex; flex-flow:column; height:100%">
+            <div class="view-container">
+                <!-- <label> Filter</label> -->
+                <h1 class="viewTitle"> Filter</h1>
+                <div id="observablehq-viewof-homeType-e32e508c" style="font-size:12px"></div>
+                <h2 style="padding-top:16px">Drag to Filter by Price Range</h2>
+                <div id="observablehq-viewof-selected-e32e508c" style="padding-top:4px"></div>
+            </div>
+            <!--  Map -->
+            <div id="observablehq-mapview-e32e508c" style="position:relative; padding-top:16px; flex:auto;"></div>
+        </div>
+
+
+        <!--  Comparison  -->
+        <div class="view-container" style="margin-right:18px; position:relative; width:554px;">
+            <!-- <label> Comparison </label> -->
+            <h1 class="viewTitle"> Comparison</h1>
+            <div style="display:grid; grid-template-columns: auto auto;">
+                <div style="display: flex; font-size: x-small; justify-content: left; margin-bottom: 8px;">
+                    <div id="observablehq-favourite_buttons-e32e508c"></div>
+                    <div style="display: flex; justify-content: center;"><button id="weightBtn"
+                            class="primaryButton">Adjust Weights</button></div>
+                </div>
+                <div style="grid-row: 1/3; grid-column-start:2; margin-left:11px;">
+                    <div style="display:grid; grid-template-columns:1fr 1fr; row-gap:6px">
+                        <p><strong>C</strong> = City</p>
+                        <p><strong>T</strong> = Town</p>
+                        <p><strong>V</strong> = Village</p>
+                        <p><strong>I</strong> = Island</p>
+                        <p style="grid-column:1/3"><strong>D</strong> = District Municipality</p>
+                    </div>
+                </div>
+                <div id="observablehq-viewof-ordering-e32e508c"></div>
+            </div>
+            <div id="observablehq-viewof-final_plot-e32e508c"
+                style="margin-top: 16px; overflow-y:scroll; max-height:calc(100% - 126px); width:auto;"></div>
+            <div id="observablehq-viewof-legend-e32e508c" style="position: absolute; right: 15px; bottom: 10px; "></div>
+        </div>
+
+        <!--  Detailed view  -->
+        <div class="view-container">
+            <!-- <label> Detail</label> -->
+            <div style="display:flex; justify-content: space-between; align-items: flex-start;">
+                <h1 class="viewTitle" style="width:100%"> Detail</h1>
+                <svg style="margin-left:8px;" width="250px" height="auto" viewBox="0 0 1495 351" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <g clip-path="url(#clip0_324_614)">
+                        <rect width="1495" height="351" fill="white" />
+                        <g clip-path="url(#clip1_324_614)">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M193.658 89.9269C196.09 93.1412 197.187 98.4694 197.726 104.947C198.44 114.613 198.727 126.213 199.001 138.199C198.646 150.409 198.502 162.722 197.726 171.452C197.114 178.152 195.814 182.639 193.643 185.361C190.881 188.078 185.582 190.372 178.027 190.916C168.838 191.7 157.501 191.691 144.994 192C131.09 191.762 121.661 191.864 111.769 190.92C104.053 190.385 99.0045 188.118 95.8983 185.382C93.5974 182.293 92.9239 179.008 92.2865 171.309C91.4898 162.418 91.3134 150.37 91.0117 138.265C91.4643 126.224 91.4919 114.086 92.2929 105.015C92.8304 97.8575 93.6781 93.0456 95.8516 89.9864C98.9004 87.3881 104.101 86.0964 111.86 85.4591C122.483 84.2163 133.544 83.972 144.979 83.9996C156.747 84.0187 168.043 84.3544 178.123 85.3465C184.921 85.8904 190.547 87.0609 193.647 89.9269H193.658Z"
+                                fill="#008D8A" />
+                            <path
+                                d="M111.795 130.254V129.999C111.908 129.999 112.077 130.027 112.162 129.942C115.386 127.992 118.609 126.069 121.774 124.061C122.142 123.836 122.339 123.129 122.367 122.619C122.424 119.113 122.452 115.636 122.367 112.13C122.339 110.943 122.65 110.49 123.895 110.547C125.845 110.632 127.825 110.547 129.803 110.575C132.686 110.603 132.178 110.32 132.206 113.035C132.234 114.478 132.206 115.948 132.206 117.671C132.941 117.246 133.366 117.021 133.761 116.793C136.736 114.983 139.727 113.182 142.685 111.308C143.447 110.828 144.012 110.828 144.777 111.308C152.552 116.085 160.336 120.844 168.129 125.584C170.532 127.055 172.962 128.525 175.48 130.08C173.727 132.908 172.059 135.621 170.362 138.391C168.834 137.486 167.449 136.666 165.753 135.648V137.513C165.753 145.344 165.726 153.147 165.781 160.978C165.781 162.081 165.584 162.476 164.368 162.476C150.826 162.419 137.256 162.448 123.714 162.476C122.611 162.476 122.329 162.136 122.329 161.063C122.356 153.203 122.356 145.317 122.356 137.458V135.621C120.461 136.78 118.908 137.713 117.238 138.731C116.248 137.12 115.373 135.678 114.44 134.235C113.605 132.882 112.709 131.582 111.795 130.254Z"
+                                fill="white" />
+                        </g>
+                        <g clip-path="url(#clip2_324_614)">
+                            <path
+                                d="M228.919 60.1395L228.943 60.1658L228.932 60.1765C249.884 82.8569 259.658 111.896 258.519 140.5C257.379 169.059 245.344 197.223 222.684 218.194L222.695 218.206L222.641 218.256L222.575 218.317L222.564 218.305C213.419 226.743 203.24 233.374 192.492 238.198C190.689 239.008 188.92 239.747 187.199 240.418L187.187 240.429C178.972 243.616 170.444 245.804 161.813 246.98L163.001 310.414L163.002 310.468L163.001 310.947L162.999 310.982C162.923 316.056 160.839 320.706 157.518 324.12C154.232 327.493 149.708 329.685 144.694 329.944L144.651 329.95L144.051 329.971L143.94 329.967L143.455 329.97L143.397 329.976C138.319 329.9 133.68 327.823 130.267 324.5C126.899 321.223 124.704 316.701 124.45 311.682L124.446 311.641L124.424 311.04L124.419 310.955L123.203 245.528C120.847 245.024 118.514 244.444 116.219 243.796C113.105 242.917 109.996 241.899 106.95 240.745C91.28 234.817 76.691 225.235 64.5359 212.085L64.5244 212.095L64.5001 212.069L64.5116 212.059C43.5599 189.378 33.7828 160.336 34.9215 131.732C36.057 103.168 48.1001 75.0059 70.7527 54.0403L70.7421 54.0288L70.7963 53.9787L70.8226 53.9543L70.8333 53.9658C93.5303 32.9988 122.581 23.201 151.186 24.3187C179.745 25.4394 207.901 37.4534 228.857 60.096L228.869 60.0853L228.919 60.1395ZM210.51 77.2043L210.498 77.215L210.474 77.1887L210.424 77.1345L210.435 77.1238C194.194 59.5754 172.341 50.2606 150.165 49.3918C127.991 48.5247 105.445 56.1191 87.847 72.376L87.8577 72.3875L87.8313 72.4118L87.7771 72.4619L87.7664 72.4504C70.2051 88.704 60.8775 110.55 59.9937 132.733C59.1087 154.908 66.6871 177.447 82.9322 195.029L82.9437 195.018L82.968 195.045L83.0181 195.099L83.0066 195.11C99.2483 212.658 121.092 221.969 143.274 222.838C165.448 223.705 187.989 216.116 205.584 199.859L205.575 199.849L205.601 199.824L205.655 199.774L205.664 199.784C223.227 183.532 232.557 161.672 233.444 139.499C234.329 117.324 226.755 94.7893 210.51 77.2043Z"
+                                fill="black" />
+                        </g>
+                        <path
+                            d="M308.97 237V104H336.52V157.58H397.7V104H425.25V237H397.7V182.47H336.52V237H308.97ZM495.979 238.9C486.099 238.9 477.169 236.62 469.189 232.06C461.209 227.5 454.876 221.357 450.189 213.63C445.502 205.903 443.159 197.227 443.159 187.6C443.159 177.973 445.439 169.297 449.999 161.57C454.686 153.717 461.019 147.51 468.999 142.95C477.106 138.39 486.099 136.11 495.979 136.11C505.859 136.11 514.789 138.39 522.769 142.95C530.876 147.51 537.209 153.717 541.769 161.57C546.456 169.297 548.799 177.973 548.799 187.6C548.799 197.227 546.456 205.903 541.769 213.63C537.209 221.357 530.939 227.5 522.959 232.06C514.979 236.62 505.986 238.9 495.979 238.9ZM495.979 216.29C501.172 216.29 505.796 215.023 509.849 212.49C514.029 209.957 517.322 206.537 519.729 202.23C522.262 197.797 523.529 192.92 523.529 187.6C523.529 182.153 522.262 177.277 519.729 172.97C517.322 168.663 514.029 165.243 509.849 162.71C505.796 160.05 501.172 158.72 495.979 158.72C490.912 158.72 486.289 160.05 482.109 162.71C477.929 165.243 474.636 168.663 472.229 172.97C469.822 177.277 468.619 182.153 468.619 187.6C468.619 192.92 469.822 197.797 472.229 202.23C474.636 206.537 477.929 209.957 482.109 212.49C486.289 215.023 490.912 216.29 495.979 216.29ZM613.059 238.9C603.179 238.9 594.249 236.62 586.269 232.06C578.289 227.5 571.956 221.357 567.269 213.63C562.582 205.903 560.239 197.227 560.239 187.6C560.239 177.973 562.519 169.297 567.079 161.57C571.766 153.717 578.099 147.51 586.079 142.95C594.186 138.39 603.179 136.11 613.059 136.11C622.939 136.11 631.869 138.39 639.849 142.95C647.956 147.51 654.289 153.717 658.849 161.57C663.536 169.297 665.879 177.973 665.879 187.6C665.879 197.227 663.536 205.903 658.849 213.63C654.289 221.357 648.019 227.5 640.039 232.06C632.059 236.62 623.066 238.9 613.059 238.9ZM613.059 216.29C618.252 216.29 622.876 215.023 626.929 212.49C631.109 209.957 634.402 206.537 636.809 202.23C639.342 197.797 640.609 192.92 640.609 187.6C640.609 182.153 639.342 177.277 636.809 172.97C634.402 168.663 631.109 165.243 626.929 162.71C622.876 160.05 618.252 158.72 613.059 158.72C607.992 158.72 603.369 160.05 599.189 162.71C595.009 165.243 591.716 168.663 589.309 172.97C586.902 177.277 585.699 182.153 585.699 187.6C585.699 192.92 586.902 197.797 589.309 202.23C591.716 206.537 595.009 209.957 599.189 212.49C603.369 215.023 607.992 216.29 613.059 216.29ZM727.669 238.33C718.296 238.33 709.809 236.05 702.209 231.49C694.609 226.93 688.529 220.85 683.969 213.25C679.536 205.523 677.319 196.91 677.319 187.41C677.319 177.91 679.536 169.36 683.969 161.76C688.529 154.033 694.672 147.953 702.399 143.52C710.126 138.96 718.802 136.68 728.429 136.68C733.369 136.68 738.119 137.377 742.679 138.77C747.239 140.037 751.482 141.937 755.409 144.47V104L781.439 99.63V237H755.789V228.83C747.682 235.163 738.309 238.33 727.669 238.33ZM731.849 216.1C736.662 216.1 741.032 215.34 744.959 213.82C749.012 212.173 752.496 209.767 755.409 206.6V168.03C752.496 165.117 749.012 162.837 744.959 161.19C740.906 159.543 736.536 158.72 731.849 158.72C726.402 158.72 721.462 159.987 717.029 162.52C712.722 164.927 709.302 168.347 706.769 172.78C704.236 177.087 702.969 181.963 702.969 187.41C702.969 192.857 704.236 197.733 706.769 202.04C709.302 206.347 712.722 209.767 717.029 212.3C721.462 214.833 726.402 216.1 731.849 216.1ZM841.675 237V104H869.225V157.58H930.405V104H957.955V237H930.405V182.47H869.225V237H841.675ZM1018.8 238.9C1011.2 238.9 1004.43 237.253 998.474 233.96C992.647 230.54 988.024 225.853 984.604 219.9C981.311 213.947 979.664 207.107 979.664 199.38V138.01H1005.69V195.58C1005.69 201.913 1007.53 206.98 1011.2 210.78C1015 214.58 1020.07 216.48 1026.4 216.48C1030.71 216.48 1034.57 215.657 1037.99 214.01C1041.54 212.237 1044.45 209.767 1046.73 206.6V138.01H1072.76V237H1046.73V229.02C1039.13 235.607 1029.82 238.9 1018.8 238.9ZM1093.05 237V138.01H1119.08V146.18C1126.55 139.467 1135.8 136.11 1146.82 136.11C1154.55 136.11 1161.32 137.82 1167.15 141.24C1173.1 144.533 1177.73 149.157 1181.02 155.11C1184.31 160.937 1185.96 167.777 1185.96 175.63V237H1159.93V179.43C1159.93 172.97 1158.09 167.903 1154.42 164.23C1150.75 160.43 1145.74 158.53 1139.41 158.53C1134.98 158.53 1131.05 159.417 1127.63 161.19C1124.21 162.837 1121.36 165.243 1119.08 168.41V237H1093.05ZM1252.61 238.52C1241.59 238.52 1233.23 236.05 1227.53 231.11C1221.95 226.043 1219.17 218.697 1219.17 209.07V159.67H1198.84V138.01H1219.17V112.74L1245.2 106.85V138.01H1273.51V159.67H1245.2V203.75C1245.2 208.31 1246.21 211.603 1248.24 213.63C1250.26 215.53 1253.81 216.48 1258.88 216.48C1261.41 216.48 1263.69 216.353 1265.72 216.1C1267.87 215.72 1270.21 215.087 1272.75 214.2V235.67C1270.09 236.557 1266.73 237.253 1262.68 237.76C1258.75 238.267 1255.39 238.52 1252.61 238.52ZM1334.66 238.9C1324.78 238.9 1315.78 236.62 1307.68 232.06C1299.7 227.5 1293.36 221.357 1288.68 213.63C1283.99 205.903 1281.65 197.227 1281.65 187.6C1281.65 177.973 1283.86 169.297 1288.3 161.57C1292.86 153.843 1299 147.7 1306.73 143.14C1314.45 138.58 1323.07 136.3 1332.57 136.3C1342.07 136.3 1350.49 138.643 1357.84 143.33C1365.18 148.017 1370.95 154.35 1375.13 162.33C1379.43 170.31 1381.59 179.367 1381.59 189.5V196.34H1308.25C1309.39 200.267 1311.22 203.813 1313.76 206.98C1316.42 210.147 1319.65 212.617 1323.45 214.39C1327.37 216.163 1331.55 217.05 1335.99 217.05C1340.42 217.05 1344.47 216.353 1348.15 214.96C1351.95 213.567 1355.18 211.603 1357.84 209.07L1374.94 224.65C1368.86 229.59 1362.59 233.2 1356.13 235.48C1349.79 237.76 1342.64 238.9 1334.66 238.9ZM1307.87 177.72H1355.94C1355.05 173.793 1353.4 170.373 1351 167.46C1348.72 164.42 1345.93 162.077 1342.64 160.43C1339.47 158.657 1335.92 157.77 1332 157.77C1327.94 157.77 1324.27 158.593 1320.98 160.24C1317.68 161.887 1314.9 164.23 1312.62 167.27C1310.46 170.183 1308.88 173.667 1307.87 177.72ZM1397.53 237V138.01H1423.56V149.03C1426.73 144.723 1430.53 141.43 1434.96 139.15C1439.4 136.87 1444.4 135.73 1449.97 135.73C1454.79 135.857 1458.4 136.617 1460.8 138.01V160.81C1458.9 159.923 1456.81 159.29 1454.53 158.91C1452.25 158.403 1449.91 158.15 1447.5 158.15C1442.44 158.15 1437.81 159.417 1433.63 161.95C1429.45 164.483 1426.1 168.093 1423.56 172.78V237H1397.53Z"
+                            fill="black" />
+                    </g>
+                    <defs>
+                        <clipPath id="clip0_324_614">
+                            <rect width="1495" height="351" fill="white" />
+                        </clipPath>
+                        <clipPath id="clip1_324_614">
+                            <rect width="108" height="108" fill="white" transform="translate(91.002 84)" />
+                        </clipPath>
+                        <clipPath id="clip2_324_614">
+                            <rect width="274.955" height="268.26" fill="white"
+                                transform="translate(152.996 -22) rotate(47.2523)" />
+                        </clipPath>
+                    </defs>
+                </svg>
+
+            </div>
+            <div style="overflow-y: scroll; max-height:calc(100% - 41px)">
+                <div style="display:flex; align-items:center; padding-bottom: 16px;">
+                    <svg style="height:21px; margin-right:6px; " id="Layer_1" data-name="Layer 1"
+                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 92.25 122.88">
+                        <defs>
+                            <style>
+                                .cls-1 {
+                                    fill: red;
+                                    fill-rule: evenodd;
+                                }
+                            </style>
+                        </defs>
+                        <title>pin-location</title>
+                        <path class="cls-1"
+                            d="M49.1,122.34a2.75,2.75,0,0,1-3.12.1A109.7,109.7,0,0,1,19,98.35C9.15,86,3,72.33.83,59.16-1.33,45.79.69,32.94,7.34,22.49A45.14,45.14,0,0,1,17.39,11.35C26.77,3.87,37.49-.08,48.16,0c10.29.08,20.43,3.92,29.2,11.91a43,43,0,0,1,7.79,9.49c7.15,11.77,8.69,26.8,5.55,42a92.52,92.52,0,0,1-41.6,58.92Zm-3-98.58a23,23,0,1,1-22.94,23A23,23,0,0,1,46.13,23.76Z" />
+                    </svg>
+                    <div id="observablehq-selected_city_text-e32e508c"></div>
+                </div>
+                <div id="observablehq-viewof-final_details-e32e508c"></div>
+            </div>
+        </div>
+
+        <!--  Dependencies  -->
+        <div id="observablehq-leafletcss-e32e508c" style="visibility: hidden;"></div>
+
+        <!-- The Modal -->
+        <div id="weightModal" class="modal">
+            <!-- Modal content -->
+            <div id="weight-modal-content">
+                <span class="close">&times;</span>
+                <div id="observablehq-viewof-attr_weights-e32e508c"></div>
+            </div>
+        </div>
+
+        <!-- Welcome modal -->
+        <div id="welcomeModal" class="modal">
+            <!-- Modal content -->
+            <div id="welcome-modal-content">
+                <span class="close">&times;</span>
+                <h1 class="welcomeTitle">Welcome to Hood Hunter</h1>
+                <hr>
+                <br>
+
+                <p class="welcomeText">
+                    <b>Hood Hunter</b> is an explorer visualization tool to support prospective home buyers in narrowing
+                    neighbourhoods for a potential home purchase developed to fulfill the requirements of the CPSC 547
+                    course on data visualization. This project was created by Abiramy Kuganesan, Ivan Song, and Lufei Liu with equal contributions. 
+                </p>
+                <br>
+                <p class="welcomeText">Our tool is built within an <a href="https://observablehq.com/d/7cacdf357c1a5b22">Observable
+                        Notebook</a> and adapted into an HTML/CSS dashboard. The presentation and demo of our tool can
+                    also be found <a
+                        href="https://drive.google.com/file/d/1tq6FK1Pdcm-v3OAZDKlK5WjW9VRtaYl_/view?usp=sharing">here</a>.
+                </p>
+                <br>
+                <p class="welcomeText">
+                    The main tasks of Hood Hunter are to filter, compare, and view details. We use crossfilter to filter by home prices, which gives a better overview of the available options. We adapt lineup for comparison to communicate the factors behind the ranking system. This feature also allows sorting by attributes or adjusting weights to better suit personal needs. Lastly, we have a detail pane for the selected location which shows a history of past pricing, helping understand the pricing trend, as well as more information about individual factors. 
+                </p>
+                <br>
+                <p class="welcomeText">
+                    The data that we are visualizing originates from multiple sources. We use the Canadian census data for criminal code violations as our safety metric; the foundational skills assessment by the province of BC for our education metric; and the proximity database from Statistics canada for all our proximity metrics. Lastly, Housing prices are available from the canadian mortgage and housing corporation for each type of housing in all neighbourhoods with more than 50,000 population. 
+                </p>
+                <br>
+                <h1>Hope you enjoy!</h1>
+            </div>
+        </div>
+
+
+    </div>
+</body>
+
+</html>
