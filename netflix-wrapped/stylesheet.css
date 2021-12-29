@@ -1,0 +1,252 @@
+body {
+  width: 100%;
+  background: #0e0e0e;
+  color: #ffffff;
+  font-family: 'Noto Sans', sans-serif;
+  margin: 0;
+}
+
+button {
+  margin-top: 16px;
+  color: white;
+  background: red;
+  border: none;
+  font-size: 16px;
+  padding: 8px 24px;
+  border-radius: 4px;
+  font-weight: 700;
+}
+
+.locked {
+  overflow-y: hidden;
+}
+
+.title-text {
+  max-width: 640px;
+  height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 { 
+  font-size: 40px;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 28px;
+  font-weight: 700;
+}
+
+h3 {
+  font-size: 40px;
+  font-weight: 700;
+}
+
+.top-show {
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+#observablehq-teaser_image-f66482b4 {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#observablehq-teaser_image-f66482b4 img {
+  display: block;
+  height: 100%;
+}
+
+#observablehq-favourite_text-f66482b4 {
+  height: 100vh;
+  width: 100%;
+  position: absolute;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.80);
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#observablehq-favourite_text-f66482b4 h3 {
+  max-width: 640px;
+}
+
+.inputs {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 16px;
+  font-weight: 400;
+  overflow: hidden;
+  background-image: url(./assets/CA-en-20211220-popsignuptwoweeks-perspective_alpha_website_large.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.inputs > * { 
+  margin-bottom: 16px;
+}
+
+.bg-gradient {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: linear-gradient(180deg, rgba(14,14,14,1) 0%, rgba(14,14,14,0.85) 50%, rgba(14,14,14,1) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+label {
+  color: white;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+#oi-ec050e-1 {
+  color: white;
+}
+
+.oi-ec050e {
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap !important;
+  color: #1f1f1f;
+}
+
+.calendar {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.calendarLegend {
+  width: auto;
+  display: flex;
+  align-items: left;
+  justify-content: center;
+  flex-direction: column;
+  z-index: 999;
+  margin-bottom: 24px;
+}
+
+#observablehq-calendar_chart-f66482b4 {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 8px;
+  border: 1px solid #242424;
+  padding-bottom: 24px;
+}
+
+#observablehq-legend-f66482b4 {
+  margin-left: 24px;
+  margin-bottom: 16px;
+}
+
+#observablehq-detailed_legend-f66482b4 {
+  z-index: 998;
+}
+
+#observablehq-day_chart-f66482b4 {
+  z-index: 997;
+}
+
+#observablehq-day_image-f66482b4 {
+  color: rgba(0, 0, 0, 0);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.1;
+  z-index: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#observablehq-day_chart-f66482b4 {
+  overflow: hidden;
+}
+
+#observablehq-day_image-f66482b4 img {
+  display: block;
+  height: 100%;
+}
+
+.genres {
+  height: 100vh;
+  width: 100vw;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.genres > :first-child {
+  margin-top: 200px;
+}
+
+.genres > :last-child {
+  max-width: 640px;
+}
+
+.genre-chart {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.genre-chart > :last-child {
+  margin-left: 48px;
+}
+
+.bubble {
+  height: 100vh;
+  width: 100vw;
+  margin: 0 auto;
+  display: flex;
+  margin-top: 48px;
+  align-items: center;
+  flex-direction: column;
+}
+
+.bubbles {
+  display: flex;
+}
+
+.bubble-description {
+  margin-top: 144px;
+  max-width: 480px;
+  z-index: 999;
+  margin-right: 64px;
+}
+
+.bubble h2 {
+  max-width: 480px;
+  font-size: 36px;
+}

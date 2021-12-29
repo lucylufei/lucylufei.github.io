@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Netflix Wrapped</title>
+  <link rel="stylesheet" href="stylesheet.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet" />
+</head>
+
+<body class="locked">
+  <div class="inputs">
+    <div class="bg-gradient">
+      <h3 style="color: red">Netflix Wrapped</h3>
+      <h2>Upload your file and see your year in review.</h2>
+      <div class="fileInput" id="observablehq-viewof-file-f66482b4"></div>
+      <div id="observablehq-viewof-selected_user-f66482b4"></div>
+      <div id="observablehq-viewof-selected_year-f66482b4"></div>
+      <div id="observablehq-button-f66482b4"></div>
+    </div>
+  </div>
+
+  <div class="title-text">
+    <div id="observablehq-total_text-f66482b4"></div>
+    <div id="observablehq-detailed_text-f66482b4"></div>
+  </div>
+  <div class="top-show">
+    <div id="observablehq-teaser_image-f66482b4"></div>
+    <div id="observablehq-favourite_text-f66482b4"></div>
+  </div>
+
+  <div class="calendar">
+    <h2>Here's what you watched on each day...</h2>
+    <div class="calendarLegend">
+      <div id="observablehq-legend-f66482b4"></div>
+      <div id="observablehq-calendar_chart-f66482b4"></div>
+    </div>
+    <div id="observablehq-detailed_legend-f66482b4"></div>
+    <div id="observablehq-day_chart-f66482b4"></div>
+    <div id="observablehq-day_image-f66482b4"></div>
+  </div>
+
+  <div class="genres">
+    <div id="observablehq-most_watched_genre_text-f66482b4"></div>
+    <div class="genre-chart">
+      <div id="observablehq-genre_pie-f66482b4"></div>
+      <div id="observablehq-genre_legend-f66482b4"></div>
+    </div>
+    <div id="observablehq-genre_text-f66482b4"></div>
+  </div>
+
+  <div class="bubble">
+    <div class="bubbles">
+      <div class="bubble-description">
+        <h2>And finally, here is everything you watched this year.</h2>
+        <div id="observablehq-show_description-f66482b4"></div>
+      </div>
+      <div id="observablehq-bubble_chart-f66482b4"></div>
+    </div>
+  </div>
+
+  <div id="observablehq-extras-f66482b4" style="display: none"></div>
+</body>
+
+<script type="module">
+  import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js";
+import define from "https://api.observablehq.com/@lucylufei/netflix-wrapped.js?v=3";
+new Runtime().module(define, name => {
+  if (name === "teaser_image") return new Inspector(document.querySelector("#observablehq-teaser_image-f66482b4"));
+  if (name === "viewof file") return new Inspector(document.querySelector("#observablehq-viewof-file-f66482b4"));
+  if (name === "viewof selected_user") return new Inspector(document.querySelector("#observablehq-viewof-selected_user-f66482b4"));
+  if (name === "viewof selected_year") return new Inspector(document.querySelector("#observablehq-viewof-selected_year-f66482b4"));
+  if (name === "button") return new Inspector(document.querySelector("#observablehq-button-f66482b4"));
+  if (name === "total_text") return new Inspector(document.querySelector("#observablehq-total_text-f66482b4"));
+  if (name === "detailed_text") return new Inspector(document.querySelector("#observablehq-detailed_text-f66482b4"));
+  if (name === "favourite_text") return new Inspector(document.querySelector("#observablehq-favourite_text-f66482b4"));
+  if (name === "legend") return new Inspector(document.querySelector("#observablehq-legend-f66482b4"));
+  if (name === "calendar_chart") return new Inspector(document.querySelector("#observablehq-calendar_chart-f66482b4"));
+  if (name === "detailed_legend") return new Inspector(document.querySelector("#observablehq-detailed_legend-f66482b4"));
+  if (name === "day_chart") return new Inspector(document.querySelector("#observablehq-day_chart-f66482b4"));
+  if (name === "bubble_chart") return new Inspector(document.querySelector("#observablehq-bubble_chart-f66482b4"));
+  if (name === "show_description") return new Inspector(document.querySelector("#observablehq-show_description-f66482b4"));
+  if (name === "day_image") return new Inspector(document.querySelector("#observablehq-day_image-f66482b4"));
+  if (name === "most_watched_genre_text") return new Inspector(document.querySelector("#observablehq-most_watched_genre_text-f66482b4"));
+  if (name === "genre_pie") return new Inspector(document.querySelector("#observablehq-genre_pie-f66482b4"));
+  if (name === "genre_legend") return new Inspector(document.querySelector("#observablehq-genre_legend-f66482b4"));
+  if (name === "extras") return new Inspector(document.querySelector("#observablehq-extras-f66482b4"));
+  if (name === "genre_text") return new Inspector(document.querySelector("#observablehq-genre_text-f66482b4"));
+  return ["raw_data","data","userprofiles","filtered_data","processed_filtered_data","total_duration","total_movie_duration","total_tv_duration","merged_data","bubble_data","max_show","top_show","show_query","response","show_image","bubble_tv","bubble_movie","all_genres","get_genre_shows","calendar_data","max_duration","day_data","processed_day_data","day_series","day_plot","old_stuffs","converted_day_plot","picasso_data","show_query2","response2","feature_image","years"].includes(name);
+});
+</script>
+
+</html>
