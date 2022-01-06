@@ -77,4 +77,28 @@
 "image":"./images/assn3.JPG",
 "tags":["Hardware","Simulation"],
 "skills":["Python","CAD"],
-"link":"https://github.com/lucylufei/CPEN513-assn3"}]}
+"link":"https://github.com/lucylufei/CPEN513-assn3"},
+{
+"id":10,
+"title":"Telenotes",
+"description":"A Google Chrome extension for adding notes to videos at specific timestamps. ",
+"image":"./images/telenotes1.png",
+"tags":["Software"],
+"skills":["JavaScript"," CSS"," HTML"],
+"link":"./telenotes.html"},
+{
+"id":11,
+"title":"Hood Hunter",
+"description":"An explorer visualization tool to support prospective home buyers in selecting neighbourhoods.",
+"image":"./images/teaser-hood-hunter.PNG",
+"tags":["Software"],
+"skills":["JavaScript"," Python"," CSS"," HTML"],
+"link":"./hoodhunter.html"},
+{
+"id":12,
+"title":"Netflix Wrapped",
+"description":"A visualization of your Netflix data showing viewing activity for the year. ",
+"image":"./images/netflix-wrapped.JPG",
+"tags":["Software"],
+"skills":["JavaScript"," CSS"," HTML"],
+"link":"./netflix-wrapped/index.html"}]}

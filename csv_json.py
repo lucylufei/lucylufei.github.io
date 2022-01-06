@@ -1,7 +1,7 @@
 import csv
 
-path = r"C:\Users\lucyl\Documents\GitHub\lucylufei.github.io\projectscsv.csv"
-path_json = r"C:\Users\lucyl\Documents\GitHub\lucylufei.github.io\project.json"
+path = r"/Users/lufei/Documents/GitHub/lucylufei.github.io/projectscsv.csv"
+path_json = r"/Users/lufei/Documents/GitHub/lucylufei.github.io/project.json"
 
 csvfile = open(path, newline='') 
 	

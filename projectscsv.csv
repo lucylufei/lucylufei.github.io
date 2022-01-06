@@ -9,3 +9,6 @@ id,title,description,image,tags,skills,link
 7,VLSI Router,A basic maze router implemented using the Lee-Moore and A* algorithms to perform detailed routing from source pins to multiple sink pins without overlap.,./images/assn1.JPG,"Hardware,Simulation","Python,CAD",https://github.com/lucylufei/CPEN513-assn1
 8,VLSI Placement,Implementation of tuned Simulated Annealing to minimize cost function for VLSI chip placement.,./images/assn2.JPG,"Hardware,Simulation","Python,CAD",https://github.com/lucylufei/CPEN513-assn2
 9,VLSI Partitioner,Implementation of Branch and Bound algorithm used to partition graph nodes for minimized cut size in VLSI chip placement. ,./images/assn3.JPG,"Hardware,Simulation","Python,CAD",https://github.com/lucylufei/CPEN513-assn3
+10,Telenotes,A Google Chrome extension for adding notes to videos at specific timestamps. ,./images/telenotes1.png,Software,"JavaScript, CSS, HTML",./telenotes.html
+11,Hood Hunter,An explorer visualization tool to support prospective home buyers in selecting neighbourhoods.,./images/teaser-hood-hunter.PNG,Software,"JavaScript, Python, CSS, HTML",./hoodhunter.html
+12,Netflix Wrapped,A visualization of your Netflix data showing viewing activity for the year. ,./images/netflix-wrapped.JPG,Software,"JavaScript, CSS, HTML",./netflix-wrapped/index.html
