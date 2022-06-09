@@ -28,7 +28,7 @@ for project in range(1, len(project_array)):
 	for i, key in enumerate(keys):
 		jsonfile.write("\"{key}\":".format(key=key))
 		if "tags" in key or "skills" in key:
-			jsonfile.write("[\"{data}\"]".format(data=project_array[project][i].replace(",", "\",\"")))
+			jsonfile.write("[\"{data}\"]".format(data=project_array[project][i].replace(" ", "").sreplace(",", "\",\"")))
 		elif "id" in key:
 			jsonfile.write("{data}".format(data=project_array[project][i]))
 		else:
