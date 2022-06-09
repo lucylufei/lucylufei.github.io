@@ -107,6 +107,6 @@
 "title":"VLSI Genetics Algorithm",
 "description":"An implementation of the genetics algorithm for VLSI partitioning and placement in the FPGA CAD flow. ",
 "image":"./images/genetics.JPG",
-"tags":["Hardware"," Simulation"],
+"tags":["Hardware","Simulation"],
 "skills":["Python","CAD"],
 "link":"https://github.com/lucylufei/CPEN513-FinalProject"}]}
