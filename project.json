@@ -87,14 +87,6 @@
 "skills":["MATLAB","Simulink","PID Control"],
 "link":"./files/project/341.pdf"},
 {
-"id":11,
-"title":"Mechanical Claw",
-"description":"The mechanical claw was built using sheet metal, wires, and a motor controlled using an Arduino microprocessor. The claw is automated and closes around the object it is attempting to pick up when it senses the floor.",
-"image":"./images/2.JPG",
-"tags":["Hardware","Simulation"],
-"skills":["SolidWorks","Arduino"],
-"link":""},
-{
 "id":12,
 "title":"Marketing Plan",
 "description":"A marketing plan developed for Rent the Runway through investigation of the company's core competencies, consumer preferences, competition and partners. Ideas were generated using SWOT analysis and with customer segmentation in mind.",

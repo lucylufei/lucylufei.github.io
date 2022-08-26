@@ -31,6 +31,7 @@ function load_skills() {
 
 $(document).ready(function () {
     var award_closed = true;
+    var resume_extended = true;
 
     load_skills();
 
@@ -38,6 +39,8 @@ $(document).ready(function () {
     $(".cv").hide();
     $(".job-details").hide();
     $(".details").hide();
+    $(".resume-extended").hide();
+
 
     $("#switch").change(function () {
         console.log(this);
@@ -95,6 +98,21 @@ $(document).ready(function () {
         else {
             $("#award").html($("#award").html().replace("up", "down"));
             award_closed = true;
+        }
+    });
+
+    $("#resume-extended").click(function() {
+        $("#resume-extended-details").animate({
+            height: "toggle"
+        });
+
+        if (resume_extended) {
+            $("#resume-extended").html($("#resume-extended").html().replace("down", "up"));
+            resume_extended = false;
+        }
+        else {
+            $("#resume-extended").html($("#resume-extended").html().replace("up", "down"));
+            resume_extended = true;
         }
     });
 })
