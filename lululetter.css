@@ -124,3 +124,10 @@ footer {
     filter: blur(8px);
   -webkit-filter: blur(8px);
 }
+
+.header {
+    padding-top: 2em;
+    padding-bottom: 2em;
+    display: flex;
+    justify-content: center;
+}
