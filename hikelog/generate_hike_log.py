@@ -51,9 +51,11 @@ f.write("</head>\n\n")
 f.write("<body>\n")
 
 # Navbar
-f.write('<!-- Nav Bar --><nav class="navbar sticky-top navbar-expand-lg navbar-light shadow-sm"><a class="navbar-brand" href="index.html" style="font-size: 2em;">LuFei</a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span></button><div class="collapse navbar-collapse" id="navbarText"><ul class="navbar-nav mr-auto"><li class="nav-item"><a class="nav-link text-center" href="index.html">Home</a></li><li class="nav-item"><a class="nav-link text-center" href="resume.html">Resume</a></li><li class="nav-item"><a class="nav-link text-center" href="project.html">Projects</a></li><li class="nav-item"><a class="nav-link text-center active" href="menu.html">Life</a></li><li class="nav-item"><a class="nav-link text-center" href="lululetter.html">lululetter</a></li></ul></div></nav>')
+f.write('<!-- Nav Bar --><nav class="navbar sticky-top navbar-expand-lg navbar-light shadow-sm"><a class="navbar-brand" href="index.html" style="font-size: 2em;">LuFei</a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span></button><div class="collapse navbar-collapse" id="navbarText"><ul class="navbar-nav mr-auto"><li class="nav-item"><a class="nav-link text-center" href="index.html">Home</a></li><li class="nav-item"><a class="nav-link text-center" href="resume.html">Resume</a></li><li class="nav-item"><a class="nav-link text-center" href="project.html">Projects</a></li><li class="nav-item"><a class="nav-link text-center active" href="menu.html">Life</a></li><li class="nav-item"><a class="nav-link text-center" href="lululetter.html">lululetter</a></li></ul></div></nav>\n\n')
 
-f.write('<div class="container"><div class="header"><h1>Hike Log</h1></div></br>\n')
+f.write('<div class="container"><div class="header"><h1>Hike Log</h1></div>\n')
+
+f.write('<div class="faded" style="text-align: center;"><a href="https://www.instagram.com/propinquity.effect/" target="_blank">Questions? Ask <span class="special-link">@propinquity.effect</span></a></div><br>\n')
 
 for region in ordered_regions:
     region_class = region.replace(" ", "-").replace("(", "").replace(")", "").lower()
