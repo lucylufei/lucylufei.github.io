@@ -36,6 +36,15 @@ f.write('<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstr
 # Analytics
 f.write("<script>(function (i, s, o, g, r, a, m) {i['GoogleAnalyticsObject'] = r;i[r] = i[r] || function () {(i[r].q = i[r].q || []).push(arguments)}, i[r].l = 1 * new Date(); a = s.createElement(o),m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m) })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga'); ga('create', 'UA-102991991-1', 'auto'); ga('send', 'pageview');</script>\n\n")
 
+# Scroll to top
+f.write("<script>$(document).scroll(function () {var y = $(this).scrollTop();var trigger = 100;if (y >= (trigger)) {$('#topbtn').fadeIn();} else {$('#topbtn').fadeOut();}});</script>\n\n")
+
+# Scripts
+f.write('<script>$(document).ready(function () {')
+f.write("$('#topbtn').click(function () {jQuery('html,body').animate({scrollTop: 0}, 0);});\n")
+f.write("$('.region').click(function () {var region = this.id; $('.' + region).animate({ height: 'toggle'});});\n")
+f.write("});</script>\n\n")
+
 f.write("</head>\n\n")
 
 # Body
@@ -47,11 +56,12 @@ f.write('<!-- Nav Bar --><nav class="navbar sticky-top navbar-expand-lg navbar-l
 f.write('<div class="container"><div class="header"><h1>Hike Log</h1></div></br>\n')
 
 for region in ordered_regions:
-    f.write('<div class="card"><div class="card-header">{}</div></div></br>\n'.format(region))
+    region_class = region.replace(" ", "-").replace("(", "").replace(")", "").lower()
+    f.write('<div class="card region" id="{c}"><div class="card-header">{r}</div></div></br>\n'.format(r=region, c=region_class))
     f.write('<div class="card-columns">\n')
     for hike in dataset:
         if dataset[hike]["region"] == region:
-            f.write('<div class="card">')
+            f.write('<div class="card {}">'.format(region_class))
             if dataset[hike]["done"] == "Yes":
                 f.write('<img src="./images/hikes/{img}.JPG" class="card-img-top" alt="...">'.format(img=hike.replace(" ", "-").lower()))
                 num_stars = int(dataset[hike]["rec"]) - 2
@@ -65,11 +75,12 @@ for region in ordered_regions:
     regions.remove(region)
 
 for region in regions:
-    f.write('<div class="card"><div class="card-header">{}</div></div></br>\n'.format(region))
+    region_class = region.replace(" ", "-").replace("(", "").replace(")", "").lower()
+    f.write('<div class="card region" id="{c}"><div class="card-header">{r}</div></div></br>\n'.format(r=region, c=region_class))
     f.write('<div class="card-columns">\n')
     for hike in dataset:
         if dataset[hike]["region"] == region:
-            f.write('<div class="card">')
+            f.write('<div class="card {}">'.format(region_class))
             if dataset[hike]["done"] == "Yes":
                 f.write('<img src="./images/hikes/{img}.JPG" class="card-img-top" alt="...">'.format(img=hike.replace(" ", "-").lower()))
                 num_stars = int(dataset[hike]["rec"]) - 2
@@ -81,6 +92,7 @@ for region in regions:
 
     f.write("</div>")
 
+f.write('<button id="topbtn" style="margin:0 auto;">Back to Top</button>')
 
 # Closing tags
 f.write("</div></body>\n")
