@@ -59,7 +59,7 @@ f.write('<div class="faded" style="text-align: center;"><a href="https://www.ins
 
 for region in ordered_regions:
     region_class = region.replace(" ", "-").replace("(", "").replace(")", "").lower()
-    f.write('<div class="card region" id="{c}"><div class="card-header">{r}</div></div></br>\n'.format(r=region, c=region_class))
+    f.write('<div class="card region" id="{c}"><div class="card-header"><table><tr><th style="text-align: left; width: 100vw;">{r}</th><th style="text-align: right;"><i class="fa fa-sort-down"></i></th></tr></table></div></div></br>\n'.format(r=region, c=region_class))
     f.write('<div class="card-columns">\n')
     for hike in dataset:
         if dataset[hike]["region"] == region:
@@ -78,7 +78,7 @@ for region in ordered_regions:
 
 for region in regions:
     region_class = region.replace(" ", "-").replace("(", "").replace(")", "").lower()
-    f.write('<div class="card region" id="{c}"><div class="card-header">{r}</div></div></br>\n'.format(r=region, c=region_class))
+    f.write('<div class="card region" id="{c}"><div class="card-header"><table><tr><th style="text-align: left; width: 100vw;">{r}</th><th style="text-align: right;"><i class="fa fa-sort-down"></i></th></tr></table></div></div></br>\n'.format(r=region, c=region_class))
     f.write('<div class="card-columns">\n')
     for hike in dataset:
         if dataset[hike]["region"] == region:
