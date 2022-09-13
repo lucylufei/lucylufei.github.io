@@ -15,7 +15,8 @@ for line in f.readlines()[1:]:
         "done" : content[0],
         "region" : content[1],
         "rating" : content[3],
-        "rec" : content[4]
+        "rec" : content[4],
+        "comment" : ", ".join(content[5:]).replace('"', '')
     }
     regions.add(content[1])
 
@@ -69,7 +70,7 @@ for region in ordered_regions:
                 num_stars = int(dataset[hike]["rec"]) - 2
                 star_rating = ' <i class="fa fa-heart" aria-hidden="true"></i>' * num_stars
                 star_rating += ' <i class="fa fa-heart-o" aria-hidden="true"></i>' * (3 - num_stars)
-                f.write('<div class="card-body"><h5 class="card-title">{name}</h5><p class="card-text">{rating}</br>{rec}</p></div></div>\n'.format(name=hike, rating=dataset[hike]["rating"], rec=star_rating))
+                f.write('<div class="card-body"><h5 class="card-title">{name}</h5><p class="card-text">{rating}</br>{rec}<hr>{comment}</p></div></div>\n'.format(name=hike, rating=dataset[hike]["rating"], rec=star_rating, comment=dataset[hike]["comment"]))
             else:
                 f.write('<div class="card-body"><h5 class="card-title" style="color: gray;">{name}</h5></div></div>\n'.format(name=hike, rating=dataset[hike]["rating"]))
 
@@ -88,7 +89,7 @@ for region in regions:
                 num_stars = int(dataset[hike]["rec"]) - 2
                 star_rating = ' <i class="fa fa-heart" aria-hidden="true"></i>' * num_stars
                 star_rating += ' <i class="fa fa-heart-o" aria-hidden="true"></i>' * (3 - num_stars)
-                f.write('<div class="card-body"><h5 class="card-title">{name}</h5><p class="card-text">{rating}</br>{rec}</p></div></div>\n'.format(name=hike, rating=dataset[hike]["rating"], rec=star_rating))
+                f.write('<div class="card-body"><h5 class="card-title">{name}</h5><p class="card-text">{rating}</br>{rec}<hr>{comment}</p></div></div>\n'.format(name=hike, rating=dataset[hike]["rating"], rec=star_rating, comment=dataset[hike]["comment"]))
             else:
                 f.write('<div class="card-body"><h5 class="card-title" style="color: gray;">{name}</h5></div></div>\n'.format(name=hike, rating=dataset[hike]["rating"]))
 
