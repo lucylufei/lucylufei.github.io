@@ -65,7 +65,7 @@ for region in ordered_regions:
         if dataset[hike]["region"] == region:
             f.write('<div class="card {}">'.format(region_class))
             if dataset[hike]["done"] == "Yes":
-                f.write('<img src="./images/hikes/{img}.JPG" class="card-img-top" alt="...">'.format(img=hike.replace(" ", "-").lower()))
+                f.write('<img src="./images/hikes/{img}.JPG" class="card-img-top" alt="...">'.format(img=hike.replace(" ", "-").replace("'", "").lower()))
                 num_stars = int(dataset[hike]["rec"]) - 2
                 star_rating = ' <i class="fa fa-heart" aria-hidden="true"></i>' * num_stars
                 star_rating += ' <i class="fa fa-heart-o" aria-hidden="true"></i>' * (3 - num_stars)

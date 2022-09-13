@@ -1,19 +1,16 @@
 ﻿Complete,Region,Hike,Difficulty,Rating
+Yes,BC (Others),Frosty Mountain,Difficult,5
+Yes,BC (Others),Othello Tunnels,Easy,3
 No,BC (Others),Dragon's Back,,
 No,BC (Others),Knox Mountain,,
 No,BC (Others),Myra Canyon,,
 No,BC (Others),Spirit Caves,,
-Yes,BC (Others),Frosty Mountain,Difficult,5
-Yes,BC (Others),Othello Tunnels,Easy,3
 No,Cascades,Blanca Lake,,
 No,Cascades,Maple Pass Loop,Hard,
 No,Cascades,Sourdough Mountain,,
 No,Cascades,Thunder Knob,,
 No,Columbia Gorge,Beacon Rock,,
 No,Columbia Gorge,Falls Creek Falls,,
-No,Fraser Valley,Flora Peak,Difficult,
-No,Fraser Valley,Mount Cheam,Hard,
-No,Fraser Valley,Sumas Mountain,,
 Yes,Fraser Valley,Abby Grind,Moderate,4
 Yes,Fraser Valley,Bridal Veils Falls,Easy,4
 Yes,Fraser Valley,Goat Ridge,Difficult,3
@@ -21,21 +18,22 @@ Yes,Fraser Valley,Greendrop Lake,Hard,3
 Yes,Fraser Valley,Hunter Trail,Moderate,4
 Yes,Fraser Valley,Lindeman Lake,Moderate,4
 Yes,Fraser Valley,Rolley Peak,Moderate,5
+No,Fraser Valley,Flora Peak,Difficult,
+No,Fraser Valley,Mount Cheam,Hard,
+No,Fraser Valley,Sumas Mountain,,
 Yes,Hawaii,Diamond Head,Easy,5
 Yes,Hawaii,Wiliwilinui Ridge,Hard,5
+Yes,Island,Cathedral Grove,Easy,4
+Yes,Island,Ucluelet Lighthouse Loop,Easy,5
 No,Island,5040 Peak,,
 No,Island,Cox Bay Lookout,,
 No,Island,Landslide Lake,,
 No,Island,Mystic Beach,,
 No,Island,Old Baldy Mountain,Moderate,
 No,Island,Stoney Hill,,
-Yes,Island,Cathedral Grove,Easy,4
-Yes,Island,Ucluelet Lighthouse Loop,Easy,5
-No,Leavenworth,Sauer Mountain,,
 Yes,Leavenworth,Colchuck Lake,Hard,5
 Yes,Leavenworth,Sage Hills,Moderate,4
-No,Lower Mainland,Coquitlam Lake View,,
-No,Lower Mainland,Golden Ears Summit,Difficult,
+No,Leavenworth,Sauer Mountain,,
 Yes,Lower Mainland,Admiralty Point,Easy,4
 Yes,Lower Mainland,Buntzen Lake Loop,Easy,3
 Yes,Lower Mainland,Diez Vistas,Hard,4
@@ -52,15 +50,26 @@ Yes,Lower Mainland,Norvan Falls,Moderate,3
 Yes,Lower Mainland,Quarry Rock,Moderate,3
 Yes,Lower Mainland,Sasamat Lake,Easy,3
 Yes,Lower Mainland,Seymour Pump Peak,Moderate,4
+No,Lower Mainland,Coquitlam Lake View,,
+No,Lower Mainland,Golden Ears Summit,Difficult,
+No,Lower Mainland,Widgeon Falls,,
 No,Oregon,Gods Thumb,,
 No,Oregon,Silver Falls,,
 No,Oregon,Tamolitch Blue Pool,,
 No,Oregon,Toketee Falls,,
 No,Oregon,Tunnel Falls,,
-No,Rainier,High Rock Lookout,,
-No,Rainier,Tolmie Peak Lookout,,
 Yes,Rainier,Mount Fremont Lookout,Moderate,5
 Yes,Rainier,Skyline Loop,Hard,5
+No,Rainier,High Rock Lookout,,
+No,Rainier,Tolmie Peak Lookout,,
+Yes,Rockies,Devil's Thumb,Difficult,5
+Yes,Rockies,Floe Lake,Difficult,4
+Yes,Rockies,Grassi Lakes,Moderate,4
+Yes,Rockies,Johnston Canyon,Easy,3
+Yes,Rockies,Maligne Canyon,Easy,4
+Yes,Rockies,Mount Lady Macdonald,Hard,5
+Yes,Rockies,Tunnel Mountain,Moderate,5
+Yes,Rockies,Whistlers Peak,Moderate,4
 No,Rockies,Berg Lake,Difficult,
 No,Rockies,Blackshale Suspension Bridge,,
 No,Rockies,Giant Steps,,
@@ -71,22 +80,6 @@ No,Rockies,Perley Rock,Hard,
 No,Rockies,Peyto Lake,Easy,
 No,Rockies,Sulphur Skyline,,
 No,Rockies,Tonquin Valley,,
-Yes,Rockies,Devil's Thumb,Difficult,5
-Yes,Rockies,Floe Lake,Difficult,4
-Yes,Rockies,Grassi Lakes,Moderate,4
-Yes,Rockies,Johnston Canyon,Easy,3
-Yes,Rockies,Maligne Canyon,Easy,4
-Yes,Rockies,Mount Lady Macdonald,Hard,5
-Yes,Rockies,Tunnel Mountain,Moderate,5
-Yes,Rockies,Whistlers Peak,Moderate,4
-No,Sea to Sky,Cheakamus Lake,Moderate,
-No,Sea to Sky,Flute Summit,Hard,
-No,Sea to Sky,Iceberg Lake,Hard,
-No,Sea to Sky,Lake Lovely Water,Difficult,
-No,Sea to Sky,Seton Lake Lookout,,
-No,Sea to Sky,The Lions,Difficult,
-No,Sea to Sky,Unnecessary Mountain,,
-No,Sea to Sky,Watersprite Lake,Hard,
 Yes,Sea to Sky,Brandywine Falls,Moderate,5
 Yes,Sea to Sky,Crooked Falls,Moderate,4
 Yes,Sea to Sky,Erin Moore,Hard,5
@@ -102,9 +95,14 @@ Yes,Sea to Sky,St Marks Summit,Moderate,5
 Yes,Sea to Sky,Stawamus Chief,Moderate,4
 Yes,Sea to Sky,Tony's Lookout,Moderate,5
 Yes,Sea to Sky,Wedgemount Lake,Difficult,5
-No,Snoqualmie,Granite Mountain,,
-No,Snoqualmie,Mount Si,,
-No,Snoqualmie,Spectacle Lake,,
+No,Sea to Sky,Cheakamus Lake,Moderate,
+No,Sea to Sky,Flute Summit,Hard,
+No,Sea to Sky,Iceberg Lake,Hard,
+No,Sea to Sky,Lake Lovely Water,Difficult,
+No,Sea to Sky,Seton Lake Lookout,,
+No,Sea to Sky,The Lions,Difficult,
+No,Sea to Sky,Unnecessary Mountain,,
+No,Sea to Sky,Watersprite Lake,Hard,
 Yes,Snoqualmie,Annette Lake,Hard,4
 Yes,Snoqualmie,Lake 22,Moderate,4
 Yes,Snoqualmie,Lake Serene,Hard,4
@@ -112,15 +110,18 @@ Yes,Snoqualmie,Mailbox Peak,Difficult,5
 Yes,Snoqualmie,Poo Poo Point,Moderate,4
 Yes,Snoqualmie,Rattlesnake Ledge,Moderate,4
 Yes,Snoqualmie,Wallace Falls,Moderate,3
+No,Snoqualmie,Granite Mountain,,
+No,Snoqualmie,Mount Si,,
+No,Snoqualmie,Spectacle Lake,,
 No,Sunshine Coast,Pender Hill,,
 No,Sunshine Coast,Tin Hat Mountain,Hard,
-No,Washington (Other),Mary Hill Stonehenge,,
-No,Washington (Other),Oyster Dome,,
-No,Washington (Other),Palouse Falls,,
 Yes,Washington (Other),Deadmans Cove,Easy,5
 Yes,Washington (Other),Deception Pass,Easy,5
 Yes,Washington (Other),Mount Constitution,Hard,5
 Yes,Washington (Other),Mount Storm King,Hard,5
 Yes,Washington (Other),Turtleback Mountain,Moderate,5
+No,Washington (Other),Mary Hill Stonehenge,,
+No,Washington (Other),Oyster Dome,,
+No,Washington (Other),Palouse Falls,,
 No,Waterton,Crypt Lake,,
 No,Waterton,Red Rock Canyon,,
