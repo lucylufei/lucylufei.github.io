@@ -13,7 +13,7 @@ a {
 
 h5 {
     font-size: medium;
-    font-weight: bold;
+    font-weight: 600;
 }
 
 h6 {
@@ -32,12 +32,6 @@ ul {
     padding-left: 1em;
 }
 
-a:hover {
-    color: black;
-    font-weight: bold;
-    text-decoration: none;
-}
-
 footer {
     display: flex;
     padding-top: 5vh;
@@ -46,13 +40,6 @@ footer {
     justify-content: center;
     background-image: linear-gradient(white, #fff5f9);
 }
-
-
-.navbar {
-    background-color: white;
-    box-shadow: 1em;
-}
-
 
 .container {
     padding-left: 15px;
@@ -74,6 +61,10 @@ th,
 td {
     width: 20em;
     color: darkslategray;
+}
+
+th {
+    font-weight: 600;
 }
 
 .top-toggle {
@@ -105,8 +96,8 @@ td {
     content: "";
     height: 13px;
     width: 13px;
-    left: 2px;
-    bottom: 2px;
+    left: 6px;
+    bottom: 5px;
     background-color: white;
     -webkit-transition: .4s;
     transition: .4s;
@@ -116,8 +107,8 @@ td {
 .switch {
     position: relative;
     display: inline-block;
-    width: 30px;
-    height: 17px;
+    width: 38px;
+    height: 23px;
 }
 
 
@@ -154,7 +145,15 @@ input:checked+.slider:before {
     background-color: #E8E8E8;
 }
 
+.badge-gray:hover {
+    background-color: #f0bdd0;
+}
+
 .badge-skills {
     background-color: #E8E8E8;
     padding: 0.5em;
+}
+
+.fa-sort-down:hover {
+    color:var(--main-accent-color);
 }

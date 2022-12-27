@@ -2,41 +2,53 @@ html {
     scroll-behavior: smooth;
 }
 
+:root {
+    --main-accent-color: #c95d85;
+}
 
-body,
 h1,
-h2,
-a {
+h2 {
     font-family: 'Montserrat', sans-serif;
     color: darkslategray;
 }
 
-h5 {
-    font-size: medium;
-    font-weight: bold;
+a, body {
+    font-family: "Helvetica Neue";
+    color: darkslategray;
 }
 
-h6 {
-    font-size: small;
+a.text-link {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
 }
-
-body {
-    background-image: linear-gradient(#fff9fc 0%, white 15%);
+a.text-link:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+    color: var(--main-accent-color);
 }
 
 a:hover {
-    color: black;
+    text-decoration: none;
+    color: var(--main-accent-color);
+}
+
+a:hover h5 {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+    color: var(--main-accent-color);
+
+}
+
+h5 {
+    font-size: 1.5em;
     font-weight: bold;
     text-decoration: none;
 }
 
-
-.header {
-    padding-top: 2em;
-    padding-bottom: 2em;
-    display: flex;
-    justify-content: center;
+li {
+    background-color: white;
 }
+
 
 footer {
     display: flex;
@@ -52,7 +64,78 @@ footer {
     box-shadow: 1em;
 }
 
-.container {
+.navbar-brand {
+    font-family: "Montserrat";
+    font-size: 2em;
+    text-decoration: none;
+    color: black;
+}
+
+.navbar-brand:hover {
+    color: black;   
+}
+
+.navbar-nav {
+    background-image: linear-gradient(#fff9fc, white);
+
+}
+
+.nav-link {
+    font-family: 'Montserrat', sans-serif;
+    color: gray;
+}
+
+.nav-link:hover {
+    font-weight: 300;
+}
+
+.nav-link.active {
+    color: black;
+}
+
+.nav-link.active:hover {
+    text-decoration: none;
+    color: black;
+}
+
+@media only screen and (max-width: 768px) {
+    .nav {
+        display: grid;
+    }
+}
+
+.jumbotron {
+    background-image: linear-gradient(#fff9fc, white);
     padding-left: 15px;
     padding-right: 15px;
+}
+
+.words {
+    max-width: 1000px;
+    min-height: 100vh;
+    font-size: 2.5vh;
+}
+
+.hidden {
+    display: none;
+}
+
+.nav-item-menu {
+    outline: 1px solid;
+    border: 1px solid;
+    background-color: white;
+}
+
+.nav-item-menu:hover {
+    outline: 1px solid;
+    border: 1px solid;
+    background-color: #f0bdd0;
+}
+
+.nav-item:hover {
+    font-weight: bold;
+}
+
+.nav-link:hover {
+    text-decoration: underline;
 }
