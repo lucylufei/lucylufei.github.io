@@ -31,7 +31,7 @@ a {
     color: darkslategray;
 }
 
-a:hover {
+.card a:hover {
     text-decoration: none;
     color: darkslategray;
 }
@@ -40,32 +40,24 @@ h5 {
     font-family: "luluregular";
     font-size: 3em;
 }
-.navbar {
-    background-color: white;
-    box-shadow: 1em;
+
+.bmc-btn:hover {
+    color:white;
 }
+
 .highlight {
     color: #c95d85;
-    font-weight: bold;
     cursor: pointer;
-    text-decoration: none;
+    text-decoration: underline;
 }
 
 .special-link:hover {
     color: #c95d85;
-    font-weight: bold;
     text-decoration: none;
-}
-@media (hover:none) {
-    .special-link {
-        color: #c95d85;
-        font-weight: bold;
-        text-decoration: underline;
-    }
 }
 
 .card-link:hover {
-    color: inherit;
+    color: darkslategray;
     text-decoration: none;
 }
 
@@ -81,7 +73,6 @@ footer {
 .container {
     padding-top: 6em;
 }
-
 
 #logo {
     max-width: 70vw;
@@ -117,7 +108,7 @@ footer {
 .btn-pink {
     background-color: #c95d85;
     color: white;
-    font-weight: bold;
+    /* font-weight: bold; */
 }
 
 .blurred {
