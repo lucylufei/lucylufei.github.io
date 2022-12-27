@@ -7,7 +7,8 @@ $.getJSON("https://www.lufei.ca/project.json", function (data) {
 	$.each(data.projects, function (id, project) {
 
 		// Card
-		tile = "<div class=\"card";
+		// <div class="tile [PROJECT-TAGS]" id="[PROJECT-ID]">
+		tile = "<div class=\"tile";
 		for (i = 0; i < project.tags.length; i++) {
 			tile += " " + project.tags[i];
 		}
@@ -15,40 +16,45 @@ $.getJSON("https://www.lufei.ca/project.json", function (data) {
 		tile += project.id;
 		tile += "\">";
 
-		// Header
-		tile += "<div class=\"card-header"
-		if (project.link != "") tile += " hover"
-		tile += "\">" + project.title;
-		if (project.link != "") tile += "<i id='" + project.id + "-share' class='fa fa-share' style='color:#f0bdd0; position: absolute; right: 0.5em; top: 1.9em; font-size: large;'></i>";
-		tile += "</div>";
-
-		// Image
-		tile += "<img src=\"" + project.image + "\" class=\"card-img-top"
-		if (project.link != "") tile += " hover"
-		tile += "\" id=\"" + project.id + "-img\">";
-
-		// Body
-		tile += "<div class=\"card-body card-toggle hover\" id=\"" + project.id + "-details\">";
-		// tile += "<h2 class=\"card-title\">" + project.title + "</h2>"
-		tile += "<p class=\"card-text\">" + project.description + "</p>";
-		tile += "</div>"; // end card body
-
-		// Footer
-		tile += "<div class=\"card-footer card-toggle hover\" id=\"" + project.id + "-footer\">";
-		tile += "<table style=\"width:100%\"><tr><th style=\"text-align: left;\">"
-		var i;
-		project.skills.sort();
-		for (i = 0; i < project.skills.length; i++) {
-			tile += "<span class=\"badge badge-light\">" + project.skills[i] + "</span>&nbsp";
+		// Project link
+		// <a href="[PROJECT-LINK] target="_blank">
+		if (project.link != "") {
+			tile += "<a href=\"" + project.link + "\" target=\"_blank\">"
 		}
-		tile += "</th><th style=\"text-align: right;\"><i class=\"fa fa-sort-down\"></i></th></tr></table>"
+		
+		// Add image
+		// <table><tr><td rowspan="3" class="image"><img src="[PROJECT-IMAGE]" style="width: 100%;"></td>
+		tile += "<table><tr><td rowspan=\"3\" class=\"image\"><img src=\"" + project.image + "\" style=\"width: 100%;\"></td>"
+
+		// Project title
+		// <th>[PROJECT-TITLE]</th></tr>
+		tile += "<th>" + project.title + "</th></tr>"
+
+		// Project description
+		// <tr><td>[PROJECT-DESCRIPTION]</td></tr>
+		tile += "<tr><td>" + project.description + "</td></tr>"
+
+		// Project badges
+		// <tr><td style="vertical-align: bottom;">
+		// <span class="badge">[BADGE]</span>
+		// </td></tr>
+		tile += "<tr><td style=\"vertical-align: bottom;\">"
+		project.skills.sort();
+		var i;
+		for (i = 0; i < project.skills.length; i++) {
+			tile += "<span class=\"badge\">" + project.skills[i] + "</span>";
+		}
+		tile += "</td></tr>"
 
 		// End
-		tile += "</div></div>";
+		// </table></a></div>
+		tile += "</table>"
+		if (project.link != "") {
+			tile += "</a>"
+		}
+		tile += "</div>"
 		$("#content_wrapper").append(tile);
 	});
-
-	$(".card-body").hide();
 });
 
 
@@ -75,8 +81,8 @@ $.getJSON("https://www.lufei.ca/project.json", function (data) {
 	// filter according to tag
 	$(".filterbtn").click(function () {
 		var tag_selected = this.id;
-		$(".card").hide();
-		$(".card").filter('.' + tag_selected).fadeIn();
+		$(".tile").hide();
+		$(".tile").filter('.' + tag_selected).fadeIn();
 
 		$("#All").removeClass("clicked_btn");
 		$(".filterbtn").removeClass("clicked_btn");
@@ -100,13 +106,12 @@ $.getJSON("https://www.lufei.ca/project.json", function (data) {
 // Generate links array
 $.getJSON("https://www.lufei.ca/project.json", function (data) {
 	$.each(data.projects, function (id, project) {
-
 		links.push(project.link);
 	});
 
 	$(document).ready(function () {
 		$("#All").click(function () {
-			$(".card").fadeIn();
+			$(".tile").fadeIn();
 			$(this).addClass("clicked_btn");
 			$(".filterbtn").removeClass("clicked_btn");
 		});
@@ -115,23 +120,6 @@ $.getJSON("https://www.lufei.ca/project.json", function (data) {
 			jQuery('html,body').animate({
 				scrollTop: 0
 			}, 0);
-		});
-	
-		$(".card-toggle").click(function () {
-			var cardId = this.id;
-			$("#" + cardId.replace("footer", "details")).animate(
-				{height: "toggle"}
-			);
-		});
-	
-		$(".card-img-top").click(function() {
-			var cardId = parseInt(this.id.replace("-img", ""));
-			if (links[cardId] != "") window.open(links[cardId], "_blank");
-		});
-		
-		$(".fa-share").click(function() {
-			var cardId = parseInt(this.id.replace("-share", ""));
-			if (links[cardId] != "") window.open(links[cardId], "_blank");
 		});
 	});
 });
