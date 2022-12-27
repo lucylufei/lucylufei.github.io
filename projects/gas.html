@@ -1,0 +1,164 @@
+<!-- API KEY -->
+<!-- jMU53Fi5CwINFhDoCnbKTpuz8magfCsv -->
+<!-- https://apilayer.com/marketplace/fixer-api -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>
+        Gas Converter
+    </title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="icon" href="./images/L.png">
+    <link rel="stylesheet" href="resume.css">
+    <link rel="stylesheet" href="lululetter.css">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-102991991-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+    <script>
+        var gtoL = 3.78541;
+        var conversionRate = 1.3;
+        var useRealRate = false;
+
+        $(document).ready(function () {
+            if (useRealRate) {
+                var head = new Headers();
+                head.append("apikey", "jMU53Fi5CwINFhDoCnbKTpuz8magfCsv");
+
+                $.ajax({
+                    type: 'GET',
+                    url: 'https://api.apilayer.com/fixer/convert?to=CAD&from=USD&amount=1',
+                    async: false,
+                    headers: {"apikey" : "jMU53Fi5CwINFhDoCnbKTpuz8magfCsv"},
+                    success: function (data) {
+                        conversionRate = data.result;
+                        console.log(data);
+                    },
+                    error: function (data) {
+                        console.log(data);
+                    }
+                });
+            }
+
+            console.log(conversionRate);
+
+            $("input").change(function () {
+                if (this.id == "g-us") {
+                    gUS = parseFloat(this.value);
+                    lUS = gUS / gtoL;
+                    $("#g-us").val(gUS.toFixed(3));
+                    $("#l-us").val(lUS.toFixed(3));
+                    $("#l-ca").val((lUS * conversionRate).toFixed(3));
+                    $("#g-ca").val((gUS * conversionRate).toFixed(3));
+                }
+                else if (this.id == "l-us") {
+                    lUS = parseFloat(this.value);
+                    gUS = lUS * gtoL;
+                    $("#g-us").val(gUS.toFixed(3));
+                    $("#l-us").val(lUS.toFixed(3));
+                    $("#l-ca").val((lUS * conversionRate).toFixed(3));
+                    $("#g-ca").val((gUS * conversionRate).toFixed(3));
+                }
+                else if (this.id == "g-ca") {
+                    gCA = parseFloat(this.value);
+                    lCA = gCA / gtoL;
+                    $("#g-ca").val(gCA.toFixed(3));
+                    $("#l-ca").val(lCA.toFixed(3));
+                    $("#l-us").val((lCA / conversionRate).toFixed(3));
+                    $("#g-us").val((gCA / conversionRate).toFixed(3));
+                }
+                else if (this.id == "l-ca") {
+                    lCA = parseFloat(this.value);
+                    gCA = lCA * gtoL;
+                    $("#g-ca").val(gCA.toFixed(3));
+                    $("#l-ca").val(lCA.toFixed(3));
+                    $("#l-us").val((lCA / conversionRate).toFixed(3));
+                    $("#g-us").val((gCA / conversionRate).toFixed(3));
+                }
+                else {
+                    alert("Unknown input!");
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div class="container text-center" style="height: 80vh;">
+        <div class="header" style="text-align: center;">
+            <h1>Gas Converter</h1>
+            <p>US/CA</p>
+        </div>
+        <div style="border-style: solid; height:48vh;">
+            <div class="row align-items-center">
+                <div class="col">
+                    <label for="g-us">USD $ / Gallon</label><br>
+                    <input type="number" id="g-us" name="g-us" value="4.129" step="0.01" style="text-align: center;"><br>
+                </div>
+                <div class="col">
+                    <label for="g-ca">CAD $ / Gallon</label><br>
+                    <input type="number" id="g-ca" name="g-ca" value="5.702" step="0.01" style="text-align: center;"><br>
+                </div>
+            </div>
+            <div class="row align-items-center">
+                <div class="col">
+                    <label for="l-us">USD $ / Litre</label><br>
+                    <input type="number" id="l-us" name="l-us" value="1.09" step="0.01" style="text-align: center;"><br>
+                </div>
+                <div class="col">
+                    <label for="l-ca">CAD $ / Litre</label><br>
+                    <input type="number" id="l-ca" name="g-ca" value="4.12" step="0.01" style="text-align: center;"><br>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<!-- Footer -->
+<footer>
+    <div id="page_content" style="height: 20vh">
+        <a href="https://www.facebook.com/lululufei" target="_blank"> <i
+                class="fa fa-facebook-official w3-hover-opacity" style="font-size:24px;"></a></i>&nbsp;&nbsp;&nbsp;
+        <a href="http://instagram.com/lululetter" target="_blank"> <i class="fa fa-instagram w3-hover-opacity"
+                style="font-size:24px;"></a></i>&nbsp;&nbsp;&nbsp;
+        <a href="http://www.linkedin.com/in/lufei-liu-b8913b106" target="_blank"> <i
+                class="fa fa-linkedin w3-hover-opacity" style="font-size:24px;"></i> </a>
+        </br>
+        <p>me@lufei.ca</p>
+    </div>
+</footer>
+
+</html>

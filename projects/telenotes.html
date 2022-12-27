@@ -6,16 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>
-        LuFei - Life
+        Lufei - Projects
     </title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
-    <link rel="icon" href="./images/L.png">
-    <link rel="stylesheet" href="resume.css">
-    <link rel="stylesheet" href="lululetter.css">
+    <link rel="icon" href="../images/L.png">
+    <link rel="stylesheet" href="../common.css">
+    <link rel="stylesheet" href="../resume.css">
+    <link rel="stylesheet" href="../lululetter.css">
+    <link rel="stylesheet" href="../topbutton.css">
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
@@ -99,8 +101,8 @@
 
 <body>
     <!-- Nav Bar -->
-    <nav class="navbar sticky-top navbar-expand-lg navbar-light shadow-sm">
-        <a class="navbar-brand" href="index.html" style="font-size: 2em;">LuFei</a>
+    <nav class="navbar sticky-top navbar-expand-lg shadow-sm">
+        <a class="navbar-brand" href="../index.html" style="font-size: 2em;">Lufei</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
             aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -108,80 +110,100 @@
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link text-center" href="index.html">Home</a>
+                    <a class="nav-link text-center" href="../resume.html">Resume</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-center" href="resume.html">Resume</a>
+                    <a class="nav-link text-center active" href="../project.html">Projects</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-center" href="project.html">Projects</a>
+                    <a class="nav-link text-center" href="../menu.html">Life</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-center active" href="menu.html">Life</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-center" href="lululetter.html">lululetter</a>
+                    <a class="nav-link text-center" href="../lululetter.html">lululetter</a>
                 </li>
             </ul>
         </div>
     </nav>
     <div class="container" style="min-height: 70vh;">
         <div class="header" style="text-align: center;">
-            <h1>Intersection Prediction for Accelerated GPU Ray Tracing</h1>
+            <h1>Telenotes</h1>
         </div>
         <div style="text-align: center;">
-            <p>MICRO 2021</p>
+            <p><i class="fa fa-code-fork" aria-hidden="true" style="color: #c95d85;"></i> Code is available on Github at
+                <a class="special-link highlight"
+                    href="https://github.com/lucylufei/telenotes">https://github.com/lucylufei/telenotes</a>
+            </p>
         </div>
         <hr>
-        <div style="text-align: center;">
-            <img src="./images/MICRO.JPG" alt="..." style="width: 500px; max-width: 75vw;">
-            <img src="./images/predictor.JPG" alt="..." style="width: 350px; max-width: 75vw;">
-        </div>
-        <h2>Abstract</h2>
         <div>
-            Ray tracing has been used for years in motion picture to generate photorealistic images while
-            faster raster-based shading techniques have been preferred for video games to meet real-time requirements.
-            However, recent Graphics Processing Units (GPUs) incorporate hardware accelerator units
-            designed for ray tracing.
-            These accelerator units target the process of traversing hierarchical tree data structures used to test for
-            ray-object intersections.
-            Distinct rays following similar paths through these structures execute many redundant ray-box intersection
-            tests.
-            We propose a ray intersection predictor that speculatively elides redundant operations during this process
-            and proceeds
-            directly to test primitives that the ray is likely to intersect.
-            A key aspect of our predictor strategy involves identifying hash functions that preserve enough spatial
-            information to identify redundant traversals.
-            We explore how to integrate our ray prediction strategy into existing GPU pipelines along with improving the
-            predictor effectiveness by predicting nodes higher in the tree as well as regrouping and scheduling
-            traversal operations in a low cost, judicious manner.
-            On a mobile class GPU with a ray tracing accelerator unit, we find the addition of a 5.5KB predictor per
-            streaming multiprocessor improves performance for ambient occlusion workloads by a geometric mean of 26%.
+            <p>
+                The pandemic meant a lot of us couldn't watch TV together anymore. Some jumped to Chrome extension
+                Teleparty, which allowed them to watch streaming video together over an internet connection, but we
+                found it
+                difficult to carve out time in our busy schedules to consistently watch TV
+                together remotely.
+            </p>
+            <p>
+                YouTube comments are fun to read, but they aren't live. Twitch chat captures live reactions, but you
+                have to
+                watch the stream when it's live. Why can't you experience someone's live reaction at your own time?
+            </p>
+            <p style="color: #c95d85;">
+                <b><i>Enter Telenotes.</i></b>
+            </p>
+            <p>
+                This was a simple, but brilliant idea. A Chrome extension that allows you to leave notes at any
+                timestamp of
+                a streaming TV show or movie, and after you’re done, you can send the Telenotes file to someone else,
+                and
+                they can watch the same video while your comments pop up at the right time.
+            </p>
+            <h4>
+                Step 1: Choose your purpose
+            </h4>
+            <p>
+                With your show or movie of choice open, you can click “start commenting” to… start commenting.
+            </p>
+            <img src="../images/telenotes1.png" style="max-height: 20vh;">
+            <br>
+            <br>
+            <h4>
+                Step 2: Comment to your heart's desire!
+            </h4>
+            <p>
+                This is pretty awesome, you can even add emojis as reactions!
+            </p>
+            <img src="../images/telenotes2.png" style="max-height: 50vh;">
+            <br>
+            <br>
+            <h4>
+                Step 3: Download the file, and share it!
+            </h4>
+            <p>
+                Send it to your friends, loved ones…
+            </p>
+            <img src="../images/telenotes3.png" style="max-height: 20vh;">
+            <br>
+            <br>
+            <h4>
+                Step 4: Play the file
+            </h4>
+            <p>
+                From any tab in your Chrome browser, open the extension and switch to the “Play” tab. You then open the
+                file, press “Play”, and the video should automatically load and start playing.
+            </p>
+            <img src="../images/telenotes4.png" style="max-height: 20vh;">
+            <br>
+            <br>
+            <p>
+                The play interface looks pretty similar, but there's no option to comment.
+
+                And there you have it! A cool little Chrome extension that allows you to watch TV with others, but on
+                your own time. Get 99% of someone's live reactions, without having to schedule it in advance.
+            </p>
+            <img src="../images/telenotes5.png" style="max-height: 50vh;">
         </div>
         </br>
-        <div style="text-align: center;">
-            <video style="max-height: 60vh; max-width: 75vw; width: 800px;" controls>
-                <source src="./files/MicroVideo.mp4">
-            </video>
-        </div>
-        </br>
-        <h2>Resources</h2>
-        <div>
-            <p><i class="fa fa-book" aria-hidden="true" style="color: #c95d85;"></i> View our paper on ACM <a
-                    class="special-link highlight"
-                    href="https://dl.acm.org/doi/10.1145/3466752.3480097">https://dl.acm.org/doi/10.1145/3466752.3480097</a>
-            </p>
-            <p><i class="fa fa-paperclip" aria-hidden="true" style="color: #c95d85;"></i> Download our paper <a
-                    class="special-link highlight"
-                    href="./files/intersection-prediction-for-accelerated-gpu-ray-tracing.pdf">here</a></p>
-            <p><i class="fa fa-code-fork" aria-hidden="true" style="color: #c95d85;"></i> Simulator code is available at
-                <a class="special-link highlight"
-                    href="https://github.com/ubc-aamodt-group/ray-intersection-predictor">https://github.com/ubc-aamodt-group/ray-intersection-predictor</a>
-            </p>
-            <p><i class="fa fa-certificate" aria-hidden="true" style="color: #c95d85;"></i> Full artifact on Zenodo <a
-                    class="special-link highlight"
-                    href="https://doi.org/10.5281/zenodo.5147579">https://doi.org/10.5281/zenodo.5147579</a></p>
-        </div>
     </div>
     <!-- Return to Top Button -->
     </br>

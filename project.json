@@ -6,7 +6,7 @@
 "image":"./images/MICRO22.png",
 "tags":["Simulation","Hardware","Research"],
 "skills":["C++","Vulkan","GPGPU-Sim","Python"],
-"link":"./micro2022.html"},
+"link":"./projects/micro2022.html"},
 {
 "id":1,
 "title":"Ray Intersection Predictor",
@@ -15,7 +15,7 @@
 "image":"./images/MICRO.JPG",
 "tags":["Simulation","Hardware","Research"],
 "skills":["C++","CUDA","GPGPU-Sim","GPUWattch","CACTI7"],
-"link":"./micro2021.html"},
+"link":"./projects/micro2021.html"},
 {
 "id":2,
 "title":"JPEG-ACT",
@@ -87,7 +87,7 @@
 "image":"./images/telenotes1.png",
 "tags":["Software"],
 "skills":["JavaScript","CSS","HTML"],
-"link":"./telenotes.html"},
+"link":"./projects/telenotes.html"},
 {
 "id":10,
 "title":"Hood Hunter",
@@ -96,7 +96,7 @@
 "image":"./images/teaser-hood-hunter.PNG",
 "tags":["Software"],
 "skills":["JavaScript","Python","CSS","HTML"],
-"link":"./hoodhunter.html"},
+"link":"./projects/hoodhunter.html"},
 {
 "id":11,
 "title":"Clock",
