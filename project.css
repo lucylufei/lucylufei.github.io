@@ -117,7 +117,7 @@ button.clicked_btn:hover{
 .tile {
     background-color: white;
     margin: 1em;
-    box-shadow: 0px 25px 20px -10px lightgrey;
+    box-shadow: 0 2px 16px 0 lightgrey;
 }
 
 /*END TILE CONTENT*/
