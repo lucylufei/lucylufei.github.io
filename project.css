@@ -127,3 +127,19 @@ button.clicked_btn:hover{
 }
 
 /*END TILE CONTENT*/
+
+@media only screen and (min-width: 1050px) {
+    .mobile-only {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 1050px) {
+    .desktop-only{
+        display: none;
+    }
+
+    .tile table {
+        width: 100%;
+    }
+}

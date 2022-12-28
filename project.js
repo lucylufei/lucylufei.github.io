@@ -22,9 +22,10 @@ $.getJSON("https://www.lufei.ca/project.json", function (data) {
 			tile += "<a href=\"" + project.link + "\" target=\"_blank\">"
 		}
 		
+		// DESKTOP-VERSION
 		// Add image
 		// <table><tr><td rowspan="3" class="image"><img src="[PROJECT-IMAGE]" style="width: 100%;"></td>
-		tile += "<table><tr><td rowspan=\"3\" class=\"image\"><img src=\"" + project.image + "\" style=\"width: 100%;\"></td>"
+		tile += "<table class=\"desktop-only\"><tr><td rowspan=\"3\" class=\"image\"><img src=\"" + project.image + "\" style=\"width: 100%;\"></td>"
 
 		// Project title
 		// <th>[PROJECT-TITLE]</th></tr>
@@ -47,8 +48,41 @@ $.getJSON("https://www.lufei.ca/project.json", function (data) {
 		tile += "</td></tr>"
 
 		// End
-		// </table></a></div>
+		// </table>
 		tile += "</table>"
+
+
+		// MOBILE VERSION
+		// Add image
+		// <table><tr><td class="image"><img src="[PROJECT-IMAGE]" style="width: 100%;"></td></tr>
+		tile += "<table class=\"mobile-only\"><tr><td class=\"image\"><img src=\"" + project.image + "\" style=\"width: 100%;\"></td></tr>"
+
+		// Project title
+		// <tr><th>[PROJECT-TITLE]</th></tr>
+		tile += "<tr><th>" + project.title + "</th></tr>"
+
+		// Project description
+		// <tr><td>[PROJECT-DESCRIPTION]</td></tr>
+		tile += "<tr><td>" + project.shortdesc + "</td></tr>"
+
+		// Project badges
+		// <tr><td style="vertical-align: bottom;">
+		// <span class="badge">[BADGE]</span>
+		// </td></tr>
+		tile += "<tr><td style=\"vertical-align: bottom;\">"
+		project.skills.sort();
+		var i;
+		for (i = 0; i < project.skills.length; i++) {
+			tile += "<span class=\"badge\">" + project.skills[i] + "</span>";
+		}
+		tile += "</td></tr>"
+
+		// End
+		// </table>
+		tile += "</table>"
+
+		// End
+		// </a></div>
 		if (project.link != "") {
 			tile += "</a>"
 		}
@@ -123,10 +157,6 @@ $.getJSON("https://www.lufei.ca/project.json", function (data) {
 		});
 	});
 });
-
-
-
-
 
 $(document).scroll(function () {
 	// Identify scrolled distance
