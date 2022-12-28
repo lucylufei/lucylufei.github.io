@@ -15,9 +15,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="icon" href="../images/L.png">
     <link rel="stylesheet" href="../common.css">
-    <link rel="stylesheet" href="../resume.css">
-    <link rel="stylesheet" href="../lululetter.css">
     <link rel="stylesheet" href="../topbutton.css">
+    <link rel="stylesheet" href="./projects.css">
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
@@ -129,21 +128,23 @@
             <h1>Vulkan-Sim</h1>
         </div>
         <div style="text-align: center;">
-            <p>MICRO 2022</p>
+            <p class="subtitle">MICRO 2022</p>
         </div>
         <hr>
         <div style="text-align: center;">
             <img src="../images/vulkan-sim.png" alt="..." style="width: 500px; max-width: 75vw;">
         </div>
+        </br>
         <h2>Abstract</h2>
+        <hr>
         <div>
             Ray tracing can generate photorealistic images with more convincing visual effects compared to
             rasterization. Recent hardware advances have enabled ray tracing to be applied in real-time. Current GPUs
             feature a dedicated ray tracing acceleration unit, and game developers have started to make use of ray
             tracing APIs to bring more realistic graphics to their players. Industry cooperatively contributed to
             Vulkan, which recently introduced an open-standard API for ray tracing. However, little has been disclosed
-            about the mapping of this API to hardware. In this paper, we introduce Vulkan- Sim, a detailed cycle-level
-            simulator for enabling architecture research for ray tracing. We extend GPGPU-Sim, integrating it with Mesa,
+            about the mapping of this API to hardware. In this paper, <span class="highlight">we introduce Vulkan- Sim, a detailed cycle-level
+            simulator for enabling architecture research for ray tracing</span>. We extend GPGPU-Sim, integrating it with Mesa,
             an open-source graphics library to support the Vulkan API, and add dedicated ray traversal and intersection
             units. We also demonstrate an explicit mapping of the Vulkan ray tracing pipeline to a modern GPU using a
             technique we call delayed intersection and any-hit execution. Additionally we evaluate several ray tracing
@@ -159,21 +160,22 @@
         </div>
         </br>
         <h2>Resources</h2>
+        <hr>
         <div>
-            <p><i class="fa fa-book" aria-hidden="true" style="color: #c95d85;"></i> View our paper on ACM 
-                <!-- <a
-                    class="special-link highlight"
-                    href="https://dl.acm.org/doi/10.1145/3466752.3480097">https://dl.acm.org/doi/10.1145/3466752.3480097</a> -->
+            <p><i class="fa fa-book" aria-hidden="true" style="color: #c95d85;"></i> View our paper on IEEE 
+                <a
+                    class="special-link"
+                    href="https://dl.acm.org/doi/10.1145/3466752.3480097">https://ieeexplore.ieee.org/document/9923844</a>
             </p>
             <p><i class="fa fa-paperclip" aria-hidden="true" style="color: #c95d85;"></i> Download our paper <a
-                    class="special-link highlight"
+                    class="special-link"
                     href="https://people.ece.ubc.ca/~aamodt/publications/papers/saed.micro2022.pdf">here</a></p>
             <p><i class="fa fa-code-fork" aria-hidden="true" style="color: #c95d85;"></i> Simulator code is available at
-                <a class="special-link highlight"
+                <a class="special-link"
                     href="https://github.com/ubc-aamodt-group/vulkan-sim">https://github.com/ubc-aamodt-group/vulkan-sim</a>
             </p>
             <p><i class="fa fa-certificate" aria-hidden="true" style="color: #c95d85;"></i> Full artifact on Zenodo <a
-                    class="special-link highlight"
+                    class="special-link"
                     href="https://doi.org/10.5281/zenodo.6941619">https://doi.org/10.5281/zenodo.6941619</a></p>
         </div>
     </div>

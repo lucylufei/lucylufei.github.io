@@ -15,9 +15,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="icon" href="../images/L.png">
     <link rel="stylesheet" href="../common.css">
-    <link rel="stylesheet" href="../resume.css">
-    <link rel="stylesheet" href="../lululetter.css">
     <link rel="stylesheet" href="../topbutton.css">
+    <link rel="stylesheet" href="./projects.css">
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
@@ -129,14 +128,15 @@
             <h1>Intersection Prediction for Accelerated GPU Ray Tracing</h1>
         </div>
         <div style="text-align: center;">
-            <p>MICRO 2021</p>
+            <p class="subtitle">MICRO 2021</p>
         </div>
         <hr>
         <div style="text-align: center;">
-            <img src="../images/MICRO.JPG" alt="..." style="width: 500px; max-width: 75vw;">
-            <img src="../images/predictor.JPG" alt="..." style="width: 350px; max-width: 75vw;">
+            <img src="../images/MICRO.JPG" alt="..." style="width: 400px; max-width: 75vw;">
+            <img src="../images/predictor.JPG" alt="..." style="width: 300px; max-width: 75vw;">
         </div>
         <h2>Abstract</h2>
+        <hr>
         <div>
             Ray tracing has been used for years in motion picture to generate photorealistic images while
             faster raster-based shading techniques have been preferred for video games to meet real-time requirements.
@@ -146,7 +146,7 @@
             ray-object intersections.
             Distinct rays following similar paths through these structures execute many redundant ray-box intersection
             tests.
-            We propose a ray intersection predictor that speculatively elides redundant operations during this process
+            <span class="highlight">We propose a ray intersection predictor that speculatively elides redundant operations</span> during this process
             and proceeds
             directly to test primitives that the ray is likely to intersect.
             A key aspect of our predictor strategy involves identifying hash functions that preserve enough spatial
@@ -154,31 +154,32 @@
             We explore how to integrate our ray prediction strategy into existing GPU pipelines along with improving the
             predictor effectiveness by predicting nodes higher in the tree as well as regrouping and scheduling
             traversal operations in a low cost, judicious manner.
-            On a mobile class GPU with a ray tracing accelerator unit, we find the addition of a 5.5KB predictor per
-            streaming multiprocessor improves performance for ambient occlusion workloads by a geometric mean of 26%.
+            On a mobile class GPU with a ray tracing accelerator unit, we find the addition of <span class="highlight">a 5.5KB predictor per
+            streaming multiprocessor improves performance for ambient occlusion workloads by a geometric mean of 26%</span>.
         </div>
         </br>
-        <div style="text-align: center;">
-            <video style="max-height: 60vh; max-width: 75vw; width: 800px;" controls>
+        <div class="box-shadow" style="text-align: center;">
+            <video style="max-height: 60vh; max-width: 70vw; width: 600px;" controls>
                 <source src="../files/MicroVideo.mp4">
             </video>
         </div>
         </br>
         <h2>Resources</h2>
+        <hr>
         <div>
             <p><i class="fa fa-book" aria-hidden="true" style="color: #c95d85;"></i> View our paper on ACM <a
-                    class="special-link highlight"
+                    class="special-link"
                     href="https://dl.acm.org/doi/10.1145/3466752.3480097">https://dl.acm.org/doi/10.1145/3466752.3480097</a>
             </p>
             <p><i class="fa fa-paperclip" aria-hidden="true" style="color: #c95d85;"></i> Download our paper <a
-                    class="special-link highlight"
+                    class="special-link"
                     href="../files/intersection-prediction-for-accelerated-gpu-ray-tracing.pdf">here</a></p>
             <p><i class="fa fa-code-fork" aria-hidden="true" style="color: #c95d85;"></i> Simulator code is available at
-                <a class="special-link highlight"
+                <a class="special-link"
                     href="https://github.com/ubc-aamodt-group/ray-intersection-predictor">https://github.com/ubc-aamodt-group/ray-intersection-predictor</a>
             </p>
             <p><i class="fa fa-certificate" aria-hidden="true" style="color: #c95d85;"></i> Full artifact on Zenodo <a
-                    class="special-link highlight"
+                    class="special-link"
                     href="https://doi.org/10.5281/zenodo.5147579">https://doi.org/10.5281/zenodo.5147579</a></p>
         </div>
     </div>

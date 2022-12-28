@@ -19,8 +19,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="icon" href="./images/L.png">
-    <link rel="stylesheet" href="resume.css">
-    <link rel="stylesheet" href="lululetter.css">
+    <link rel="stylesheet" href="../common.css">
+    <link rel="stylesheet" href="./projects.css">
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
@@ -71,6 +71,12 @@
                         console.log(data);
                     }
                 });
+
+                $("#current-exchange").html("The current exchange rate is " + String(conversionRate))
+            }
+
+            else {
+                $("#current-exchange").html("Using default exchange rate " + String(conversionRate))
             }
 
             console.log(conversionRate);
@@ -108,41 +114,242 @@
                     $("#l-us").val((lCA / conversionRate).toFixed(3));
                     $("#g-us").val((gCA / conversionRate).toFixed(3));
                 }
+                else if (this.id == "g-us-m") {
+                    gUS = parseFloat(this.value);
+                    lUS = gUS / gtoL;
+                    $("#g-us-m").val(gUS.toFixed(3));
+                    $("#l-us-m").val(lUS.toFixed(3));
+                    $("#l-ca-m").val((lUS * conversionRate).toFixed(3));
+                    $("#g-ca-m").val((gUS * conversionRate).toFixed(3));
+                }
+                else if (this.id == "l-us-m") {
+                    lUS = parseFloat(this.value);
+                    gUS = lUS * gtoL;
+                    $("#g-us-m").val(gUS.toFixed(3));
+                    $("#l-us-m").val(lUS.toFixed(3));
+                    $("#l-ca-m").val((lUS * conversionRate).toFixed(3));
+                    $("#g-ca-m").val((gUS * conversionRate).toFixed(3));
+                }
+                else if (this.id == "g-ca-m") {
+                    gCA = parseFloat(this.value);
+                    lCA = gCA / gtoL;
+                    $("#g-ca-m").val(gCA.toFixed(3));
+                    $("#l-ca-m").val(lCA.toFixed(3));
+                    $("#l-us-m").val((lCA / conversionRate).toFixed(3));
+                    $("#g-us-m").val((gCA / conversionRate).toFixed(3));
+                }
+                else if (this.id == "l-ca-m") {
+                    lCA = parseFloat(this.value);
+                    gCA = lCA * gtoL;
+                    $("#g-ca-m").val(gCA.toFixed(3));
+                    $("#l-ca-m").val(lCA.toFixed(3));
+                    $("#l-us-m").val((lCA / conversionRate).toFixed(3));
+                    $("#g-us-m").val((gCA / conversionRate).toFixed(3));
+                }
+                else if (this.id == "real-exchange") {
+                    useRealRate = $("#real-exchange").prop("checked");
+                    if (useRealRate) {
+                        var head = new Headers();
+                        head.append("apikey", "jMU53Fi5CwINFhDoCnbKTpuz8magfCsv");
+
+                        $.ajax({
+                            type: 'GET',
+                            url: 'https://api.apilayer.com/fixer/convert?to=CAD&from=USD&amount=1',
+                            async: false,
+                            headers: {"apikey" : "jMU53Fi5CwINFhDoCnbKTpuz8magfCsv"},
+                            success: function (data) {
+                                conversionRate = data.result;
+                                console.log(data);
+                            },
+                            error: function (data) {
+                                console.log(data);
+                            }
+                        });
+
+                        $("#current-exchange").html("The current exchange rate is " + String(conversionRate))
+                    }
+
+                    else {
+                        $("#current-exchange").html("Using default exchange rate " + String(conversionRate))
+                    }
+                }
                 else {
                     alert("Unknown input!");
                 }
             });
         });
     </script>
+
+    <script>
+        $(document).ready(function () {
+            jQuery('<div class="quantity-nav"><button class="quantity-button quantity-up">&wedge;</button><button class="quantity-button quantity-down">&vee;</button></div>').insertAfter('.gas-converter');
+            jQuery('.special-input').each(function () {
+                var spinner = jQuery(this),
+                input = spinner.find('input[type="number"]'),
+                btnUp = spinner.find('.quantity-up'),
+                btnDown = spinner.find('.quantity-down'),
+                min = input.attr('min'),
+                max = input.attr('max');
+
+                btnUp.click(function () {
+                    var oldValue = parseFloat(input.val());
+                    if (oldValue >= max) {
+                        var newVal = oldValue;
+                    } else {
+                        var newVal = oldValue + 0.01;
+                    }
+
+                    spinner.find("input").val(newVal);
+                    spinner.find("input").trigger("change");
+                });
+
+                btnDown.click(function () {
+                    var oldValue = parseFloat(input.val());
+                    if (oldValue <= min) {
+                        var newVal = oldValue;
+                    } else {
+                        var newVal = oldValue - 0.01;
+                    }
+                    spinner.find("input").val(newVal);
+                    spinner.find("input").trigger("change");
+                });
+
+            });
+        });
+    </script>
+
+    <style>
+        input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+
+        .gas-converter {
+            line-height: 1.65;
+            float: left;
+        }
+
+        .special-input {
+            padding: 0.5em;
+        }
+
+        .quantity input:focus {
+            outline: 0;
+        }
+
+        .quantity-nav {
+            float: left;
+            position: relative;
+            height: 64px;
+        }
+
+        .quantity-button {
+            position: relative;
+            cursor: pointer;
+            border: 1px solid black;
+            width: 30px;
+            text-align: center;
+            font-size: 15px;
+            line-height: 1.5;
+            padding: 0;
+            background: var(--main-accent-color);
+            color: white;
+            -webkit-transform: translateX(-100%);
+            transform: translateX(-100%);
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            -o-user-select: none;
+            user-select: none;
+        }
+
+        .quantity-button:active {
+            background: darkgray;
+        }
+
+        .quantity-button.quantity-up {
+            position: absolute;
+            height: 50%;
+            top: 0;
+            border-radius: 0 5px 0 0;
+        }
+
+        .quantity-button.quantity-down {
+            position: absolute;
+            bottom: 0;
+            height: 50%;
+            border-radius: 0 0 5px 0;
+        }
+    </style>
 </head>
 
 <body>
-    <div class="container text-center" style="height: 80vh;">
+    <div class="container text-center" style="min-height: 80vh;">
+        <div style="padding: 3em;"></div>
         <div class="header" style="text-align: center;">
             <h1>Gas Converter</h1>
-            <p>US/CA</p>
+            <p class="subtitle">US/CA</p>
+            <p class="subtitle" id="current-exchange"></p>
+
         </div>
-        <div style="border-style: solid; height:48vh;">
-            <div class="row align-items-center">
-                <div class="col">
-                    <label for="g-us">USD $ / Gallon</label><br>
-                    <input type="number" id="g-us" name="g-us" value="4.129" step="0.01" style="text-align: center;"><br>
-                </div>
-                <div class="col">
-                    <label for="g-ca">CAD $ / Gallon</label><br>
-                    <input type="number" id="g-ca" name="g-ca" value="5.702" step="0.01" style="text-align: center;"><br>
-                </div>
-            </div>
-            <div class="row align-items-center">
-                <div class="col">
-                    <label for="l-us">USD $ / Litre</label><br>
-                    <input type="number" id="l-us" name="l-us" value="1.09" step="0.01" style="text-align: center;"><br>
-                </div>
-                <div class="col">
-                    <label for="l-ca">CAD $ / Litre</label><br>
-                    <input type="number" id="l-ca" name="g-ca" value="4.12" step="0.01" style="text-align: center;"><br>
-                </div>
-            </div>
+        <table class="desktop-only" style="height:40vh; width:100%;">
+            <tr style="vertical-align: center;">
+                <td class="special-input">
+                    <label for="g-us" class="subtitle">USD $ / Gallon</label><br>
+                    <input class="gas-converter" type="number" id="g-us" name="g-us" value="4.129" step="0.01" style="text-align: center; border: 2px solid var(--main-accent-color)"><br>
+                </td>
+                <td class="special-input">
+                    <label for="g-ca" class="subtitle">CAD $ / Gallon</label><br>
+                    <input class="gas-converter" type="number" id="g-ca" name="g-ca" value="5.702" step="0.01" style="text-align: center;"><br>
+                </td>
+            </tr>
+            <tr>
+                <td class="special-input">
+                    <label for="l-us" class="subtitle">USD $ / Litre</label><br>
+                    <input class="gas-converter" type="number" id="l-us" name="l-us" value="1.09" step="0.01" style="text-align: center;"><br>
+                </td>
+                <td class="special-input">
+                    <label for="l-ca" class="subtitle">CAD $ / Litre</label><br>
+                    <input class="gas-converter" type="number" id="l-ca" name="g-ca" value="1.42" step="0.01" style="text-align: center; border: 2px solid var(--main-accent-color)"><br>
+                </td>
+            </tr>
+        </table>
+
+        <table class="mobile-only" style="width: 50px; margin-left:auto; margin-right:auto;">
+            <tr style="vertical-align: center;">
+                <td class="special-input">
+                    <label for="g-us" class="subtitle">USD $ / Gallon</label><br>
+                    <input class="gas-converter" type="number" id="g-us-m" name="g-us" value="4.129" step="0.01" style="text-align: center; border: 2px solid var(--main-accent-color)"><br>
+                </td>
+            </tr>
+            <tr style="vertical-align: center;">
+                <td class="special-input">
+                    <label for="l-ca" class="subtitle">CAD $ / Litre</label><br>
+                    <input class="gas-converter" type="number" id="l-ca-m" name="g-ca" value="1.418" step="0.01" style="text-align: center; border: 2px solid var(--main-accent-color)"><br>
+                </td>
+            </tr>
+            <tr style="vertical-align: center;">
+                <td class="special-input">
+                    <label for="g-ca" class="subtitle">CAD $ / Gallon</label><br>
+                    <input class="gas-converter" type="number" id="g-ca-m" name="g-ca" value="5.368" step="0.01" style="text-align: center;"><br>
+                </td>
+            </tr>
+            <tr style="vertical-align: center;">
+                <td class="special-input">
+                    <label for="l-us" class="subtitle">USD $ / Litre</label><br>
+                    <input class="gas-converter" type="number" id="l-us-m" name="l-us" value="1.091" step="0.01" style="text-align: center;"><br>
+                </td>
+            </tr>
+        </table>
+
+        <div style="padding: 1em;">
+            <input type="checkbox" id="real-exchange" name="real-exchange" value="real-exchange">
+            <label for="real-exchange">Use real exchange rate</label><br>
         </div>
     </div>
 </body>
