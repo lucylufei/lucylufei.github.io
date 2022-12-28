@@ -6,7 +6,7 @@
 "image":"./images/MICRO22.png",
 "tags":["Simulation","Hardware","Research"],
 "skills":["C++","Vulkan","GPGPU-Sim","Python"],
-"link":"./projects/micro2022.html"},
+"link":"https://github.com/ubc-aamodt-group/vulkan-sim"},
 {
 "id":1,
 "title":"Ray Intersection Predictor",
