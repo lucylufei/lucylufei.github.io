@@ -45,6 +45,10 @@ h5 {
     text-decoration: none;
 }
 
+b {
+    font-weight: 600;
+}
+
 li {
     background-color: white;
 }

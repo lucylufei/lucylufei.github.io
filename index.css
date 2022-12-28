@@ -1,3 +1,7 @@
+h1 {
+    font-weight: 600;
+}
+
 #arrow {
     padding-top: 10vh;
     -webkit-animation: pulse 2s infinite;
@@ -127,6 +131,7 @@
 .title {
     vertical-align: middle;
     font-size: 6.5vh;
+    font-weight: 600;
 }
 
 .container {

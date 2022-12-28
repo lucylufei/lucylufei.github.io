@@ -75,6 +75,7 @@ th {
 
 .faded {
     color: #6d8383;
+    font-weight: 400;
 }
 
 
@@ -139,6 +140,10 @@ input:checked+.slider:before {
     .desktop-only{
         display: none;
     }
+}
+
+.badge {
+    font-weight: 600;
 }
 
 .badge-gray {

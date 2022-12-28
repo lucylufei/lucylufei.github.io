@@ -95,9 +95,15 @@ button.clicked_btn:hover{
     transform: scale(1.005);
 }
 
-.projects th, .projects td {
+.projects td {
     padding: 0.5em;
     padding-left: 1em;
+}
+
+.projects th {
+    padding: 0.5em;
+    padding-left: 0.7em;
+    font-size: 18pt;
 }
 
 .projects .image {
