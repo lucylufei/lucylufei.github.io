@@ -16,6 +16,10 @@ h1 {
     padding: 2em;
 }
 
+.carousel-item:hover .carousel-image{
+    transform: scale(1.005);
+}
+
 .carousel-caption {
     position: relative;
     height:20vh;

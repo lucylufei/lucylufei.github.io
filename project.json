@@ -6,7 +6,8 @@
 "image":"./images/MICRO22.png",
 "tags":["Simulation","Hardware","Research"],
 "skills":["C++","Vulkan","GPGPU-Sim","Python"],
-"link":"https://github.com/ubc-aamodt-group/vulkan-sim"},
+"link":"https://github.com/ubc-aamodt-group/vulkan-sim",
+"year":"2022"},
 {
 "id":1,
 "title":"Ray Intersection Predictor",
@@ -15,7 +16,8 @@
 "image":"./images/MICRO.JPG",
 "tags":["Simulation","Hardware","Research"],
 "skills":["C++","CUDA","GPGPU-Sim","GPUWattch","CACTI7"],
-"link":"./projects/micro2021.html"},
+"link":"./projects/micro2021.html",
+"year":"2021"},
 {
 "id":2,
 "title":"JPEG-ACT",
@@ -24,7 +26,8 @@
 "image":"./images/ISCA.JPG",
 "tags":["Hardware","Research"],
 "skills":["C++","Verilog"],
-"link":"https://people.ece.ubc.ca/aamodt/papers/evans.isca2020.pdf"},
+"link":"https://people.ece.ubc.ca/aamodt/papers/evans.isca2020.pdf",
+"year":"2020"},
 {
 "id":3,
 "title":"Electric Shock Risk Assessment",
@@ -33,7 +36,8 @@
 "image":"./images/krypton.JPG",
 "tags":["Simulation","Software"],
 "skills":["JavaScript","HTML","Circuits","MATLAB"],
-"link":"./krypton/krypton.html"},
+"link":"./krypton/krypton.html",
+"year":"2020"},
 {
 "id":4,
 "title":"Netflix Wrapped",
@@ -42,7 +46,8 @@
 "image":"./images/netflix-wrapped.JPG",
 "tags":["Software"],
 "skills":["JavaScript","CSS","HTML","Observable"],
-"link":"./netflix-wrapped/index.html"},
+"link":"./netflix-wrapped/index.html",
+"year":"2021"},
 {
 "id":5,
 "title":"VLSI Router",
@@ -51,7 +56,8 @@
 "image":"./images/assn1.JPG",
 "tags":["Hardware","Simulation"],
 "skills":["Python","CAD","Tkinter"],
-"link":"https://github.com/lucylufei/CPEN513-assn1"},
+"link":"https://github.com/lucylufei/CPEN513-assn1",
+"year":"2021"},
 {
 "id":6,
 "title":"VLSI Placement",
@@ -60,7 +66,8 @@
 "image":"./images/assn2.JPG",
 "tags":["Hardware","Simulation"],
 "skills":["Python","CAD","Tkinter"],
-"link":"https://github.com/lucylufei/CPEN513-assn2"},
+"link":"https://github.com/lucylufei/CPEN513-assn2",
+"year":"2021"},
 {
 "id":7,
 "title":"VLSI Partitioner",
@@ -69,7 +76,8 @@
 "image":"./images/assn3.JPG",
 "tags":["Hardware","Simulation"],
 "skills":["Python","CAD","Tkinter"],
-"link":"https://github.com/lucylufei/CPEN513-assn3"},
+"link":"https://github.com/lucylufei/CPEN513-assn3",
+"year":"2021"},
 {
 "id":8,
 "title":"VLSI Genetics Algorithm",
@@ -78,7 +86,8 @@
 "image":"./images/genetics.JPG",
 "tags":["Hardware","Simulation"],
 "skills":["Python","CAD","Tkinter"],
-"link":"https://github.com/lucylufei/CPEN513-FinalProject"},
+"link":"https://github.com/lucylufei/CPEN513-FinalProject",
+"year":"2021"},
 {
 "id":9,
 "title":"Telenotes",
@@ -87,7 +96,8 @@
 "image":"./images/telenotes1.png",
 "tags":["Software"],
 "skills":["JavaScript","CSS","HTML"],
-"link":"./projects/telenotes.html"},
+"link":"./projects/telenotes.html",
+"year":"2020"},
 {
 "id":10,
 "title":"Hood Hunter",
@@ -96,7 +106,8 @@
 "image":"./images/teaser-hood-hunter.PNG",
 "tags":["Software"],
 "skills":["JavaScript","Python","CSS","HTML"],
-"link":"./projects/hoodhunter.html"},
+"link":"./projects/hoodhunter.html",
+"year":"2021"},
 {
 "id":11,
 "title":"Clock",
@@ -105,7 +116,8 @@
 "image":"./images/clock.JPG",
 "tags":["Software"],
 "skills":["JavaScript","CSS","HTML"],
-"link":"./clock.html"},
+"link":"./clock.html",
+"year":"2019"},
 {
 "id":12,
 "title":"Magnetic Tracking Rover",
@@ -114,7 +126,8 @@
 "image":"./images/rover.JPG",
 "tags":["Hardware"],
 "skills":["Electromagnetics","Circuits"],
-"link":"./files/project/291B.pdf"},
+"link":"./projects/magnetic-rover.html",
+"year":"2018"},
 {
 "id":13,
 "title":"Laser Light Show",
@@ -123,7 +136,8 @@
 "image":"./images/laser.JPG",
 "tags":["Hardware","Software","Simulation"],
 "skills":["Circuits","Arduino","MATLAB","Altium"],
-"link":"./files/project/391.pdf"},
+"link":"./projects/laser-show.html",
+"year":"2019"},
 {
 "id":14,
 "title":"3D Printer Simulation",
@@ -132,4 +146,5 @@
 "image":"./images/printer.JPG",
 "tags":["Simulation"],
 "skills":["MATLAB","Simulink","PIDControl"],
-"link":"./files/project/341.pdf"}]}
+"link":"./files/341.pdf",
+"year":"2018"}]}
