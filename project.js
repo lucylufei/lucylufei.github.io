@@ -28,24 +28,24 @@ $.getJSON("https://www.lufei.ca/project.json", function (data) {
 		tile += "<table class=\"desktop-only\"><tr><td rowspan=\"3\" class=\"image\"><img src=\"" + project.image + "\" style=\"width: 100%;\"></td>"
 
 		// Project title
-		// <th>[PROJECT-TITLE]</th></tr>
-		tile += "<th>" + project.title + "</th></tr>"
+		// <th colspan="2">[PROJECT-TITLE]</th></tr>
+		tile += "<th colspan=\"2\">" + project.title + "</th></tr>"
 
 		// Project description
-		// <tr><td>[PROJECT-DESCRIPTION]</td></tr>
-		tile += "<tr><td>" + project.description + "</td></tr>"
+		// <tr><td colspan="2">[PROJECT-DESCRIPTION]</td></tr>
+		tile += "<tr><td colspan=\"2\">" + project.description + "</td></tr>"
 
 		// Project badges
 		// <tr><td style="vertical-align: bottom;">
 		// <span class="badge">[BADGE]</span>
-		// </td></tr>
+		// </td><td style="vertical-align: bottom; text-align: right; padding-right: 1em; color: gray;"><i>year</i></td></tr>
 		tile += "<tr><td style=\"vertical-align: bottom;\">"
 		project.skills.sort();
 		var i;
 		for (i = 0; i < project.skills.length; i++) {
 			tile += "<span class=\"badge\">" + project.skills[i] + "</span>";
 		}
-		tile += "</td></tr>"
+		tile += "</td><td style=\"vertical-align: bottom; text-align: right; padding-right: 1em; color: gray;\"><i>" + project.year + "</i></td></tr>"
 
 		// End
 		// </table>

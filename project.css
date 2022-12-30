@@ -19,15 +19,20 @@ body {
     justify-content: center;
 }
 
+.container {
+    padding-left: 2em;
+    padding-right: 2em;
+    max-width: 1200px;;
+}
+
 @media only screen and (min-width: 768px) {
     .header {
         padding-top: 4em;
     }
-}
-
-.container {
-    width: 80vw;
-    max-width: 1200px;;
+    
+    .container {
+        width: 80vw;
+    }
 }
 
 /* Filter Buttons */
