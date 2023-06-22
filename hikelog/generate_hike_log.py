@@ -22,6 +22,26 @@ for line in f.readlines()[1:]:
 
 f.close()
 
+def create_card(region, dataset):
+    region_class = region.replace(" ", "-").replace("(", "").replace(")", "").lower()
+    f.write('<div class="card region" id="{c}"><div class="card-header"><table><tr><th style="text-align: left; width: 100vw;">{r}</th><th style="text-align: right;"><i class="fa fa-sort-down"></i></th></tr></table></div></div></br>\n'.format(r=region, c=region_class))
+    f.write('<div class="card-columns">\n')
+    for hike in dataset:
+        hike_done = (dataset[hike]["done"] == "Yes")
+        num_stars = int(dataset[hike]["rec"]) - 2 if hike_done else 0
+        if dataset[hike]["region"] == region:
+            f.write('<div class="card {region} rate_{rating} {done}">'.format(region=region_class, rating=str(num_stars), done="done" if hike_done else ""))
+            if hike_done:
+                f.write('<img src="./images/hikes/{img}.JPG" class="card-img-top" alt="...">'.format(img=hike.replace(" ", "-").replace("'", "").lower()))
+                star_rating = ' <i class="fa fa-heart" aria-hidden="true"></i>' * num_stars
+                star_rating += ' <i class="fa fa-heart-o" aria-hidden="true"></i>' * (3 - num_stars)
+                f.write('<div class="card-body"><h5 class="card-title">{name}</h5><p class="card-text">{rating}</br>{rec}<hr>{comment}</p></div></div>\n'.format(name=hike, rating=dataset[hike]["rating"], rec=star_rating, comment=dataset[hike]["comment"]))
+            else:
+                f.write('<div class="card-body"><h5 class="card-title" style="color: gray;">{name}</h5></div></div>\n'.format(name=hike, rating=dataset[hike]["rating"]))
+
+    f.write("</div>")
+
+
 
 f = open("../hikelog.html", "w+")
 
@@ -59,41 +79,11 @@ f.write('<div class="container"><div class="header"><h1>Hike Log</h1></div>\n')
 f.write('<div class="faded" style="text-align: center;"><a href="https://www.instagram.com/propinquity.effect/" target="_blank">Questions? Ask <span class="special-link">@propinquity.effect</span></a></div><br>\n')
 
 for region in ordered_regions:
-    region_class = region.replace(" ", "-").replace("(", "").replace(")", "").lower()
-    f.write('<div class="card region" id="{c}"><div class="card-header"><table><tr><th style="text-align: left; width: 100vw;">{r}</th><th style="text-align: right;"><i class="fa fa-sort-down"></i></th></tr></table></div></div></br>\n'.format(r=region, c=region_class))
-    f.write('<div class="card-columns">\n')
-    for hike in dataset:
-        if dataset[hike]["region"] == region:
-            f.write('<div class="card {}">'.format(region_class))
-            if dataset[hike]["done"] == "Yes":
-                f.write('<img src="./images/hikes/{img}.JPG" class="card-img-top" alt="...">'.format(img=hike.replace(" ", "-").replace("'", "").lower()))
-                num_stars = int(dataset[hike]["rec"]) - 2
-                star_rating = ' <i class="fa fa-heart" aria-hidden="true"></i>' * num_stars
-                star_rating += ' <i class="fa fa-heart-o" aria-hidden="true"></i>' * (3 - num_stars)
-                f.write('<div class="card-body"><h5 class="card-title">{name}</h5><p class="card-text">{rating}</br>{rec}<hr>{comment}</p></div></div>\n'.format(name=hike, rating=dataset[hike]["rating"], rec=star_rating, comment=dataset[hike]["comment"]))
-            else:
-                f.write('<div class="card-body"><h5 class="card-title" style="color: gray;">{name}</h5></div></div>\n'.format(name=hike, rating=dataset[hike]["rating"]))
-
-    f.write("</div>")
+    create_card(region, dataset)
     regions.remove(region)
 
 for region in regions:
-    region_class = region.replace(" ", "-").replace("(", "").replace(")", "").lower()
-    f.write('<div class="card region" id="{c}"><div class="card-header"><table><tr><th style="text-align: left; width: 100vw;">{r}</th><th style="text-align: right;"><i class="fa fa-sort-down"></i></th></tr></table></div></div></br>\n'.format(r=region, c=region_class))
-    f.write('<div class="card-columns">\n')
-    for hike in dataset:
-        if dataset[hike]["region"] == region:
-            f.write('<div class="card {}">'.format(region_class))
-            if dataset[hike]["done"] == "Yes":
-                f.write('<img src="./images/hikes/{img}.JPG" class="card-img-top" alt="...">'.format(img=hike.replace(" ", "-").lower()))
-                num_stars = int(dataset[hike]["rec"]) - 2
-                star_rating = ' <i class="fa fa-heart" aria-hidden="true"></i>' * num_stars
-                star_rating += ' <i class="fa fa-heart-o" aria-hidden="true"></i>' * (3 - num_stars)
-                f.write('<div class="card-body"><h5 class="card-title">{name}</h5><p class="card-text">{rating}</br>{rec}<hr>{comment}</p></div></div>\n'.format(name=hike, rating=dataset[hike]["rating"], rec=star_rating, comment=dataset[hike]["comment"]))
-            else:
-                f.write('<div class="card-body"><h5 class="card-title" style="color: gray;">{name}</h5></div></div>\n'.format(name=hike, rating=dataset[hike]["rating"]))
-
-    f.write("</div>")
+    create_card(region, dataset)
 
 f.write('<button id="topbtn" style="margin:0 auto;">Back to Top</button>')
 
