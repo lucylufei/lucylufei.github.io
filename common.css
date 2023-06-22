@@ -29,6 +29,7 @@ a.text-link:hover {
 
 a:hover {
     text-decoration: none;
+    text-underline-offset: 0.2em;
     color: var(--main-accent-color);
 }
 
@@ -90,7 +91,7 @@ footer {
 }
 
 .nav-link:hover {
-    font-weight: 300;
+    font-weight: 400;
 }
 
 .nav-link.active {

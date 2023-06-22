@@ -36,6 +36,10 @@ a {
     color: darkslategray;
 }
 
+.linked-card:hover {
+    transform: scale(0.99);
+}
+
 h5 {
     font-family: "luluregular";
     font-size: 3em;
@@ -49,6 +53,7 @@ h5 {
     color: #c95d85;
     cursor: pointer;
     text-decoration: underline;
+    text-underline-offset: 0.2em;
 }
 
 .special-link:hover {
