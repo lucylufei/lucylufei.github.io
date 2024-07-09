@@ -17,4 +17,5 @@ https://www.lufei.ca/posts/juandefuca.html
 https://www.lufei.ca/posts/raytracing.html
 https://www.lufei.ca/posts/BVH.html
 https://www.lufei.ca/food.html
-https://www.lufei.ca/lululetter.html
+https://www.lufei.ca/lululetter/index.html
+https://www.lufei.ca/lululetter/gallery.html

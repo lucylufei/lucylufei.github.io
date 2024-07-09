@@ -1,0 +1,543 @@
+
+@font-face {
+    font-family: 'luluregular';
+    src: url('../fonts/lulu-regular-webfont.woff2') format('woff2'),
+         url('../fonts/lulu-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Define accent colours */
+:root {
+    --main: #22223B;
+    --neutral: #4A4E69;
+    --accent: #8D7799;
+    --highlight: #887CD6;
+    --light: #C9ADA7;
+    --background: #FCF3ED;
+    --background-light: #FFFCFA;
+}
+
+html {
+    /* Smooth scrolling */
+    scroll-behavior: smooth;
+}
+
+body, p, h1, h2 {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--background);
+}
+
+p, li, h2 {
+    font-family: 'DM Sans', sans-serif;
+}
+
+h1 {
+    font-family: "DM Serif Display", serif;
+    color: var(--neutral);
+}
+
+h2 {
+    font-size: 1.3rem;
+    font-weight: 300;
+    color: var(--neutral);
+}
+
+a {
+    text-decoration: none;
+}
+
+a:visited {
+    color: var(--main);
+}
+
+a:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+    color: var(--neutral);
+    cursor: pointer;
+}
+
+#nav {
+    background-color: var(--background);
+    color: var(--main);
+    font-size: 1rem;
+    font-weight: 300;
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+    padding: 1.5rem;
+    padding-top: 3rem;
+    text-align: center;
+    overflow-x: scroll;
+}
+
+#nav ul {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    min-width: 500px;
+}
+
+#nav ul li {
+    margin: 0 1rem;
+}
+
+#nav ul li a {
+    color: var(--main);
+    text-decoration: none;
+}
+
+#nav ul li a:hover {
+    color: var(--accent);
+}
+
+#nav .active {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+}
+
+#header {
+    background-color: var(--background);
+    color: var(--main);
+    font-size: 2rem;
+    font-weight: 600;
+    letter-spacing: 0.1rem;
+    padding: 2rem;
+    padding-bottom: 3rem;
+    text-align: center;
+}
+
+#header h2 {
+    font-size: 1rem;
+}
+
+.section:nth-child(odd) {
+    background-color: var(--background-light);
+}
+
+.section:nth-child(even) {
+    background-color: var(--background);
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: left;
+    margin: 0 auto;
+    max-width: 800px;
+    padding: 1.5rem;
+}
+
+.highlight {
+    font-family: "DM Serif Display", serif;
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.service {
+    padding: 1rem;
+    background-color: var(--background);
+    margin-bottom: 10px;
+    border-radius: 10px;
+    color: var(--main);
+    font-weight: 300;
+}
+
+.service h3 {
+    color: var(--accent);
+    font-size: 1.5rem;
+    font-family: "DM Serif Display", serif;
+    font-weight: 400;
+    letter-spacing: 0.05rem;
+    padding-bottom: 10px;
+    margin: 0;
+}
+
+.service img {
+    width: 80%;
+    height: auto;
+    border-radius: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.faq h2 {
+    color: var(--accent);
+    font-size: 1rem;
+    font-weight: 400;
+    padding-bottom: 10px;
+    margin: 0;
+
+}
+
+.faq p {
+    color: var(--main);
+    font-weight: 300;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    padding: 1.5rem;;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--main);
+    background-color: var(--background);
+    border-radius: 10px;
+}
+
+form label {
+    font-size: 1rem;
+    font-weight: 300;
+    padding-bottom: 0.5rem;
+}
+
+form input, form textarea {
+    font-size: 0.75rem;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    border: 1px solid var(--accent);
+}
+
+form button {
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid var(--main);
+    background-color: var(--accent);
+    color: var(--background-light);
+    font-size: 1rem;
+    font-weight: 300;
+    cursor: pointer;
+    font-family: "DM Serif Text", serif;
+}
+
+#gallery-header, #inspo-header {
+    padding: 1.5rem;
+    color: var(--main);
+}
+
+.gallery-item {
+    border-radius: 10px;
+    text-align: center;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.gallery-item p {
+    font-family: "DM Serif Text", serif;
+    font-weight: 600;
+    padding: 0.5rem;
+}
+
+.gallery-item a {
+    color: var(--main);
+    font-family: 'DM Sans', sans-serif;
+    text-decoration: none;
+}
+
+.gallery-item a:hover {
+    color: var(--neutral);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+}
+
+.gallery-item:nth-child(odd) p {
+    color: var(--accent);
+}
+
+.gallery-item:nth-child(even) p {
+    color: var(--light);
+}
+
+#gallery-footer {
+    padding: 1.5rem;
+    text-align: center;
+}
+
+#gallery-footer a {
+    color: var(--neutral);
+    font-family: "DM Serif Text", serif;
+    font-weight: 600;
+}
+
+/* mobile */
+@media (max-width: 800px) {
+    a {
+        text-decoration: underline;
+        text-underline-offset: 0.2em;
+    }
+
+    .section {
+        width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+
+    #main-section {
+        color: var(--main);
+        font-size: 1rem;
+        font-weight: 300;
+        letter-spacing: 0.1rem;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+        text-align: center;
+    }
+
+    #main-section img {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+    }
+
+
+    #main-photo {
+        text-align: right;
+        font-family: 'DM Sans', sans-serif;
+        letter-spacing: 0rem;
+    }
+
+    #main-section h3 {
+        margin: 1rem;
+        font-size: 2rem;
+        font-family: "luluregular";
+        font-style: italic;
+        font-weight: 400;
+        color: var(--accent);
+    }
+
+    #about-content {
+        color: var(--main);
+        font-size: 1rem;
+        font-weight: 300;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+
+    #about-content h1, p {
+        padding-bottom: 1rem;
+    }
+
+    #service-header {
+        color: var(--main);
+        font-size: 1rem;
+        font-weight: 300;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+
+    #services {
+        padding-left: 2rem;
+        padding-right: 2rem;
+        padding-bottom: 2rem;
+        margin: 0 auto;
+        max-width: 800px;
+    }
+
+    #faqs {
+        padding-left: 3rem;
+        padding-right: 3rem;
+        padding-bottom: 2rem;
+        margin: 0 auto;
+        max-width: 800px;
+    }
+
+    #faq-header {
+        color: var(--main);
+        font-size: 1rem;
+        font-weight: 300;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+
+    #faq-header h1 {
+        padding-bottom: 1rem;
+    }
+
+    #contact-content {
+        color: var(--main);
+        font-size: 1rem;
+        font-weight: 300;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+
+    form {
+        margin: 0 auto;
+    }
+
+    #gallery, #inspo {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 20px;
+        align-items: center;
+        height: auto;
+        margin: 0 auto;
+        /* max-width: 800px; */
+    }
+
+    .gallery-item a {
+        text-decoration: underline;
+        text-underline-offset: 0.2em;
+    }
+
+    #gallery-footer a {
+        text-decoration: underline;
+        text-underline-offset: 0.2em;
+    }
+}
+
+/* desktop */
+@media (min-width: 800px) {
+
+    .section {
+        width: 100%;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+        margin: 0;
+    }
+
+    #main-section {
+        color: var(--main);
+        font-size: 1rem;
+        font-weight: 300;
+        letter-spacing: 0.1rem;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+        text-align: center;
+        display: flex;
+        flex-direction: row;
+    }
+
+    #main-section h3 {
+        margin: 1rem;
+        font-size: 2rem;
+        font-family: "luluregular";
+        font-weight: 400;
+        font-style: italic;
+        letter-spacing: 0.05rem;
+        color: var(--accent);
+        text-align: right;
+    }
+
+    #main-photo {
+        text-align: right;
+        font-family: 'DM Sans', sans-serif;
+        letter-spacing: 0rem;
+    }
+
+    #main-photo img {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+    }
+
+    #about-content {
+        color: var(--main);
+        font-size: 1rem;
+        font-weight: 300;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+
+    #about-content h1, p {
+        padding-bottom: 1rem;
+    }
+
+    #service-header {
+        color: var(--main);
+        font-size: 1rem;
+        font-weight: 300;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+
+    #services {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+        margin: 0 auto;
+        max-width: 1200px;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .service {
+        flex: 1 1 0px;
+        margin: 1rem;
+    }
+
+    #faq-header {
+        color: var(--main);
+        font-size: 1rem;
+        font-weight: 300;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+
+    #faqs {
+        padding-left: 3rem;
+        padding-right: 3rem;
+        margin: 0 auto;
+        max-width: 1200px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 20px;
+        align-items: flex-start;
+        height: auto;
+        margin: 0 auto;
+        max-width: 1200px;
+    }
+
+    #faq-header h1 {
+        padding-bottom: 1rem;
+    }
+
+    #contact-content {
+        color: var(--main);
+        font-size: 1rem;
+        font-weight: 300;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+
+    #gallery, #inspo {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 20px;
+        align-items: center;
+        height: auto;
+        margin: 0 auto;
+        max-width: 1200px;
+    }
+}
+
+#footer {
+    background-color: var(--light);
+    color: var(--background-light);
+    font-size: 0.75rem;
+    font-weight: 300;
+    letter-spacing: 0.1rem;
+    padding: 1.5rem;
+    text-align: center;
+}
+
+#footer a {
+    color: var(--background-light);
+    text-decoration: none;
+}
+
+#footer p {
+    padding-bottom: 0.5rem;
+}
