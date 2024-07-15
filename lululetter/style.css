@@ -248,6 +248,12 @@ form button {
     text-decoration: none;
 }
 
+.gallery-item small {
+    color: var(--main);
+    font-family: 'DM Sans', sans-serif;
+    text-decoration: none;
+}
+
 .gallery-item a:hover {
     color: var(--neutral);
     text-decoration: underline;
