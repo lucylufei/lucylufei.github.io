@@ -1,0 +1,103 @@
+
+@font-face {
+    font-family: 'luluregular';
+    src: url('./fonts/lulu-regular-webfont.woff2') format('woff2'),
+         url('./fonts/lulu-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.header {
+    padding-top: 2em;
+    padding-bottom: 2em;
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    max-width: 90vw;
+    min-height: 100vh;
+}
+
+.card-title {
+    font-size: x-large;
+    font-family: "luluregular";
+    color: #c95d85;
+}
+
+.card-body {
+    font-size: small;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.highlight {
+    border-radius: 10px;
+    padding: 0.5em;
+    display: inline-block;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+.fa-heart {
+    color: #c95d85;
+}
+
+.difficulty-easy {
+    background-color: #ccd5ae;
+}
+
+.difficulty-moderate {
+    background-color: #e9edc9;
+}
+
+.difficulty-hard {
+    background-color: #fefae0;
+}
+
+.difficulty-difficult {
+    background-color: #faedcd;
+}
+
+.rating {
+    border: solid 1px #c95d85;
+}
+
+.region {
+    border: solid 1px #d6ccc2;
+}
+
+.est-year {
+    border: solid 1px #7c95b6;
+}
+
+.controls {
+    margin-bottom: 2em;
+    justify-content: center;
+    display: flex;
+    
+}
+
+form {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    background-color: #F6F1F3;
+    border-radius: 20px;
+}
+
+.form-group {
+    padding: 1em;
+    display: inline;
+    margin-bottom: 0;
+}
+
+label {
+    padding-right: 2em;
+    padding-left: 0.5em;
+    color: #c95d85;
+    margin-bottom: 0;
+}
+
+select {
+    font-family: 'Montserrat', sans-serif;
+}
