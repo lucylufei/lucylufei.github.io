@@ -6,7 +6,7 @@
 "image":"./images/tta.jpg",
 "tags":["Simulation","Hardware","Research"],
 "skills":["C++","CUDA","Vulkan","GPGPU-Sim","Verilog"],
-"link":"https://people.ece.ubc.ca/~aamodt/publications/papers/tta.micro2024.pdf",
+"link":"./projects/micro2024.html",
 "year":"2024"},
 {
 "id":1,
