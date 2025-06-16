@@ -127,3 +127,19 @@ footer {
     display: flex;
     justify-content: center;
 }
+
+.tag {
+    color: #c95d85;
+    font-weight: bold;
+}
+
+span {
+    scroll-margin-top: 100px;
+}
+
+span:target {
+    background-color: #c95d85;
+    color: white;
+    padding: 0.2em 0.5em;
+    border-radius: 0.3em;
+}

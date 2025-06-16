@@ -2,7 +2,7 @@ $(document).ready(function () {
     var vw = $(window).width();
     var n_columns;
     if (vw < 768) {
-        n_columns = Math.floor(vw / 200);
+        n_columns = Math.floor(vw / 150);
     } else {
         n_columns = Math.floor(vw / 300);
     }
