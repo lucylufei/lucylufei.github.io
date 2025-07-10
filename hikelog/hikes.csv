@@ -32,6 +32,9 @@ Yes,Island,Cathedral Grove,Easy,4,2022,Visit a really really old tree.
 Yes,Island,Ucluelet Lighthouse Loop,Easy,5,2022,Viewpoint every 10 meters.
 Yes,Island,Mystic Beach,Easy,4,2023,Just a little trickle waterfall.
 Yes,Island,Juan de Fuca,Hard,4,2023,Don't underestimate the mud.
+Yes,Island,Canso Plane Crash,Moderate,4,2024,Very cool site.
+Yes,Island,Little Qualicum Falls,Easy,4,2024,Just a nice waterfall.
+Yes,Island,Hole in the Wall Falls,Easy,4,2024,Very iconic.
 No,Island,5040 Peak,,,,
 No,Island,Cox Bay Lookout,,,,
 No,Island,Landslide Lake,,,,
@@ -77,6 +80,8 @@ Yes,Rockies,Mount Lady Macdonald,Hard,5,2017,Great hike to see the Canmore area 
 Yes,Rockies,Opabin Prospect,Moderate,5,2022,Everything anyone could want from the Rockies experience.
 Yes,Rockies,Tunnel Mountain,Moderate,5,2021,Must-do hike in Banff for everyone.
 Yes,Rockies,Whistlers Peak,Moderate,4,2021,Surprisingly steep even after the tram.
+Yes,Rockies,Eva Lake,Moderate,5,2025,Miller lake is the better lake.
+Yes,Rockies,Great Glacier,Moderate,4,2025,Tiny little glacier now.
 No,Rockies,Berg Lake,Difficult,,,
 No,Rockies,Blackshale Suspension Bridge,,,,
 No,Rockies,Giant Steps,,,,
@@ -108,7 +113,7 @@ No,Sea to Sky,Cheakamus Lake,,,,
 Yes,Sea to Sky,Flute Summit,Hard,5,2023,The summer version of skiing bowls.
 No,Sea to Sky,Iceberg Lake,,,,
 No,Sea to Sky,Lake Lovely Water,,,,
-No,Sea to Sky,Seton Lake Lookout,,,,
+Yes,Sea to Sky,Seton Lake Lookout,Easy,5,2025,Very worthwhile stop.
 No,Sea to Sky,The Lions,,,,
 No,Sea to Sky,Unnecessary Mountain,,,,
 No,Sea to Sky,Watersprite Lake,,,,
@@ -134,6 +139,7 @@ Yes,Washington (Other),Mount Constitution,Hard,5,2022,Just drive all the way up.
 Yes,Washington (Other),Oyster Dome,Moderate,4,2023,Well-known hidden gem
 Yes,Washington (Other),Turtleback Mountain,Moderate,5,2022,Imagine riding on a giant turtle's back through the ocean.
 Yes,Washington (Other),Artist Point,Easy,5,2023,A stroll through the mountains.
+Yes,Washington (Other),Chain Lakes,Hard,5,2024,Lots of lakes, lots of walking.
 Yes,Washington (Other),Teddy Bear Cove,Easy,5,2023,A lovely beach.
 No,Washington (Other),Mary Hill Stonehenge,,,,
 No,Washington (Other),Palouse Falls,,,,
@@ -147,3 +153,5 @@ No,Waterton,Red Rock Canyon,,,,
 Yes,Gulf Islands,Mount Maxwell,Moderate,5,2025,Best Salt Spring Island hike.
 Yes,Gulf Islands,Ruckle Shoreline,Easy,4,2025,Casual stroll along the coast.
 No,Gulf Islands,Mount Erskine,,,,
+Yes,Taiwan,169 Shizhuo Viewing Platform,Easy,5,2025,Tea and cherry blossoms, what more could you want?
+Yes,Taiwan,Alishan Forest Trail,Easy,5,2025,Beautiful forest train.
