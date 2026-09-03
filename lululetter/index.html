@@ -23,6 +23,21 @@
     <!-- Jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
+    <!-- SPAM -->
+    <script src="https://unpkg.com/@botpoison/browser" async></script>
+    <script>
+        var formElement = document.getElementById("form");
+        var buttonElement = document.getElementById("submit-btn");
+        formElement.addEventListener("botpoison-challenge-start", function () {
+            buttonElement.setAttribute("disabled", "disabled");
+        });
+        formElement.addEventListener("botpoison-challenge-success", function () {
+            buttonElement.removeAttribute("disabled");
+        });
+        formElement.addEventListener("botpoison-challenge-error", function () {
+            buttonElement.removeAttribute("disabled");
+        });
+    </script>
     <!-- Script -->
     <script>
         $(document).ready(function() {
@@ -163,7 +178,7 @@
             <div id="contact-content">
                 <h1>contact</h1>
                 <p>Let's get creative! </p>
-                <form action="https://submit-form.com/sZ9pE8TCJ">
+                <form action="https://submit-form.com/sZ9pE8TCJ" data-botpoison-public-key="pk_d194af2d-b683-4b0b-815a-1a6ea98e4bb5" id="form">
                     <input
                         type="hidden"
                         name="_redirect"
@@ -189,7 +204,7 @@
                     ></textarea>
                     <label for="time">When do you need this by?</label>
                     <input type="date" id="time" name="time" required="">
-                    <button type="submit">Send</button>
+                    <button type="submit" id="submit-btn">Send</button>
                     <br>
                     <p style="font-style: italic;">Please expect a response within 1-3 days. Don't forget to check your junk folder if you don't see any emails!</p>
                 </form>
